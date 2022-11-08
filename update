@@ -1,0 +1,62 @@
+updates
+1 start playing a card of a set, auto move cursor to next position so it can be played
+2 tip under the player cards could show if not possible to increase score or would invalidate the score won't block just alert till next move
+
+
+on place of card 
+pc knows to pick up cards that can make a straight flush out of it, knowing the other player has that card
+playing off of memory of other player hands
+
+create a list of cards that are known cards
+from here determine if swapping a card is useful
+example: in flush hand lots of chances to clean take a card, meaning to drop a flush card and taking one, but the placed should be higher to prevent loops or having to track the number of times it can go around to play the hand
+
+storing the cards replaced so we can press hint button to show the pc hand from memory since they have been played
+
+scneario
+
+high card round
+player 1 drops AH
+player 2 picks up the AH
+player 2 places ? card
+
+in future hands knowing that player 2 has the A of H
+odds increase of a hand being completed knowing another player will most likely 
+use the picked up card to finish a hand
+can be used for a hand not likely to be played when there are multiples
+
+if player is going to work on a flush he knows now that player 1 can finish it if he has 4 cards and one is missing... mostly likely would have been completed
+
+in a case for four of a kind the player may have two pair, usually the play would be for more points, but if he knows another player has the 3rd or 4th, that should be tha hand that thye play.
+
+known lists for player 2 now has the 2 of hearts
+
+Known List cards strategy: use to find a play that will be played on by another player.
+
+High Card first grab chance
+Pair of cards, must play two cards, won't affect?
+How could knowing what cards a player has affect how you will play a pair
+
+1. can wait for using pair as 3k if a pair is played
+2. can wait for using pair in a different had with picked up card
+3. know what kind of hands are still possible to complete
+4. does picking up a card block any thing from being played
+	a. not playing a card if the other players in fact have it
+	b. letting them play it for a certain kind of hand, and not to quickly for the immediate need. (saving a final flush card for a 4k) (saving a 4k card for a str flush) 
+5.	If player grabs a card, hold on the 2k in hopes it gets played for the 3k. Is this a high chance to play?
+	a. card can have a pair as well, making it 4k. In this case, try to pick up the 4k. 
+	b. can play off?
+	c. Hold for better hand... 3k is only worth so much.
+	c. chance for straight, 4 or 5 cards of it. flush is common, 4k is rare, part of 3k is good to hold, str flush if part of 3 card keep it... not often  to get started.
+6.  player checks if he has two pair
+	does one pair match whats in players known hands
+	if so play the one that doesn't
+	
+	one pair completes the 3k the other is 2k
+	
+------------------------
+------------------------
+
+Have card play 2 of a kind miss for 3 of a kind hit
+have card play 3 of a kind miss for 4 of a kind hit
+throw into straight 235 of same suit find for missing number in set
