@@ -363,7 +363,7 @@ function scoreButtonClicked() {
 }
 
 function blogButtonClicked() {
-  if (confirm("Do you want to go to my site 'https://www.myabandonware.com/' ?")) {
+  if (confirm("Do you want to site 'https://www.myabandonware.com/' ?")) {
     window.open("https://www.myabandonware.com/");
   }
 }
