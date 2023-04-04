@@ -363,8 +363,8 @@ function scoreButtonClicked() {
 }
 
 function blogButtonClicked() {
-  if (confirm("Do you want to go to my blog at site 'http://www.artinapplications.com' ?")) {
-    window.open("http://www.artinapplications.com");
+  if (confirm("Do you want to go to my site 'https://www.myabandonware.com/' ?")) {
+    window.open("https://www.myabandonware.com/");
   }
 }
 
