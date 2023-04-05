@@ -1,3 +1,6 @@
+// starting point for scripts, init, and then interaction scripts
+// for debug check flags in debug, 
+// for decks uncomment customDeck() types needed
 function init(document) {
   canvas = document.getElementById('puzzleCanvas');
 
