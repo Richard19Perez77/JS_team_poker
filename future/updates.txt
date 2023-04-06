@@ -60,3 +60,14 @@ How could knowing what cards a player has affect how you will play a pair
 Have card play 2 of a kind miss for 3 of a kind hit
 have card play 3 of a kind miss for 4 of a kind hit
 throw into straight 235 of same suit find for missing number in set
+
+if i play 2 of 4 of a kind
+computer can play one card
+the turn comes back to me with 3 of 4 played
+i now can see no pc couldn't finish it or is saving for better hand
+with further strategy I should get another turn 
+
+1. stops this since its plausible that should be the end of round
+2. allowing offset 2456 with no 3 played
+3 hand comes back to me with knowing i should have played 3
+4. allow and let strategy for collecting played cards for next hand
