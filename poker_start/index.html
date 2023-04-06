@@ -7,9 +7,10 @@
 	<title>Team Poker</title>
 
 	<!-- Game scripts -->
-	<link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
-	<script src="jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
-	<script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="libs/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+	
+	<script src="libs/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+	<script src="libs/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 
 	<script src="scripts/card/card.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/common/variables.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
@@ -21,7 +22,6 @@
 	<script src="scripts/deck/strdecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/deck/threeKDecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/draw/draw.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/ui/uihelper.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/find/find2k.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/find/find3k.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/find/find4k.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
@@ -45,11 +45,11 @@
 	<script src="scripts/gamelogic.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 
 	<!-- CSS -->
-	<link href="styles/cardTheme.css?ver=<%=DateTime.Now.Ticks.ToString()%>" rel="stylesheet" type="text/css" />
+	<link href="assets/styles/cardTheme.css?ver=<%=DateTime.Now.Ticks.ToString()%>" rel="stylesheet" type="text/css" />
 
-	<link href="images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
-	<link href="images/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png" />
-	<link href="images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+	<link href="assets/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+	<link href="assets/images/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png" />
+	<link href="assets/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
 
 	<script>
 		$(document).ready(function() {
@@ -131,7 +131,7 @@
 		<div id="musicDiv" style="background-image: radial-gradient(#009933, #330099);">
 			<button id="musicButton">more music</button>
 			<audio id="audio" controls loop>
-			  <source src="music/track.mp3" type="audio/mpeg">
+			  <source src="assets/music/track.mp3" type="audio/mpeg">
 			  Your browser does not support the audio element.
 			</audio>
 			<button id="blogButton">more...</button>

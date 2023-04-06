@@ -5,7 +5,7 @@ function init(document) {
   canvas = document.getElementById('puzzleCanvas');
 
   let tutorialImage = $("#tutorialImage")[0];
-  tutorialImage.src = "images/tutorial.png"
+  tutorialImage.src = "assets/images/tutorial.png"
   tutorialImage.onload = function() {
     imagesLoaded++;
     checkImagesLoadedCount();
@@ -180,7 +180,7 @@ function init(document) {
     checkImagesLoadedCount();
     drawBoard();
   }
-  backImage.src = "images/back1.png";
+  backImage.src = "assets/images/back1.png";
 
   setDebugFlags();
 
