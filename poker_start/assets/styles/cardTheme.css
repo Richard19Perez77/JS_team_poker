@@ -81,6 +81,15 @@ textarea {
   right: 0;
 }
 
+#tutorialDiv {
+  border: 10px double black;
+  background-color: #330099;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
 #puzzleCanvasDiv {
 
 }
@@ -184,16 +193,7 @@ textarea {
   text-align: center;
 }
 
-#tutorialDiv {
-  border: 10px double black;
-  background-color: #330099;
-  position: absolute;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
+
 
 #musicDiv {
   background-image: radial-gradient(#0062cc, #000000);

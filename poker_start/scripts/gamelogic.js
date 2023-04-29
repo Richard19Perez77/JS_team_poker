@@ -386,7 +386,7 @@ function hideTutorial() {
     if (loadingDiv.is(":hidden")) {
         if (tutorialDiv.hidden === false) {
             if (JtutorialDiv.is(":visible") && JtutorialDiv.is(':animated') === false) {
-                JtutorialDiv.slideToggle(500, function () {
+                JtutorialDiv.fadeOut(300, function () {
                     tutorialDiv.hidden = true;
                     gameReady = true;
                     adjustOffset();
