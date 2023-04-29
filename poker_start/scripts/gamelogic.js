@@ -12,7 +12,6 @@ function init(document) {
     tutorialImage.onload = function () {
         imagesLoaded++;
         checkImagesLoadedCount();
-        drawBoard();
     }
 
     let pageDivLocal = $(".pageDivClass");
