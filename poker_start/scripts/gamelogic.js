@@ -195,7 +195,6 @@ function init(document) {
     backImage.onload = function () {
         imagesLoaded++;
         checkImagesLoadedCount();
-        drawBoard();
     }
     backImage.src = "assets/images/back1.png";
 
@@ -223,17 +222,32 @@ function leftArrowListener() {
     playercardPressed = -1;
     placeholderPressed = -1;
 
-    // move cursor of player cards
-    if (arrowPlayerCardSelected === -1) {
+    if (shiftPressed === false) {
 
-        //select first player card not null
-        if (getPlayerCards().length > 0) {
-            arrowPlayerCardSelected = 0;
+        // move cursor of player cards
+        if (arrowPlayerCardSelected === -1) {
+
+            //select first player card not null
+            if (getPlayerCards().length > 0) {
+                arrowPlayerCardSelected = 0;
+            }
+        } else {
+            arrowPlayerCardSelected--;
+            if (arrowPlayerCardSelected < 0) {
+                arrowPlayerCardSelected = getPlayerCards().length - 1;
+            }
         }
     } else {
-        arrowPlayerCardSelected--;
-        if (arrowPlayerCardSelected < 0) {
-            arrowPlayerCardSelected = getPlayerCards().length - 1;
+
+        // move cursor of placeholder cards
+
+        if (arrowPlaceholderCardSelected === -1) {
+            arrowPlaceholderCardSelected = 0;
+        } else {
+            arrowPlaceholderCardSelected--;
+            if (arrowPlaceholderCardSelected < 0) {
+                arrowPlaceholderCardSelected = getMaxPlaceHolderCards() - 1;
+            }
         }
     }
 
@@ -243,6 +257,8 @@ function leftArrowListener() {
 function upArrowListener() {
     playercardPressed = -1;
     placeholderPressed = -1;
+
+    shiftPressed = false;
 
     if (arrowPlayerCardSelected === -1) {
         arrowPlayerCardSelected = 0;
@@ -254,6 +270,8 @@ function upArrowListener() {
 function downArrowListener() {
     playercardPressed = -1;
     placeholderPressed = -1;
+
+    shiftPressed = true;
 
     //if no placeholder card is pressed select card 0
     if (arrowPlaceholderCardSelected === -1) {
@@ -267,17 +285,31 @@ function rightArrowListener() {
     playercardPressed = -1;
     placeholderPressed = -1;
 
-    //move cursor of player cards
-    if (arrowPlayerCardSelected === -1) {
+    if (shiftPressed === false) {
 
-        //select first player card not null
-        if (getPlayerCards().length > 0) {
-            arrowPlayerCardSelected = 0;
+        //move cursor of player cards
+        if (arrowPlayerCardSelected === -1) {
+
+            //select first player card not null
+            if (getPlayerCards().length > 0) {
+                arrowPlayerCardSelected = 0;
+            }
+        } else {
+            arrowPlayerCardSelected++;
+            if (arrowPlayerCardSelected > getPlayerCards().length - 1) {
+                arrowPlayerCardSelected = 0;
+            }
         }
     } else {
-        arrowPlayerCardSelected++;
-        if (arrowPlayerCardSelected > getPlayerCards().length - 1) {
-            arrowPlayerCardSelected = 0;
+
+        //move cursor of placeholder cards
+        if (arrowPlaceholderCardSelected === -1) {
+            arrowPlaceholderCardSelected = 0;
+        } else {
+            arrowPlaceholderCardSelected++;
+            if (arrowPlaceholderCardSelected > getMaxPlaceHolderCards() - 1) {
+                arrowPlaceholderCardSelected = 0;
+            }
         }
     }
 
@@ -346,7 +378,7 @@ function musicButtonClicked() {
 function checkImagesLoadedCount() {
     if (imagesLoaded === IMAGES_TO_LOAD) {
         if (loadingDiv.is(":visible")) {
-            $("#loadingDiv").slideToggle(1000);
+            $("#loadingDiv").slideToggle(500);
         }
     }
 }
@@ -355,9 +387,10 @@ function hideTutorial() {
     if (loadingDiv.is(":hidden")) {
         if (tutorialDiv.hidden === false) {
             if (JtutorialDiv.is(":visible") && JtutorialDiv.is(':animated') === false) {
-                JtutorialDiv.slideToggle(1000, function () {
+                JtutorialDiv.slideToggle(500, function () {
                     tutorialDiv.hidden = true;
                     gameReady = true;
+                    adjustOffset();
                     drawBoard();
                 });
             }

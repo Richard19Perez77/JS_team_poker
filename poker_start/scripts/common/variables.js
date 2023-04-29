@@ -31,8 +31,10 @@ let FOUR_K_BONUS = 300;
 let STRAIGHT_FLUSH_BONUS = 500;
 
 let placeHolderMouseOverCardIndex = -1;
-
 let allHumanPlayers = false;
+let selectLeftButton = false;
+let selectRightButton = false;
+let shiftButton = false;
 
 let player1Name = 1;
 let player2Name = "PC";
