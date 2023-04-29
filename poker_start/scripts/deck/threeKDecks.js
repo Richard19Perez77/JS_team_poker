@@ -1,7 +1,7 @@
 function threeKBlockedDeck() {
 
-  suit = 0;
-  value = 10;
+  let suit = 0;
+  let value = 10;
   let path1 = getCardImagePath(suit, value);
   let card1 = new Card(suit, value, path1);
   card1.bitmap.src = card1.imagePath;
@@ -63,8 +63,8 @@ function threeKBlockedDeck() {
   card11.bitmap.src = card11.imagePath;
   deckCards[11] = card11;
 
-  let suit = 0;
-  let value = 3;
+  suit = 0;
+  value = 3;
   let path12 = getCardImagePath(suit, value);
   let card12 = new Card(suit, value, path12);
   card12.bitmap.src = card12.imagePath;

@@ -44,7 +44,6 @@ let playercardPressed = -1;
 let placeholderPressed = -1;
 let arrowPlayerCardSelected = -1;
 let arrowPlaceholderCardSelected = -1;
-let shiftPressed = false;
 
 let testTimeEnd;
 let testTimeStart = new Date().getTime();
@@ -110,11 +109,6 @@ let totalScore = 0;
 
 let cardOffsetX = 0;
 let cardOffsetY = 0;
-
-let club = 0;
-let diamond = 1;
-let heart = 2;
-let spade = 3;
 
 let logCount = 0;
 let playerTurn = 0;

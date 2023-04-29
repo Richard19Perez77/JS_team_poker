@@ -2,394 +2,371 @@
 // for debug check flags in debug,
 // for decks uncomment customDeck() types needed
 function init(document) {
-  canvas = document.getElementById('puzzleCanvas');
+    canvas = document.getElementById('puzzleCanvas');
 
-  // screen resize offset adjustment
-  adjustOffset();
+    loadingDiv = $("#loadingDiv");
+    JtutorialDiv = $("#tutorialDiv");
 
-  loadingDiv = $("#loadingDiv" );
-  JtutorialDiv = $("#tutorialDiv");
+    let tutorialImage = $("#tutorialImage")[0];
+    tutorialImage.src = "assets/images/tutorial.png"
+    tutorialImage.onload = function () {
+        imagesLoaded++;
+        checkImagesLoadedCount();
+        drawBoard();
+    }
 
-  let tutorialImage = $("#tutorialImage")[0];
-  tutorialImage.src = "assets/images/tutorial.png"
-  tutorialImage.onload = function() {
-    imagesLoaded++;
-    checkImagesLoadedCount();
-    drawBoard();
-  }
-
-  let pageDivLocal = $(".pageDivClass");
-  pageDivLocal.fadeIn(500, function() {
-    $(this).css("display", "normal");
-  });
-
-  window.addEventListener("keydown", onKeyDown);
-
-  let playerCardOneButton = $("#playerCardOneButton")[0];
-  if (playerCardOneButton != null) {
-    playerCardOneButton.addEventListener("click", function() {
-      playerCardPress(0);
+    let pageDivLocal = $(".pageDivClass");
+    pageDivLocal.fadeIn(500, function () {
+        $(this).css("display", "normal");
     });
-  }
 
-  let playerCardTwoButton = $("#playerCardTwoButton")[0];
-  if (playerCardTwoButton != null) {
-    playerCardTwoButton.addEventListener("click", function() {
-      playerCardPress(1);
+    window.addEventListener("keydown", onKeyDown);
+
+    let playerCardOneButton = $("#playerCardOneButton")[0];
+    if (playerCardOneButton != null) {
+        playerCardOneButton.addEventListener("click", function () {
+            playerCardPress(0);
+        });
+    }
+
+    let playerCardTwoButton = $("#playerCardTwoButton")[0];
+    if (playerCardTwoButton != null) {
+        playerCardTwoButton.addEventListener("click", function () {
+            playerCardPress(1);
+        });
+    }
+
+    let playerCardThreeButton = $("#playerCardThreeButton")[0];
+    if (playerCardThreeButton != null) {
+        playerCardThreeButton.addEventListener("click", function () {
+            playerCardPress(2);
+        });
+    }
+
+    let playerCardFourButton = $("#playerCardFourButton")[0];
+    if (playerCardFourButton != null) {
+        playerCardFourButton.addEventListener("click", function () {
+            playerCardPress(3);
+        });
+    }
+
+    let playerCardFiveButton = $("#playerCardFiveButton")[0];
+    if (playerCardFiveButton != null) {
+        playerCardFiveButton.addEventListener("click", function () {
+            playerCardPress(4);
+        });
+    }
+
+    let playerCardSixButton = $("#playerCardSixButton")[0];
+    if (playerCardSixButton != null) {
+        playerCardSixButton.addEventListener("click", function () {
+            playerCardPress(5);
+        });
+    }
+
+    let playerCardSevenButton = $("#playerCardSevenButton")[0];
+    if (playerCardSevenButton != null) {
+        playerCardSevenButton.addEventListener("click", function () {
+            playerCardPress(6);
+        });
+    }
+
+    let slotOneButton = $("#slotOneButton")[0];
+    if (slotOneButton != null) {
+        slotOneButton.addEventListener("click", function () {
+            placeHolderPress(0);
+        });
+    }
+
+    let slotTwoButton = $("#slotTwoButton")[0];
+    if (slotTwoButton != null) {
+        slotTwoButton.addEventListener("click", function () {
+            placeHolderPress(1);
+        });
+    }
+
+    let slotThreeButton = $("#slotThreeButton")[0];
+    if (slotThreeButton != null) {
+        slotThreeButton.addEventListener("click", function () {
+            placeHolderPress(2);
+        });
+    }
+
+    let slotFourButton = $("#slotFourButton")[0];
+    if (slotFourButton != null) {
+        slotFourButton.addEventListener("click", function () {
+            placeHolderPress(3);
+        });
+    }
+
+    let slotFiveButton = $("#slotFiveButton")[0];
+    if (slotFiveButton != null) {
+        slotFiveButton.addEventListener("click", function () {
+            placeHolderPress(4);
+        });
+    }
+
+    let slotSixButton = $("#slotSixButton")[0];
+    if (slotSixButton != null) {
+        slotSixButton.addEventListener("click", function () {
+            placeHolderPress(5);
+        });
+    }
+
+    let slotSevenButton = $("#slotSevenButton")[0];
+    if (slotSevenButton != null) {
+        slotSevenButton.addEventListener("click", function () {
+            placeHolderPress(6);
+        });
+    }
+
+    tutorialDiv = JtutorialDiv[0];
+    tutorialDiv.addEventListener('click', function (e) {
+        hideTutorial();
     });
-  }
 
-  let playerCardThreeButton = $("#playerCardThreeButton")[0];
-  if (playerCardThreeButton != null) {
-    playerCardThreeButton.addEventListener("click", function() {
-      playerCardPress(2);
+    draggableControlsTextArea = $(".draggableControlsTextArea");
+    $(function () {
+        draggableControlsTextArea.draggable();
     });
-  }
 
-  let playerCardFourButton = $("#playerCardFourButton")[0];
-  if (playerCardFourButton != null) {
-    playerCardFourButton.addEventListener("click", function() {
-      playerCardPress(3);
+    controlText = $("#controlText");
+    controlText[0].innerHTML = ruleLog;
+
+    draggableScoreDiv = $("#draggableScoreDiv");
+    $(function () {
+        draggableScoreDiv.draggable();
     });
-  }
 
-  let playerCardFiveButton = $("#playerCardFiveButton")[0];
-  if (playerCardFiveButton != null) {
-    playerCardFiveButton.addEventListener("click", function() {
-      playerCardPress(4);
+    scoreText = $("#scoreText")[0];
+    activityLog = $("#activity")[0];
+
+    newGameButton = $("#newGameButton")[0];
+    newGameButton.addEventListener("click", function () {
+        if (gameReady && isPlayerTurn()) {
+            newGameClicked();
+        }
     });
-  }
 
-  let playerCardSixButton = $("#playerCardSixButton")[0];
-  if (playerCardSixButton != null) {
-    playerCardSixButton.addEventListener("click", function() {
-      playerCardPress(5);
+    endTurnButton = $("#endTurnButton")[0];
+    endTurnButton.addEventListener("click", function () {
+        if (gameReady && isPlayerTurn()) {
+            endTurnClicked();
+        }
     });
-  }
 
-  let playerCardSevenButton = $("#playerCardSevenButton")[0];
-  if (playerCardSevenButton != null) {
-    playerCardSevenButton.addEventListener("click", function() {
-      playerCardPress(6);
+    musicButton = $("#musicButton")[0];
+    musicButton.addEventListener("click", function () {
+        if (gameReady && isPlayerTurn()) {
+            musicButtonClicked();
+        }
     });
-  }
 
-  let slotOneButton = $("#slotOneButton")[0];
-  if (slotOneButton != null) {
-    slotOneButton.addEventListener("click", function() {
-      placeHolderPress(0);
+    blogButton = $("#blogButton")[0];
+    blogButton.addEventListener("click", function () {
+        if (gameReady && isPlayerTurn()) {
+            blogButtonClicked();
+        }
     });
-  }
 
-  let slotTwoButton = $("#slotTwoButton")[0];
-  if (slotTwoButton != null) {
-    slotTwoButton.addEventListener("click", function() {
-      placeHolderPress(1);
+    scoreButton = $("#scoreButton");
+    scoreButton[0].addEventListener("click", function () {
+        if (gameReady && isPlayerTurn()) {
+            scoreButtonClicked();
+        }
     });
-  }
 
-  let slotThreeButton = $("#slotThreeButton")[0];
-  if (slotThreeButton != null) {
-    slotThreeButton.addEventListener("click", function() {
-      placeHolderPress(2);
+    controlsButton = $("#controlsButton")[0];
+    controlsButton.addEventListener("click", function () {
+        if (gameReady && isPlayerTurn()) {
+            controlsButtonClicked();
+        }
     });
-  }
 
-  let slotFourButton = $("#slotFourButton")[0];
-  if (slotFourButton != null) {
-    slotFourButton.addEventListener("click", function() {
-      placeHolderPress(3);
-    });
-  }
+    // define canvas listeners for mouse interaction on the canvas
+    canvas.addEventListener("mousedown", doMouseDown, false);
+    canvas.addEventListener("mouseup", doMouseUp, false);
+    canvas.addEventListener("mousemove", doMouseMove, false);
+    canvas.addEventListener("mouseout", doMouseOut, false);
 
-  let slotFiveButton = $("#slotFiveButton")[0];
-  if (slotFiveButton != null) {
-    slotFiveButton.addEventListener("click", function() {
-      placeHolderPress(4);
-    });
-  }
+    context = canvas.getContext('2d');
+    context.font = "20px CustomFont";
 
-  let slotSixButton = $("#slotSixButton")[0];
-  if (slotSixButton != null) {
-    slotSixButton.addEventListener("click", function() {
-      placeHolderPress(5);
-    });
-  }
+    backImage.onload = function () {
+        imagesLoaded++;
+        checkImagesLoadedCount();
+        drawBoard();
+    }
+    backImage.src = "assets/images/back1.png";
 
-  let slotSevenButton = $("#slotSevenButton")[0];
-  if (slotSevenButton != null) {
-    slotSevenButton.addEventListener("click", function() {
-      placeHolderPress(6);
-    });
-  }
+    // screen resize offset adjustment
+    adjustOffset();
 
-  tutorialDiv = JtutorialDiv[0];
-  tutorialDiv.addEventListener('click', function(e) {
-    hideTutorial();
-  });
+    setDebugFlags();
 
-  draggableControlsTextArea = $(".draggableControlsTextArea");
-  $(function() {
-    draggableControlsTextArea.draggable();
-  });
-
-  controlText = $("#controlText");
-  controlText[0].innerHTML = ruleLog;
-
-  draggableScoreDiv = $("#draggableScoreDiv");
-  $(function() {
-    draggableScoreDiv.draggable();
-  });
-
-  scoreText = $("#scoreText")[0];
-  activityLog = $("#activity")[0];
-
-  newGameButton = $("#newGameButton")[0];
-  newGameButton.addEventListener("click", function() {
     newGameClicked();
-  });
-
-  endTurnButton = $("#endTurnButton")[0];
-  endTurnButton.addEventListener("click", function() {
-    endTurnClicked();
-  });
-
-  musicButton = $("#musicButton")[0];
-  musicButton.addEventListener("click", function() {
-    musicButtonClicked();
-  });
-
-  blogButton = $("#blogButton")[0];
-  blogButton.addEventListener("click", function() {
-    blogButtonClicked();
-  });
-
-  scoreButton = $("#scoreButton");
-  scoreButton[0].addEventListener("click", function() {
-    scoreButtonClicked();
-  });
-
-  controlsButton = $("#controlsButton")[0];
-  controlsButton.addEventListener("click", function() {
-    controlsButtonClicked();
-  });
-
-  // define canvas listeners for mouse interaction on the canvas
-  canvas.addEventListener("mousedown", doMouseDown, false);
-  canvas.addEventListener("mouseup", doMouseUp, false);
-  canvas.addEventListener("mousemove", doMouseMove, false);
-  canvas.addEventListener("mouseout", doMouseOut, false);
-
-  context = canvas.getContext('2d');
-  context.font = "20px CustomFont";
-
-  backImage.onload = function() {
-    imagesLoaded++;
-    checkImagesLoadedCount();
-    drawBoard();
-  }
-  backImage.src = "assets/images/back1.png";
-
-  setDebugFlags();
-
-  newGameClicked();
 }
 
 function clearCanvas() {
-  context = canvas.getContext('2d');
-  context.save();
+    context = canvas.getContext('2d');
+    context.save();
 
-  // Use the identity matrix while clearing the canvas
-  context.setTransform(1, 0, 0, 1, 0, 0);
-  context.clearRect(0, 0, canvas.width, canvas.height);
+    // Use the identity matrix while clearing the canvas
+    context.setTransform(1, 0, 0, 1, 0, 0);
+    context.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Restore the transform
-  context.restore();
+    // Restore the transform
+    context.restore();
 }
 
 function leftArrowListener() {
-  playercardPressed = -1;
-  placeholderPressed = -1;
-
-  if (shiftPressed === false) {
+    playercardPressed = -1;
+    placeholderPressed = -1;
 
     // move cursor of player cards
     if (arrowPlayerCardSelected === -1) {
 
-      //select first player card not null
-      if (getPlayerCards().length > 0) {
-        arrowPlayerCardSelected = 0;
-      }
+        //select first player card not null
+        if (getPlayerCards().length > 0) {
+            arrowPlayerCardSelected = 0;
+        }
     } else {
-      arrowPlayerCardSelected--;
-      if (arrowPlayerCardSelected < 0) {
-        arrowPlayerCardSelected = getPlayerCards().length - 1;
-      }
+        arrowPlayerCardSelected--;
+        if (arrowPlayerCardSelected < 0) {
+            arrowPlayerCardSelected = getPlayerCards().length - 1;
+        }
     }
-  } else {
 
-    // move cursor of placeholder cards
-    if (arrowPlaceholderCardSelected === -1) {
-      arrowPlaceholderCardSelected = 0;
-    } else {
-      arrowPlaceholderCardSelected--;
-      if (arrowPlaceholderCardSelected < 0) {
-        arrowPlaceholderCardSelected = getMaxPlaceHolderCards() - 1;
-      }
-    }
-  }
-
-  drawBoard();
+    drawBoard();
 }
 
 function upArrowListener() {
-  playercardPressed = -1;
-  placeholderPressed = -1;
+    playercardPressed = -1;
+    placeholderPressed = -1;
 
-  shiftPressed = false;
+    if (arrowPlayerCardSelected === -1) {
+        arrowPlayerCardSelected = 0;
+    }
 
-  if (arrowPlayerCardSelected === -1) {
-    arrowPlayerCardSelected = 0;
-  }
-
-  drawBoard();
+    drawBoard();
 }
 
 function downArrowListener() {
-  playercardPressed = -1;
-  placeholderPressed = -1;
+    playercardPressed = -1;
+    placeholderPressed = -1;
 
-  shiftPressed = true;
+    //if no placeholder card is pressed select card 0
+    if (arrowPlaceholderCardSelected === -1) {
+        arrowPlaceholderCardSelected = 0;
+    }
 
-  //if no placeholder card is pressed select card 0
-  if (arrowPlaceholderCardSelected === -1) {
-    arrowPlaceholderCardSelected = 0;
-  }
-
-  drawBoard();
+    drawBoard();
 }
 
 function rightArrowListener() {
-  playercardPressed = -1;
-  placeholderPressed = -1;
-
-  if (shiftPressed === false) {
+    playercardPressed = -1;
+    placeholderPressed = -1;
 
     //move cursor of player cards
     if (arrowPlayerCardSelected === -1) {
 
-      //select first player card not null
-      if (getPlayerCards().length > 0) {
-        arrowPlayerCardSelected = 0;
-      }
+        //select first player card not null
+        if (getPlayerCards().length > 0) {
+            arrowPlayerCardSelected = 0;
+        }
     } else {
-      arrowPlayerCardSelected++;
-      if (arrowPlayerCardSelected > getPlayerCards().length - 1) {
-        arrowPlayerCardSelected = 0;
-      }
+        arrowPlayerCardSelected++;
+        if (arrowPlayerCardSelected > getPlayerCards().length - 1) {
+            arrowPlayerCardSelected = 0;
+        }
     }
-  } else {
 
-    //move cursor of placeholder cards
-    if (arrowPlaceholderCardSelected === -1) {
-      arrowPlaceholderCardSelected = 0;
-    } else {
-      arrowPlaceholderCardSelected++;
-      if (arrowPlaceholderCardSelected > getMaxPlaceHolderCards() - 1) {
-        arrowPlaceholderCardSelected = 0;
-      }
-    }
-  }
-
-  drawBoard();
+    drawBoard();
 }
 
 function controlListener() {
-  playercardPressed = -1;
-  placeholderPressed = -1;
+    playercardPressed = -1;
+    placeholderPressed = -1;
 
-  // perform card swap
-  if (arrowPlayerCardSelected !== -1 && arrowPlaceholderCardSelected !== -1) {
-    playercardPressed = arrowPlayerCardSelected;
-    placeholderPressed = arrowPlaceholderCardSelected;
+    // perform card swap
+    if (arrowPlayerCardSelected !== -1 && arrowPlaceholderCardSelected !== -1) {
+        playercardPressed = arrowPlayerCardSelected;
+        placeholderPressed = arrowPlaceholderCardSelected;
 
-    moveCardFromKeyPress();
+        moveCardFromKeyPress();
 
-    arrowPlayerCardSelected = -1;
-    arrowPlaceholderCardSelected = -1;
-    shiftPressed = false;
-  }
+        arrowPlayerCardSelected = -1;
+        arrowPlaceholderCardSelected = -1;
+    }
 
-  drawBoard();
+    drawBoard();
 }
 
 function controlsButtonClicked() {
-  if (draggableControlsTextArea.is(':animated') === false) {
+    if ($("#draggableControlsTextArea").is(':animated') === false) {
 
-    if (draggableScoreDiv.is(":visible")) {
-      draggableScoreDiv.slideToggle(100);
+        if ($("#draggableScoreDiv").is(":visible")) {
+            $("#draggableScoreDiv").slideToggle(100);
+        }
+
+        $("#draggableControlsTextArea").stop(true);
+        $("#draggableControlsTextArea").slideToggle(100, function() {
+            if ($("#controlText").is(":visible")) {
+                $("#controlText").focus();
+            }
+        });
     }
-
-    draggableControlsTextArea.stop(true);
-    $("#draggableControlsTextArea").slideToggle(100, function() {
-      if (controlText.is(":visible")) {
-        controlText.focus();
-      }
-    });
-  }
 }
-
 function scoreButtonClicked() {
-  if (draggableScoreDiv.is(':animated') === false) {
-    totalScoreOfHands();
+    if ($("#draggableScoreDiv").is(':animated') === false) {
+        totalScoreOfHands();
 
-    if (draggableControlsTextArea.is(":visible")) {
-      $("#draggableControlsTextArea").slideToggle(100);
+        if ($("#draggableControlsTextArea").is(":visible")) {
+            $("#draggableControlsTextArea").slideToggle(100);
+        }
+
+        $("#draggableScoreDiv").stop(true);
+        $("#draggableScoreDiv").slideToggle(100);
     }
 
-    draggableScoreDiv.stop(true);
-    draggableScoreDiv.slideToggle(100);
-  }
-
-  scoreButton.focus();
+    $("#scoreButton").focus();
 }
-
 function blogButtonClicked() {
-  if (confirm("Do you want to site 'https://www.myabandonware.com/' ?")) {
-    window.open("https://www.myabandonware.com/");
-  }
+    if (confirm("Do you want to site 'https://www.myabandonware.com/' ?")) {
+        window.open("https://www.myabandonware.com/");
+    }
 }
 
 function musicButtonClicked() {
-  if (confirm("Do you want to hear more music at site 'https://freemusicarchive.org' ?")) {
-    window.open("https://freemusicarchive.org/music/The_303/Brownian_Motion/");
-  }
+    if (confirm("Do you want to hear more music at site 'https://freemusicarchive.org' ?")) {
+        window.open("https://freemusicarchive.org/music/The_303/Brownian_Motion/");
+    }
 }
 
 function checkImagesLoadedCount() {
-  if (imagesLoaded === IMAGES_TO_LOAD) {
-    if (loadingDiv.is(":visible")) {
-      $("#loadingDiv").slideToggle(1000);
+    if (imagesLoaded === IMAGES_TO_LOAD) {
+        if (loadingDiv.is(":visible")) {
+            $("#loadingDiv").slideToggle(1000);
+        }
     }
-  }
 }
 
 function hideTutorial() {
-  if (loadingDiv.is(":hidden")) {
-    if (tutorialDiv.hidden === false) {
-      if (JtutorialDiv.is(":visible") && JtutorialDiv.is(':animated') === false) {
-        JtutorialDiv.slideToggle(1000, function (){
-          tutorialDiv.hidden = true;
-          gameReady = true;
-          drawBoard();
-        });
-      }
+    if (loadingDiv.is(":hidden")) {
+        if (tutorialDiv.hidden === false) {
+            if (JtutorialDiv.is(":visible") && JtutorialDiv.is(':animated') === false) {
+                JtutorialDiv.slideToggle(1000, function () {
+                    tutorialDiv.hidden = true;
+                    gameReady = true;
+                    drawBoard();
+                });
+            }
+        }
     }
-  }
 }
 
 function adjustOffset() {
-  let canvasOffset = $("#puzzleCanvas").offset();
-  offsetX = Math.round(canvasOffset.left);
-  offsetY = Math.round(canvasOffset.top);
+    let canvasOffset = $("#puzzleCanvas").offset();
+    offsetX = Math.round(canvasOffset.left);
+    offsetY = Math.round(canvasOffset.top);
 }

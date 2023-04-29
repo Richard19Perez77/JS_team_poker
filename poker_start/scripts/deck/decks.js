@@ -342,7 +342,7 @@ function kind4KDeckTwoCards() {
   let suit = 0;
   let value = 0;
 
-  let path6 = getCardImagePath(suit, value);
+  let path6= getCardImagePath(suit, value);
   let card6 = new Card(suit, value, path6);
   card6.bitmap.src = card6.imagePath;
   deckCards[5] = card6;

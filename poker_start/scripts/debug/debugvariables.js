@@ -45,6 +45,7 @@ let flScores = [];
 let fourkScores = [];
 let sfScores = [];
 
+// uncomment during debug
 function printScoreArray(arr) {
   let printed = "";
   for (let i = 0; i < arr.length; i++) {

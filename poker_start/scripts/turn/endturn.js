@@ -1,5 +1,5 @@
 function endTurnClicked() {
-  var playerTurnOver = false;
+  let playerTurnOver = false;
 
   //different hands end differently
   switch (targetHand) {
@@ -72,7 +72,7 @@ function endTurnClicked() {
           newGameClicked();
         }
       } else {
-        if ($("#draggableScoreDiv").is(":hidden")) {
+        if (draggableScoreDiv.is(":hidden")) {
           $("#draggableScoreDiv").slideToggle(100);
         }
       }
@@ -113,7 +113,7 @@ function printMinimumCardPlay() {
 }
 
 function organizeStraight() {
-  var straightArray = [];
+  let straightArray = [];
   if (straightSlotCard1 != null) {
     straightArray.push(straightSlotCard1);
   }
@@ -135,7 +135,7 @@ function organizeStraight() {
       return a.value - b.value;
     });
 
-    var index = straightArray.length;
+    let index = straightArray.length;
     straightSlotCard1 = null;
     straightSlotCard2 = null;
     straightSlotCard3 = null;
@@ -176,7 +176,7 @@ function organizePlayedCards() {
 }
 
 function organizeStraightFlush() {
-  var straightArray = [];
+  let straightArray = [];
   if (strFlushSlotCard1 != null) {
     straightArray.push(strFlushSlotCard1);
     strFlushSlotCard1 = null;
@@ -202,7 +202,7 @@ function organizeStraightFlush() {
     return a.value - b.value;
   });
 
-  for (var i = 0; i < straightArray.length; i++) {
+  for (let i = 0; i < straightArray.length; i++) {
     switch (i) {
       case 0:
         strFlushSlotCard1 = straightArray[0];
@@ -224,7 +224,7 @@ function organizeStraightFlush() {
 }
 
 function organizeFlush() {
-  var flushArray = [];
+  let flushArray = [];
   if (flushSlotCard1 != null) {
     flushArray.push(flushSlotCard1);
   }
@@ -246,7 +246,7 @@ function organizeFlush() {
       return a.value - b.value;
     });
 
-    var index = flushArray.length;
+    let index = flushArray.length;
     flushSlotCard1 = null;
     flushSlotCard2 = null;
     flushSlotCard3 = null;
@@ -278,7 +278,7 @@ function organizeFlush() {
 
 function organize4k() {
   //addLog("organize4k()");
-  var temp;
+  let temp;
   if (fourkSlotCard1 == null) {
 
     //find a non null card
@@ -323,7 +323,7 @@ function organize4k() {
 
 function organize3k() {
   //addLog("organize4k()");
-  var temp;
+  let temp;
   if (threePSlotCard1 == null) {
 
     //find a non null card
