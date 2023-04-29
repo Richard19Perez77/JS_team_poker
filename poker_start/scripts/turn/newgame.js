@@ -83,7 +83,7 @@ function newGameClicked() {
 
   gameOver = false;
 
-  if (doLogPlayerTurn == true && playerTurn == 0) {
+  if (doLogPlayerTurn === true && playerTurn === 0) {
     addLog("Player " + (playerTurn + 1) + ": " + printTargetHand());
     printLog();
   }

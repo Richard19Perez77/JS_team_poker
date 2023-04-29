@@ -1,7 +1,6 @@
 function playerCardPress(index) {
   arrowPlayerCardSelected = -1;
   arrowPlaceholderCardSelected = -1;
-  shiftPressed == false
 
   if (getPlayerCards().length <= index) {
     return;
@@ -14,9 +13,8 @@ function playerCardPress(index) {
 function placeHolderPress(index){
   arrowPlayerCardSelected = -1;
   arrowPlaceholderCardSelected = -1;
-  shiftPressed == false
 
-  if (playercardPressed != -1) {
+  if (playercardPressed !== -1) {
     placeholderPressed = index;
     //addLog("placeholderPressed" + placeholderPressed);
     moveCardFromKeyPress();

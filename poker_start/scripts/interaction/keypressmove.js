@@ -1,13 +1,14 @@
 function moveCardFromKeyPress() {
+  let playerCards;
   //addLog("moveCardFromKeyPress() " + playercardPressed + " to " + placeholderPressed);
-  if (playercardPressed != -1 && placeholderPressed != -1) {
+  if (playercardPressed !== -1 && placeholderPressed !== -1) {
 
     switch (targetHand) {
       case 0: //high card hand
         switch (placeholderPressed) {
           case 0: // slot 1 hc cards
 
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(hcSlotCard, playerCards);
             hcSlotCard = playerCards[playercardPressed];
@@ -22,7 +23,7 @@ function moveCardFromKeyPress() {
         switch (placeholderPressed) {
           case 0: // slot 1
 
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(twoPSlotCard1, playerCards);
             twoPSlotCard1 = playerCards[playercardPressed];
@@ -33,7 +34,7 @@ function moveCardFromKeyPress() {
             return;
           case 1: // slot 2
 
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(twoPSlotCard2, playerCards);
             twoPSlotCard2 = playerCards[playercardPressed];
@@ -47,7 +48,7 @@ function moveCardFromKeyPress() {
       case 2: // three of a kind
         switch (placeholderPressed) {
           case 0: //slot 1
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(threePSlotCard1, playerCards);
             threePSlotCard1 = playerCards[playercardPressed];
@@ -57,7 +58,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 1: //slot 2
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(threePSlotCard2, playerCards);
             threePSlotCard2 = playerCards[playercardPressed];
@@ -67,7 +68,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 2: // slot 3
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(threePSlotCard3, playerCards);
             threePSlotCard3 = playerCards[playercardPressed];
@@ -81,7 +82,7 @@ function moveCardFromKeyPress() {
       case 3: // straight
         switch (placeholderPressed) {
           case 0: //slot 1
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(straightSlotCard1, playerCards);
             straightSlotCard1 = playerCards[playercardPressed];
@@ -91,7 +92,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 1: // slot 2
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(straightSlotCard2, playerCards);
             straightSlotCard2 = playerCards[playercardPressed];
@@ -101,7 +102,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 2: //slot 3
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(straightSlotCard3, playerCards);
             straightSlotCard3 = playerCards[playercardPressed];
@@ -111,7 +112,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 3: // slot 4
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(straightSlotCard4, playerCards);
             straightSlotCard4 = playerCards[playercardPressed];
@@ -121,7 +122,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 4: // slot 5
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(straightSlotCard5, playerCards);
             straightSlotCard5 = playerCards[playercardPressed];
@@ -136,7 +137,7 @@ function moveCardFromKeyPress() {
         switch (placeholderPressed) {
           case 0: // slot 1
 
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(flushSlotCard1, playerCards);
             flushSlotCard1 = playerCards[playercardPressed];
@@ -146,7 +147,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 1: // slot 2
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(flushSlotCard2, playerCards);
             flushSlotCard2 = playerCards[playercardPressed];
@@ -156,7 +157,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 2: // slot 3
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(flushSlotCard3, playerCards);
             flushSlotCard3 = playerCards[playercardPressed];
@@ -166,7 +167,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 3: // slot 4
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(flushSlotCard4, playerCards);
             flushSlotCard4 = playerCards[playercardPressed];
@@ -176,7 +177,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 4:
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(flushSlotCard5, playerCards);
             flushSlotCard5 = playerCards[playercardPressed];
@@ -191,7 +192,7 @@ function moveCardFromKeyPress() {
         switch (placeholderPressed) {
           case 0: // slot 1
 
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(fourkSlotCard1, playerCards);
             fourkSlotCard1 = playerCards[playercardPressed];
@@ -201,7 +202,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 1: // slot 2
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(fourkSlotCard2, playerCards);
             fourkSlotCard2 = playerCards[playercardPressed];
@@ -211,7 +212,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 2: // slot 3
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(fourkSlotCard3, playerCards);
             fourkSlotCard3 = playerCards[playercardPressed];
@@ -221,7 +222,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 3: // slot 4
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(fourkSlotCard4, playerCards);
             fourkSlotCard4 = playerCards[playercardPressed];
@@ -236,7 +237,7 @@ function moveCardFromKeyPress() {
         switch (placeholderPressed) {
           case 0: // slot 1
 
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(strFlushSlotCard1, playerCards);
             strFlushSlotCard1 = playerCards[playercardPressed];
@@ -246,7 +247,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 1: // slot 2
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(strFlushSlotCard2, playerCards);
             strFlushSlotCard2 = playerCards[playercardPressed];
@@ -256,7 +257,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 2: // slot 3
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(strFlushSlotCard3, playerCards);
             strFlushSlotCard3 = playerCards[playercardPressed];
@@ -266,7 +267,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 3: // slot 4
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(strFlushSlotCard4, playerCards);
             strFlushSlotCard4 = playerCards[playercardPressed];
@@ -276,7 +277,7 @@ function moveCardFromKeyPress() {
 
             return;
           case 4: // slot 5
-            var playerCards = getPlayerCards();
+            playerCards = getPlayerCards();
 
             addCardToHand(strFlushSlotCard5, playerCards);
             strFlushSlotCard5 = playerCards[playercardPressed];

@@ -1,25 +1,17 @@
 function isPlayerTurn() {
   switch (playerTurn) {
     case 0:
-      if (player1isPC == true) {
-        return false;
-      }
-      return true;
+      return player1isPC !== true;
+
     case 1:
-      if (player2isPC == true) {
-        return false;
-      }
-      return true;
+      return player2isPC !== true;
+
     case 2:
-      if (player3isPC == true) {
-        return false;
-      }
-      return true;
+      return player3isPC !== true;
+
     case 3:
-      if (player4isPC == true) {
-        return false;
-      }
-      return true;
+      return player4isPC !== true;
+
   }
 }
 
@@ -29,7 +21,7 @@ function incrementPlayerTurn() {
     playerTurn = 0;
   }
 
-  if(doLogPlayerTurn == true && playerTurn == 0 && player1isPC == false){
+  if(doLogPlayerTurn === true && playerTurn === 0 && player1isPC === false){
       addLog("Player " + (playerTurn + 1) + ": " + printTargetHand());
   }
 }

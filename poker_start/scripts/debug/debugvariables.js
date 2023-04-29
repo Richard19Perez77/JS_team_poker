@@ -1,53 +1,53 @@
-var gamesPlayed = 0;
-var gamesToPlay = 1;
+let gamesPlayed = 0;
+let gamesToPlay = 1;
 
-var allPCPlayers = false;
+let allPCPlayers = false;
 
-var gamesHCcardPlayed = 0;
-var games2kcardPlayed = 0;
-var games3kcardPlayed = 0;
-var gamesStcardPlayed = 0;
-var gamesFlcardPlayed = 0;
-var games4kcardPlayed = 0;
-var gamesSFcardPlayed = 0;
+let gamesHCcardPlayed = 0;
+let games2kcardPlayed = 0;
+let games3kcardPlayed = 0;
+let gamesStcardPlayed = 0;
+let gamesFlcardPlayed = 0;
+let games4kcardPlayed = 0;
+let gamesSFcardPlayed = 0;
 
-var totalHCcardPoints = 0;
-var total2kcardPoints = 0;
-var total3kcardPoints = 0;
-var totalStcardPoints = 0;
-var totalFlcardPoints = 0;
-var total4kcardPoints = 0;
-var totalSFcardPoints = 0;
+let totalHCcardPoints = 0;
+let total2kcardPoints = 0;
+let total3kcardPoints = 0;
+let totalStcardPoints = 0;
+let totalFlcardPoints = 0;
+let total4kcardPoints = 0;
+let totalSFcardPoints = 0;
 
-var runAutoHc = true;
-var runAuto2k = true;
-var runAuto3k = true;
-var runAutoSt = true;
-var runAutoFl = true;
-var runAuto4k = true;
-var runAutoSF = true;
+let runAutoHc = true;
+let runAuto2k = true;
+let runAuto3k = true;
+let runAutoSt = true;
+let runAutoFl = true;
+let runAuto4k = true;
+let runAutoSF = true;
 
-var doLogPlacedCards = false;
-var doNeverEndGame = false;
-var doLogPlayerTurn = true;
-var doAutoHideTutorial = false;
-var doLogCardDetails = false;
-var doRunControlTest = false;
-var doShowUIDuringTest = false;
+let doLogPlacedCards = false;
+let doNeverEndGame = false;
+let doLogPlayerTurn = true;
+let doAutoHideTutorial = false;
+let doLogCardDetails = false;
+let doRunControlTest = false;
+let doShowUIDuringTest = false;
 
-var totalHighScore = 0;
+let totalHighScore = 0;
 
-var hcScores = [];
-var twokScores = [];
-var threekScores = [];
-var stScores = [];
-var flScores = [];
-var fourkScores = [];
-var sfScores = [];
+let hcScores = [];
+let twokScores = [];
+let threekScores = [];
+let stScores = [];
+let flScores = [];
+let fourkScores = [];
+let sfScores = [];
 
 function printScoreArray(arr) {
-  var printed = "";
-  for (var i = 0; i < arr.length; i++) {
+  let printed = "";
+  for (let i = 0; i < arr.length; i++) {
     printed = printed + arr[i];
   }
 
@@ -108,9 +108,9 @@ function printTestScores() {
 
 function totalTestScores() {
 
-  var hcScore = getHighCardScore();
+  let hcScore = getHighCardScore();
   hcScores.push("(" + hcScore + ")");
-  var perfectStill = true;
+  let perfectStill = true;
   if (hcScore > 0) {
     gamesHCcardPlayed++;
     totalHCcardPoints += hcScore + HC_BONUS;
@@ -119,7 +119,7 @@ function totalTestScores() {
     perfectStill = false;
   }
 
-  var twokScore = get2kCardScore();
+  let twokScore = get2kCardScore();
   twokScores.push("(" + twokScore + ")");
   if (twokScore > 0) {
     games2kcardPlayed++;
@@ -129,7 +129,7 @@ function totalTestScores() {
     perfectStill = false;
   }
 
-  var threekScore = get3kCardScore();
+  let threekScore = get3kCardScore();
   threekScores.push("(" + threekScore + ")");
   if (threekScore > 0) {
     games3kcardPlayed++;
@@ -139,7 +139,7 @@ function totalTestScores() {
     perfectStill = false;
   }
 
-  var stScore = getStraightScore();
+  let stScore = getStraightScore();
   stScores.push("(" + stScore + ")");
   if (stScore > 0) {
     gamesStcardPlayed++;
@@ -149,7 +149,7 @@ function totalTestScores() {
     perfectStill = false;
   }
 
-  var flScore = getFlushScore();
+  let flScore = getFlushScore();
   flScores.push("(" + flScore + ")");
   if (flScore > 0) {
     gamesFlcardPlayed++;
@@ -159,7 +159,7 @@ function totalTestScores() {
     perfectStill = false;
   }
 
-  var fourkScore = get4kCardScore();
+  let fourkScore = get4kCardScore();
   fourkScores.push("(" + fourkScore + ")");
   if (fourkScore > 0) {
     games4kcardPlayed++;
@@ -169,7 +169,7 @@ function totalTestScores() {
     perfectStill = false;
   }
 
-  var sfScore = getStraightFlushScore();
+  let sfScore = getStraightFlushScore();
   sfScores.push("(" + sfScore + ")");
   if (sfScore > 0) {
     gamesSFcardPlayed++;
@@ -185,7 +185,7 @@ function totalTestScores() {
 }
 
 function debugCardBitmaps(cardArr) {
-  for (var i = 0; i < cardArr.length; i++) {
+  for (let i = 0; i < cardArr.length; i++) {
     if (cardArr[i] != null) {
       if (cardArr[i].bitmap == null) {
         //addLog("debug Player " + (playerTurn + 1) + " " + printTargetHand() + " Error: " + printCard(cardArr[i]));

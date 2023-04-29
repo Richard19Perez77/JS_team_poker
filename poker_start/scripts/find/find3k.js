@@ -1,29 +1,31 @@
 function find3Kcard() {
-  var playerCards = getPlayerCards();
+  let playerCards = getPlayerCards();
+  let removeCards = [];
 
   //play missing third card if possible
-  var thirdCardIsMissing = checkIfMissingThirdCard();
-  if (thirdCardIsMissing == true) {
+  let thirdCardIsMissing = checkIfMissingThirdCard();
+  if (thirdCardIsMissing === true) {
 
     //find a simple answer by filling in a two of a kind starter
-    var thirdCardFound = checkFor3rdKindMissing(playerCards);
-    if (thirdCardFound == true) {
+    let thirdCardFound = checkFor3rdKindMissing(playerCards);
+    if (thirdCardFound === true) {
       return;
     }
   }
 
   //find 3k to play that is not usable in a better hand
-  var tempCard;
-  var sameValueCount = 0;
-  var canStraight = false;
-  var canReplaceCurrent3K = false;
-  var sameFlushCount = 0;
-  var strFlushCount = 0;
-  var valuePlayedAcc;
-  var possible3kCards = [];
-  var possible2kCards = [];
+  let tempCard;
+  let sameValueCount = 0;
+  let canStraight = false;
+  let canReplaceCurrent3K = false;
+  let sameFlushCount = 0;
+  let strFlushCount = 0;
+  let valuePlayedAcc;
+  let possible3kCards = [];
+  let possible2kCards = [];
 
-  for (var i = 0; i < playerCards.length; i++) {
+  let canFinish3k;
+  for (let i = 0; i < playerCards.length; i++) {
     tempCard = playerCards[i];
 
     sameValueCount = 0;
@@ -31,29 +33,29 @@ function find3Kcard() {
     canReplaceCurrent3K = false;
     sameFlushCount = 0;
     strFlushCount = 0;
-    canFinish3k = 0;
+    canFinish3k = false;
 
     valuePlayedAcc = checkValuePlayedCount(tempCard.value);
-    if(valuePlayedAcc >= 2){
+    if (valuePlayedAcc >= 2) {
       continue
     }
 
     canReplaceCurrent3K = checkCardCanReplaceCurrent3kPlayed(tempCard);
-    if (canReplaceCurrent3K == false) {
+    if (canReplaceCurrent3K === false) {
       continue;
     }
 
     //validate play is valid for str flush
-    var partialArr = findStraightFlushCards(tempCard, playerCards);
+    let partialArr = findStraightFlushCards(tempCard, playerCards);
     if (partialArr != null && partialArr.length >= 3) {
-      var isValidStrFlushPlay = isPartialArrayValidAttemptAtStraightFlush(partialArr[0].value, partialArr[1].value, partialArr[2].value, partialArr[0].suit)
+      let isValidStrFlushPlay = isPartialArrayValidAttemptAtStraightFlush(partialArr[0].value, partialArr[1].value, partialArr[2].value, partialArr[0].suit)
       if (isValidStrFlushPlay) {
         continue;
       }
     }
 
     canStraight = checkHandFor3cardStraight(tempCard, playerCards);
-    if (canStraight == true) {
+    if (canStraight === true) {
       continue;
     }
 
@@ -63,10 +65,10 @@ function find3Kcard() {
     }
 
     sameValueCount = checkHandForMatchingValues(tempCard, playerCards);
-    if (sameValueCount == 3) {
+    if (sameValueCount === 3) {
 
       possible3kCards.push(tempCard);
-    } else if (sameValueCount == 2) {
+    } else if (sameValueCount === 2) {
 
       possible2kCards.push(tempCard);
     }
@@ -77,17 +79,17 @@ function find3Kcard() {
     return a.value - b.value;
   });
 
-  var removeCards = [];
-  for (var i = 0; i < possible3kCards.length; i++) {
-    var temp = possible3kCards[i];
+  removeCards = [];
+  for (let i = 0; i < possible3kCards.length; i++) {
+    let temp = possible3kCards[i];
     sameValueCount = checkHandForMatchingValues(temp, possible3kCards);
     if (sameValueCount < 3) {
       removeCards.push(temp);
     }
   }
 
-  for (var i = 0; i < removeCards.length; i++) {
-    var removeMe = removeCards[i];
+  for (let i = 0; i < removeCards.length; i++) {
+    let removeMe = removeCards[i];
     removeCardFromArray(removeMe, possible3kCards);
   }
 
@@ -105,7 +107,7 @@ function find3Kcard() {
     threePSlotCard3 = possible3kCards[2];
     removeCardFromArray(possible3kCards[2], playerCards)
 
-    if (doLogPlacedCards == true) {
+    if (doLogPlacedCards === true) {
       addLog("Player " + (playerTurn + 1) + ": Plays 3K " + printCard(threePSlotCard1) + printCard(threePSlotCard2) + printCard(threePSlotCard3));
     }
     cardPlacedAction();
@@ -118,17 +120,16 @@ function find3Kcard() {
     return a.value - b.value;
   });
 
-  var removeCards = [];
-  for (var i = 0; i < possible2kCards.length; i++) {
-    var temp = possible2kCards[i];
+  for (let i = 0; i < possible2kCards.length; i++) {
+    let temp = possible2kCards[i];
     sameValueCount = checkHandForMatchingValues(temp, possible2kCards);
-    if (sameValueCount == 1) {
+    if (sameValueCount === 1) {
       removeCards.push(temp);
     }
   }
 
-  for (var i = 0; i < removeCards.length; i++) {
-    var removeMe = removeCards[i];
+  for (let i = 0; i < removeCards.length; i++) {
+    let removeMe = removeCards[i];
     removeCardFromArray(removeMe, possible2kCards);
   }
 
@@ -145,7 +146,7 @@ function find3Kcard() {
       threePSlotCard2 = possible2kCards[1];
       removeCardFromArray(possible2kCards[1], playerCards)
 
-      if (doLogPlacedCards == true) {
+      if (doLogPlacedCards === true) {
         addLog("Player " + (playerTurn + 1) + ": Plays 2K of 3K " + printCard(threePSlotCard1) + printCard(threePSlotCard2) + printCard(threePSlotCard3));
       }
       cardPlacedAction();
@@ -167,18 +168,15 @@ function find3Kcard() {
       threePSlotCard2 = possible2kCards[1];
       removeCardFromArray(possible2kCards[1], playerCards)
 
-      if (doLogPlacedCards == true) {
+      if (doLogPlacedCards === true) {
         addLog("Player " + (playerTurn + 1) + " Plays 3k " + printCard(threePSlotCard1) + printCard(threePSlotCard2) + printCard(threePSlotCard3));
       }
       cardPlacedAction();
-
-      return;
     }
   }
 }
 
 function checkIfMissingThirdCard() {
-  var thirdCardMissing = false;
   if (threePSlotCard1 == null) {
     if (threePSlotCard2 == null) {
       if (threePSlotCard3 != null) {
@@ -191,17 +189,17 @@ function checkIfMissingThirdCard() {
 }
 
 function checkFor3rdKindMissing(cards) {
-  if (threePSlotCard1 != null && threePSlotCard2 != null) {
-    if (threePSlotCard1.value == threePSlotCard2.value) {
-      var value = threePSlotCard1.value;
-      for (var i = 0; i < cards.length; i++) {
-        if (cards[i].value == value) {
+  if (null != threePSlotCard1 && threePSlotCard2 != null) {
+    if (threePSlotCard1.value === threePSlotCard2.value) {
+      let value = threePSlotCard1.value;
+      for (let i = 0; i < cards.length; i++) {
+        if (cards[i].value === value) {
 
           addCardToHand(threePSlotCard3, cards);
           threePSlotCard3 = cards[i];
           removeCardFromArray(cards[i], cards);
 
-          if (doLogPlacedCards == true) {
+          if (doLogPlacedCards === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays 3rd 3K card " + printCard(threePSlotCard1) + printCard(threePSlotCard2) + printCard(threePSlotCard3));
           }
           cardPlacedAction();
@@ -216,7 +214,7 @@ function checkFor3rdKindMissing(cards) {
 }
 
 function checkCardCanReplaceCurrent3kPlayed(card) {
-  var highValue = -1;
+  let highValue = -1;
   if (threePSlotCard1 != null && threePSlotCard1.value > highValue) {
     highValue = threePSlotCard1.value;
   }

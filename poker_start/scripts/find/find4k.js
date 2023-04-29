@@ -1,19 +1,19 @@
 function find4KCard() {
-  if (doLogCardDetails == true) {
+  if (doLogCardDetails === true) {
     addLog("Player " + (playerTurn + 1)  + ": find4KCard()");
   }
 
-  var playerCards = getPlayerCards();
+  let playerCards = getPlayerCards();
 
   // how many slots are left in the 4k section to play
-  var cardsLeftToPlay = count4kCardsLeftToPlay();
+  let cardsLeftToPlay = count4kCardsLeftToPlay();
 
-  if (doLogCardDetails == true) {
+  if (doLogCardDetails === true) {
     addLog("Player " + (playerTurn + 1)  + ": cardsLeftToPlay = " + cardsLeftToPlay);
   }
 
   // check the current hand is part of a 4k play
-  var doContinue4kPlay = doContinueCurrent4kPlay(cardsLeftToPlay);
+  let doContinue4kPlay = doContinueCurrent4kPlay(cardsLeftToPlay);
 
   // check for the hand to be able to finish, must have one card played
   if (cardsLeftToPlay < 4 && doContinue4kPlay){
@@ -22,22 +22,22 @@ function find4KCard() {
     // addLog("doContinue4kPlay = " + doContinue4kPlay);
   }
 
-  if (doLogCardDetails == true) {
+  if (doLogCardDetails === true) {
     addLog("Player " + (playerTurn + 1)  + ": doContinue4kPlay = " + doContinue4kPlay);
   }
 
   if (doContinue4kPlay) {
 
     // add a 3rd card to 2 placed cards
-    if (cardsLeftToPlay == 2) {
+    if (cardsLeftToPlay === 2) {
 
-      var value = fourkSlotCard1.value;
-      if (value == fourkSlotCard2.value) {
-        for (var i = 0; i < playerCards.length; i++) {
-          if (playerCards[i].value == value) {
+      let value = fourkSlotCard1.value;
+      if (value === fourkSlotCard2.value) {
+        for (let i = 0; i < playerCards.length; i++) {
+          if (playerCards[i].value === value) {
 
             // accumulate array of sf cards from missing card
-            var partialArr = findStraightFlushCards(playerCards[i], playerCards);
+            let partialArr = findStraightFlushCards(playerCards[i], playerCards);
 
             // check partial sf can be finished
             if (partialArr != null && partialArr.length >= 3 && isPartialArrayValidAttemptAtStraightFlush(partialArr[0].value, partialArr[1].value, partialArr[2].value, partialArr[0].suit)){
@@ -50,7 +50,7 @@ function find4KCard() {
 
             organize4k();
 
-            if (doLogPlacedCards == true) {
+            if (doLogPlacedCards === true) {
               addLog("Player " + (playerTurn + 1) + ": Plays 3rd card in 4K " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3));
             }
             cardPlacedAction();
@@ -63,21 +63,21 @@ function find4KCard() {
     cardsLeftToPlay = count4kCardsLeftToPlay();
 
     // finish 4k first if possible when 3 are played
-    if (cardsLeftToPlay == 1) {
+    if (cardsLeftToPlay === 1) {
 
       // check for final card
-      for (var i = 0; i < playerCards.length; i++) {
-        var card = playerCards[i];
+      for (let i = 0; i < playerCards.length; i++) {
+        let card = playerCards[i];
 
-        if (doLogCardDetails == true) {
+        if (doLogCardDetails === true) {
           addLog("Player " + (playerTurn + 1)  + ": Has missing 4k card");
         }
 
-        if (card.value == fourkSlotCard1.value &&
-          card.value == fourkSlotCard2.value &&
-          card.value == fourkSlotCard3.value) {
+        if (card.value === fourkSlotCard1.value &&
+          card.value === fourkSlotCard2.value &&
+          card.value === fourkSlotCard3.value) {
 
-          var partialArr = findStraightFlushCards(card, playerCards);
+          let partialArr = findStraightFlushCards(card, playerCards);
           if (partialArr != null && partialArr.length >= 3 && isPartialArrayValidAttemptAtStraightFlush(partialArr[0].value, partialArr[1].value, partialArr[2].value, partialArr[0].suit)) {
             continue;
           }
@@ -86,7 +86,7 @@ function find4KCard() {
           fourkSlotCard4 = card;
           removeCardFromArray(card, playerCards);
 
-          if (doLogCardDetails == true) {
+          if (doLogCardDetails === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays 4th card 4K " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
           }
 
@@ -99,39 +99,39 @@ function find4KCard() {
   }
 
   // start a new play on 4k
-  var possible4kCards = [];
-  var possible3kCards = [];
-  var possible2kCards = [];
-  var sameValueCount = 0;
-  var sameFlushCount = 0;
-  var tempCard;
+  let possible4kCards = [];
+  let possible3kCards = [];
+  let possible2kCards = [];
+  let sameValueCount = 0;
+  let sameFlushCount = 0;
+  let tempCard;
 
-  for (var i = 0; i < playerCards.length; i++) {
+  for (let i = 0; i < playerCards.length; i++) {
     tempCard = playerCards[i];
     sameValueCount = 0;
 
-    var partialArr = findStraightFlushCards(tempCard, playerCards);
+    let partialArr = findStraightFlushCards(tempCard, playerCards);
     if (partialArr != null && partialArr.length >= 3) {
 
       //validate play is valid for str flush
-      var isValidStrFlushPlay = isPartialArrayValidAttemptAtStraightFlush(partialArr[0].value, partialArr[1].value, partialArr[2].value, partialArr[0].suit)
+      let isValidStrFlushPlay = isPartialArrayValidAttemptAtStraightFlush(partialArr[0].value, partialArr[1].value, partialArr[2].value, partialArr[0].suit)
       if (isValidStrFlushPlay) {
         continue;
       }
     }
 
-    var hasAValuePlayed = checkCardValueHasBeenPlayed(tempCard);
+    let hasAValuePlayed = checkCardValueHasBeenPlayed(tempCard);
     if (hasAValuePlayed) {
       continue;
     }
 
     // can use 4, 3 or 2 of a kind at some point in finding a 4k
     sameValueCount = checkHandForMatchingValues(tempCard, playerCards);
-    if (sameValueCount == 4) {
+    if (sameValueCount === 4) {
       possible4kCards.push(tempCard);
-    } else if (sameValueCount == 3) {
+    } else if (sameValueCount === 3) {
       possible3kCards.push(tempCard);
-    } else if (sameValueCount == 2) {
+    } else if (sameValueCount === 2) {
       possible2kCards.push(tempCard);
     }
   }
@@ -148,24 +148,23 @@ function find4KCard() {
       return a.value - b.value;
     });
 
-    var removeCards = [];
-    for (var i = 0; i < possible3kCards.length; i++) {
-      var temp = possible3kCards[i];
+    let removeCards = [];
+    possible3kCards.forEach(temp => {
       sameValueCount = checkHandForMatchingValues(temp, possible3kCards);
       if (sameValueCount < 3) {
         removeCards.push(temp);
-        continue;
+
       }
-    }
+    });
 
     // addLog("remove cards" + printCardArr(removeCards));
-    for (var i = 0; i < removeCards.length; i++) {
-      var removeMe = removeCards[i];
+    for (let i = 0; i < removeCards.length; i++) {
+      let removeMe = removeCards[i];
       removeCardFromArray(removeMe, possible3kCards);
     }
 
     // overwrite or play 3 cards
-    if (possible3kCards.length == 3) {
+    if (possible3kCards.length === 3) {
       threeKPlaceLogic(possible3kCards, cardsLeftToPlay, playerCards);
     }
   } else if (possible2kCards.length >= 2) {
@@ -175,17 +174,16 @@ function find4KCard() {
     });
 
     // remove cards with no valid pair
-    var removeCards = [];
-    for (var i = 0; i < possible2kCards.length; i++) {
-      var temp = possible2kCards[i];
+    let removeCards = [];
+    for (let temp of possible2kCards) {
       sameValueCount = checkHandForMatchingValues(temp, possible2kCards);
-      if (sameValueCount == 1) {
+      if (sameValueCount === 1) {
         removeCards.push(temp);
       }
     }
 
-    for (var i = 0; i < removeCards.length; i++) {
-      var removeMe = removeCards[i];
+    for (let i = 0; i < removeCards.length; i++) {
+      let removeMe = removeCards[i];
       removeCardFromArray(removeMe, possible2kCards);
     }
 
@@ -200,15 +198,15 @@ function twoKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
     case 2:
 
       //finish hand
-      for (var i = 0; i < possibleCards.length; i += 2) {
-        if (fourkSlotCard1.value == possibleCards[i].value &&
-          fourkSlotCard2.value == possibleCards[i + 1].value) {
+      for (let i = 0; i < possibleCards.length; i += 2) {
+        if (fourkSlotCard1.value === possibleCards[i].value &&
+          fourkSlotCard2.value === possibleCards[i + 1].value) {
           fourkSlotCard3 = possibleCards[i];
           fourkSlotCard4 = possibleCards[i + 1];
           removeCardFromArray(fourkSlotCard3, playerCards);
           removeCardFromArray(fourkSlotCard4, playerCards);
 
-          if (doLogPlacedCards == true) {
+          if (doLogPlacedCards === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays last 2K in 4K " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
           }
           cardPlacedAction();
@@ -218,9 +216,10 @@ function twoKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
       }
 
       //start new 2k for 4k hand from 2k played
-      for (var i = 0; i < possibleCards.length; i += 2) {
+
+      for (let i = 0; i < possibleCards.length; i += 2) {
         if (fourkSlotCard1.value < possibleCards[i].value &&
-          fourkSlotCard2.value < possibleCards[i + 1].value) {
+            fourkSlotCard2.value < possibleCards[i + 1].value) {
           addCardToHand(fourkSlotCard1, playerCards);
           addCardToHand(fourkSlotCard2, playerCards);
           fourkSlotCard1 = possibleCards[i];
@@ -228,7 +227,7 @@ function twoKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
           removeCardFromArray(fourkSlotCard1, playerCards);
           removeCardFromArray(fourkSlotCard2, playerCards);
 
-          if (doLogPlacedCards == true) {
+          if (doLogPlacedCards === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays first 2K in 4K " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
           }
           cardPlacedAction();
@@ -245,7 +244,7 @@ function twoKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
       removeCardFromArray(fourkSlotCard1, playerCards);
       removeCardFromArray(fourkSlotCard2, playerCards);
 
-      if (doLogPlacedCards == true) {
+      if (doLogPlacedCards === true) {
         addLog("Player " + (playerTurn + 1) + ": Plays 2K in 4K " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
       }
       cardPlacedAction();
@@ -259,7 +258,7 @@ function threeKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
     case 1:
 
       //attempt to override 3 cards played with three new cards
-      for (var i = 0; i < possibleCards.length; i += 3) {
+      for (let i = 0; i < possibleCards.length; i += 3) {
         if (fourkSlotCard1.value < possibleCards[i].value &&
           fourkSlotCard2.value < possibleCards[i + 1].value &&
           fourkSlotCard3.value < possibleCards[i + 2].value) {
@@ -274,7 +273,7 @@ function threeKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
           removeCardFromArray(possibleCards[i + 1], playerCards);
           removeCardFromArray(possibleCards[i + 2], playerCards);
 
-          if (doLogPlacedCards == true) {
+          if (doLogPlacedCards === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays 3K in 4K " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
           }
           cardPlacedAction();
@@ -284,7 +283,7 @@ function threeKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
       }
       break;
     case 2:
-      for (var i = 0; i < possibleCards.length; i += 2) {
+      for (let i = 0; i < possibleCards.length; i += 2) {
         if (fourkSlotCard1.value < possibleCards[i].value &&
           fourkSlotCard2.value < possibleCards[i + 1].value) {
 
@@ -300,7 +299,7 @@ function threeKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
           removeCardFromArray(possibleCards[i + 1], playerCards);
           removeCardFromArray(possibleCards[i + 2], playerCards);
 
-          if (doLogPlacedCards == true) {
+          if (doLogPlacedCards === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays 3K in 4k " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
           }
           cardPlacedAction();
@@ -318,7 +317,7 @@ function threeKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
       removeCardFromArray(possibleCards[1], playerCards);
       removeCardFromArray(possibleCards[2], playerCards);
 
-      if (doLogPlacedCards == true) {
+      if (doLogPlacedCards === true) {
         addLog("Player " + (playerTurn + 1) + ": Plays 3K in 4K " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
       }
       cardPlacedAction();
@@ -330,8 +329,8 @@ function threeKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
 function fourKPlaceLogic(cardsLeftToPlay, possibleCards, cardArr) {
   switch (cardsLeftToPlay) {
     case 0:
-      var currentIsBetter = currentPossibleCardIsHighest(possibleCards[0]);
-      if (currentIsBetter == true) {
+      let currentIsBetter = currentPossibleCardIsHighest(possibleCards[0]);
+      if (currentIsBetter === true) {
         addCardToHand(fourkSlotCard1, cardArr);
         fourkSlotCard1 = possibleCards[0];
         removeCardFromArray(fourkSlotCard1, cardArr);
@@ -348,7 +347,7 @@ function fourKPlaceLogic(cardsLeftToPlay, possibleCards, cardArr) {
         fourkSlotCard4 = possibleCards[3];
         removeCardFromArray(fourkSlotCard4, cardArr);
 
-        if (doLogPlacedCards == true) {
+        if (doLogPlacedCards === true) {
           addLog("Player " + (playerTurn + 1) + ": Plays 4K " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
         }
         cardPlacedAction();
@@ -374,7 +373,7 @@ function fourKPlaceLogic(cardsLeftToPlay, possibleCards, cardArr) {
       removeCardFromArray(possibleCards[2], cardArr);
       removeCardFromArray(possibleCards[3], cardArr);
 
-      if (doLogPlacedCards == true) {
+      if (doLogPlacedCards === true) {
         addLog("Player " + (playerTurn + 1) + ": Plays 4K " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
       }
 
@@ -398,7 +397,7 @@ function check4kIsPlayed() {
 }
 
 function count4kCardsLeftToPlay() {
-  var acc = 0;
+  let acc = 0;
   if (fourkSlotCard1 == null) {
     acc++;
   }
@@ -417,86 +416,84 @@ function count4kCardsLeftToPlay() {
 function checkForValuePlayed(value, suit){
 
   // if we have the same value but not the same suit a 4k is not possibe
-  if (hcSlotCard != null && hcSlotCard.value == value && hcSlotCard.suit != suit) {
+  if (hcSlotCard != null && hcSlotCard.value === value && hcSlotCard.suit !== suit) {
     return true;
   }
 
-  if (twoPSlotCard1 != null && twoPSlotCard1.value == value && twoPSlotCard1.suit != suit) {
+  if (twoPSlotCard1 != null && twoPSlotCard1.value === value && twoPSlotCard1.suit !== suit) {
     return true;
   }
 
-  if (twoPSlotCard2 != null && twoPSlotCard2.value == value && twoPSlotCard2.suit != suit) {
+  if (twoPSlotCard2 != null && twoPSlotCard2.value === value && twoPSlotCard2.suit !== suit) {
     return true;
   }
 
-  if (threePSlotCard1 != null && threePSlotCard1.value == value && threePSlotCard1.suit != suit) {
+  if (threePSlotCard1 != null && threePSlotCard1.value === value && threePSlotCard1.suit !== suit) {
     return true;
   }
 
-  if (threePSlotCard2 != null && threePSlotCard2.value == value && threePSlotCard2.suit != suit) {
+  if (threePSlotCard2 != null && threePSlotCard2.value === value && threePSlotCard2.suit !== suit) {
     return true;
   }
 
-  if (threePSlotCard3 != null && threePSlotCard3.value == value && threePSlotCard3.suit != suit) {
+  if (threePSlotCard3 != null && threePSlotCard3.value === value && threePSlotCard3.suit !== suit) {
     return true;
   }
 
-  if (straightSlotCard1 != null && straightSlotCard1.value == value && straightSlotCard1.suit != suit) {
+  if (straightSlotCard1 != null && straightSlotCard1.value === value && straightSlotCard1.suit !== suit) {
     return true;
   }
 
-  if (straightSlotCard2 != null && straightSlotCard2.value == value && straightSlotCard2.suit != suit) {
+  if (straightSlotCard2 != null && straightSlotCard2.value === value && straightSlotCard2.suit !== suit) {
     return true;
   }
 
-  if (straightSlotCard3 != null && straightSlotCard3.value == value && straightSlotCard3.suit != suit) {
+  if (straightSlotCard3 != null && straightSlotCard3.value === value && straightSlotCard3.suit !== suit) {
     return true;
   }
 
-  if (straightSlotCard4 != null && straightSlotCard4.value == value && straightSlotCard4.suit != suit) {
+  if (straightSlotCard4 != null && straightSlotCard4.value === value && straightSlotCard4.suit !== suit) {
     return true;
   }
 
-  if (straightSlotCard5 != null && straightSlotCard5.value == value && straightSlotCard5.suit != suit) {
+  if (straightSlotCard5 != null && straightSlotCard5.value === value && straightSlotCard5.suit !== suit) {
     return true;
   }
 
-  if (flushSlotCard1 != null && flushSlotCard1.value == value && flushSlotCard1.suit != suit) {
+  if (flushSlotCard1 != null && flushSlotCard1.value === value && flushSlotCard1.suit !== suit) {
     return true;
   }
 
-  if (flushSlotCard2 != null && flushSlotCard2.value == value && flushSlotCard2.suit != suit) {
+  if (flushSlotCard2 != null && flushSlotCard2.value === value && flushSlotCard2.suit !== suit) {
     return true;
   }
 
-  if (flushSlotCard3 != null && flushSlotCard3.value == value && flushSlotCard3.suit != suit) {
+  if (flushSlotCard3 != null && flushSlotCard3.value === value && flushSlotCard3.suit !== suit) {
     return true;
   }
 
-  if (flushSlotCard4 != null && flushSlotCard4.value == value && flushSlotCard4.suit != suit) {
+  if (flushSlotCard4 != null && flushSlotCard4.value === value && flushSlotCard4.suit !== suit) {
     return true;
   }
 
-  if (flushSlotCard5 != null && flushSlotCard5.value == value && flushSlotCard5.suit != suit) {
-    return true;
-  }
+  return flushSlotCard5 != null && flushSlotCard5.value === value && flushSlotCard5.suit !== suit;
 
-  return false;
+
 }
 
 function doContinueCurrent4kPlay(cardCount) {
-  if (cardCount == 4) {
+  if (cardCount === 4) {
 
     return false;
   }
 
   // get first value of four of a kind
-  var value = fourkSlotCard1.value;
+  let value = fourkSlotCard1.value;
 
   if (fourkSlotCard2 != null) {
-    if (value != fourkSlotCard2.value) {
+    if (value !== fourkSlotCard2.value) {
 
-      if (doLogPlacedCards == true) {
+      if (doLogPlacedCards === true) {
         addLog("Player " + (playerTurn + 1) + ":  value for card 2 off");
       }
 
@@ -505,9 +502,9 @@ function doContinueCurrent4kPlay(cardCount) {
   }
 
   if (fourkSlotCard3 != null) {
-    if (value != fourkSlotCard3.value) {
+    if (value !== fourkSlotCard3.value) {
 
-      if (doLogPlacedCards == true) {
+      if (doLogPlacedCards === true) {
         addLog("Player " + (playerTurn + 1) + ":  value for card 3 off");
       }
 
@@ -516,9 +513,9 @@ function doContinueCurrent4kPlay(cardCount) {
   }
 
   if (fourkSlotCard4 != null) {
-    if (value != fourkSlotCard4.value) {
+    if (value !== fourkSlotCard4.value) {
 
-      if (doLogPlacedCards == true) {
+      if (doLogPlacedCards === true) {
         addLog("Player " + (playerTurn + 1) + ":  value for card 4 off");
       }
 
@@ -527,10 +524,10 @@ function doContinueCurrent4kPlay(cardCount) {
   }
 
   // check how many times the value has been played
-  var valuePlayedAcc = checkValuePlayedCount(value);
-  if (valuePlayedAcc == 4) {
+  let valuePlayedAcc = checkValuePlayedCount(value);
+  if (valuePlayedAcc === 4) {
 
-    if (doLogCardDetails == true) {
+    if (doLogCardDetails === true) {
       addLog("Player " + (playerTurn + 1) + ":  valuePlayedAcc " + valuePlayedAcc);
     }
 

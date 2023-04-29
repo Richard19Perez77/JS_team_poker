@@ -17,15 +17,15 @@ function endTurnClicked() {
   }
 
   //addLog("turn over || cardPlayed");
-  if (playerTurnOver == true || cardPlayed == false) {
+  if (playerTurnOver === true || cardPlayed === false) {
     // cards have been played or the player didn't play a cards
 
-    if (cardPlayed == false) {
+    if (cardPlayed === false) {
       turnPassed++;
     }
 
-    if ((allCardsPlayed() && turnPassed == 3) ||
-      (!allCardsPlayed() && turnPassed == 4)) {
+    if ((allCardsPlayed() && turnPassed === 3) ||
+      (!allCardsPlayed() && turnPassed === 4)) {
 
       turnPassed = 0;
       targetHand++;
@@ -54,7 +54,7 @@ function endTurnClicked() {
     drawBoard();
 
     //run end game score table
-    if (targetHand == 7 && gameOver == false) {
+    if (targetHand === 7 && gameOver === false) {
 
       gameOver = true;
 
@@ -79,10 +79,10 @@ function endTurnClicked() {
 
       endTurnButton.disabled = true;
 
-    } else if (isPlayerTurn() == false && targetHand <= 6) {
+    } else if (isPlayerTurn() === false && targetHand <= 6) {
       playerMoveSwitch();
     }
-  } else if (playerTurnOver == false && cardPlayed == true) {
+  } else if (playerTurnOver === false && cardPlayed === true) {
     printMinimumCardPlay();
   }
 
@@ -350,18 +350,15 @@ function organize3k() {
 }
 
 function allCardsPlayed() {
+  let acc = 0;
   switch (targetHand) {
     case 0:
-      if (hcSlotCard != null) {
-        return true;
-      }
-      return false;
+      return hcSlotCard != null;
+
     case 1:
-      if (twoPSlotCard1 != null &&
-        twoPSlotCard2 != null) {
-        return true;
-      }
-      return false;
+      return twoPSlotCard1 != null &&
+          twoPSlotCard2 != null;
+
     case 2:
       if (threePSlotCard1 != null &&
         threePSlotCard2 != null) {
@@ -371,14 +368,12 @@ function allCardsPlayed() {
         threePSlotCard3 != null) {
         return true;
       }
-      if (threePSlotCard2 != null &&
-        threePSlotCard3 != null) {
-        return true;
-      }
-      return false;
+      return threePSlotCard2 != null &&
+          threePSlotCard3 != null;
+
     case 3:
       // check for three cards played
-      var acc = 0;
+      acc = 0;
       if (straightSlotCard1 != null) {
         acc++;
       }
@@ -395,12 +390,10 @@ function allCardsPlayed() {
         acc++;
       }
 
-      if (acc >= 3) {
-        return true;
-      }
-      return false;
+      return acc >= 3;
+
     case 4:
-      var acc = 0;
+      acc = 0;
       if (flushSlotCard1 != null) {
         acc++;
       }
@@ -416,12 +409,10 @@ function allCardsPlayed() {
       if (flushSlotCard5 != null) {
         acc++;
       }
-      if (acc >= 3) {
-        return true;
-      }
-      return false;
+      return acc >= 3;
+
     case 5:
-      var acc = 0;
+      acc = 0;
       if (fourkSlotCard1 != null) {
         acc++;
       }
@@ -434,12 +425,10 @@ function allCardsPlayed() {
       if (fourkSlotCard4 != null) {
         acc++;
       }
-      if (acc >= 2) {
-        return true;
-      }
-      return false;
+      return acc >= 2;
+
     case 6:
-      var acc = 0;
+      acc = 0;
       if (strFlushSlotCard1 != null) {
         acc++;
       }
@@ -456,10 +445,8 @@ function allCardsPlayed() {
         acc++;
       }
 
-      if (acc >= 3) {
-        return true;
-      }
+      return acc >= 3;
 
-      return false;
+
   }
 }

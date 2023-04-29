@@ -7,7 +7,7 @@ function Card(s, v, p) {
 
 function getCardImagePath(suit, value) {
   //addLog("getCardImagePath(" + suit + "," + value + ")");
-  var path = "";
+  let path = "";
   switch (suit) {
     case 0:
       switch (value) {
@@ -254,10 +254,10 @@ function checkHCisGreater(card) {
 }
 
 function checkHandForMatchingValues(card, hand) {
-  var kind = 0;
-  var printedCards = "";
-  for (var i = 0; i < hand.length; i++) {
-    if (hand[i].value == card.value) {
+  let kind = 0;
+  let printedCards = "";
+  for (let i = 0; i < hand.length; i++) {
+    if (hand[i].value === card.value) {
       kind++;
       printedCards = printedCards + printCard(hand[i]);
     }
@@ -271,8 +271,8 @@ function checkHandForMatchingValues(card, hand) {
 
 function checkCardCanReplaceCurrent2kPlayed(tempCard) {
   // if no cards played it can replace
-  if ((twoPSlotCard1 == null ||
-      twoPSlotCard2 == null)) {
+  if ((twoPSlotCard1 === null ||
+      twoPSlotCard2 === null)) {
 
     if (doLogCardDetails) {
       addLog("Player " + (playerTurn + 1) + ": No 2K cards played");
@@ -293,28 +293,28 @@ function checkCardCanReplaceCurrent2kPlayed(tempCard) {
 }
 
 function checkHandFor3cardStraight(card, hand) {
-  var oneLower = false;
-  var twoLower = false;
-  var oneHigher = false;
-  var twoHigher = false;
+  let oneLower = false;
+  let twoLower = false;
+  let oneHigher = false;
+  let twoHigher = false;
 
-  var straightArray = [];
+  let straightArray = [];
   straightArray.push(card);
 
-  for (var i = 0; i < hand.length; i++) {
-    if (hand[i].value == (card.value + 1)) {
+  for (let i = 0; i < hand.length; i++) {
+    if (hand[i].value === (card.value + 1)) {
       straightArray.push(hand[i]);
       oneHigher = true;
     }
-    if (hand[i].value == (card.value - 1)) {
+    if (hand[i].value === (card.value - 1)) {
       straightArray.push(hand[i]);
       oneLower = true;
     }
-    if (hand[i].value == (card.value + 2)) {
+    if (hand[i].value === (card.value + 2)) {
       straightArray.push(hand[i]);
       twoHigher = true;
     }
-    if (hand[i].value == (card.value - 2)) {
+    if (hand[i].value === (card.value - 2)) {
       straightArray.push(hand[i]);
       twoLower = true;
     }
@@ -324,21 +324,21 @@ function checkHandFor3cardStraight(card, hand) {
     return a.value - b.value;
   });
 
-  if (oneLower == true && oneHigher == true) {
+  if (oneLower === true && oneHigher === true) {
     if (doLogCardDetails) {
       addLog("Player " + (playerTurn + 1) + ": Straight found " + printCardArr(straightArray));
     }
     return true;
   }
 
-  if (oneLower == true && twoLower == true) {
+  if (oneLower === true && twoLower === true) {
     if (doLogCardDetails) {
       addLog("Player " + (playerTurn + 1) + ": Straight found " + printCardArr(straightArray));
     }
     return true;
   }
 
-  if (oneHigher == true && twoHigher == true) {
+  if (oneHigher === true && twoHigher === true) {
     if (doLogCardDetails) {
       addLog("Player " + (playerTurn + 1) + ": Straight found " + printCardArr(straightArray));
     }
@@ -354,8 +354,8 @@ function checkBetterFlush(cardArr) {
     return false;
   }
 
-  var placed = getFlushScore();
-  var curr = cardArr[0].value +
+  let placed = getFlushScore();
+  let curr = cardArr[0].value +
     cardArr[1].value +
     cardArr[2].value +
     cardArr[3].value +
@@ -366,10 +366,10 @@ function checkBetterFlush(cardArr) {
 }
 
 function checkCardFlushCount(card, hand) {
-  var flush = 0;
-  var printedFlush = "";
-  for (var i = 0; i < hand.length; i++) {
-    if (hand[i].suit == card.suit) {
+  let flush = 0;
+  let printedFlush = "";
+  for (let i = 0; i < hand.length; i++) {
+    if (hand[i].suit === card.suit) {
       flush++;
       printedFlush = printedFlush + printCard(hand[i]);
     }
@@ -383,151 +383,146 @@ function checkCardFlushCount(card, hand) {
 
 function checkCardValueHasBeenPlayed(temp) {
   //addLog("checkCardValueHasBeenPlayed()" + printCard(temp));
-  var value = temp.value;
+  let value = temp.value;
 
   //check hc card value
-  if (hcSlotCard != null && hcSlotCard.value == value) {
+  if (hcSlotCard != null && hcSlotCard.value === value) {
     //addLog("hc played " + printCard(hcSlotCard) + printCard(temp));
     return true;
   }
 
   // check 2k card values
-  if (twoPSlotCard1 != null && twoPSlotCard1.value == value) {
+  if (twoPSlotCard1 != null && twoPSlotCard1.value === value) {
     //addLog("2k played " + printCard(twoPSlotCard1) + printCard(temp));
     return true;
   }
 
-  if (twoPSlotCard2 != null && twoPSlotCard2.value == value) {
+  if (twoPSlotCard2 != null && twoPSlotCard2.value === value) {
     //addLog("2k played " + printCard(twoPSlotCard2) + printCard(temp));
     return true;
   }
 
   //check 3k card values
-  if (threePSlotCard1 != null && threePSlotCard1.value == value) {
+  if (threePSlotCard1 != null && threePSlotCard1.value === value) {
     //addLog("3k played " + printCard(threePSlotCard1) + printCard(temp));
     return true;
   }
 
-  if (threePSlotCard2 != null && threePSlotCard2.value == value) {
+  if (threePSlotCard2 != null && threePSlotCard2.value === value) {
     //addLog("3k played " + printCard(threePSlotCard2) + printCard(temp));
     return true;
   }
 
-  if (threePSlotCard3 != null && threePSlotCard3.value == value) {
+  if (threePSlotCard3 != null && threePSlotCard3.value === value) {
     //addLog("3k played " + printCard(threePSlotCard3) + printCard(temp));
     return true;
   }
 
   // straight card values
-  if (straightSlotCard1 != null && straightSlotCard1.value == value) {
+  if (straightSlotCard1 != null && straightSlotCard1.value === value) {
     //addLog("str played " + printCard(straightSlotCard1) + printCard(temp));
     return true;
   }
 
-  if (straightSlotCard2 != null && straightSlotCard2.value == value) {
+  if (straightSlotCard2 != null && straightSlotCard2.value === value) {
     //addLog("str played " + printCard(straightSlotCard2) + printCard(temp));
     return true;
   }
 
-  if (straightSlotCard3 != null && straightSlotCard3.value == value) {
+  if (straightSlotCard3 != null && straightSlotCard3.value === value) {
     //addLog("str played " + printCard(straightSlotCard3) + printCard(temp));
     return true;
   }
 
-  if (straightSlotCard4 != null && straightSlotCard4.value == value) {
+  if (straightSlotCard4 != null && straightSlotCard4.value === value) {
     //addLog("str played " + printCard(straightSlotCard4) + printCard(temp));
     return true;
   }
 
-  if (straightSlotCard5 != null && straightSlotCard5.value == value) {
+  if (straightSlotCard5 != null && straightSlotCard5.value === value) {
     //addLog("str played " + printCard(straightSlotCard5) + printCard(temp));
     return true;
   }
 
   //flush card values
-  if (flushSlotCard1 != null && flushSlotCard1.value == value) {
+  if (flushSlotCard1 != null && flushSlotCard1.value === value) {
     //addLog("flush played " + printCard(flushSlotCard1) + printCard(temp));
     return true;
   }
-  if (flushSlotCard2 != null && flushSlotCard2.value == value) {
+  if (flushSlotCard2 != null && flushSlotCard2.value === value) {
     //addLog("flush played " + printCard(flushSlotCard2) + printCard(temp));
     return true;
   }
-  if (flushSlotCard3 != null && flushSlotCard3.value == value) {
+  if (flushSlotCard3 != null && flushSlotCard3.value === value) {
     //addLog("flush played " + printCard(flushSlotCard3) + printCard(temp));
     return true;
   }
-  if (flushSlotCard4 != null && flushSlotCard4.value == value) {
+  if (flushSlotCard4 != null && flushSlotCard4.value === value) {
     //addLog("flush played " + printCard(flushSlotCard4) + printCard(temp));
     return true;
   }
-  if (flushSlotCard5 != null && flushSlotCard5.value == value) {
+  if (flushSlotCard5 != null && flushSlotCard5.value === value) {
     //addLog("flush played " + printCard(flushSlotCard5) + printCard(temp));
     return true;
   }
 
   //four k values
-  if (fourkSlotCard1 != null && fourkSlotCard1.value == value) {
+  if (fourkSlotCard1 != null && fourkSlotCard1.value === value) {
     //addLog("4k played " + printCard(fourkSlotCard1) + printCard(temp));
     return true;
   }
-  if (fourkSlotCard2 != null && fourkSlotCard2.value == value) {
+  if (fourkSlotCard2 != null && fourkSlotCard2.value === value) {
     //addLog("4k played " + printCard(fourkSlotCard2) + printCard(temp));
     return true;
   }
-  if (fourkSlotCard3 != null && fourkSlotCard3.value == value) {
+  if (fourkSlotCard3 != null && fourkSlotCard3.value === value) {
     //addLog("4k played " + printCard(fourkSlotCard3) + printCard(temp));
     return true;
   }
-  if (fourkSlotCard4 != null && fourkSlotCard4.value == value) {
+  if (fourkSlotCard4 != null && fourkSlotCard4.value === value) {
     //addLog("4k played " + printCard(fourkSlotCard4) + printCard(temp));
     return true;
   }
 
   // str flush values
-  if (strFlushSlotCard1 != null && strFlushSlotCard1.value == value) {
+  if (strFlushSlotCard1 != null && strFlushSlotCard1.value === value) {
     //addLog("str flush played " + printCard(strFlushSlotCard1) + printCard(temp));
     return true;
   }
-  if (strFlushSlotCard2 != null && strFlushSlotCard2.value == value) {
+  if (strFlushSlotCard2 != null && strFlushSlotCard2.value === value) {
     //addLog("str flush played " + printCard(strFlushSlotCard2) + printCard(temp));
     return true;
   }
-  if (strFlushSlotCard3 != null && strFlushSlotCard3.value == value) {
+  if (strFlushSlotCard3 != null && strFlushSlotCard3.value === value) {
     //addLog("str flush played " + printCard(strFlushSlotCard3) + printCard(temp));
     return true;
   }
-  if (strFlushSlotCard4 != null && strFlushSlotCard4.value == value) {
+  if (strFlushSlotCard4 != null && strFlushSlotCard4.value === value) {
     //addLog("str flush played " + printCard(strFlushSlotCard4) + printCard(temp));
     return true;
   }
-  if (strFlushSlotCard5 != null && strFlushSlotCard5.value == value) {
-    //addLog("str flush played " + printCard(strFlushSlotCard5) + printCard(temp));
-    return true;
-  }
-
-  return false;
+  return strFlushSlotCard5 != null && strFlushSlotCard5.value === value;
 }
 
 function findStraightFlushCards(card, cardArr) {
   //addLog("findPartialStraightFlush()" + printCardArr(cardArr));
 
-  var partialArr = [];
+  let partialArr = [];
   partialArr.push(card);
 
-  for (var i = 0; i < cardArr.length; i++) {
-    var tempCard = cardArr[i];
-    if (card.suit == tempCard.suit) {
-      if (card.value == tempCard.value - 1 || card.value == tempCard.value + 1) {
+  for (let i = 0; i < cardArr.length; i++) {
+    let tempCard = cardArr[i];
+    if (card.suit === tempCard.suit) {
+      if (card.value === tempCard.value - 1 || card.value === tempCard.value + 1) {
         partialArr.push(tempCard);
       }
-      if (card.value == tempCard.value - 2 || card.value == tempCard.value + 2) {
+      if (card.value === tempCard.value - 2 || card.value === tempCard.value + 2) {
         partialArr.push(tempCard);
       }
-      if (card.value == tempCard.value - 3 || card.value == tempCard.value + 3) {
+      if (card.value === tempCard.value - 3 || card.value === tempCard.value + 3) {
         partialArr.push(tempCard);
       }
-      if (card.value == tempCard.value - 4 || card.value == tempCard.value + 4) {
+      if (card.value === tempCard.value - 4 || card.value === tempCard.value + 4) {
         partialArr.push(tempCard);
       }
     }
@@ -537,35 +532,35 @@ function findStraightFlushCards(card, cardArr) {
     return a.value - b.value;
   });
 
-  var removeIndexes = [];
+  let removeIndexes = [];
   if (partialArr.length > 1) {
     //addLogLine("partialArr=" + printCardArr(partialArr));
-    var startIndex = 0;
-    for (var i = 0; i < partialArr.length; i++) {
-      if (card.value == partialArr[i].value) {
+    let startIndex = 0;
+    for (let i = 0; i < partialArr.length; i++) {
+      if (card.value === partialArr[i].value) {
         startIndex = i;
       }
     }
     //addLogLine("startIndex=" + startIndex);
 
-    var acc = 1;
-    for (var i = startIndex - 1; i >= 0; i--) {
-      if (partialArr[i].value + acc != card.value) {
+    let acc = 1;
+    for (let i = startIndex - 1; i >= 0; i--) {
+      if (partialArr[i].value + acc !== card.value) {
         removeIndexes.push(partialArr[i]);
       }
       acc++;
     }
 
     acc = 1;
-    for (var i = startIndex + 1; i < partialArr.length; i++) {
-      if (partialArr[i].value - acc != card.value) {
+    for (let i = startIndex + 1; i < partialArr.length; i++) {
+      if (partialArr[i].value - acc !== card.value) {
         removeIndexes.push(partialArr[i]);
       }
       acc++;
     }
 
-    for (var i = 0; i < removeIndexes.length; i++) {
-      var removeMe = removeIndexes[i];
+    for (let i = 0; i < removeIndexes.length; i++) {
+      let removeMe = removeIndexes[i];
       removeCardFromArray(removeMe, partialArr);
     }
   }
@@ -574,86 +569,86 @@ function findStraightFlushCards(card, cardArr) {
 }
 
 function checkValuePlayedCount(value) {
-  var acc = 0;
-  if (hcSlotCard != null && hcSlotCard.value == value) {
+  let acc = 0;
+  if (hcSlotCard != null && hcSlotCard.value === value) {
     acc++;
   }
 
-  if (twoPSlotCard1 != null && twoPSlotCard1.value == value) {
+  if (twoPSlotCard1 != null && twoPSlotCard1.value === value) {
     acc++;
   }
-  if (twoPSlotCard2 != null && twoPSlotCard2.value == value) {
-    acc++;
-  }
-
-  if (threePSlotCard1 != null && threePSlotCard1.value == value) {
-    acc++;
-  }
-  if (threePSlotCard2 != null && threePSlotCard2.value == value) {
-    acc++;
-  }
-  if (threePSlotCard3 != null && threePSlotCard3.value == value) {
+  if (twoPSlotCard2 != null && twoPSlotCard2.value === value) {
     acc++;
   }
 
-  if (straightSlotCard1 != null && straightSlotCard1.value == value) {
+  if (threePSlotCard1 != null && threePSlotCard1.value === value) {
     acc++;
   }
-  if (straightSlotCard2 != null && straightSlotCard2.value == value) {
+  if (threePSlotCard2 != null && threePSlotCard2.value === value) {
     acc++;
   }
-  if (straightSlotCard3 != null && straightSlotCard3.value == value) {
-    acc++;
-  }
-  if (straightSlotCard4 != null && straightSlotCard4.value == value) {
-    acc++;
-  }
-  if (straightSlotCard5 != null && straightSlotCard5.value == value) {
+  if (threePSlotCard3 != null && threePSlotCard3.value === value) {
     acc++;
   }
 
-  if (flushSlotCard1 != null && flushSlotCard1.value == value) {
+  if (straightSlotCard1 != null && straightSlotCard1.value === value) {
     acc++;
   }
-  if (flushSlotCard2 != null && flushSlotCard2.value == value) {
+  if (straightSlotCard2 != null && straightSlotCard2.value === value) {
     acc++;
   }
-  if (flushSlotCard3 != null && flushSlotCard3.value == value) {
+  if (straightSlotCard3 != null && straightSlotCard3.value === value) {
     acc++;
   }
-  if (flushSlotCard4 != null && flushSlotCard4.value == value) {
+  if (straightSlotCard4 != null && straightSlotCard4.value === value) {
     acc++;
   }
-  if (flushSlotCard5 != null && flushSlotCard5.value == value) {
-    acc++;
-  }
-
-  if (fourkSlotCard1 != null && fourkSlotCard1.value == value) {
-    acc++;
-  }
-  if (fourkSlotCard2 != null && fourkSlotCard2.value == value) {
-    acc++;
-  }
-  if (fourkSlotCard3 != null && fourkSlotCard3.value == value) {
-    acc++;
-  }
-  if (fourkSlotCard4 != null && fourkSlotCard4.value == value) {
+  if (straightSlotCard5 != null && straightSlotCard5.value === value) {
     acc++;
   }
 
-  if (strFlushSlotCard1 != null && strFlushSlotCard1.value == value) {
+  if (flushSlotCard1 != null && flushSlotCard1.value === value) {
     acc++;
   }
-  if (strFlushSlotCard2 != null && strFlushSlotCard2.value == value) {
+  if (flushSlotCard2 != null && flushSlotCard2.value === value) {
     acc++;
   }
-  if (strFlushSlotCard3 != null && strFlushSlotCard3.value == value) {
+  if (flushSlotCard3 != null && flushSlotCard3.value === value) {
     acc++;
   }
-  if (strFlushSlotCard4 != null && strFlushSlotCard4.value == value) {
+  if (flushSlotCard4 != null && flushSlotCard4.value === value) {
     acc++;
   }
-  if (strFlushSlotCard5 != null && strFlushSlotCard5.value == value) {
+  if (flushSlotCard5 != null && flushSlotCard5.value === value) {
+    acc++;
+  }
+
+  if (fourkSlotCard1 != null && fourkSlotCard1.value === value) {
+    acc++;
+  }
+  if (fourkSlotCard2 != null && fourkSlotCard2.value === value) {
+    acc++;
+  }
+  if (fourkSlotCard3 != null && fourkSlotCard3.value === value) {
+    acc++;
+  }
+  if (fourkSlotCard4 != null && fourkSlotCard4.value === value) {
+    acc++;
+  }
+
+  if (strFlushSlotCard1 != null && strFlushSlotCard1.value === value) {
+    acc++;
+  }
+  if (strFlushSlotCard2 != null && strFlushSlotCard2.value === value) {
+    acc++;
+  }
+  if (strFlushSlotCard3 != null && strFlushSlotCard3.value === value) {
+    acc++;
+  }
+  if (strFlushSlotCard4 != null && strFlushSlotCard4.value === value) {
+    acc++;
+  }
+  if (strFlushSlotCard5 != null && strFlushSlotCard5.value === value) {
     acc++;
   }
 
@@ -662,13 +657,13 @@ function checkValuePlayedCount(value) {
 
 function isPartialArrayValidAttemptAtStraightFlush(value3, value4, value5, suit) {
 
-  var card1 = new Card(suit, value3 - 2, null);
-  var card2 = new Card(suit, value3 - 1, null);
-  var card6 = new Card(suit, value5 + 1, null);
-  var card7 = new Card(suit, value5 + 2, null);
+  let card1 = new Card(suit, value3 - 2, null);
+  let card2 = new Card(suit, value3 - 1, null);
+  let card6 = new Card(suit, value5 + 1, null);
+  let card7 = new Card(suit, value5 + 2, null);
 
   // 0, 1, 2 can only be blocked with 3 or 4 played
-  if (value3 == 0) {
+  if (value3 === 0) {
     if (checkCardHasBeenPlayed(card6)) {
       return false;
     }
@@ -678,7 +673,7 @@ function isPartialArrayValidAttemptAtStraightFlush(value3, value4, value5, suit)
     }
   }
 
-  if (value3 == 1) {
+  if (value3 === 1) {
     if (checkCardHasBeenPlayed(card6)) {
       return false;
     }
@@ -690,8 +685,8 @@ function isPartialArrayValidAttemptAtStraightFlush(value3, value4, value5, suit)
   }
 
   // check card 4 to 10, sf cards needed are two up two down or 1 up and 1 down
-  if (value3 == 2 || value3 == 3 || value3 == 4 || value3 == 5 ||
-    value3 == 6 || value3 == 7 || value3 == 8) {
+  if (value3 === 2 || value3 === 3 || value3 === 4 || value3 === 5 ||
+    value3 === 6 || value3 === 7 || value3 === 8) {
 
     if (checkCardHasBeenPlayed(card2) &&
       checkCardHasBeenPlayed(card6)) {
@@ -709,7 +704,7 @@ function isPartialArrayValidAttemptAtStraightFlush(value3, value4, value5, suit)
     }
   }
 
-  if (value3 == 9) {
+  if (value3 === 9) {
     if (checkCardHasBeenPlayed(card2)) {
       return false;
     }
@@ -720,7 +715,7 @@ function isPartialArrayValidAttemptAtStraightFlush(value3, value4, value5, suit)
     }
   }
 
-  if (value3 == 10) {
+  if (value3 === 10) {
     if (checkCardHasBeenPlayed(card1)) {
       return false;
     }
@@ -733,131 +728,126 @@ function isPartialArrayValidAttemptAtStraightFlush(value3, value4, value5, suit)
 }
 
 function checkCardHasBeenPlayed(card) {
-  var value = card.value;
-  var suit = card.suit;
+  let value = card.value;
+  let suit = card.suit;
 
   //check hc card value
-  if (hcSlotCard != null && hcSlotCard.value == value && hcSlotCard.suit == suit) {
+  if (hcSlotCard != null && hcSlotCard.value === value && hcSlotCard.suit === suit) {
     //addLogLine("hc played " + printCard(card));
     return true;
   }
 
   // check 2k card values
-  if (twoPSlotCard1 != null && twoPSlotCard1.value == value && twoPSlotCard1.suit == suit) {
+  if (twoPSlotCard1 != null && twoPSlotCard1.value === value && twoPSlotCard1.suit === suit) {
     //addLogLine("2k played " + printCard(card));
     return true;
   }
 
-  if (twoPSlotCard2 != null && twoPSlotCard2.value == value && twoPSlotCard2.suit == suit) {
+  if (twoPSlotCard2 != null && twoPSlotCard2.value === value && twoPSlotCard2.suit === suit) {
     //addLogLine("2k played " + printCard(card));
     return true;
   }
 
   //check 3k card values
-  if (threePSlotCard1 != null && threePSlotCard1.value == value && threePSlotCard1.suit == suit) {
+  if (threePSlotCard1 != null && threePSlotCard1.value === value && threePSlotCard1.suit === suit) {
     //addLogLine("3k played " + printCard(card));
     return true;
   }
 
-  if (threePSlotCard2 != null && threePSlotCard2.value == value && threePSlotCard2.suit == suit) {
+  if (threePSlotCard2 != null && threePSlotCard2.value === value && threePSlotCard2.suit === suit) {
     //addLogLine("3k played " + printCard(card));
     return true;
   }
 
-  if (threePSlotCard3 != null && threePSlotCard3.value == value && threePSlotCard3.suit == suit) {
+  if (threePSlotCard3 != null && threePSlotCard3.value === value && threePSlotCard3.suit === suit) {
     //addLogLine("3k played " + printCard(card));
     return true;
   }
 
   // straight card values
-  if (straightSlotCard1 != null && straightSlotCard1.value == value && straightSlotCard1.suit == suit) {
+  if (straightSlotCard1 != null && straightSlotCard1.value === value && straightSlotCard1.suit === suit) {
     //addLogLine("str played " + printCard(card));
     return true;
   }
 
-  if (straightSlotCard2 != null && straightSlotCard2.value == value && straightSlotCard2.suit == suit) {
+  if (straightSlotCard2 != null && straightSlotCard2.value === value && straightSlotCard2.suit === suit) {
     //addLogLine("str played " + printCard(card));
     return true;
   }
 
-  if (straightSlotCard3 != null && straightSlotCard3.value == value && straightSlotCard3.suit == suit) {
+  if (straightSlotCard3 != null && straightSlotCard3.value === value && straightSlotCard3.suit === suit) {
     //addLogLine("str played " + printCard(card));
     return true;
   }
 
-  if (straightSlotCard4 != null && straightSlotCard4.value == value && straightSlotCard4.suit == suit) {
+  if (straightSlotCard4 != null && straightSlotCard4.value === value && straightSlotCard4.suit === suit) {
     //addLogLine("str played " + printCard(card));
     return true;
   }
 
-  if (straightSlotCard5 != null && straightSlotCard5.value == value && straightSlotCard5.suit == suit) {
+  if (straightSlotCard5 != null && straightSlotCard5.value === value && straightSlotCard5.suit === suit) {
     //addLogLine("str played " + printCard(card));
     return true;
   }
 
   //flush card values
-  if (flushSlotCard1 != null && flushSlotCard1.value == value && flushSlotCard1.suit == suit) {
+  if (flushSlotCard1 != null && flushSlotCard1.value === value && flushSlotCard1.suit === suit) {
     //addLogLine("flush played " + printCard(card));
     return true;
   }
-  if (flushSlotCard2 != null && flushSlotCard2.value == value && flushSlotCard2.suit == suit) {
+  if (flushSlotCard2 != null && flushSlotCard2.value === value && flushSlotCard2.suit === suit) {
     //addLogLine("flush played " + printCard(card));
     return true;
   }
-  if (flushSlotCard3 != null && flushSlotCard3.value == value && flushSlotCard3.suit == suit) {
+  if (flushSlotCard3 != null && flushSlotCard3.value === value && flushSlotCard3.suit === suit) {
     //addLogLine("flush played " + printCard(card));
     return true;
   }
-  if (flushSlotCard4 != null && flushSlotCard4.value == value && flushSlotCard4.suit == suit) {
+  if (flushSlotCard4 != null && flushSlotCard4.value === value && flushSlotCard4.suit === suit) {
     //addLogLine("flush played " + printCard(card));
     return true;
   }
-  if (flushSlotCard5 != null && flushSlotCard5.value == value && flushSlotCard5.suit == suit) {
+  if (flushSlotCard5 != null && flushSlotCard5.value === value && flushSlotCard5.suit === suit) {
     //addLogLine("flush played " + printCard(card));
     return true;
   }
 
   //four k values
-  if (fourkSlotCard1 != null && fourkSlotCard1.value == value && fourkSlotCard1.suit == suit) {
+  if (fourkSlotCard1 != null && fourkSlotCard1.value === value && fourkSlotCard1.suit === suit) {
     //addLogLine("4k played " + printCard(card));
     return true;
   }
-  if (fourkSlotCard2 != null && fourkSlotCard2.value == value && fourkSlotCard2.suit == suit) {
+  if (fourkSlotCard2 != null && fourkSlotCard2.value === value && fourkSlotCard2.suit === suit) {
     //addLogLine("4k played " + printCard(card));
     return true;
   }
-  if (fourkSlotCard3 != null && fourkSlotCard3.value == value && fourkSlotCard3.suit == suit) {
+  if (fourkSlotCard3 != null && fourkSlotCard3.value === value && fourkSlotCard3.suit === suit) {
     //addLogLine("4k played " + printCard(card));
     return true;
   }
-  if (fourkSlotCard4 != null && fourkSlotCard4.value == value && fourkSlotCard4.suit == suit) {
+  if (fourkSlotCard4 != null && fourkSlotCard4.value === value && fourkSlotCard4.suit === suit) {
     //addLogLine("4k played " + printCard(card));
     return true;
   }
 
   // str flush values
-  if (strFlushSlotCard1 != null && strFlushSlotCard1.value == value && strFlushSlotCard1.suit == suit) {
+  if (strFlushSlotCard1 != null && strFlushSlotCard1.value === value && strFlushSlotCard1.suit === suit) {
     //addLogLine("str flush played " + printCard(card));
     return true;
   }
-  if (strFlushSlotCard2 != null && strFlushSlotCard2.value == value && strFlushSlotCard2.suit == suit) {
+  if (strFlushSlotCard2 != null && strFlushSlotCard2.value === value && strFlushSlotCard2.suit === suit) {
     //addLogLine("str flush played " + printCard(card));
     return true;
   }
-  if (strFlushSlotCard3 != null && strFlushSlotCard3.value == value && strFlushSlotCard3.suit == suit) {
+  if (strFlushSlotCard3 != null && strFlushSlotCard3.value === value && strFlushSlotCard3.suit === suit) {
     //addLogLine("str flush played " + printCard(card));
     return true;
   }
-  if (strFlushSlotCard4 != null && strFlushSlotCard4.value == value && strFlushSlotCard4.suit == suit) {
+  if (strFlushSlotCard4 != null && strFlushSlotCard4.value === value && strFlushSlotCard4.suit === suit) {
     //addLogLine("str flush played " + printCard(card));
     return true;
   }
-  if (strFlushSlotCard5 != null && strFlushSlotCard5.value == value && strFlushSlotCard5.suit == suit) {
-    //addLogLine("str flush played " + printCard(card));
-    return true;
-  }
-
-  return false;
+  return strFlushSlotCard5 != null && strFlushSlotCard5.value === value && strFlushSlotCard5.suit === suit;
 }
 
 function cardPlacedAction() {
@@ -883,25 +873,25 @@ function removeCardHighlights(){
 }
 
 function removeCardFromArray(card, cardArr) {
-  if (card == null) {
+  if (card === null) {
     return;
   }
-  var index = -1;
-  for (var i = 0; i < cardArr.length; i++) {
-    if (card.value == cardArr[i].value &&
-      card.suit == cardArr[i].suit) {
+  let index = -1;
+  for (let i = 0; i < cardArr.length; i++) {
+    if (card.value === cardArr[i].value &&
+      card.suit === cardArr[i].suit) {
       index = i;
       break;
     }
   }
-  if (index != -1) {
+  if (index !== -1) {
     cardArr.splice(index, 1);
   }
 }
 
 function checkForFullHand(cardArr) {
-  var acc = cardArr.length;
-  var dealtCards = [];
+  let acc = cardArr.length;
+  let dealtCards = [];
   while (acc < MAX_PLAYER_CARDS) {
     if (deckCards.length > 0) {
       cardArr[acc] = deckCards.shift();
@@ -913,13 +903,13 @@ function checkForFullHand(cardArr) {
       return;
     }
   }
-  if (dealtCards != null && dealtCards.length > 0) {
+  if (dealtCards.length > 0) {
     //addLog(printCardArr(dealtCards));
   }
 }
 
 function dealToPlayer1() {
-  for (var i = 0; i < MAX_PLAYER_CARDS; i++) {
+  for (let i = 0; i < MAX_PLAYER_CARDS; i++) {
     player1Cards[i] = deckCards.shift();
     player1Cards[i].bitmap.onload = function() {
       imagesLoaded++;
@@ -930,7 +920,7 @@ function dealToPlayer1() {
 }
 
 function dealToPlayer2() {
-  for (var i = 0; i < MAX_PLAYER_CARDS; i++) {
+  for (let i = 0; i < MAX_PLAYER_CARDS; i++) {
     player2Cards[i] = deckCards.shift();
     player2Cards[i].bitmap.onload = function() {
       imagesLoaded++;
@@ -941,7 +931,7 @@ function dealToPlayer2() {
 }
 
 function dealToPlayer3() {
-  for (var i = 0; i < MAX_PLAYER_CARDS; i++) {
+  for (let i = 0; i < MAX_PLAYER_CARDS; i++) {
     player3Cards[i] = deckCards.shift();
     player3Cards[i].bitmap.onload = function() {
       imagesLoaded++;
@@ -952,7 +942,7 @@ function dealToPlayer3() {
 }
 
 function dealToPlayer4() {
-  for (var i = 0; i < MAX_PLAYER_CARDS; i++) {
+  for (let i = 0; i < MAX_PLAYER_CARDS; i++) {
     player4Cards[i] = deckCards.shift();
     player4Cards[i].bitmap.onload = function() {
       imagesLoaded++;
@@ -1037,7 +1027,6 @@ function organizePlayerCards() {
 
 function addSetAndRemoveCard(placeholderCard, playerCard, cardArr) {
   addCardToHand(placeholderCard, cardArr);
-  placeholderCard = playerCard;
   removeCardFromArray(playerCard, cardArr);
 }
 

@@ -1,16 +1,17 @@
 function findHCcard() {
-  var playerCards = getPlayerCards();
+  let playerCards = getPlayerCards();
 
-  var canReplaceCurrentHC = false;
-  var sameValueCount = 0;
-  var canStraight = false;
-  var sameSuitCount = 0;
-  var isTwoCardStrFlush = false;
+  let canReplaceCurrentHC = false;
+  let sameValueCount = 0;
+  let canStraight = false;
+  let sameSuitCount = 0;
+  let isTwoCardStrFlush = false;
 
-  var possibleCards = [];
+  let possibleCards = [];
 
-  var tempCard = null;
-  for (var i = 0; i < playerCards.length; i++) {
+  let tempCard = null;
+  let sameFlushCount;
+  for (let i = 0; i < playerCards.length; i++) {
 
     canReplaceCurrentHC = false;
     sameValueCount = 0;
@@ -28,7 +29,7 @@ function findHCcard() {
       // check if card has duplicate face values
       sameValueCount = checkHandForMatchingValues(tempCard, playerCards);
 
-      if (sameValueCount == 1) {
+      if (sameValueCount === 1) {
 
         canStraight = checkHandFor3cardStraight(tempCard, playerCards);
 
@@ -58,7 +59,7 @@ function findHCcard() {
     hcSlotCard = possibleCards[0];
     removeCardFromArray(hcSlotCard, playerCards);
 
-    if (doLogPlacedCards == true) {
+    if (doLogPlacedCards === true) {
       addLog("Player " + (playerTurn + 1) + ": Plays HC  " + printCard(hcSlotCard));
     }
     cardPlacedAction();
@@ -66,14 +67,14 @@ function findHCcard() {
 }
 
 function checkHandForNextStrFlushCard(card, cardArr) {
-  for (var i = 0; i < cardArr.length; i++) {
-    if (card.value != 0 && card.value != 11) {
-      var possibleStrFlushCard = cardArr[i];
-      if (card.suit == possibleStrFlushCard.suit) {
-        if (card.value == possibleStrFlushCard.value + 1 || card.value == possibleStrFlushCard.value - 1) {
+  for (let i = 0; i < cardArr.length; i++) {
+    if (card.value !== 0 && card.value !== 11) {
+      let possibleStrFlushCard = cardArr[i];
+      if (card.suit === possibleStrFlushCard.suit) {
+        if (card.value === possibleStrFlushCard.value + 1 || card.value === possibleStrFlushCard.value - 1) {
           return true;
         }
-        if (card.value == possibleStrFlushCard.value + 2 || card.value == possibleStrFlushCard.value - 2) {
+        if (card.value === possibleStrFlushCard.value + 2 || card.value === possibleStrFlushCard.value - 2) {
           return true;
         }
       }

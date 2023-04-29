@@ -25,7 +25,7 @@ function setDebugFlags() {
   doLogPlacedCards = true;
 
   // log player turn log:
-  // deafault       true
+  // default       true
   doLogPlayerTurn = true;
 
   // log details of card comparing:
@@ -65,7 +65,7 @@ function setHumanPlayers() {
 }
 
 function setTestElements() {
-  if (doRunControlTest == true) {
+  if (doRunControlTest === true) {
     PC_TURN_DELAY = 0;
     activityLog.readOnly = false;
     allPCPlayers = true;
@@ -76,7 +76,7 @@ function setTestElements() {
 }
 
 function setPcPlayers() {
-  if (allPCPlayers == true) {
+  if (allPCPlayers === true) {
     player1isPC = true;
     player2isPC = true;
     player3isPC = true;

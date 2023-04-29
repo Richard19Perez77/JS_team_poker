@@ -40,11 +40,11 @@ function drawTurnCoin() {
 }
 
 function drawHC() {
-  var colora = 'white';
-  var colorb = 'black';
-  var colorc = myGreen;
+  let colora = 'white';
+  let colorb = 'black';
+  let colorc = myGreen;
 
-  if (targetHand == 0) {
+  if (targetHand === 0) {
     colora = 'white';
     colorb = 'white';
     colorc = 'black';
@@ -67,9 +67,9 @@ function drawHC() {
 }
 
 function draw2K() {
-  var colora = 'white';
-  var colorb = 'black';
-  var colorc = myGreen;
+  let colora = 'white';
+  let colorb = 'black';
+  let colorc = myGreen;
 
   if (targetHand == 1) {
     colora = 'white';
@@ -102,9 +102,9 @@ function draw2K() {
 }
 
 function draw3K() {
-  var colora = 'white';
-  var colorb = 'black';
-  var colorc = myGreen;
+  let colora = 'white';
+  let colorb = 'black';
+  let colorc = myGreen;
 
   if (targetHand == 2) {
     colora = 'white';
@@ -145,9 +145,9 @@ function draw3K() {
 }
 
 function drawST() {
-  var colora = 'white';
-  var colorb = 'black';
-  var colorc = myGreen;
+  let colora = 'white';
+  let colorb = 'black';
+  let colorc = myGreen;
 
   if (targetHand == 3) {
     colora = 'white';
@@ -204,9 +204,9 @@ function drawST() {
 }
 
 function drawFL() {
-  var colora = 'white';
-  var colorb = 'black';
-  var colorc = myGreen;
+  let colora = 'white';
+  let colorb = 'black';
+  let colorc = myGreen;
 
   if (targetHand == 4) {
     colora = 'white';
@@ -263,9 +263,9 @@ function drawFL() {
 }
 
 function draw4K() {
-  var colora = 'white';
-  var colorb = 'black';
-  var colorc = myGreen;
+  let colora = 'white';
+  let colorb = 'black';
+  let colorc = myGreen;
 
   if (targetHand == 5) {
     colora = 'white';
@@ -314,9 +314,9 @@ function draw4K() {
 }
 
 function drawSF() {
-  var colora = 'white';
-  var colorb = 'black';
-  var colorc = myGreen;
+  let colora = 'white';
+  let colorb = 'black';
+  let colorc = myGreen;
 
   if (targetHand == 6) {
     colora = 'white';
@@ -436,7 +436,7 @@ function drawCardPlaceholders() {
 function drawPlayer1Hand() {
   //addLog("draw Player " + (playerTurn + 1) + " " + printCardArr(player1Cards));
   //debugCardBitmaps(player1Cards);
-  for (var i = 0; i < player1Cards.length; i++) {
+  for (let i = 0; i < player1Cards.length; i++) {
     switch (i) {
       case 0:
         context.drawImage(player1Cards[0].bitmap, 0, 0, 80, 100);
@@ -466,7 +466,7 @@ function drawPlayer1Hand() {
 function drawPlayer2Hand() {
   //addLog("draw Player " + (playerTurn + 1) + " " + printCardArr(player2Cards));
   //debugCardBitmaps(player2Cards);
-  for (var i = 0; i < player2Cards.length; i++) {
+  for (let i = 0; i < player2Cards.length; i++) {
     switch (i) {
       case 0:
         context.drawImage(player2Cards[0].bitmap, 0, 0, 80, 100);
@@ -496,7 +496,7 @@ function drawPlayer2Hand() {
 function drawPlayer3Hand() {
   //addLog("draw Player " + (playerTurn + 1) + " " + printCardArr(player3Cards));
   //debugCardBitmaps(player3Cards);
-  for (var i = 0; i < player3Cards.length; i++) {
+  for (let i = 0; i < player3Cards.length; i++) {
     switch (i) {
       case 0:
         context.drawImage(player3Cards[0].bitmap, 0, 0, 80, 100);
@@ -526,7 +526,7 @@ function drawPlayer3Hand() {
 function drawPlayer4Hand() {
   //addLog("draw Player " + (playerTurn + 1) + " " + printCardArr(player4Cards));
   //debugCardBitmaps(player4Cards);
-  for (var i = 0; i < player4Cards.length; i++) {
+  for (let i = 0; i < player4Cards.length; i++) {
     switch (i) {
       case 0:
         context.drawImage(player4Cards[0].bitmap, 0, 0, 80, 100);

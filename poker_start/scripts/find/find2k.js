@@ -1,16 +1,16 @@
 function find2Kcard() {
-  var playerCards = getPlayerCards();
+  let playerCards = getPlayerCards();
 
   // find pair to play that is not usable in a better hand
-  var canReplaceCurrent2k = true;
-  var canStraight = false;
-  var sameValueCount = 0;
-  var sameFlushCount = 0;
+  let canReplaceCurrent2k = true;
+  let canStraight = false;
+  let sameValueCount = 0;
+  let sameFlushCount = 0;
 
-  var possibleCards = [];
-  var tempCard = null;
+  let possibleCards = [];
+  let tempCard = null;
 
-  for (var i = 0; i < playerCards.length; i++) {
+  for (let i = 0; i < playerCards.length; i++) {
     tempCard = playerCards[i];
 
     canReplaceCurrent2k = true;
@@ -20,7 +20,7 @@ function find2Kcard() {
 
     // parse out cards useful in better hands
     canReplaceCurrent2k = checkCardCanReplaceCurrent2kPlayed(tempCard);
-    if (canReplaceCurrent2k == false) {
+    if (canReplaceCurrent2k === false) {
       continue;
     }
 
@@ -40,9 +40,9 @@ function find2Kcard() {
     }
 
     //validate play is valid for str flush
-    var partialArr = findStraightFlushCards(tempCard, playerCards);
+    let partialArr = findStraightFlushCards(tempCard, playerCards);
     if (partialArr != null &&  partialArr.length >= 3) {
-      var isValidStrFlushPlay = isPartialArrayValidAttemptAtStraightFlush(partialArr[0].value, partialArr[1].value, partialArr[2].value, partialArr[0].suit)
+      let isValidStrFlushPlay = isPartialArrayValidAttemptAtStraightFlush(partialArr[0].value, partialArr[1].value, partialArr[2].value, partialArr[0].suit)
       if (isValidStrFlushPlay) {
         continue;
       }
@@ -51,7 +51,7 @@ function find2Kcard() {
     possibleCards.push(tempCard);
   }
 
-  if (possibleCards.length == 0) {
+  if (possibleCards.length === 0) {
     return;
   }
 
@@ -60,24 +60,24 @@ function find2Kcard() {
   });
 
   // remove cards with no valid pair
-  var removeCards = [];
-  for (var i = 0; i < possibleCards.length; i++) {
-    var temp = possibleCards[i];
+  let removeCards = [];
+  for (let i = 0; i < possibleCards.length; i++) {
+    let temp = possibleCards[i];
     sameValueCount = checkHandForMatchingValues(temp, possibleCards);
-    if (sameValueCount == 1) {
+    if (sameValueCount === 1) {
       removeCards.push(temp);
     }
   }
-  for (var i = 0; i < removeCards.length; i++) {
-    var removeCard = removeCards[i];
+  for (let i = 0; i < removeCards.length; i++) {
+    let removeCard = removeCards[i];
     removeCardFromArray(removeCard, possibleCards);
   }
 
   if (possibleCards.length >= 2) {
 
     //play the lowest pair
-    var cardA = possibleCards[0];
-    var cardB = possibleCards[1];
+    let cardA = possibleCards[0];
+    let cardB = possibleCards[1];
 
     addCardToHand(twoPSlotCard1, getPlayerCards());
     twoPSlotCard1 = cardA;
@@ -87,7 +87,7 @@ function find2Kcard() {
     twoPSlotCard2 = cardB;
     removeCardFromArray(twoPSlotCard2, playerCards);
 
-    if (doLogPlacedCards == true) {
+    if (doLogPlacedCards === true) {
       addLog("Player " + (playerTurn + 1) + ": Plays 2K " + printCard(twoPSlotCard1) + printCard(twoPSlotCard2));
     }
     cardPlacedAction();

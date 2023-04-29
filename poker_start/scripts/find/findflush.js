@@ -1,24 +1,24 @@
 function findFlushCard() {
-  var playerCards = getPlayerCards();
+  let playerCards = getPlayerCards();
 
-  var possibleCards = [];
+  let possibleCards = [];
 
-  for (var i = 0; i < playerCards.length; i++) {
-    var card = playerCards[i];
+  for (let i = 0; i < playerCards.length; i++) {
+    let card = playerCards[i];
 
-    var partialArr = findStraightFlushCards(card, playerCards);
+    let partialArr = findStraightFlushCards(card, playerCards);
     if (partialArr != null && partialArr.length >= 3) {
 
       //validate play is valid for str flush
-      var isValidStrFlushPlay = isPartialArrayValidAttemptAtStraightFlush(partialArr[0].value, partialArr[1].value, partialArr[2].value, partialArr[0].suit)
+      let isValidStrFlushPlay = isPartialArrayValidAttemptAtStraightFlush(partialArr[0].value, partialArr[1].value, partialArr[2].value, partialArr[0].suit)
       if (isValidStrFlushPlay) {
         continue;
       }
     }
 
-    var sameValueCount = checkHandForMatchingValues(card, playerCards);
+    let sameValueCount = checkHandForMatchingValues(card, playerCards);
     if (sameValueCount >= 2) {
-      var hasAValuePlayed = checkCardValueHasBeenPlayed(card);
+      let hasAValuePlayed = checkCardValueHasBeenPlayed(card);
       if (hasAValuePlayed) {
         continue;
       }
@@ -27,12 +27,12 @@ function findFlushCard() {
     possibleCards.push(card);
   }
 
-  var currFlushCount = 0;
+  let currFlushCount = 0;
   currFlushCount = countFlushCardsPlayed();
 
   switch (currFlushCount) {
     case 3:
-      var found = find4thFlushCard(possibleCards);
+      let found = find4thFlushCard(possibleCards);
       if (found) {
         organizeFlush();
         found = find5thFlushCard(possibleCards);
@@ -40,7 +40,7 @@ function findFlushCard() {
       }
       break;
     case 4:
-      var fifthFound = find5thFlushCard(possibleCards);
+      let fifthFound = find5thFlushCard(possibleCards);
       if (fifthFound) {
         return;
       }
@@ -48,13 +48,13 @@ function findFlushCard() {
   }
 
 
-  var a = [];
-  var b = [];
-  var c = [];
-  var d = [];
+  let a = [];
+  let b = [];
+  let c = [];
+  let d = [];
 
-  for (var i = 0; i < possibleCards.length; i++) {
-    var suit = possibleCards[i].suit;
+  for (let i = 0; i < possibleCards.length; i++) {
+    let suit = possibleCards[i].suit;
     switch (suit) {
       case 0:
         a.push(possibleCards[i]);
@@ -73,25 +73,25 @@ function findFlushCard() {
 
   // check for 5 card flush to play
   if (a.length == 5) {
-    var hasBetterFlushScore = checkBetterFlush(a);
+    let hasBetterFlushScore = checkBetterFlush(a);
     if (hasBetterFlushScore) {
       placeFlush(a);
       return;
     }
   } else if (b.length == 5) {
-    var hasBetterFlushScore = checkBetterFlush(b);
+    let hasBetterFlushScore = checkBetterFlush(b);
     if (hasBetterFlushScore) {
       placeFlush(b);
       return;
     }
   } else if (c.length == 5) {
-    var hasBetterFlushScore = checkBetterFlush(c);
+    let hasBetterFlushScore = checkBetterFlush(c);
     if (hasBetterFlushScore) {
       placeFlush(c);
       return;
     }
   } else if (d.length == 5) {
-    var hasBetterFlushScore = checkBetterFlush(d);
+    let hasBetterFlushScore = checkBetterFlush(d);
     if (hasBetterFlushScore) {
       placeFlush(d);
       return;
@@ -164,7 +164,7 @@ function findFlushCard() {
 }
 
 function place4CardFlush(flushArr) {
-  var playerCards = getPlayerCards();
+  let playerCards = getPlayerCards();
 
   //should only have to add three cards to hand
   addCardToHand(flushSlotCard1, playerCards);
@@ -190,7 +190,7 @@ function place4CardFlush(flushArr) {
 }
 
 function place3CardFlush(flushArr) {
-  var playerCards = getPlayerCards();
+  let playerCards = getPlayerCards();
 
   addCardToHand(flushSlotCard1, playerCards);
   flushSlotCard1 = flushArr[0];
@@ -211,7 +211,7 @@ function place3CardFlush(flushArr) {
 }
 
 function placeFlush(cardArr) {
-  var playerCards = getPlayerCards();
+  let playerCards = getPlayerCards();
 
   //addLog("Flush Played " + printCardArr(cardArr));
   addCardToHand(flushSlotCard1, playerCards);
@@ -241,7 +241,7 @@ function placeFlush(cardArr) {
 }
 
 function countFlushCardsPlayed() {
-  var acc = 0;
+  let acc = 0;
 
   if (flushSlotCard1 != null) {
     acc++;
@@ -268,22 +268,22 @@ function countFlushCardsPlayed() {
 
 function find4thFlushCard(cardArr) {
   //addLog("find4thFlushCard() ");
-  var suit = -1;
+  let suit = -1;
   if (flushSlotCard1.suit == flushSlotCard2.suit &&
     flushSlotCard2.suit == flushSlotCard3.suit) {
 
     // store the suit and gather player cards with same suit
     suit = flushSlotCard1.suit;
-    var possibleCards = [];
-    for (var i = 0; i < cardArr.length; i++) {
+    let possibleCards = [];
+    for (let i = 0; i < cardArr.length; i++) {
       if (cardArr[i].suit == suit) {
         possibleCards.push(cardArr[i]);
       }
     }
 
     // check card is not part of 4k or straight flush
-    for (var i = 0; i < possibleCards.length; i++) {
-      var fourthCard = possibleCards[i];
+    for (let i = 0; i < possibleCards.length; i++) {
+      let fourthCard = possibleCards[i];
 
       addCardToHand(flushSlotCard4, getPlayerCards());
       flushSlotCard4 = fourthCard;
@@ -306,24 +306,24 @@ function find4thFlushCard(cardArr) {
 
 function find5thFlushCard(cardArr) {
   //addLog("find5thFlushCard() ");
-  var suit = -1;
+  let suit = -1;
   if (flushSlotCard1.suit == flushSlotCard2.suit &&
     flushSlotCard2.suit == flushSlotCard3.suit &&
     flushSlotCard3.suit == flushSlotCard4.suit) {
 
     // store the suit and gather player cards with same suit
     suit = flushSlotCard1.suit;
-    var possibleCards = [];
-    for (var i = 0; i < cardArr.length; i++) {
+    let possibleCards = [];
+    for (let i = 0; i < cardArr.length; i++) {
       if (cardArr[i].suit == suit) {
         possibleCards.push(cardArr[i]);
       }
     }
 
     // check card is not part of 4k or straight flush
-    for (var i = 0; i < possibleCards.length; i++) {
+    for (let i = 0; i < possibleCards.length; i++) {
 
-      var tempCard = possibleCards[i];
+      let tempCard = possibleCards[i];
       addCardToHand(flushSlotCard5, getPlayerCards());
       flushSlotCard5 = tempCard;
       removeCardFromArray(tempCard, getPlayerCards());
@@ -341,31 +341,31 @@ function find5thFlushCard(cardArr) {
 function fullFlushCardReplace(cardArr) {
 
   // check for 5 cards played for flush
-  var currFlushCount = countFlushCardsPlayed();
+  let currFlushCount = countFlushCardsPlayed();
   //addLog("currFlushCount " + currFlushCount);
   if (currFlushCount == 5) {
 
-    var oneKcard;
-    var twoKcard;
-    var threeKcard;
+    let oneKcard;
+    let twoKcard;
+    let threeKcard;
 
-    var threeStrFlush;
-    var fourStrFlush;
-    var fiveStrFlush;
+    let threeStrFlush;
+    let fourStrFlush;
+    let fiveStrFlush;
 
-    var switchCard;
-    var card;
-    var strFlushArr;
+    let switchCard;
+    let card;
+    let strFlushArr;
 
     function flushCardSwitch(flushCard) {
       // check same suit but higher value
       if (card.value > flushCard.value && card.suit == flushCard.suit) {
 
-        var strFlushCards = checkStrFlushSwitch(card, flushCard, cardArr);
+        let strFlushCards = checkStrFlushSwitch(card, flushCard, cardArr);
 
         // addLog("strFlushCards: " + printCardArr(strFlushCards));
         if (strFlushCards != null) {
-          var len = strFlushCards.length;
+          let len = strFlushCards.length;
           switch (len) {
             case 3:
               // addLog("set threeStrFlush: " + printCard(flushCard));
@@ -387,21 +387,21 @@ function fullFlushCardReplace(cardArr) {
 
         //start with a check that the switch can even complete a 4k
         //addLog("check 4k possible");
-        var fourKacc = checkValuePlayedCount(flushCard.value);
+        let fourKacc = checkValuePlayedCount(flushCard.value);
         if (fourKacc > 1) {
           //addLog("four k for " + printCard(flushCard) + " is blocked: ");
           return;
         }
 
         // check lower played card can be used for 4k or str flush
-        var matchingValuesCreated = checkHandForMatchingValues(flushCard, cardArr);
+        let matchingValuesCreated = checkHandForMatchingValues(flushCard, cardArr);
 
         // add one for the flush card being added but not in hand yet
         matchingValuesCreated++;
         // addLog("matchingValuesCreated: " + matchingValuesCreated);
 
         // check current card matching kind in hand
-        var matchingValuesExisting = checkHandForMatchingValues(card, cardArr);
+        let matchingValuesExisting = checkHandForMatchingValues(card, cardArr);
         // addLog("matchingValuesExisting: " + matchingValuesExisting);
 
         // creates 4k attempt needs to be greater than existing
@@ -430,7 +430,7 @@ function fullFlushCardReplace(cardArr) {
     }
 
     // overwrite a card to better own hand
-    for (var i = 0; i < cardArr.length; i++) {
+    for (let i = 0; i < cardArr.length; i++) {
 
       // get player card
       card = cardArr[i];
@@ -443,12 +443,6 @@ function fullFlushCardReplace(cardArr) {
         // addLog("player card part of str flush");
         continue;
       }
-
-      var flush1Switch = new flushCardSwitch(flushSlotCard1);
-      var flush1Switch = new flushCardSwitch(flushSlotCard2);
-      var flush1Switch = new flushCardSwitch(flushSlotCard3);
-      var flush1Switch = new flushCardSwitch(flushSlotCard4);
-      var flush1Switch = new flushCardSwitch(flushSlotCard5);
     }
 
     //switch for full str flush first
@@ -495,7 +489,7 @@ function checkStrFlushSwitch(card, flushCard, cardArr) {
 
   //check card being replaced can be part of a str flush
   //addLog("check straight flush possible");
-  var strFlushCards = findStraightFlushCards(flushCard, cardArr);
+  let strFlushCards = findStraightFlushCards(flushCard, cardArr);
 
   //remove card that will be switched if part of new array
   removeCardFromArray(card, strFlushCards);

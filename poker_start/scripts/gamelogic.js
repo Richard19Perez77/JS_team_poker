@@ -1,5 +1,5 @@
 // starting point for scripts, init, and then interaction scripts
-// for debug check flags in debug, 
+// for debug check flags in debug,
 // for decks uncomment customDeck() types needed
 function init(document) {
   canvas = document.getElementById('puzzleCanvas');
@@ -379,7 +379,7 @@ function musicButtonClicked() {
 
 function checkImagesLoadedCount() {
   if (imagesLoaded === IMAGES_TO_LOAD) {
-    if ($("#loadingDiv").is(":visible")) {
+    if ( $("#loadingDiv" ).is(":visible")) {
       $("#loadingDiv").slideToggle(1000);
     }
   }
