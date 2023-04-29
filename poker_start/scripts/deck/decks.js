@@ -1400,21 +1400,18 @@ function threeKindDeck() {
   //player 1 hand
   let suit = 0;
   let value = 12;
-
   let path0 = getCardImagePath(suit, value);
   let card0 = new Card(suit, value, path0);
   card0.bitmap.src = card0.imagePath;
   deckCards[0] = card0;
 
   value = 10;
-
   let path1 = getCardImagePath(suit, value);
   let card1 = new Card(suit, value, path1);
   card1.bitmap.src = card1.imagePath;
   deckCards[1] = card1;
 
   suit = 1;
-
   let path2 = getCardImagePath(suit, value);
   let card2 = new Card(suit, value, path2);
   card2.bitmap.src = card2.imagePath;
@@ -1440,6 +1437,7 @@ function threeKindDeck() {
   let card5 = new Card(suit, value, path5);
   card5.bitmap.src = card5.imagePath;
   deckCards[5] = card5;
+
 
   let path6 = getCardImagePath(suit, value);
   let card6 = new Card(suit, value, path6);
