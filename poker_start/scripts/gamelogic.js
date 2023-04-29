@@ -222,7 +222,7 @@ function leftArrowListener() {
     playercardPressed = -1;
     placeholderPressed = -1;
 
-    if (shiftPressed === false) {
+    if (topCardSelected === false) {
 
         // move cursor of player cards
         if (arrowPlayerCardSelected === -1) {
@@ -258,7 +258,7 @@ function upArrowListener() {
     playercardPressed = -1;
     placeholderPressed = -1;
 
-    shiftPressed = false;
+    topCardSelected = false;
 
     if (arrowPlayerCardSelected === -1) {
         arrowPlayerCardSelected = 0;
@@ -271,7 +271,7 @@ function downArrowListener() {
     playercardPressed = -1;
     placeholderPressed = -1;
 
-    shiftPressed = true;
+    topCardSelected = true;
 
     //if no placeholder card is pressed select card 0
     if (arrowPlaceholderCardSelected === -1) {
@@ -285,7 +285,7 @@ function rightArrowListener() {
     playercardPressed = -1;
     placeholderPressed = -1;
 
-    if (shiftPressed === false) {
+    if (topCardSelected === false) {
 
         //move cursor of player cards
         if (arrowPlayerCardSelected === -1) {
