@@ -1,7 +1,7 @@
 h1 {
   background-image: radial-gradient(#009933, #330099);
-  font-family: 'CustomFont';
-  margin: 0px;
+  font-family: 'CustomFont', serif;
+  margin: 0;
   color: white;
   text-align: center;
   -webkit-touch-callout: none;
@@ -14,7 +14,7 @@ h1 {
 
 body {
   background-color: #330099;
-  font-family: 'CustomFont';
+  font-family: 'CustomFont', serif;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -24,7 +24,7 @@ body {
 }
 
 button {
-  font-family: 'CustomFont';
+  font-family: 'CustomFont', serif;
   color: black;
   font-size: 18px;
   height: 55px;
@@ -49,7 +49,7 @@ button:active {
 }
 
 textarea {
-  font-family: 'CustomFont';
+  font-family: 'CustomFont', serif;
   color: white;
   font-size: 30px;
   background-color: #330099;
@@ -116,7 +116,7 @@ textarea {
   border: double;
   color: black;
   background-color: #009933;
-  font-family: 'CustomFont';
+  font-family: 'CustomFont', serif;
   height: 530px;
   width: 550px;
   position: absolute;
@@ -146,7 +146,7 @@ textarea {
 #activity {
   border: double;
   text-align: center;
-  font-family: 'CustomFont';
+  font-family: 'CustomFont', serif;
   color: black;
   background-color: #009933;
   margin: 10px 10px 10px 10px;
@@ -163,7 +163,7 @@ textarea {
 
 #buttonDiv {
   padding: 10px 10px 10px 10px;
-  font-family: 'CustomFont';
+  font-family: 'CustomFont', serif;
 }
 
 #puzzleCanvasDiv {
