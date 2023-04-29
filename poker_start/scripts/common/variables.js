@@ -75,9 +75,9 @@ ruleLog = ruleLog + spanL1 + "e" + endSpan + spanR1 + "End turn" + endSpan + br;
 ruleLog = ruleLog + spanL1 + "r" + endSpan + spanR1 + "Organize cards" + endSpan + br;
 ruleLog = ruleLog + spanL1 + "x" + endSpan + spanR1 + "Read score" + endSpan + br;
 ruleLog = ruleLog + spanL1 + "c" + endSpan + spanR1 + "Read controls" + endSpan + br;
-ruleLog = ruleLog + spanL1 + "w" + endSpan + spanR1 + "New game" + endSpan + br;
-ruleLog = ruleLog + spanL1 + "m" + endSpan + spanR1 + "More music" + endSpan + br;
-ruleLog = ruleLog + spanL1 + "b" + endSpan + spanR1 + "My blog" + endSpan + br;
+ruleLog = ruleLog + spanL1 + "n" + endSpan + spanR1 + "New game" + endSpan + br;
+ruleLog = ruleLog + spanL1 + "m" + endSpan + spanR1 + "Music" + endSpan + br;
+ruleLog = ruleLog + spanL1 + "b" + endSpan + spanR1 + "Games" + endSpan + br;
 
 let scoreText;
 

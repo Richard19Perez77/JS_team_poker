@@ -58,7 +58,7 @@ function endTurnClicked() {
 
       gameOver = true;
 
-      addLog("Game Over: Press w to start new game!");
+      addLog("Game Over: Press n to start new game!");
 
       if (doRunControlTest) {
         totalTestScores();

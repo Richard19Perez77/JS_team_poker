@@ -116,7 +116,7 @@ function onKeyDown(e) {
       case 77: //m
         musicButtonClicked();
         break;
-      case 87: // w
+      case 78: // n
         if (isPlayerTurn() || gameOver) {
           newGameClicked();
         }
