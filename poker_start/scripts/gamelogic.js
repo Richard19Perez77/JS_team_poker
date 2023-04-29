@@ -4,6 +4,12 @@
 function init(document) {
   canvas = document.getElementById('puzzleCanvas');
 
+  // screen resize offset adjustment
+  adjustOffset();
+
+  loadingDiv = $("#loadingDiv" );
+  JtutorialDiv = $("#tutorialDiv");
+
   let tutorialImage = $("#tutorialImage")[0];
   tutorialImage.src = "assets/images/tutorial.png"
   tutorialImage.onload = function() {
@@ -12,7 +18,8 @@ function init(document) {
     drawBoard();
   }
 
-  $("#pageDiv").fadeIn(500, function() {
+  let pageDivLocal = $(".pageDivClass");
+  pageDivLocal.fadeIn(500, function() {
     $(this).css("display", "normal");
   });
 
@@ -81,28 +88,28 @@ function init(document) {
     });
   }
 
-  slotThreeButton = $("#slotThreeButton")[0];
+  let slotThreeButton = $("#slotThreeButton")[0];
   if (slotThreeButton != null) {
     slotThreeButton.addEventListener("click", function() {
       placeHolderPress(2);
     });
   }
 
-  slotFourButton = $("#slotFourButton")[0];
+  let slotFourButton = $("#slotFourButton")[0];
   if (slotFourButton != null) {
     slotFourButton.addEventListener("click", function() {
       placeHolderPress(3);
     });
   }
 
-  slotFiveButton = $("#slotFiveButton")[0];
+  let slotFiveButton = $("#slotFiveButton")[0];
   if (slotFiveButton != null) {
     slotFiveButton.addEventListener("click", function() {
       placeHolderPress(4);
     });
   }
 
-  slotSixButton = $("#slotSixButton")[0];
+  let slotSixButton = $("#slotSixButton")[0];
   if (slotSixButton != null) {
     slotSixButton.addEventListener("click", function() {
       placeHolderPress(5);
@@ -116,22 +123,25 @@ function init(document) {
     });
   }
 
-  tutorialDiv = $("#tutorialDiv")[0];
+  tutorialDiv = JtutorialDiv[0];
   tutorialDiv.addEventListener('click', function(e) {
     hideTutorial();
   });
 
+  draggableControlsTextArea = $(".draggableControlsTextArea");
   $(function() {
-    $("#draggableControlsTextArea").draggable();
+    draggableControlsTextArea.draggable();
   });
-  $("#controlText")[0].innerHTML = ruleLog;
 
+  controlText = $("#controlText");
+  controlText[0].innerHTML = ruleLog;
+
+  draggableScoreDiv = $("#draggableScoreDiv");
   $(function() {
-    $("#draggableScoreDiv").draggable();
+    draggableScoreDiv.draggable();
   });
 
   scoreText = $("#scoreText")[0];
-
   activityLog = $("#activity")[0];
 
   newGameButton = $("#newGameButton")[0];
@@ -154,8 +164,8 @@ function init(document) {
     blogButtonClicked();
   });
 
-  scoreButton = $("#scoreButton")[0];
-  scoreButton.addEventListener("click", function() {
+  scoreButton = $("#scoreButton");
+  scoreButton[0].addEventListener("click", function() {
     scoreButtonClicked();
   });
 
@@ -163,8 +173,6 @@ function init(document) {
   controlsButton.addEventListener("click", function() {
     controlsButtonClicked();
   });
-
-  adjustOffset();
 
   // define canvas listeners for mouse interaction on the canvas
   canvas.addEventListener("mousedown", doMouseDown, false);
@@ -221,7 +229,6 @@ function leftArrowListener() {
   } else {
 
     // move cursor of placeholder cards
-
     if (arrowPlaceholderCardSelected === -1) {
       arrowPlaceholderCardSelected = 0;
     } else {
@@ -316,53 +323,35 @@ function controlListener() {
   drawBoard();
 }
 
-function shiftListener() {
-  playercardPressed = -1;
-  placeholderPressed = -1;
-
-  if (shiftPressed === true) {
-    shiftPressed = false;
-  } else {
-    shiftPressed = true;
-
-    //if no placeholder card is pressed select card 0
-    if (arrowPlaceholderCardSelected === -1) {
-      arrowPlaceholderCardSelected = 0;
-    }
-  }
-
-  drawBoard();
-}
-
 function controlsButtonClicked() {
-  if ($("#draggableControlsTextArea").is(':animated') === false) {
+  if (draggableControlsTextArea.is(':animated') === false) {
 
-    if ($("#draggableScoreDiv").is(":visible")) {
-      $("#draggableScoreDiv").slideToggle(100);
+    if (draggableScoreDiv.is(":visible")) {
+      draggableScoreDiv.slideToggle(100);
     }
 
-    $("#draggableControlsTextArea").stop(true);
+    draggableControlsTextArea.stop(true);
     $("#draggableControlsTextArea").slideToggle(100, function() {
-      if ($("#controlText").is(":visible")) {
-        $("#controlText").focus();
+      if (controlText.is(":visible")) {
+        controlText.focus();
       }
     });
   }
 }
 
 function scoreButtonClicked() {
-  if ($("#draggableScoreDiv").is(':animated') === false) {
+  if (draggableScoreDiv.is(':animated') === false) {
     totalScoreOfHands();
 
-    if ($("#draggableControlsTextArea").is(":visible")) {
+    if (draggableControlsTextArea.is(":visible")) {
       $("#draggableControlsTextArea").slideToggle(100);
     }
 
-    $("#draggableScoreDiv").stop(true);
-    $("#draggableScoreDiv").slideToggle(100);
+    draggableScoreDiv.stop(true);
+    draggableScoreDiv.slideToggle(100);
   }
 
-  $("#scoreButton").focus();
+  scoreButton.focus();
 }
 
 function blogButtonClicked() {
@@ -373,24 +362,28 @@ function blogButtonClicked() {
 
 function musicButtonClicked() {
   if (confirm("Do you want to hear more music at site 'https://freemusicarchive.org' ?")) {
-    window.open("http://freemusicarchive.org/music/The_303/Brownian_Motion/");
+    window.open("https://freemusicarchive.org/music/The_303/Brownian_Motion/");
   }
 }
 
 function checkImagesLoadedCount() {
   if (imagesLoaded === IMAGES_TO_LOAD) {
-    if ( $("#loadingDiv" ).is(":visible")) {
+    if (loadingDiv.is(":visible")) {
       $("#loadingDiv").slideToggle(1000);
     }
   }
 }
 
 function hideTutorial() {
-  if ($("#loadingDiv").is(":hidden")) {
+  if (loadingDiv.is(":hidden")) {
     if (tutorialDiv.hidden === false) {
-      tutorialDiv.hidden = true;
-      gameReady = true;
-      drawBoard();
+      if (JtutorialDiv.is(":visible") && JtutorialDiv.is(':animated') === false) {
+        JtutorialDiv.slideToggle(1000, function (){
+          tutorialDiv.hidden = true;
+          gameReady = true;
+          drawBoard();
+        });
+      }
     }
   }
 }

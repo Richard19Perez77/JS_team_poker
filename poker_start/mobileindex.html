@@ -8,16 +8,15 @@
 	<title>Mobile Team Poker</title>
 
 	<!-- Game scripts -->
-	<script src="scripts/jquery/jquery-3.2.1.min.js"></script>
-	<script src="scripts/jquery/jquery-ui.js"></script>
+	<!-- Game scripts -->
+	<link rel="stylesheet" href="libs/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+
+	<script src="libs/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+	<script src="libs/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+
 	<script src="scripts/card/card.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/card/cardcompare.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/card/cardplaced.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/card/cardset.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/card/placeholdercards.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/common/variables.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/debug/debug.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/debug/debugfunctions.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/debug/debugvariables.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/deck/decks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/deck/flushdecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
@@ -25,7 +24,6 @@
 	<script src="scripts/deck/strdecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/deck/threeKDecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/draw/draw.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/elements/visible.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/find/find2k.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/find/find3k.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/find/find4k.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
@@ -34,7 +32,7 @@
 	<script src="scripts/find/findstr.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/find/findstrflush.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/interaction/check.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/interaction/keypress.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+	<script src="scripts/interaction/onkeypress.js"></script>
 	<script src="scripts/interaction/keypressmove.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/interaction/mouse.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 	<script src="scripts/interaction/numberpress.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
@@ -49,7 +47,7 @@
 	<script src="scripts/gamelogic.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 
 	<!-- CSS -->
-	<link href="styles/cardTheme.css?ver=<%=DateTime.Now.Ticks.ToString()%>" rel="stylesheet" type="text/css" />
+	<link href="assets/styles/cardTheme.css?ver=<%=DateTime.Now.Ticks.ToString()%>" rel="stylesheet" type="text/css" />
 
 	<link href="assets/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
 	<link href="assets/images/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png" />
@@ -61,7 +59,7 @@
 			init(document);
 
 			if (isLocalStorageSupported()) {
-				var scoreSaved = JSON.parse(localStorage.getItem("scoreSave"));
+				let scoreSaved = JSON.parse(localStorage.getItem("scoreSave"));
 				if (scoreSaved != null && scoreSaved.highScore != null) {
 					highScore = scoreSaved.highScore;
 				}
@@ -93,7 +91,7 @@
 
 <body>
 
-	<div id="pageDiv">
+	<div id="pageDiv" class="pageDivClass">
 
 		<div id="titleDiv">
 			<h1 id="fb-welcome">Mobile Team Poker</h1>
@@ -103,8 +101,10 @@
 			<img id="tutorialImage" alt="Tutorial">
 		</div>
 
+		<div class="draggableControlsTextArea">
 		<div id="draggableControlsTextArea" class="ui-widget-content">
 			<div id="controlText" tabindex="0"></div>
+		</div>
 		</div>
 
 		<div id="draggableScoreDiv" class="ui-widget-content">
@@ -112,7 +112,7 @@
 		</div>
 
 		<div id="loadingDiv" style="width: 930px; height: 845px;">
-			<h2 id="loading" style="font-family: CustomFont;">Loading...</h1>
+			<h2 id="loading" style="font-family: CustomFont,serif;">Loading...</h2>
 		</div>
 
 		<div id="puzzleCanvasDiv">

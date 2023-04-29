@@ -8,7 +8,7 @@
 
 	<!-- Game scripts -->
 	<link rel="stylesheet" href="libs/jquery-ui-1.12.1.custom/jquery-ui.min.css">
-	
+
 	<script src="libs/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
 	<script src="libs/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 
@@ -57,7 +57,7 @@
 			init(document);
 
 			if (isLocalStorageSupported()) {
-				var scoreSaved = JSON.parse(localStorage.getItem("scoreSave"));
+				let scoreSaved = JSON.parse(localStorage.getItem("scoreSave"));
 				if (scoreSaved != null && scoreSaved.highScore != null) {
 					highScore = scoreSaved.highScore;
 				}
@@ -91,14 +91,16 @@
 
 <body>
 
-	<div id="pageDiv">
+	<div id="pageDiv" class="pageDivClass">
 
 		<div id="titleDiv">
 			<h1 id="welcome">Team Poker</h1>
 		</div>
 
+		<div class="draggableControlsTextArea">
 		<div id="draggableControlsTextArea" class="ui-widget-content">
 			<div id="controlText" tabindex="0"></div>
+		</div>
 		</div>
 
 		<div id="draggableScoreDiv" class="ui-widget-content">
@@ -106,11 +108,11 @@
 		</div>
 
 		<div id="tutorialDiv" style="width: 700px; height: 750px;">
-			<img id="tutorialImage" alt="Tutorial">
+			<img id="tutorialImage" alt="Tutorial" src="">
 		</div>
 
 		<div id="loadingDiv" style="width: 930px; height: 845px;">
-			<h2 id="loading" style="font-family: CustomFont;">Loading...</h2>
+			<h2 id="loading" style="font-family: CustomFont,serif;">Loading...</h2>
 		</div>
 
 		<div id="puzzleCanvasDiv">

@@ -1,3 +1,8 @@
+let draggableControlsTextArea = null;
+let controlText = null;
+let draggableScoreDiv = null
+let JtutorialDiv = null;
+
 let player1isPC = false;
 let player2isPC = true;
 let player3isPC = true;
@@ -13,7 +18,7 @@ let PC_TURN_DELAY = 1000;
 let MAX_PLAYER_CARDS = 7;
 
 let backImage = new Image();
-let loadingDiv;
+let loadingDiv = null;
 let imagesLoaded = 0;
 let IMAGES_TO_LOAD = 30;
 
@@ -24,10 +29,6 @@ let STRAIGHT_BONUS = 125;
 let FLUSH_BONUS = 175;
 let FOUR_K_BONUS = 300;
 let STRAIGHT_FLUSH_BONUS = 500;
-
-let selectLeftButton;
-let selectRightButton;
-let shiftButton;
 
 let placeHolderMouseOverCardIndex = -1;
 
