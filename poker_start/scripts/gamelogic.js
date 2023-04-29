@@ -132,7 +132,7 @@ function init(document) {
     controlText = $("#controlText");
     controlText[0].innerHTML = ruleLog;
 
-    draggableScoreDiv = $("#draggableScoreDiv");
+    draggableScoreDiv = $(".draggableScoreDiv");
     $(function () {
         draggableScoreDiv.draggable();
     });
