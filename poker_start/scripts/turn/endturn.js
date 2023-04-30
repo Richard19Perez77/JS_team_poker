@@ -1,7 +1,7 @@
 function endTurnClicked() {
   let playerTurnOver = false;
 
-  //different hands end differently
+  // different hands types switch
   switch (targetHand) {
     case 0:
       playerTurnOver = true;
@@ -349,6 +349,7 @@ function organize3k() {
   }
 }
 
+// decide the next hand to play based on target hand at play
 function allCardsPlayed() {
   let acc = 0;
   switch (targetHand) {
