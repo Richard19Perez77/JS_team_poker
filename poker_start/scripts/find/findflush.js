@@ -16,6 +16,7 @@ function findFlushCard() {
       }
     }
 
+    // check for count and played value for 4k
     let sameValueCount = checkHandForMatchingValues(card, playerCards);
     if (sameValueCount >= 2) {
       let hasAValuePlayed = checkCardValueHasBeenPlayed(card);
