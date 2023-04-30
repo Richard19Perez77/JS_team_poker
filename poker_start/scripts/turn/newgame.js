@@ -1,5 +1,8 @@
 function newGameClicked() {
 
+  valueArr4k.clear();
+  suitArr4k.clear();
+
   $("#endTurnButton").focus();
 
   endTurnButton.disabled = false;

@@ -6,7 +6,7 @@ function setDebugFlags() {
   // test count of games to average scores and hands
   // default         false
   doRunControlTest = false;
-  gamesToPlay = 100;
+  gamesToPlay = 1000;
 
   // show cards ui during testing
   // default false
@@ -25,7 +25,7 @@ function setDebugFlags() {
   doLogPlacedCards = true;
 
   // log player turn log:
-  // default       true
+  // default        true
   doLogPlayerTurn = true;
 
   // log details of card comparing:

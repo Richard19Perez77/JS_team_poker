@@ -1,0 +1,26 @@
+Game Count = 1000
+
+hc card played average 0.921
+hc card score average 34.155266015200866
+
+2k card played average 0.932
+2k card score average 69.53218884120172
+
+3k card played average 0.3
+3k card score average 100.82
+
+St card played average 0.593
+St card score average 162.2344013490725
+
+fl card played average 0.955
+fl card score average 215.1560209424084
+
+4k card played average 0.44
+4k card score average 327.94545454545454
+
+sf card played average 0.297
+sf card score average 538.8215488215488
+
+total score average 732.512
+perfect game average 0.016
+Sun Apr 30 2023 00:15:37 GMT-0500 (Central Daylight Time)
