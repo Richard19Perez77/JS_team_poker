@@ -99,17 +99,24 @@ function find3Kcard() {
 
     if (possible3kCards.length >= 3) {
 
+        removeFrom4kSFLists(threePSlotCard1);
         addCardToHand(threePSlotCard1, playerCards);
         threePSlotCard1 = possible3kCards[0];
-        removeCardFromArray(possible3kCards[0], playerCards)
+        removeCardFromArray(possible3kCards[0], playerCards);
+        addTo4kSFLists(threePSlotCard1);
 
+        removeFrom4kSFLists(threePSlotCard2);
         addCardToHand(threePSlotCard2, playerCards);
         threePSlotCard2 = possible3kCards[1];
-        removeCardFromArray(possible3kCards[1], playerCards)
+        removeCardFromArray(possible3kCards[1], playerCards);
+        addTo4kSFLists(threePSlotCard2);
 
+        removeFrom4kSFLists(threePSlotCard3);
         addCardToHand(threePSlotCard3, playerCards);
         threePSlotCard3 = possible3kCards[2];
-        removeCardFromArray(possible3kCards[2], playerCards)
+        removeCardFromArray(possible3kCards[2], playerCards);
+        addTo4kSFLists(threePSlotCard3);
+
 
         if (doLogPlacedCards === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays 3K " + printCard(threePSlotCard1) + printCard(threePSlotCard2) + printCard(threePSlotCard3));
