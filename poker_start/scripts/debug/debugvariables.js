@@ -28,7 +28,6 @@ let runAuto4k = true;
 let runAutoSF = true;
 
 let doLogPlacedCards = false;
-let doNeverEndGame = false;
 let doLogPlayerTurn = true;
 let doAutoHideTutorial = false;
 let doLogCardDetails = false;
@@ -64,42 +63,35 @@ function printTestScores() {
   addLog("hc card played average " + gamesHCcardPlayed / gamesToPlay);
   //addLog("hc card scores " + printScoreArray(hcScores));
   addLog("hc card score average " + totalHCcardPoints / gamesHCcardPlayed);
-  addLog("hc card score bonus average " + (totalHCcardPoints / gamesHCcardPlayed));
   addLog("");
 
   addLog("2k card played average " + games2kcardPlayed / gamesToPlay);
   //addLog("2k card scores " + printScoreArray(twokScores));
   addLog("2k card score average " + total2kcardPoints / games2kcardPlayed);
-  addLog("2k card score bonus average " + (total2kcardPoints / gamesHCcardPlayed));
   addLog("");
 
   addLog("3k card played average " + games3kcardPlayed / gamesToPlay);
   //addLog("3k card scores " + printScoreArray(threekScores));
   addLog("3k card score average " + total3kcardPoints / games3kcardPlayed);
-  addLog("3k card score bonus average " + (total3kcardPoints / games3kcardPlayed));
   addLog("");
 
   addLog("St card played average " + gamesStcardPlayed / gamesToPlay);
   //addLog("st card scores " + printScoreArray(stScores));
   addLog("St card score average " + totalStcardPoints / gamesStcardPlayed);
-  addLog("st card score bonus average " + (totalStcardPoints / gamesStcardPlayed));
   addLog("");
 
   addLog("fl card played average " + gamesFlcardPlayed / gamesToPlay);
   //addLog("fl card scores " + printScoreArray(flScores));
   addLog("fl card score average " + totalFlcardPoints / gamesFlcardPlayed);
-  addLog("fl card score bonus average " + (totalFlcardPoints / gamesFlcardPlayed));
   addLog("");
 
   addLog("4k card played average " + games4kcardPlayed / gamesToPlay);
   //addLog("4k card scores " + printScoreArray(fourkScores));
   addLog("4k card score average " + total4kcardPoints / games4kcardPlayed);
-  addLog("4k card score bonus average " + (total4kcardPoints / games4kcardPlayed));
   addLog("");
 
   addLog("sf card played average " + gamesSFcardPlayed / gamesToPlay);
   addLog("sf card score average " + totalSFcardPoints / gamesSFcardPlayed);
-  addLog("sf card score bonus average " + (totalSFcardPoints / gamesSFcardPlayed));
   addLog("");
 
   addLog("total score average " + totalHighScore / gamesToPlay);
