@@ -143,7 +143,7 @@ function init(document) {
 
     newGameButton = $("#newGameButton")[0];
     newGameButton.addEventListener("click", function () {
-        if (gameReady && isPlayerTurn()) {
+        if (isPlayerTurn() || gameOver) {
             newGameClicked();
         }
     });
