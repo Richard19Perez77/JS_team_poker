@@ -48,12 +48,10 @@ function findHCcard() {
     let possibleCards = [];
 
     let tempCard = null;
-    let sameFlushCount;
     for (let i = 0; i < playerCards.length; i++) {
 
         canReplaceCurrentHC = false;
         sameValueCount = 0;
-        sameFlushCount = 0;
         canStraight = false;
         isTwoCardStrFlush = false;
 
@@ -77,12 +75,7 @@ function findHCcard() {
                     isTwoCardStrFlush = checkHandForNextStrFlushCard(tempCard, playerCards);
 
                     if (!isTwoCardStrFlush) {
-
-                        sameFlushCount = checkCardFlushCount(tempCard, playerCards);
-
-                        if (sameFlushCount < 5) {
-                            possibleCards.push(tempCard);
-                        }
+                        possibleCards.push(tempCard);
                     }
                 }
             }
