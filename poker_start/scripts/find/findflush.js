@@ -35,7 +35,7 @@ function findFlushCard() {
       let found = find4thFlushCard(possibleCards);
       if (found) {
         organizeFlush();
-        found = find5thFlushCard(possibleCards);
+        find5thFlushCard(possibleCards);
         return;
       }
       break;
@@ -307,9 +307,9 @@ function find4thFlushCard(cardArr) {
 function find5thFlushCard(cardArr) {
   //addLog("find5thFlushCard() ");
   let suit = -1;
-  if (flushSlotCard1.suit == flushSlotCard2.suit &&
-    flushSlotCard2.suit == flushSlotCard3.suit &&
-    flushSlotCard3.suit == flushSlotCard4.suit) {
+  if (flushSlotCard1.suit === flushSlotCard2.suit &&
+    flushSlotCard2.suit === flushSlotCard3.suit &&
+    flushSlotCard3.suit === flushSlotCard4.suit) {
 
     // store the suit and gather player cards with same suit
     suit = flushSlotCard1.suit;
