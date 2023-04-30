@@ -41,7 +41,7 @@ function findFlushCard() {
                     if (!valueArr4k.contains(tempCard.value) && !hasPair) {
 
                         // check for each slot to be moved
-                        if(!valueArr4k.contains(flushSlotCard1.value)){
+                        if (!valueArr4k.contains(flushSlotCard1.value)) {
                             // removeFrom4kSFLists(flushSlotCard1)
                             // addCardToHand(flushSlotCard1, playerCards);
                             // flushSlotCard1 = tempCard;
@@ -100,7 +100,6 @@ function findFlushCard() {
             }
             break;
     }
-
 
     let a = [];
     let b = [];
@@ -196,25 +195,20 @@ function findFlushCard() {
         //place 3 cards if none are played
         if (currFlushCount === 0) {
             place3CardFlush(b);
-            return;
         }
     } else if (c.length === 3) {
 
         //place 3 cards if none are played
         if (currFlushCount === 0) {
             place3CardFlush(c);
-            return;
         }
     } else if (d.length === 3) {
 
         //place 3 cards if none are played
         if (currFlushCount === 0) {
             place3CardFlush(d);
-            return;
         }
     }
-
-    fullFlushCardReplace(possibleCards);
 }
 
 function place4CardFlush(flushArr) {
@@ -336,8 +330,8 @@ function find4thFlushCard(cardArr) {
         }
 
         // found fourth card, play it
-        for (let i = 0; i < possibleCards.length; i++) {
-            let fourthCard = possibleCards[i];
+        if (possibleCards.length > 0) {
+            let fourthCard = possibleCards[0];
 
             addCardToHand(flushSlotCard4, getPlayerCards());
             flushSlotCard4 = fourthCard;
@@ -369,183 +363,25 @@ function find5thFlushCard(cardArr) {
         suit = flushSlotCard1.suit;
         let possibleCards = [];
         for (let i = 0; i < cardArr.length; i++) {
-            if (cardArr[i].suit == suit) {
+            if (cardArr[i].suit === suit) {
                 possibleCards.push(cardArr[i]);
             }
         }
 
-        // check card is not part of 4k or straight flush
-        for (let i = 0; i < possibleCards.length; i++) {
+        // first item is usable
+        if (possibleCards.length > 0) {
 
-            let tempCard = possibleCards[i];
+            let tempCard = possibleCards[0];
             addCardToHand(flushSlotCard5, getPlayerCards());
             flushSlotCard5 = tempCard;
             removeCardFromArray(tempCard, getPlayerCards());
 
-            if (doLogPlacedCards == true) {
+            if (doLogPlacedCards === true) {
                 addLog("Player " + (playerTurn + 1) + ": Plays 5th flush card" + printCard(flushSlotCard1) + printCard(flushSlotCard2) + printCard(flushSlotCard3) + printCard(flushSlotCard4) + printCard(flushSlotCard5));
             }
             cardPlacedAction();
-
-            return;
+            return true;
         }
     }
-}
-
-function fullFlushCardReplace(cardArr) {
-
-    // check for 5 cards played for flush
-    let currFlushCount = countFlushCardsPlayed();
-    //addLog("currFlushCount " + currFlushCount);
-    if (currFlushCount == 5) {
-
-        let oneKcard;
-        let twoKcard;
-        let threeKcard;
-
-        let threeStrFlush;
-        let fourStrFlush;
-        let fiveStrFlush;
-
-        let switchCard;
-        let card;
-        let strFlushArr;
-
-        function flushCardSwitch(flushCard) {
-            // check same suit but higher value
-            if (card.value > flushCard.value && card.suit == flushCard.suit) {
-
-                let strFlushCards = checkStrFlushSwitch(card, flushCard, cardArr);
-
-                // addLog("strFlushCards: " + printCardArr(strFlushCards));
-                if (strFlushCards != null) {
-                    let len = strFlushCards.length;
-                    switch (len) {
-                        case 3:
-                            // addLog("set threeStrFlush: " + printCard(flushCard));
-                            threeStrFlush = flushCard;
-                            switchCard = card;
-                            break;
-                        case 4:
-                            // addLog("set fourStrFlush: " + printCard(flushCard));
-                            fourStrFlush = flushCard;
-                            switchCard = card;
-                            break;
-                        case 5:
-                            // addLog("set fiveStrFlush: " + printCard(flushCard));
-                            fiveStrFlush = flushCard;
-                            switchCard = card;
-                            break;
-                    }
-                }
-
-                //start with a check that the switch can even complete a 4k
-                //addLog("check 4k possible");
-                let fourKacc = checkValuePlayedCount(flushCard.value);
-                if (fourKacc > 1) {
-                    //addLog("four k for " + printCard(flushCard) + " is blocked: ");
-                    return;
-                }
-
-                // check lower played card can be used for 4k or str flush
-                let matchingValuesCreated = checkHandForMatchingValues(flushCard, cardArr);
-
-                // add one for the flush card being added but not in hand yet
-                matchingValuesCreated++;
-                // addLog("matchingValuesCreated: " + matchingValuesCreated);
-
-                // check current card matching kind in hand
-                let matchingValuesExisting = checkHandForMatchingValues(card, cardArr);
-                // addLog("matchingValuesExisting: " + matchingValuesExisting);
-
-                // creates 4k attempt needs to be greater than existing
-                if (matchingValuesCreated <= matchingValuesExisting) {
-                    return;
-                }
-
-                if (matchingValuesCreated == 2) {
-                    oneKcard = flushCard;
-                    switchCard = card;
-                    return;
-                }
-
-                if (matchingValuesCreated == 3) {
-                    twoKcard = flushCard;
-                    switchCard = card;
-                    return;
-                }
-
-                if (matchingValuesCreated == 4) {
-                    threeKcard = flushCard;
-                    switchCard = card;
-                    return;
-                }
-            }
-        }
-
-        // overwrite a card to better own hand
-        for (let i = 0; i < cardArr.length; i++) {
-
-            // get player card
-            card = cardArr[i];
-            //addLog("player card: " + printCard(card));
-
-            //check card is not part of a straight flush in hand
-            strFlushArr = findStraightFlushCards(card, cardArr);
-            // addLog("strFlushArr: " + printCardArr(strFlushArr));
-            if (strFlushArr != null && strFlushArr.length >= 3) {
-                // addLog("player card part of str flush");
-                continue;
-            }
-        }
-
-        //switch for full str flush first
-        if (fiveStrFlush != null) {
-            addLog("Player " + (playerTurn + 1) + ": Switches " + printCard(switchCard) + " with " + printCard(fiveStrFlush));
-            addSetAndRemoveCard(fiveStrFlush, switchCard, getPlayerCards());
-            return;
-        }
-
-        //switch for full 4k second
-        if (threeKcard != null) {
-            addLog("Player " + (playerTurn + 1) + ": Switches " + printCard(switchCard) + " with " + printCard(threeKcard));
-            addSetAndRemoveCard(threeKcard, switchCard, getPlayerCards());
-            return;
-        }
-
-        if (fourStrFlush != null) {
-            addLog("Player " + (playerTurn + 1) + ": Switches " + printCard(switchCard) + " with " + printCard(fourStrFlush));
-            addSetAndRemoveCard(fourStrFlush, switchCard, getPlayerCards());
-            return;
-        }
-
-        if (threeStrFlush != null) {
-            addLog("Player " + (playerTurn + 1) + ": Switches " + printCard(switchCard) + " with " + printCard(threeStrFlush));
-            addSetAndRemoveCard(threeStrFlush, switchCard, getPlayerCards());
-            return;
-        }
-
-        if (twoKcard != null) {
-            addLog("Player " + (playerTurn + 1) + ": Switches " + printCard(switchCard) + " with " + printCard(twoKcard));
-            addSetAndRemoveCard(twoKcard, switchCard, getPlayerCards());
-            return;
-        }
-
-        if (oneKcard != null) {
-            addLog("Player " + (playerTurn + 1) + ": Switches " + printCard(switchCard) + " with " + printCard(oneKcard));
-            addSetAndRemoveCard(oneKcard, switchCard, getPlayerCards());
-            return;
-        }
-    }
-}
-
-function checkStrFlushSwitch(card, flushCard, cardArr) {
-
-    //check card being replaced can be part of a str flush
-    //addLog("check straight flush possible");
-    let strFlushCards = findStraightFlushCards(flushCard, cardArr);
-
-    //remove card that will be switched if part of new array
-    removeCardFromArray(card, strFlushCards);
-    return strFlushCards;
+    return false;
 }
