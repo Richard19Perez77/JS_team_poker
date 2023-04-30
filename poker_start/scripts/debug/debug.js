@@ -5,7 +5,7 @@ function setDebugFlags() {
 
   // test count of games to average scores and hands
   // default         false
-  doRunControlTest = false;
+  doRunControlTest = true;
   gamesToPlay = 1000;
 
   // show cards ui during testing

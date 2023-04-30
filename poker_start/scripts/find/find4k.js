@@ -44,9 +44,11 @@ function find4KCard() {
               continue;
             }
 
+            removeFrom4kSFLists(fourkSlotCard3);
             addCardToHand(fourkSlotCard3, playerCards);
             fourkSlotCard3 = playerCards[i];
             removeCardFromArray(fourkSlotCard3, playerCards);
+            addTo4kSFLists(fourkSlotCard3);
 
             organize4k();
 
@@ -82,9 +84,11 @@ function find4KCard() {
             continue;
           }
 
+          removeFrom4kSFLists(fourkSlotCard4);
           addCardToHand(fourkSlotCard4, playerCards);
           fourkSlotCard4 = card;
           removeCardFromArray(card, playerCards);
+          addTo4kSFLists(fourkSlotCard4);
 
           if (doLogCardDetails === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays 4th card 4K " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
@@ -220,12 +224,17 @@ function twoKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
       for (let i = 0; i < possibleCards.length; i += 2) {
         if (fourkSlotCard1.value < possibleCards[i].value &&
             fourkSlotCard2.value < possibleCards[i + 1].value) {
+
+          removeFrom4kSFLists(fourkSlotCard1);
+          removeFrom4kSFLists(fourkSlotCard2);
           addCardToHand(fourkSlotCard1, playerCards);
           addCardToHand(fourkSlotCard2, playerCards);
           fourkSlotCard1 = possibleCards[i];
           fourkSlotCard2 = possibleCards[i + 1];
           removeCardFromArray(fourkSlotCard1, playerCards);
           removeCardFromArray(fourkSlotCard2, playerCards);
+          addTo4kSFLists(fourkSlotCard1);
+          addTo4kSFLists(fourkSlotCard2);
 
           if (doLogPlacedCards === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays first 2K in 4K " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
@@ -243,6 +252,8 @@ function twoKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
       fourkSlotCard2 = possibleCards[1];
       removeCardFromArray(fourkSlotCard1, playerCards);
       removeCardFromArray(fourkSlotCard2, playerCards);
+      addTo4kSFLists(fourkSlotCard1);
+      addTo4kSFLists(fourkSlotCard2);
 
       if (doLogPlacedCards === true) {
         addLog("Player " + (playerTurn + 1) + ": Plays 2K in 4K " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
@@ -263,6 +274,9 @@ function threeKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
           fourkSlotCard2.value < possibleCards[i + 1].value &&
           fourkSlotCard3.value < possibleCards[i + 2].value) {
 
+          removeFrom4kSFLists(fourkSlotCard1);
+          removeFrom4kSFLists(fourkSlotCard2);
+          removeFrom4kSFLists(fourkSlotCard3);
           addCardToHand(fourkSlotCard1, playerCards);
           addCardToHand(fourkSlotCard2, playerCards);
           addCardToHand(fourkSlotCard3, playerCards);
@@ -272,6 +286,9 @@ function threeKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
           removeCardFromArray(possibleCards[i], playerCards);
           removeCardFromArray(possibleCards[i + 1], playerCards);
           removeCardFromArray(possibleCards[i + 2], playerCards);
+          addTo4kSFLists(fourkSlotCard1);
+          addTo4kSFLists(fourkSlotCard2);
+          addTo4kSFLists(fourkSlotCard3);
 
           if (doLogPlacedCards === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays 3K in 4K " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
@@ -287,6 +304,9 @@ function threeKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
         if (fourkSlotCard1.value < possibleCards[i].value &&
           fourkSlotCard2.value < possibleCards[i + 1].value) {
 
+          removeFrom4kSFLists(fourkSlotCard1);
+          removeFrom4kSFLists(fourkSlotCard2);
+          removeFrom4kSFLists(fourkSlotCard3);
           addCardToHand(fourkSlotCard1, playerCards);
           addCardToHand(fourkSlotCard2, playerCards);
           addCardToHand(fourkSlotCard3, playerCards);
@@ -298,6 +318,9 @@ function threeKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
           removeCardFromArray(possibleCards[i], playerCards);
           removeCardFromArray(possibleCards[i + 1], playerCards);
           removeCardFromArray(possibleCards[i + 2], playerCards);
+          addTo4kSFLists(fourkSlotCard1);
+          addTo4kSFLists(fourkSlotCard2);
+          addTo4kSFLists(fourkSlotCard3);
 
           if (doLogPlacedCards === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays 3K in 4k " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
@@ -317,6 +340,10 @@ function threeKPlaceLogic(possibleCards, cardsLeftToPlay, playerCards) {
       removeCardFromArray(possibleCards[1], playerCards);
       removeCardFromArray(possibleCards[2], playerCards);
 
+      addTo4kSFLists(fourkSlotCard1);
+      addTo4kSFLists(fourkSlotCard2);
+      addTo4kSFLists(fourkSlotCard3);
+
       if (doLogPlacedCards === true) {
         addLog("Player " + (playerTurn + 1) + ": Plays 3K in 4K " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
       }
@@ -331,21 +358,30 @@ function fourKPlaceLogic(cardsLeftToPlay, possibleCards, cardArr) {
     case 0:
       let currentIsBetter = currentPossibleCardIsHighest(possibleCards[0]);
       if (currentIsBetter === true) {
+
+        removeFrom4kSFLists(fourkSlotCard1);
         addCardToHand(fourkSlotCard1, cardArr);
         fourkSlotCard1 = possibleCards[0];
         removeCardFromArray(fourkSlotCard1, cardArr);
+        addTo4kSFLists(fourkSlotCard1);
 
+        removeFrom4kSFLists(fourkSlotCard2);
         addCardToHand(fourkSlotCard2, cardArr);
         fourkSlotCard2 = possibleCards[1];
         removeCardFromArray(fourkSlotCard2, cardArr);
+        addTo4kSFLists(fourkSlotCard2);
 
+        removeFrom4kSFLists(fourkSlotCard3);
         addCardToHand(fourkSlotCard3, cardArr);
         fourkSlotCard3 = possibleCards[2];
         removeCardFromArray(fourkSlotCard3, cardArr);
+        addTo4kSFLists(fourkSlotCard3);
 
+        removeFrom4kSFLists(fourkSlotCard4);
         addCardToHand(fourkSlotCard4, cardArr);
         fourkSlotCard4 = possibleCards[3];
         removeCardFromArray(fourkSlotCard4, cardArr);
+        addTo4kSFLists(fourkSlotCard4);
 
         if (doLogPlacedCards === true) {
           addLog("Player " + (playerTurn + 1) + ": Plays 4K " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
@@ -358,6 +394,11 @@ function fourKPlaceLogic(cardsLeftToPlay, possibleCards, cardArr) {
     case 2:
     case 3:
     case 4:
+      removeFrom4kSFLists(fourkSlotCard1);
+      removeFrom4kSFLists(fourkSlotCard2);
+      removeFrom4kSFLists(fourkSlotCard3);
+      removeFrom4kSFLists(fourkSlotCard4);
+
       addCardToHand(fourkSlotCard1, cardArr);
       addCardToHand(fourkSlotCard2, cardArr);
       addCardToHand(fourkSlotCard3, cardArr);
@@ -373,6 +414,11 @@ function fourKPlaceLogic(cardsLeftToPlay, possibleCards, cardArr) {
       removeCardFromArray(possibleCards[2], cardArr);
       removeCardFromArray(possibleCards[3], cardArr);
 
+      addTo4kSFLists(fourkSlotCard1);
+      addTo4kSFLists(fourkSlotCard2);
+      addTo4kSFLists(fourkSlotCard3);
+      addTo4kSFLists(fourkSlotCard4);
+
       if (doLogPlacedCards === true) {
         addLog("Player " + (playerTurn + 1) + ": Plays 4K " + printCard(fourkSlotCard1) + printCard(fourkSlotCard2) + printCard(fourkSlotCard3) + printCard(fourkSlotCard4));
       }
@@ -387,13 +433,6 @@ function currentPossibleCardIsHighest(card) {
     card.value >= fourkSlotCard2.value &&
     card.value >= fourkSlotCard3.value &&
     card.value >= fourkSlotCard4.value;
-}
-
-function check4kIsPlayed() {
-  return fourkSlotCard1 != null &&
-    fourkSlotCard2 != null &&
-    fourkSlotCard3 != null &&
-    fourkSlotCard4 != null;
 }
 
 function count4kCardsLeftToPlay() {
@@ -415,7 +454,7 @@ function count4kCardsLeftToPlay() {
 
 function checkForValuePlayed(value, suit){
 
-  // if we have the same value but not the same suit a 4k is not possibe
+  // if we have the same value but not the same suit a 4k is not possible
   if (hcSlotCard != null && hcSlotCard.value === value && hcSlotCard.suit !== suit) {
     return true;
   }
@@ -483,7 +522,6 @@ function checkForValuePlayed(value, suit){
 
 function doContinueCurrent4kPlay(cardCount) {
   if (cardCount === 4) {
-
     return false;
   }
 

@@ -171,13 +171,17 @@ function find3Kcard() {
             threePSlotCard3 == null) {
 
             //addLog("set in slot 1 and 2");
+            removeFrom4kSFLists(threePSlotCard1);
             addCardToHand(threePSlotCard1, playerCards);
             threePSlotCard1 = possible2kCards[0];
             removeCardFromArray(possible2kCards[0], playerCards)
+            addTo4kSFLists(threePSlotCard1);
 
+            removeFrom4kSFLists(threePSlotCard2);
             addCardToHand(threePSlotCard2, playerCards);
             threePSlotCard2 = possible2kCards[1];
             removeCardFromArray(possible2kCards[1], playerCards)
+            addTo4kSFLists(threePSlotCard2);
 
             if (doLogPlacedCards === true) {
                 addLog("Player " + (playerTurn + 1) + " Plays 3k " + printCard(threePSlotCard1) + printCard(threePSlotCard2) + printCard(threePSlotCard3));
