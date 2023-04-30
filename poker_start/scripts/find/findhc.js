@@ -18,6 +18,27 @@ function addTo4kLists(card) {
 function findHCcard() {
     let playerCards = getPlayerCards();
 
+    // replace card if possible
+    if (hcSlotCard != null) {
+        let acc = 0;
+        let tradeCard;
+        for (let i = 0; i < playerCards.length; i++) {
+            if (playerCards[i].value === hcSlotCard.value) {
+                for (let j = 0; j < playerCards.length; j++) {
+                    if (playerCards[j].value !== hcSlotCard.value) {
+                        if (!checkHandForNextStrFlushCard(playerCards[j], playerCards)) {
+                            removeFrom4kLists(hcSlotCard);
+                            addCardToHand(hcSlotCard, playerCards);
+                            hcSlotCard = playerCards[j];
+                            removeCardFromArray(hcSlotCard, playerCards);
+                            addTo4kLists(hcSlotCard);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     let canReplaceCurrentHC = false;
     let sameValueCount = 0;
     let canStraight = false;

@@ -87,7 +87,7 @@ function find3Kcard() {
     for (let i = 0; i < possible3kCards.length; i++) {
         let temp = possible3kCards[i];
         sameValueCount = checkHandForMatchingValues(temp, possible3kCards);
-        if (sameValueCount < 3) {
+        if (sameValueCount < 2) {
             removeCards.push(temp);
         }
     }
