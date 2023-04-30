@@ -112,6 +112,7 @@ function findFifthCard(validCards) {
                 straightSlotCard5 = card;
                 removeCardFromArray(card, getPlayerCards());
                 removeCardFromArray(card, validCards);
+                addTo4kLists(straightSlotCard5);
 
                 if (doLogPlacedCards === true) {
                     addLog("Player " + (playerTurn + 1) + ": Plays 5th card in straight" + printCard(card));
