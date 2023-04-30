@@ -105,8 +105,6 @@ let myGreen = "#009933";
 let myBlue = "#330099";
 let myBlack = "#000000";
 
-let totalScore = 0;
-
 let cardOffsetX = 0;
 let cardOffsetY = 0;
 

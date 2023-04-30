@@ -1,5 +1,7 @@
 function newGameClicked() {
 
+  totalHighScore = 0;
+
   valueArr4k.clear();
   suitArr4k.clear();
 
@@ -18,8 +20,6 @@ function newGameClicked() {
   log = "";
 
   sortBySuit = false;
-
-  totalScore = 0;
 
   logCount = 0;
   playerTurn = 0;

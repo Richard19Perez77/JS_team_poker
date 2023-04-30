@@ -5,9 +5,11 @@ function isTesting() {
 function setDebugFlags(boolVar) {
   doRunControlTest = boolVar;
 
+  maxHighScore = 0;
+
   // test count of games to average scores and hands
   // default    100;
-  gamesToPlay = 1000;
+  gamesToPlay = 100;
 
   // show cards ui during testing
   // default           true
