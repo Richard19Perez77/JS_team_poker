@@ -73,25 +73,25 @@ function findFlushCard() {
   }
 
   // check for 5 card flush to play
-  if (a.length == 5) {
+  if (a.length === 5) {
     let hasBetterFlushScore = checkBetterFlush(a);
     if (hasBetterFlushScore) {
       placeFlush(a);
       return;
     }
-  } else if (b.length == 5) {
+  } else if (b.length === 5) {
     let hasBetterFlushScore = checkBetterFlush(b);
     if (hasBetterFlushScore) {
       placeFlush(b);
       return;
     }
-  } else if (c.length == 5) {
+  } else if (c.length === 5) {
     let hasBetterFlushScore = checkBetterFlush(c);
     if (hasBetterFlushScore) {
       placeFlush(c);
       return;
     }
-  } else if (d.length == 5) {
+  } else if (d.length === 5) {
     let hasBetterFlushScore = checkBetterFlush(d);
     if (hasBetterFlushScore) {
       placeFlush(d);
@@ -100,28 +100,28 @@ function findFlushCard() {
   }
 
   // check for 4 card flush to play
-  if (a.length == 4) {
+  if (a.length === 4) {
 
     //place 4 cards if only 3 are played
     if (currFlushCount <= 3) {
       place4CardFlush(a);
       return;
     }
-  } else if (b.length == 4) {
+  } else if (b.length === 4) {
 
     //place 4 cards if only 3 are played
     if (currFlushCount <= 3) {
       place4CardFlush(b);
       return;
     }
-  } else if (c.length == 4) {
+  } else if (c.length === 4) {
 
     //place 4 cards if only 3 are played
     if (currFlushCount <= 3) {
       place4CardFlush(c);
       return;
     }
-  } else if (d.length == 4) {
+  } else if (d.length === 4) {
 
     //place 4 cards if only 3 are played
     if (currFlushCount <= 3) {
@@ -131,31 +131,31 @@ function findFlushCard() {
   }
 
   // check for 3 card flush to play
-  if (a.length == 3) {
+  if (a.length === 3) {
 
     //place 3 cards if none are played
-    if (currFlushCount == 0) {
+    if (currFlushCount === 0) {
       place3CardFlush(a);
       return;
     }
-  } else if (b.length == 3) {
+  } else if (b.length === 3) {
 
     //place 3 cards if none are played
-    if (currFlushCount == 0) {
+    if (currFlushCount === 0) {
       place3CardFlush(b);
       return;
     }
-  } else if (c.length == 3) {
+  } else if (c.length === 3) {
 
     //place 3 cards if none are played
-    if (currFlushCount == 0) {
+    if (currFlushCount === 0) {
       place3CardFlush(c);
       return;
     }
-  } else if (d.length == 3) {
+  } else if (d.length === 3) {
 
     //place 3 cards if none are played
-    if (currFlushCount == 0) {
+    if (currFlushCount === 0) {
       place3CardFlush(d);
       return;
     }
@@ -184,7 +184,7 @@ function place4CardFlush(flushArr) {
   flushSlotCard4 = flushArr[3];
   removeCardFromArray(flushSlotCard4, playerCards);
 
-  if (doLogPlacedCards == true) {
+  if (doLogPlacedCards === true) {
     addLog("Player " + (playerTurn + 1) + ": Plays 4 card flush " + printCard(flushSlotCard1) + printCard(flushSlotCard2) + printCard(flushSlotCard3) + printCard(flushSlotCard4) + printCard(flushSlotCard5));
   }
   cardPlacedAction();
@@ -205,7 +205,7 @@ function place3CardFlush(flushArr) {
   flushSlotCard3 = flushArr[2];
   removeCardFromArray(flushSlotCard3, playerCards);
 
-  if (doLogPlacedCards == true) {
+  if (doLogPlacedCards === true) {
     addLog("Player " + (playerTurn + 1) + ": Plays 3 card flush " + printCard(flushSlotCard1) + printCard(flushSlotCard2) + printCard(flushSlotCard3) + printCard(flushSlotCard4) + printCard(flushSlotCard5));
   }
   cardPlacedAction();
@@ -235,7 +235,7 @@ function placeFlush(cardArr) {
   flushSlotCard5 = cardArr[4];
   removeCardFromArray(flushSlotCard5, playerCards);
 
-  if (doLogPlacedCards == true) {
+  if (doLogPlacedCards === true) {
     addLog("Player " + (playerTurn + 1) + ": Plays 5 card flush " + printCard(flushSlotCard1) + printCard(flushSlotCard2) + printCard(flushSlotCard3) + printCard(flushSlotCard4) + printCard(flushSlotCard5));
   }
   cardPlacedAction();
@@ -270,19 +270,19 @@ function countFlushCardsPlayed() {
 function find4thFlushCard(cardArr) {
   //addLog("find4thFlushCard() ");
   let suit = -1;
-  if (flushSlotCard1.suit == flushSlotCard2.suit &&
-    flushSlotCard2.suit == flushSlotCard3.suit) {
+  if (flushSlotCard1.suit === flushSlotCard2.suit &&
+    flushSlotCard2.suit === flushSlotCard3.suit) {
 
     // store the suit and gather player cards with same suit
     suit = flushSlotCard1.suit;
     let possibleCards = [];
     for (let i = 0; i < cardArr.length; i++) {
-      if (cardArr[i].suit == suit) {
+      if (cardArr[i].suit === suit) {
         possibleCards.push(cardArr[i]);
       }
     }
 
-    // check card is not part of 4k or straight flush
+    // found fourth card, play it
     for (let i = 0; i < possibleCards.length; i++) {
       let fourthCard = possibleCards[i];
 
@@ -293,7 +293,7 @@ function find4thFlushCard(cardArr) {
       //remove from possible since we are re using it
       removeCardFromArray(fourthCard, cardArr);
 
-      if (doLogPlacedCards == true) {
+      if (doLogPlacedCards === true) {
         addLog("Player " + (playerTurn + 1) + ": Plays 4th flush card" + printCard(flushSlotCard1) + printCard(flushSlotCard2) + printCard(flushSlotCard3) + printCard(flushSlotCard4) + printCard(flushSlotCard5));
       }
       cardPlacedAction();
