@@ -79,18 +79,17 @@ function find2Kcard() {
         let cardA = possibleCards[0];
         let cardB = possibleCards[1];
 
-
-        removeFrom4kSFLists(twoPSlotCard1);
+        removeFrom4kLists(twoPSlotCard1);
         addCardToHand(twoPSlotCard1, getPlayerCards());
         twoPSlotCard1 = cardA;
         removeCardFromArray(twoPSlotCard1, playerCards);
-        addTo4kSFLists(twoPSlotCard1);
+        addTo4kLists(twoPSlotCard1);
 
-        removeFrom4kSFLists(twoPSlotCard2);
+        removeFrom4kLists(twoPSlotCard2);
         addCardToHand(twoPSlotCard2, getPlayerCards());
         twoPSlotCard2 = cardB;
         removeCardFromArray(twoPSlotCard2, playerCards);
-        addTo4kSFLists(twoPSlotCard2);
+        addTo4kLists(twoPSlotCard2);
 
         if (doLogPlacedCards === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays 2K " + printCard(twoPSlotCard1) + printCard(twoPSlotCard2));

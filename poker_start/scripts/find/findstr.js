@@ -81,7 +81,7 @@ function findFourthCard(cardArr) {
                 straightSlotCard4 = card;
                 removeCardFromArray(card, getPlayerCards());
                 removeCardFromArray(card, cardArr);
-                addTo4kSFLists(straightSlotCard4);
+                addTo4kLists(straightSlotCard4);
 
                 if (doLogPlacedCards === true) {
                     addLog("Player " + (playerTurn + 1) + ": Plays 4th card in straight" + printCard(card));

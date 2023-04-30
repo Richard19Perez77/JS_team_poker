@@ -45,11 +45,11 @@ function findFlushCard() {
 
                             // slot should have a match or better chance to finish 4k
 
-                            // removeFrom4kSFLists(flushSlotCard1)
+                            // removeFrom4kLists(flushSlotCard1)
                             // addCardToHand(flushSlotCard1, playerCards);
                             // flushSlotCard1 = tempCard;
                             // removeCardFromArray(tempCard, playerCards);
-                            // addTo4kSFLists(flushSlotCard1);
+                            // addTo4kLists(flushSlotCard1);
                             return;
                         }
                     }
@@ -191,7 +191,6 @@ function findFlushCard() {
         //place 3 cards if none are played
         if (currFlushCount === 0) {
             place3CardFlush(a);
-            return;
         }
     } else if (b.length === 3) {
 

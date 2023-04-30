@@ -1,17 +1,13 @@
-function removeFrom4kSFLists(card) {
+function removeFrom4kLists(card) {
     if (card !== null) {
         valueArr4k.remove(card.value);
         suitArr4k.remove(card.suit);
-        valueArrSF.remove(card.value);
-        suitArrSF.remove(card.suit);
     }
 }
 
-function addTo4kSFLists(card) {
+function addTo4kLists(card) {
     valueArr4k.add(card.value);
     suitArr4k.add(card.suit);
-    valueArrSF.add(card.value);
-    suitArrSF.add(card.suit);
 }
 
 function findHCcard() {
@@ -73,13 +69,11 @@ function findHCcard() {
         });
 
         // add to main suit and value map
-        removeFrom4kSFLists(hcSlotCard);
-
+        removeFrom4kLists(hcSlotCard);
         addCardToHand(hcSlotCard, playerCards);
         hcSlotCard = possibleCards[0];
         removeCardFromArray(hcSlotCard, playerCards);
-
-        addTo4kSFLists(hcSlotCard);
+        addTo4kLists(hcSlotCard);
 
         if (doLogPlacedCards === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays HC  " + printCard(hcSlotCard));

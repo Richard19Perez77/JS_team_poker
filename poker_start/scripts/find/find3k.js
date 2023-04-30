@@ -99,23 +99,23 @@ function find3Kcard() {
 
     if (possible3kCards.length >= 3) {
 
-        removeFrom4kSFLists(threePSlotCard1);
+        removeFrom4kLists(threePSlotCard1);
         addCardToHand(threePSlotCard1, playerCards);
         threePSlotCard1 = possible3kCards[0];
         removeCardFromArray(possible3kCards[0], playerCards);
-        addTo4kSFLists(threePSlotCard1);
+        addTo4kLists(threePSlotCard1);
 
-        removeFrom4kSFLists(threePSlotCard2);
+        removeFrom4kLists(threePSlotCard2);
         addCardToHand(threePSlotCard2, playerCards);
         threePSlotCard2 = possible3kCards[1];
         removeCardFromArray(possible3kCards[1], playerCards);
-        addTo4kSFLists(threePSlotCard2);
+        addTo4kLists(threePSlotCard2);
 
-        removeFrom4kSFLists(threePSlotCard3);
+        removeFrom4kLists(threePSlotCard3);
         addCardToHand(threePSlotCard3, playerCards);
         threePSlotCard3 = possible3kCards[2];
         removeCardFromArray(possible3kCards[2], playerCards);
-        addTo4kSFLists(threePSlotCard3);
+        addTo4kLists(threePSlotCard3);
 
 
         if (doLogPlacedCards === true) {
@@ -171,17 +171,17 @@ function find3Kcard() {
             threePSlotCard3 == null) {
 
             //addLog("set in slot 1 and 2");
-            removeFrom4kSFLists(threePSlotCard1);
+            removeFrom4kLists(threePSlotCard1);
             addCardToHand(threePSlotCard1, playerCards);
             threePSlotCard1 = possible2kCards[0];
             removeCardFromArray(possible2kCards[0], playerCards)
-            addTo4kSFLists(threePSlotCard1);
+            addTo4kLists(threePSlotCard1);
 
-            removeFrom4kSFLists(threePSlotCard2);
+            removeFrom4kLists(threePSlotCard2);
             addCardToHand(threePSlotCard2, playerCards);
             threePSlotCard2 = possible2kCards[1];
             removeCardFromArray(possible2kCards[1], playerCards)
-            addTo4kSFLists(threePSlotCard2);
+            addTo4kLists(threePSlotCard2);
 
             if (doLogPlacedCards === true) {
                 addLog("Player " + (playerTurn + 1) + " Plays 3k " + printCard(threePSlotCard1) + printCard(threePSlotCard2) + printCard(threePSlotCard3));
