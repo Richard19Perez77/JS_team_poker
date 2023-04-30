@@ -1,10 +1,12 @@
-// if you need a specific custom deck, make to win or lose a particular hand
+function isTesting() {
+  return doRunControlTest;
+}// if you need a specific custom deck, make to win or lose a particular hand
 // uncomment createDeck() options in deck.js
 function setDebugFlags(boolVar) {
   doRunControlTest = boolVar;
 
   // test count of games to average scores and hands
-  // default         false
+  // default    100;
   gamesToPlay = 1000;
 
   // show cards ui during testing
@@ -34,10 +36,6 @@ function setDebugFlags(boolVar) {
   // auto hide the opening tutorial wallpaper
   // default           false
   doAutoHideTutorial = false;
-
-  // change for fast pc turn move
-  // default      100
-  PC_TURN_DELAY = 50;
 
   // defaults true
   runAutoHc = true;
@@ -71,6 +69,15 @@ function setTestElements() {
     setPcPlayers();
     doAutoHideTutorial = true;
     hideDebugTutorial();
+  }else{
+    PC_TURN_DELAY = 50;
+    activityLog.readOnly = true;
+    player1isPC = false;
+    player2isPC = true;
+    player3isPC = true;
+    player4isPC = true;
+    doAutoHideTutorial = false;
+    endTurnClicked();
   }
 }
 
