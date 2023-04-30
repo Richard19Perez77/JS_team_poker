@@ -51,36 +51,28 @@ function findFlushCard() {
                     // each slot can be used to check for matching cards
                     if (!valueArr4k.contains(flushSlotCard1.value)) {
                         sameValueCount1 = checkHandForMatchingValues(flushSlotCard1, playerCards);
-                        if (sameValueCount1 > 1) {
-                            tempCard = flushSlotCard1;
-                        }
                     }
                     if (!valueArr4k.contains(flushSlotCard2.value)) {
                         sameValueCount2 = checkHandForMatchingValues(flushSlotCard2, playerCards);
-                        if (sameValueCount1 < sameValueCount2) {
-                            tempCard = flushSlotCard2;
-                        }
                     }
                     if (!valueArr4k.contains(flushSlotCard3.value)) {
                         sameValueCount3 = checkHandForMatchingValues(flushSlotCard3, playerCards);
-                        if (sameValueCount1 < sameValueCount3) {
-                            tempCard = flushSlotCard3;
-                        }
-                        if (sameValueCount2 < sameValueCount3) {
-                            tempCard = flushSlotCard3;
-                        }
                     }
                     if (!valueArr4k.contains(flushSlotCard4.value)) {
                         sameValueCount4 = checkHandForMatchingValues(flushSlotCard4, playerCards);
-                        if (sameValueCount1 < sameValueCount4) {
-                            tempCard = flushSlotCard4;
-                        }
-                        if (sameValueCount2 < sameValueCount4) {
-                            tempCard = flushSlotCard4;
-                        }
-                        if (sameValueCount3 < sameValueCount4) {
-                            tempCard = flushSlotCard4;
-                        }
+                    }
+
+                    if (sameValueCount1 < sameValueCount2 && sameValueCount2 < sameValueCount3 &&  sameValueCount3 < sameValueCount4) {
+                        tempCard = flushSlotCard4;
+                    }
+                    if (sameValueCount1 > sameValueCount2 && sameValueCount2 > sameValueCount3 &&  sameValueCount3 > sameValueCount4) {
+                         tempCard = flushSlotCard1;
+                    }
+                    if (sameValueCount1 < sameValueCount2 && sameValueCount2 > sameValueCount3 &&  sameValueCount3 > sameValueCount4) {
+                        tempCard = flushSlotCard2;
+                    }
+                    if (sameValueCount1 < sameValueCount2 && sameValueCount2 < sameValueCount3 &&  sameValueCount3 > sameValueCount4) {
+                        tempCard = flushSlotCard3;
                     }
                 }
             }
