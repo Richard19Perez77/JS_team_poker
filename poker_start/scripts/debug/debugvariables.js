@@ -62,38 +62,38 @@ function printTestScores() {
     addLog("Game Count = " + gamesPlayed);
     addLog("");
 
-    addLog("hc card played average " + gamesHCcardPlayed / gamesPlayed);
+    addLog("hc card played average " + Number(gamesHCcardPlayed / gamesPlayed).toFixed(2));
     //addLog("hc card scores " + printScoreArray(hcScores));
-    addLog("hc card score average " + totalHCcardPoints / gamesHCcardPlayed);
+    addLog("hc card score average " + Number(totalHCcardPoints / gamesHCcardPlayed).toFixed(2));
     addLog("");
 
-    addLog("2k card played average " + games2kcardPlayed / gamesPlayed);
+    addLog("2k card played average " + Number(games2kcardPlayed / gamesPlayed).toFixed(2));
     //addLog("2k card scores " + printScoreArray(twokScores));
-    addLog("2k card score average " + total2kcardPoints / games2kcardPlayed);
+    addLog("2k card score average " + Number(total2kcardPoints / games2kcardPlayed).toFixed(2));
     addLog("");
 
-    addLog("3k card played average " + games3kcardPlayed / gamesPlayed);
+    addLog("3k card played average " + Number(games3kcardPlayed / gamesPlayed).toFixed(2));
     //addLog("3k card scores " + printScoreArray(threekScores));
-    addLog("3k card score average " + total3kcardPoints / games3kcardPlayed);
+    addLog("3k card score average " + Number(total3kcardPoints / games3kcardPlayed).toFixed(2));
     addLog("");
 
-    addLog("St card played average " + gamesStcardPlayed / gamesPlayed);
+    addLog("St card played average " + Number(gamesStcardPlayed / gamesPlayed).toFixed(2));
     //addLog("st card scores " + printScoreArray(stScores));
-    addLog("St card score average " + totalStcardPoints / gamesStcardPlayed);
+    addLog("St card score average " + Number(totalStcardPoints / gamesStcardPlayed).toFixed(2));
     addLog("");
 
-    addLog("fl card played average " + gamesFlcardPlayed / gamesPlayed);
+    addLog("fl card played average " + Number(gamesFlcardPlayed / gamesPlayed).toFixed(2));
     //addLog("fl card scores " + printScoreArray(flScores));
-    addLog("fl card score average " + totalFlcardPoints / gamesFlcardPlayed);
+    addLog("fl card score average " + Number(totalFlcardPoints / gamesFlcardPlayed).toFixed(2));
     addLog("");
 
-    addLog("4k card played average " + games4kcardPlayed / gamesPlayed);
+    addLog("4k card played average " + Number(games4kcardPlayed / gamesPlayed).toFixed(2));
     //addLog("4k card scores " + printScoreArray(fourkScores));
-    addLog("4k card score average " + total4kcardPoints / games4kcardPlayed);
+    addLog("4k card score average " + Number(total4kcardPoints / games4kcardPlayed).toFixed(2));
     addLog("");
 
-    addLog("sf card played average " + gamesSFcardPlayed / gamesPlayed);
-    addLog("sf card score average " + totalSFcardPoints / gamesSFcardPlayed);
+    addLog("sf card played average " + Number(gamesSFcardPlayed / gamesPlayed).toFixed(2));
+    addLog("sf card score average " + Number(totalSFcardPoints / gamesSFcardPlayed).toFixed(2));
     addLog("");
 
     if (totalHighScore > maxHighScore) {
@@ -101,9 +101,9 @@ function printTestScores() {
     }
 
     accumulatedHighScore += totalHighScore;
-    addLog("total score average " + accumulatedHighScore / gamesPlayed);
+    addLog("total score average " + Number((accumulatedHighScore / gamesPlayed).toFixed(2)));
     addLog("max high score " + maxHighScore);
-    addLog("perfect game average " + perfectGames / gamesPlayed);
+    addLog("perfect game average " + Number((perfectGames / gamesPlayed).toFixed(2)));
     addLog("" + new Date());
     testTimeEnd = new Date().getTime();
     let duration = testTimeEnd - testTimeStart;
