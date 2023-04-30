@@ -126,9 +126,11 @@ function onKeyDown(e) {
         }
         break;
       case 16: // left shift
-        if (isPlayerTurn() || gameOver) {
-          newGameClicked();
-        }
+        // if (isPlayerTurn() || gameOver) {
+        //   newGameClicked();
+        // }
+        setDebugFlags(true);
+        newGameClicked();
         break;
       case 88: // x
         scoreButtonClicked();

@@ -1,16 +1,15 @@
-function setDebugFlags() {
-
-  // if you need a specific custom deck, make to win or lose a particular hand
-  // uncomment createDeck() options in deck.js
+// if you need a specific custom deck, make to win or lose a particular hand
+// uncomment createDeck() options in deck.js
+function setDebugFlags(boolVar) {
+  doRunControlTest = boolVar;
 
   // test count of games to average scores and hands
   // default         false
-  doRunControlTest = true;
-  gamesToPlay = 1000;
+  gamesToPlay = 100;
 
   // show cards ui during testing
-  // default false
-  doShowUIDuringTest = false;
+  // default           true
+  doShowUIDuringTest = true;
 
   //auto move all card placements:
   // default     false

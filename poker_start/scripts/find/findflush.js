@@ -24,33 +24,62 @@ function findFlushCard() {
 
         // check for a card to be able to be traded
         for (let item = 0; item < playerCards.length - 1; item++) {
-            if (playerCards[item] !== null) {
+            if (playerCards[item] == null) {
+                continue;
+            }
 
-                let tempCard = playerCards[item];
-                if (tempCard.suit === flushSlotCard1.suit) {
+            let tempCard = playerCards[item];
+            if (tempCard.suit === flushSlotCard1.suit) {
 
-                    // check to be part of 4k
-                    let hasPair = false;
-                    for (let i = 0; i < playerCards.length - 1; i++) {
-                        if (playerCards[i].value === tempCard.value && playerCards[i].suit !== tempCard.suit) {
-                            hasPair = true;
+                // check to be part of 4k
+                let hasPair = false;
+                for (let i = 0; i < playerCards.length - 1; i++) {
+                    if (playerCards[i].value === tempCard.value && playerCards[i].suit !== tempCard.suit) {
+                        hasPair = true;
+                    }
+                }
+
+                // if value isn't on map and it hasn't started a pairing set
+                if (!valueArr4k.contains(tempCard.value) && !hasPair) {
+
+                    let sameValueCount1;
+                    let sameValueCount2;
+                    let sameValueCount3;
+                    let sameValueCount4;
+                    let tempCard = null;
+
+                    // each slot can be used to check for matching cards
+                    if (!valueArr4k.contains(flushSlotCard1.value)) {
+                        sameValueCount1 = checkHandForMatchingValues(flushSlotCard1, playerCards);
+                        if (sameValueCount1 > 1) {
+                            tempCard = flushSlotCard1;
                         }
                     }
-
-                    //check for number to be in map
-                    if (!valueArr4k.contains(tempCard.value) && !hasPair) {
-
-                        // check for each slot to be moved
-                        if (!valueArr4k.contains(flushSlotCard1.value)) {
-
-                            // slot should have a match or better chance to finish 4k
-
-                            // removeFrom4kLists(flushSlotCard1)
-                            // addCardToHand(flushSlotCard1, playerCards);
-                            // flushSlotCard1 = tempCard;
-                            // removeCardFromArray(tempCard, playerCards);
-                            // addTo4kLists(flushSlotCard1);
-                            return;
+                    if (!valueArr4k.contains(flushSlotCard2.value)) {
+                        sameValueCount2 = checkHandForMatchingValues(flushSlotCard2, playerCards);
+                        if (sameValueCount1 < sameValueCount2) {
+                            tempCard = flushSlotCard2;
+                        }
+                    }
+                    if (!valueArr4k.contains(flushSlotCard3.value)) {
+                        sameValueCount3 = checkHandForMatchingValues(flushSlotCard3, playerCards);
+                        if (sameValueCount1 < sameValueCount3) {
+                            tempCard = flushSlotCard3;
+                        }
+                        if (sameValueCount2 < sameValueCount3) {
+                            tempCard = flushSlotCard3;
+                        }
+                    }
+                    if (!valueArr4k.contains(flushSlotCard4.value)) {
+                        sameValueCount4 = checkHandForMatchingValues(flushSlotCard4, playerCards);
+                        if (sameValueCount1 < sameValueCount4) {
+                            tempCard = flushSlotCard4;
+                        }
+                        if (sameValueCount2 < sameValueCount4) {
+                            tempCard = flushSlotCard4;
+                        }
+                        if (sameValueCount3 < sameValueCount4) {
+                            tempCard = flushSlotCard4;
                         }
                     }
                 }
@@ -217,17 +246,23 @@ function place4CardFlush(flushArr) {
     let playerCards = getPlayerCards();
 
     //should only have to add three cards to hand
+    removeFrom4kLists(flushSlotCard1);
     addCardToHand(flushSlotCard1, playerCards);
     flushSlotCard1 = flushArr[0];
     removeCardFromArray(flushSlotCard1, playerCards);
+    addTo4kLists(flushSlotCard1);
 
+    removeFrom4kLists(flushSlotCard2);
     addCardToHand(flushSlotCard2, playerCards);
     flushSlotCard2 = flushArr[1];
     removeCardFromArray(flushSlotCard2, playerCards);
+    addTo4kLists(flushSlotCard2);
 
+    removeFrom4kLists(flushSlotCard3);
     addCardToHand(flushSlotCard3, playerCards);
     flushSlotCard3 = flushArr[2];
     removeCardFromArray(flushSlotCard3, playerCards);
+    addTo4kLists(flushSlotCard3);
 
     addCardToHand(flushSlotCard4, playerCards);
     flushSlotCard4 = flushArr[3];

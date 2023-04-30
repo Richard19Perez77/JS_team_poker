@@ -1,26 +1,27 @@
 Game Count = 100
 
-hc card played average 0.93
-hc card score average 34.31182795698925
+hc card played average 1
+hc card score average 37.89
 
-2k card played average 0.94
-2k card score average 69.74468085106383
+2k card played average 0.93
+2k card score average 70.79569892473118
 
-3k card played average 0.29
-3k card score average 97.34482758620689
+3k card played average 0.35
+3k card score average 101.74285714285715
 
-St card played average 0.58
-St card score average 163.5344827586207
+St card played average 0.63
+St card score average 160.71428571428572
 
-fl card played average 0.96
-fl card score average 216.92708333333334
+fl card played average 0.97
+fl card score average 211.61855670103094
 
 4k card played average 0.41
-4k card score average 323.609756097561
+4k card score average 331.219512195122
 
-sf card played average 0.31
-sf card score average 537.9032258064516
+sf card played average 0.37
+sf card score average 539.5945945945946
 
-total score average 728.23
-perfect game average 0.03
-Sat Apr 29 2023 23:43:28 GMT-0500 (Central Daylight Time)
+total score average 781.31
+perfect game average 0.01
+Sun Apr 30 2023 12:53:20 GMT-0500 (Central Daylight Time)
+log.js:21 test duration (seconds)= 32.061

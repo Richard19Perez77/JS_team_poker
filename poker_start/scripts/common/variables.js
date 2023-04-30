@@ -329,5 +329,3 @@ let strFlushSlotCard5 = null;
 
 let valueArr4k = new List();
 let suitArr4k = new List();
-let valueArrSF = new List();
-let suitArrSF = new List();

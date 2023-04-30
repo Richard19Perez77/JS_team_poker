@@ -201,7 +201,7 @@ function init(document) {
     // screen resize offset adjustment
     adjustOffset();
 
-    setDebugFlags();
+    setDebugFlags(false);
 
     newGameClicked();
 }
