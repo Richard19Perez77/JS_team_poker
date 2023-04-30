@@ -1,5 +1,9 @@
+function onKeyUp(e) {
+  // console.log("e.type=" + e.type);
+}
+
 function onKeyDown(e) {
-  // addLog("e.keycode=" + e.keyCode);
+  console.log("e.keycode=" + e.keyCode);
   if (gameReady) {
     switch (e.keyCode) {
       case 17: // control
@@ -117,6 +121,11 @@ function onKeyDown(e) {
         musicButtonClicked();
         break;
       case 78: // n
+        if (isPlayerTurn() || gameOver) {
+          newGameClicked();
+        }
+        break;
+      case 16: // left shift
         if (isPlayerTurn() || gameOver) {
           newGameClicked();
         }

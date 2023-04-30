@@ -20,6 +20,7 @@ function init(document) {
     });
 
     window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("keyup", onKeyUp);
 
     let playerCardOneButton = $("#playerCardOneButton")[0];
     if (playerCardOneButton != null) {
