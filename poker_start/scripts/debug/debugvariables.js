@@ -57,7 +57,7 @@ function printScoreArray(arr) {
 function printTestScores() {
   //reset game log for scores
   log = "";
-  addLog("Game Count = " + gamesToPlay);
+  addLog("Game Count = " + gamesPlayed);
   addLog("");
 
   addLog("hc card played average " + gamesHCcardPlayed / gamesToPlay);

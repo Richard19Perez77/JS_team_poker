@@ -45,6 +45,7 @@ function findHCcard() {
             // check if card has duplicate face values
             sameValueCount = checkHandForMatchingValues(tempCard, playerCards);
 
+            // will be one with it in hand, check next for straight
             if (sameValueCount === 1) {
 
                 canStraight = checkHandFor3cardStraight(tempCard, playerCards);
@@ -53,7 +54,7 @@ function findHCcard() {
 
                     isTwoCardStrFlush = checkHandForNextStrFlushCard(tempCard, playerCards);
 
-                    if (isTwoCardStrFlush) {
+                    if (!isTwoCardStrFlush) {
 
                         sameFlushCount = checkCardFlushCount(tempCard, playerCards);
 
@@ -89,15 +90,11 @@ function findHCcard() {
 
 function checkHandForNextStrFlushCard(card, cardArr) {
     for (let i = 0; i < cardArr.length; i++) {
-        if (card.value !== 0 && card.value !== 11) {
-            let possibleStrFlushCard = cardArr[i];
-            if (card.suit === possibleStrFlushCard.suit) {
-                if (card.value === possibleStrFlushCard.value + 1 || card.value === possibleStrFlushCard.value - 1) {
-                    return true;
-                }
-                if (card.value === possibleStrFlushCard.value + 2 || card.value === possibleStrFlushCard.value - 2) {
-                    return true;
-                }
+        let possibleStrFlushCard = cardArr[i];
+        if (card.suit === possibleStrFlushCard.suit) {
+            if (card.value === possibleStrFlushCard.value + 1 || card.value === possibleStrFlushCard.value - 1 ||
+                card.value === possibleStrFlushCard.value + 2 || card.value === possibleStrFlushCard.value - 2) {
+                return true;
             }
         }
     }
