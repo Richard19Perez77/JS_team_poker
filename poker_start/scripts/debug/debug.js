@@ -5,7 +5,7 @@ function setDebugFlags(boolVar) {
 
   // test count of games to average scores and hands
   // default         false
-  gamesToPlay = 100;
+  gamesToPlay = 1000;
 
   // show cards ui during testing
   // default           true

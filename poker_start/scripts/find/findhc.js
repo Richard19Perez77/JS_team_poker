@@ -8,6 +8,9 @@ function removeFrom4kLists(card) {
 }
 
 function addTo4kLists(card) {
+    if (card == null) {
+        return;
+    }
     valueArr4k.add(card.value);
     suitArr4k.add(card.suit);
 }

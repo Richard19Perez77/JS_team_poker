@@ -264,9 +264,11 @@ function place4CardFlush(flushArr) {
     removeCardFromArray(flushSlotCard3, playerCards);
     addTo4kLists(flushSlotCard3);
 
+    removeFrom4kLists(flushSlotCard4);
     addCardToHand(flushSlotCard4, playerCards);
     flushSlotCard4 = flushArr[3];
     removeCardFromArray(flushSlotCard4, playerCards);
+    addTo4kLists(flushSlotCard4);
 
     if (doLogPlacedCards === true) {
         addLog("Player " + (playerTurn + 1) + ": Plays 4 card flush " + printCard(flushSlotCard1) + printCard(flushSlotCard2) + printCard(flushSlotCard3) + printCard(flushSlotCard4) + printCard(flushSlotCard5));
@@ -277,17 +279,23 @@ function place4CardFlush(flushArr) {
 function place3CardFlush(flushArr) {
     let playerCards = getPlayerCards();
 
+    removeFrom4kLists(flushSlotCard1);
     addCardToHand(flushSlotCard1, playerCards);
     flushSlotCard1 = flushArr[0];
     removeCardFromArray(flushSlotCard1, playerCards);
+    addTo4kLists(flushSlotCard1);
 
+    removeFrom4kLists(flushSlotCard2);
     addCardToHand(flushSlotCard2, playerCards);
     flushSlotCard2 = flushArr[1];
     removeCardFromArray(flushSlotCard2, playerCards);
+    addTo4kLists(flushSlotCard2);
 
+    removeFrom4kLists(flushSlotCard3);
     addCardToHand(flushSlotCard3, playerCards);
     flushSlotCard3 = flushArr[2];
     removeCardFromArray(flushSlotCard3, playerCards);
+    addTo4kLists(flushSlotCard3);
 
     if (doLogPlacedCards === true) {
         addLog("Player " + (playerTurn + 1) + ": Plays 3 card flush " + printCard(flushSlotCard1) + printCard(flushSlotCard2) + printCard(flushSlotCard3) + printCard(flushSlotCard4) + printCard(flushSlotCard5));
@@ -299,25 +307,35 @@ function placeFlush(cardArr) {
     let playerCards = getPlayerCards();
 
     //addLog("Flush Played " + printCardArr(cardArr));
+    removeFrom4kLists(flushSlotCard1);
     addCardToHand(flushSlotCard1, playerCards);
     flushSlotCard1 = cardArr[0];
     removeCardFromArray(flushSlotCard1, playerCards);
+    addTo4kLists(flushSlotCard1);
 
+    removeFrom4kLists(flushSlotCard2);
     addCardToHand(flushSlotCard2, playerCards);
     flushSlotCard2 = cardArr[1];
     removeCardFromArray(flushSlotCard2, playerCards);
+    addTo4kLists(flushSlotCard2);
 
+    removeFrom4kLists(flushSlotCard3);
     addCardToHand(flushSlotCard3, playerCards);
     flushSlotCard3 = cardArr[2];
     removeCardFromArray(flushSlotCard3, playerCards);
+    addTo4kLists(flushSlotCard3);
 
+    removeFrom4kLists(flushSlotCard4);
     addCardToHand(flushSlotCard4, playerCards);
     flushSlotCard4 = cardArr[3];
     removeCardFromArray(flushSlotCard4, playerCards);
+    addTo4kLists(flushSlotCard4);
 
+    removeFrom4kLists(flushSlotCard5);
     addCardToHand(flushSlotCard5, playerCards);
     flushSlotCard5 = cardArr[4];
     removeCardFromArray(flushSlotCard5, playerCards);
+    addTo4kLists(flushSlotCard5);
 
     if (doLogPlacedCards === true) {
         addLog("Player " + (playerTurn + 1) + ": Plays 5 card flush " + printCard(flushSlotCard1) + printCard(flushSlotCard2) + printCard(flushSlotCard3) + printCard(flushSlotCard4) + printCard(flushSlotCard5));
@@ -370,9 +388,11 @@ function find4thFlushCard(cardArr) {
         if (possibleCards.length > 0) {
             let fourthCard = possibleCards[0];
 
+            removeFrom4kLists(flushSlotCard4);
             addCardToHand(flushSlotCard4, getPlayerCards());
             flushSlotCard4 = fourthCard;
             removeCardFromArray(fourthCard, getPlayerCards());
+            addTo4kLists(flushSlotCard4);
 
             //remove from possible since we are re using it
             removeCardFromArray(fourthCard, cardArr);
@@ -409,9 +429,11 @@ function find5thFlushCard(cardArr) {
         if (possibleCards.length > 0) {
 
             let tempCard = possibleCards[0];
+            removeFrom4kLists(tempCard);
             addCardToHand(flushSlotCard5, getPlayerCards());
             flushSlotCard5 = tempCard;
             removeCardFromArray(tempCard, getPlayerCards());
+            addTo4kLists(tempCard);
 
             if (doLogPlacedCards === true) {
                 addLog("Player " + (playerTurn + 1) + ": Plays 5th flush card" + printCard(flushSlotCard1) + printCard(flushSlotCard2) + printCard(flushSlotCard3) + printCard(flushSlotCard4) + printCard(flushSlotCard5));
