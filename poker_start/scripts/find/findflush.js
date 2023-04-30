@@ -42,6 +42,9 @@ function findFlushCard() {
 
                         // check for each slot to be moved
                         if (!valueArr4k.contains(flushSlotCard1.value)) {
+
+                            // slot should have a match or better chance to finish 4k
+
                             // removeFrom4kSFLists(flushSlotCard1)
                             // addCardToHand(flushSlotCard1, playerCards);
                             // flushSlotCard1 = tempCard;
