@@ -72,7 +72,7 @@ function endTurnClicked() {
           newGameClicked();
         }
       } else {
-        if (draggableScoreDiv.is(":hidden")) {
+        if ($("#draggableScoreDiv").is(":hidden")) {
           $("#draggableScoreDiv").slideToggle(100);
         }
       }
