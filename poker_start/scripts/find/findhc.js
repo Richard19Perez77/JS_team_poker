@@ -1,8 +1,10 @@
 function removeFrom4kLists(card) {
-    if (card !== null) {
-        valueArr4k.remove(card.value);
-        suitArr4k.remove(card.suit);
+    if (card == null) {
+        return;
     }
+
+    valueArr4k.remove(card.value);
+    suitArr4k.remove(card.suit);
 }
 
 function addTo4kLists(card) {

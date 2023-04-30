@@ -60,7 +60,7 @@ function findStraightCard() {
 
     // try to play a 3 card straight
     if (found === false && cardsPlayed <= 3 && possibleCards.length >= 3) {
-        found = threeCardCheck(cardsPlayed, possibleCards);
+        threeCardCheck(cardsPlayed, possibleCards);
     }
 
     performLowCardSwitch();
@@ -135,20 +135,26 @@ function threeCardCheck(cardsPlayed, cardArr) {
     if (straightArr.length === 3) {
         let playerCards = getPlayerCards();
 
+        removeFrom4kLists(straightSlotCard1);
         addCardToHand(straightSlotCard1, playerCards);
         straightSlotCard1 = straightArr[0];
         removeCardFromArray(straightSlotCard1, playerCards);
         removeCardFromArray(straightSlotCard1, cardArr);
+        addTo4kLists(straightSlotCard1);
 
+        removeFrom4kLists(straightSlotCard2);
         addCardToHand(straightSlotCard2, playerCards);
         straightSlotCard2 = straightArr[1];
         removeCardFromArray(straightSlotCard2, playerCards);
         removeCardFromArray(straightSlotCard2, cardArr);
+        addTo4kLists(straightSlotCard2);
 
+        removeFrom4kLists(straightSlotCard3);
         addCardToHand(straightSlotCard3, playerCards);
         straightSlotCard3 = straightArr[2];
         removeCardFromArray(straightSlotCard3, playerCards);
         removeCardFromArray(straightSlotCard3, cardArr);
+        addTo4kLists(straightSlotCard3);
 
         if (doLogPlacedCards === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays 3 card straight " + printCardArr(straightArr));
@@ -219,25 +225,33 @@ function fourCardCheck(cardsPlayed, cardArr) {
 
     if (straightArray.length === 4) {
 
+        removeFrom4kLists(straightSlotCard1);
         addCardToHand(straightSlotCard1, getPlayerCards());
         straightSlotCard1 = straightArray[0];
         removeCardFromArray(straightSlotCard1, getPlayerCards());
         removeCardFromArray(straightSlotCard1, cardArr);
+        addTo4kLists(straightSlotCard1);
 
+        removeFrom4kLists(straightSlotCard2);
         addCardToHand(straightSlotCard2, getPlayerCards());
         straightSlotCard2 = straightArray[1];
         removeCardFromArray(straightSlotCard2, getPlayerCards());
         removeCardFromArray(straightSlotCard2, cardArr);
+        addTo4kLists(straightSlotCard2);
 
+        removeFrom4kLists(straightSlotCard3);
         addCardToHand(straightSlotCard3, getPlayerCards());
         straightSlotCard3 = straightArray[2];
         removeCardFromArray(straightSlotCard3, getPlayerCards());
         removeCardFromArray(straightSlotCard3, cardArr);
+        addTo4kLists(straightSlotCard3);
 
+        removeFrom4kLists(straightSlotCard4);
         addCardToHand(straightSlotCard4, getPlayerCards());
         straightSlotCard4 = straightArray[3];
         removeCardFromArray(straightSlotCard4, getPlayerCards());
         removeCardFromArray(straightSlotCard4, cardArr);
+        addTo4kLists(straightSlotCard4);
 
         if (doLogPlacedCards === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays four card straight " + printCardArr(straightArray));
@@ -260,30 +274,40 @@ function fiveCardCheck(cardsPlayed, cardArr) {
 
         let playerCards = getPlayerCards();
 
+        removeFrom4kLists(straightSlotCard1);
         addCardToHand(straightSlotCard1, playerCards);
         straightSlotCard1 = straightArray[0];
         removeCardFromArray(straightSlotCard1, playerCards);
         removeCardFromArray(straightSlotCard1, cardArr);
+        addTo4kLists(straightSlotCard1);
 
+        removeFrom4kLists(straightSlotCard2);
         addCardToHand(straightSlotCard2, playerCards);
         straightSlotCard2 = straightArray[1];
         removeCardFromArray(straightSlotCard2, playerCards);
         removeCardFromArray(straightSlotCard2, cardArr);
+        addTo4kLists(straightSlotCard2);
 
+        removeFrom4kLists(straightSlotCard3);
         addCardToHand(straightSlotCard3, playerCards);
         straightSlotCard3 = straightArray[2];
         removeCardFromArray(straightSlotCard3, playerCards);
         removeCardFromArray(straightSlotCard3, cardArr);
+        addTo4kLists(straightSlotCard3);
 
+        removeFrom4kLists(straightSlotCard4);
         addCardToHand(straightSlotCard4, playerCards);
         straightSlotCard4 = straightArray[3];
         removeCardFromArray(straightSlotCard4, playerCards);
         removeCardFromArray(straightSlotCard4, cardArr);
+        addTo4kLists(straightSlotCard4);
 
+        removeFrom4kLists(straightSlotCard5);
         addCardToHand(straightSlotCard5, playerCards);
         straightSlotCard5 = straightArray[4];
         removeCardFromArray(straightSlotCard5, playerCards);
         removeCardFromArray(straightSlotCard5, cardArr);
+        addTo4kLists(straightSlotCard5);
 
         if (doLogPlacedCards === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays five card straight " + printCardArr(straightArray));
@@ -421,7 +445,6 @@ function findFourCardStraight(cardsPlayed, cardArr) {
     return [];
 }
 
-
 function performLowCardSwitch() {
     let cardsPlayed = getStraightCardsPlayed();
     if (cardsPlayed !== 5) {
@@ -488,9 +511,11 @@ function performLowCardSwitch() {
     }
 
     if (switchCard != null) {
+        removeFrom4kLists(straightSlotCard1);
         addCardToHand(straightSlotCard1, playerCards);
         straightSlotCard1 = switchCard;
         removeCardFromArray(switchCard, playerCards);
+        addTo4kLists(straightSlotCard1);
     }
 }
 
