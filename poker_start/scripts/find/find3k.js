@@ -58,15 +58,15 @@ function find3Kcard() {
             }
         }
 
-        canStraight = checkHandFor3cardStraight(tempCard, playerCards);
-        if (canStraight === true) {
-            continue;
-        }
-
-        sameFlushCount = checkCardFlushCount(tempCard, playerCards);
-        if (sameFlushCount >= 4 && sameFlushCount <= 5) {
-            continue;
-        }
+        // canStraight = checkHandFor3cardStraight(tempCard, playerCards);
+        // if (canStraight === true) {
+        //     continue;
+        // }
+        //
+        // sameFlushCount = checkCardFlushCount(tempCard, playerCards);
+        // if (sameFlushCount >= 4 && sameFlushCount <= 5) {
+        //     continue;
+        // }
 
         sameValueCount = checkHandForMatchingValues(tempCard, playerCards);
         if (sameValueCount === 3) {
