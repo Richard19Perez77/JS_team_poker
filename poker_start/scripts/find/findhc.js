@@ -38,22 +38,36 @@ function findHCcard() {
                 continue;
             }
 
-            if (playerCards[i].value !== hcSlotCard.value) {
-                if (playerCards[i].suit !== hcSlotCard.suit) {
+            if (checkHandFor1cardStraight(hcSlotCard, playerCards)) {
+                removeFrom4kLists(hcSlotCard);
+                addCardToHand(hcSlotCard, playerCards);
+                hcSlotCard = playerCards[i];
+                removeCardFromArray(hcSlotCard, playerCards);
+                addTo4kLists(hcSlotCard);
 
-                    removeFrom4kLists(hcSlotCard);
-                    addCardToHand(hcSlotCard, playerCards);
-                    hcSlotCard = playerCards[i];
-                    removeCardFromArray(hcSlotCard, playerCards);
-                    addTo4kLists(hcSlotCard);
-
-                    if (doLogPlacedCards === true) {
-                        addLog("Player " + (playerTurn + 1) + ": Plays HC  " + printCard(hcSlotCard));
-                    }
-                    cardPlacedAction();
-
-                    return;
+                if (doLogPlacedCards === true) {
+                    addLog("Player " + (playerTurn + 1) + ": Plays HC  " + printCard(hcSlotCard));
                 }
+                cardPlacedAction();
+
+                return;
+            }
+
+            // check for slot card to be useful
+            if (checkHandForMatchingValues(hcSlotCard, playerCards) > 0) {
+
+                removeFrom4kLists(hcSlotCard);
+                addCardToHand(hcSlotCard, playerCards);
+                hcSlotCard = playerCards[i];
+                removeCardFromArray(hcSlotCard, playerCards);
+                addTo4kLists(hcSlotCard);
+
+                if (doLogPlacedCards === true) {
+                    addLog("Player " + (playerTurn + 1) + ": Plays HC  " + printCard(hcSlotCard));
+                }
+                cardPlacedAction();
+
+                return;
             }
         }
     }
