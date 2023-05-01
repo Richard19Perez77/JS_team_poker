@@ -42,10 +42,10 @@ function findFlushCard() {
                 // if value isn't on map and it hasn't started a pairing set
                 if (!valueArr4k.contains(tempCard.value) && !hasPair) {
 
-                    let sameValueCount1;
-                    let sameValueCount2;
-                    let sameValueCount3;
-                    let sameValueCount4;
+                    let sameValueCount1 = 0;
+                    let sameValueCount2 = 0;
+                    let sameValueCount3 = 0;
+                    let sameValueCount4 = 0;
                     let tempCard = null;
 
                     // each slot can be used to check for matching cards

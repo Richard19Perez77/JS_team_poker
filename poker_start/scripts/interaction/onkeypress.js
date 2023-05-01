@@ -3,7 +3,7 @@ function onKeyUp(e) {
 }
 
 function onKeyDown(e) {
-    console.log("e.keycode=" + e.keyCode);
+    // console.log("e.keycode=" + e.keyCode);
     if (gameReady) {
         switch (e.keyCode) {
             case 17: // control
