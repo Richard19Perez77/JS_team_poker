@@ -20,11 +20,6 @@ function findStraightCard() {
             }
         }
 
-        let hasAValuePlayed = checkCardValueHasBeenPlayed(card);
-        if (hasAValuePlayed) {
-            continue;
-        }
-
         sameValueCount = checkHandForMatchingValues(card, playerCards);
         if (sameValueCount >= 3) {
             continue;
