@@ -48,11 +48,8 @@ function findStraightFlushCard() {
 
   //next check for 4th and 5th cards
   if (cardsPlayed === 3) {
-    //addLog("Player " + (playerTurn + 1) + ": Finding 4th straight flush card");
     let fourthFound = findFourthCardInStraightFlush();
     if (fourthFound) {
-      organizeStraightFlush();
-      //addLog("Player " + (playerTurn + 1) + ": Finding 5th straight flush card");
       let fifthFound = findFifthCardInStraightFlush()
       if (fifthFound) {
         return;
