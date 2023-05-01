@@ -14,7 +14,7 @@ let gameOver = false;
 let highScore = 0;
 let sortBySuit = false;
 
-let PC_TURN_DELAY = 1000;
+let PC_TURN_DELAY = 50;
 let MAX_PLAYER_CARDS = 7;
 
 let backImage = new Image();

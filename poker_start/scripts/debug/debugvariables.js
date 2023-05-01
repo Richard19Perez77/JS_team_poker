@@ -27,7 +27,7 @@ let runAutoFl = true;
 let runAuto4k = true;
 let runAutoSF = true;
 
-let doLogPlacedCards = false;
+let doLogPlacedCards = true;
 let doLogPlayerTurn = true;
 let doAutoHideTutorial = false;
 let doLogCardDetails = false;

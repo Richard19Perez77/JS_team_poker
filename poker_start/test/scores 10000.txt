@@ -1,28 +1,28 @@
 Game Count = 10000
 
 hc card played average 1.00
-hc card score average 37.89
+hc card score average 36.39
 
-2k card played average 0.91
-2k card score average 69.42
+2k card played average 1.00
+2k card score average 73.59
 
-3k card played average 0.33
-3k card score average 101.68
+3k card played average 0.45
+3k card score average 104.43
 
-St card played average 0.65
-St card score average 160.93
+St card played average 0.59
+St card score average 159.54
 
-fl card played average 0.95
-fl card score average 212.52
+fl card played average 0.94
+fl card score average 212.04
 
-4k card played average 0.36
-4k card score average 329.86
+4k card played average 0.38
+4k card score average 330.29
 
-sf card played average 0.32
-sf card score average 537.97
+sf card played average 0.36
+sf card score average 537.89
 
-total score average 734.21
-max high score 1492
+total score average 766.6
+max high score 1499
 perfect game average 0.02
-Sun Apr 30 2023 16:04:59 GMT-0500 (Central Daylight Time)
-test duration (seconds)= 3615.405
+Sun Apr 30 2023 22:51:17 GMT-0500 (Central Daylight Time)
+test duration (seconds)= 8122.723

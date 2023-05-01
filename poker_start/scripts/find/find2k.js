@@ -1,3 +1,61 @@
+function checkHandFor5cardStraight(card, cards) {
+    // check for valid numbers
+
+    let hasP1 = false;
+    let hasP2 = false;
+    let hasP3 = false;
+    let hasP4 = false;
+    let hasM1 = false;
+    let hasM2 = false;
+    let hasM3 = false;
+    let hasM4 = false;
+
+    for (let i = 0; i < cards.length; i++) {
+        if (cards[i].value === card.value + 1) {
+            hasP1 = true;
+        }
+        if (cards[i].value === card.value + 2) {
+            hasP2 = true;
+        }
+        if (cards[i].value === card.value + 3) {
+            hasP3 = true;
+        }
+        if (cards[i].value === card.value + 4) {
+            hasP4 = true;
+        }
+        if (cards[i].value === card.value - 1) {
+            hasM1 = true;
+        }
+        if (cards[i].value === card.value - 2) {
+            hasM2 = true;
+        }
+        if (cards[i].value === card.value - 3) {
+            hasM3 = true;
+        }
+        if (cards[i].value === card.value - 4) {
+            hasM4 = true;
+        }
+    }
+
+    if (hasP1 && hasP2 && hasP3 && hasP4){
+        return true
+    }
+
+    if (hasM1 && hasP1 && hasP2 && hasP3){
+        return true
+    }
+
+    if (hasM2 && hasM1 && hasP1 && hasP2){
+        return true
+    }
+
+    if (hasM3 && hasM2 && hasM1 && hasP1){
+        return true
+    }
+
+    return hasM4 && hasM3 && hasM2 && hasM1;
+}
+
 function find2Kcard() {
     let playerCards = getPlayerCards();
 
@@ -24,22 +82,27 @@ function find2Kcard() {
             continue;
         }
 
-        canStraight = checkHandFor3cardStraight(tempCard, playerCards);
+        canStraight = checkHandFor5cardStraight(tempCard, playerCards);
         if (canStraight) {
             continue;
         }
 
-        sameFlushCount = checkCardFlushCount(tempCard, playerCards);
-        if (sameFlushCount > 3) {
-            continue;
-        }
+        // canStraight = checkHandFor3cardStraight(tempCard, playerCards);
+        // if (canStraight) {
+        //     continue;
+        // }
+
+        // sameFlushCount = checkCardFlushCount(tempCard, playerCards);
+        // if (sameFlushCount > 3) {
+        //     continue;
+        // }
 
         sameValueCount = checkHandForMatchingValues(tempCard, playerCards);
-        if (sameValueCount < 2 || sameValueCount > 2) {
+        if (sameValueCount > 2) {
             continue;
         }
 
-        //validate play is valid for str flush
+        // validate play is valid for str flush
         let partialArr = findStraightFlushCards(tempCard, playerCards);
         if (partialArr != null && partialArr.length >= 3) {
             let isValidStrFlushPlay = isPartialArrayValidAttemptAtStraightFlush(partialArr[0].value, partialArr[1].value, partialArr[2].value, partialArr[0].suit)

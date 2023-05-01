@@ -3,12 +3,18 @@ function onKeyUp(e) {
 }
 
 function onKeyDown(e) {
-    // console.log("e.keycode=" + e.keyCode);
+    console.log("e.keycode=" + e.keyCode);
     if (gameReady) {
         switch (e.keyCode) {
             case 17: // control
                 if (isPlayerTurn()) {
                     controlListener();
+                }
+                break;
+            case 27: // esc
+                if (!isTesting()) {
+                    setDebugFlags(true);
+                    newGameClicked();
                 }
                 break;
             case 37: // <-
@@ -131,10 +137,6 @@ function onKeyDown(e) {
                 }
                 break;
             case 16: // left shift
-                if (!isTesting()) {
-                    setDebugFlags(true);
-                    newGameClicked();
-                }
                 break;
             case 88: // x
                 scoreButtonClicked();

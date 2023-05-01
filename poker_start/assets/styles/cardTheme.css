@@ -54,7 +54,7 @@ button:active {
 textarea {
   font-family: 'CustomFont', serif;
   color: white;
-  font-size: 30px;
+  font-size: 100px;
   background-color: #330099;
   resize: none;
   padding-top: 25px;
@@ -158,13 +158,13 @@ textarea {
 #activity {
   border: double;
   text-align: center;
+  font-size: 25px;
   font-family: 'CustomFont', serif;
   color: black;
   background-color: #009933;
   margin: 10px 10px 10px 10px;
-  width: 800px;
+  width: 900px;
   padding: 5px;
-  resize: none;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -192,8 +192,6 @@ textarea {
 #activityDiv {
   text-align: center;
 }
-
-
 
 #musicDiv {
   background-image: radial-gradient(#0062cc, #000000);
