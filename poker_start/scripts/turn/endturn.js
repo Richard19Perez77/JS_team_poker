@@ -29,6 +29,7 @@ function endTurnClicked() {
 
             turnPassed = 0;
             targetHand++;
+            handPasses = 0;
             //addLog("targetHand=" + targetHand);
 
             checkForFullHand(player1Cards);

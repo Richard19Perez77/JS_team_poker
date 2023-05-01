@@ -100,6 +100,7 @@ let offsetX = 0;
 let offsetY = 0;
 
 let turnPassed = 0;
+let handPasses = 0;
 
 let myGreen = "#009933";
 let myBlue = "#330099";
