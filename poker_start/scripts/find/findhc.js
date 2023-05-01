@@ -34,6 +34,10 @@ function findHCcard() {
                 continue;
             }
 
+            if (checkHandFor1cardStraight(playerCards[i], playerCards)) {
+                continue;
+            }
+
             if (playerCards[i].value !== hcSlotCard.value) {
                 if (playerCards[i].suit !== hcSlotCard.suit) {
 

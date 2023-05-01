@@ -1,3 +1,73 @@
+function checkHandFor1cardStraight(card, cards) {
+    // check for valid numbers
+
+    let hasP1 = false;
+    let hasM1 = false;
+
+    for (let i = 0; i < cards.length; i++) {
+        if (cards[i].value === card.value + 1) {
+            hasP1 = true;
+        }
+        if (cards[i].value === card.value - 1) {
+            hasM1 = true;
+        }
+    }
+
+    return hasP1 || hasM1;
+}
+
+
+function checkHandFor4cardStraight(card, cards) {
+    // check for valid numbers
+
+    let hasP1 = false;
+    let hasP2 = false;
+    let hasP3 = false;
+    let hasM1 = false;
+    let hasM2 = false;
+    let hasM3 = false;
+
+    for (let i = 0; i < cards.length; i++) {
+        if (cards[i].value === card.value + 1) {
+            hasP1 = true;
+        }
+        if (cards[i].value === card.value + 2) {
+            hasP2 = true;
+        }
+        if (cards[i].value === card.value + 3) {
+            hasP3 = true;
+        }
+        if (cards[i].value === card.value - 1) {
+            hasM1 = true;
+        }
+        if (cards[i].value === card.value - 2) {
+            hasM2 = true;
+        }
+        if (cards[i].value === card.value - 3) {
+            hasM3 = true;
+        }
+    }
+
+    if (hasP1 && hasP2 && hasP3){
+        return true
+    }
+
+    if (hasM1 && hasP1 && hasP2){
+        return true
+    }
+
+    if (hasM2 && hasM1 && hasP1){
+        return true
+    }
+
+    if (hasM3 && hasM2 && hasM1){
+        return true
+    }
+
+    return hasM3 && hasM2 && hasM1;
+}
+
+
 function checkHandFor5cardStraight(card, cards) {
     // check for valid numbers
 
