@@ -49,11 +49,6 @@ function find4KCard() {
                 card.value === fourkSlotCard2.value &&
                 card.value === fourkSlotCard3.value) {
 
-                let partialArr = findStraightFlushCards(card, playerCards);
-                if (partialArr != null && partialArr.length >= 3 && isPartialArrayValidAttemptAtStraightFlush(partialArr[0].value, partialArr[1].value, partialArr[2].value, partialArr[0].suit)) {
-                    continue;
-                }
-
                 removeFrom4kLists(fourkSlotCard4);
                 addCardToHand(fourkSlotCard4, playerCards);
                 fourkSlotCard4 = card;
