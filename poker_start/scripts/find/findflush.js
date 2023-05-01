@@ -62,17 +62,61 @@ function findFlushCard() {
                         sameValueCount4 = checkHandForMatchingValues(flushSlotCard4, playerCards);
                     }
 
-                    if (sameValueCount1 < sameValueCount2 && sameValueCount2 < sameValueCount3 &&  sameValueCount3 < sameValueCount4) {
-                        tempCard = flushSlotCard4;
+                    if (sameValueCount1 < sameValueCount2 && sameValueCount2 < sameValueCount3 && sameValueCount3 < sameValueCount4) {
+                        removeFrom4kLists(flushSlotCard4);
+                        addCardToHand(flushSlotCard4, playerCards);
+                        flushSlotCard4 = tempCard;
+                        removeCardFromArray(flushSlotCard4, playerCards);
+                        addTo4kLists(flushSlotCard4);
+
+                        if (doLogPlacedCards === true) {
+                            addLog("Player " + (playerTurn + 1) + ": Plays 4 card flush " + printCard(flushSlotCard1) + printCard(flushSlotCard2) + printCard(flushSlotCard3) + printCard(flushSlotCard4) + printCard(flushSlotCard5));
+                        }
+                        cardPlacedAction();
+
+                        return;
                     }
-                    if (sameValueCount1 > sameValueCount2 && sameValueCount2 > sameValueCount3 &&  sameValueCount3 > sameValueCount4) {
-                         tempCard = flushSlotCard1;
+                    if (sameValueCount1 > sameValueCount2 && sameValueCount2 > sameValueCount3 && sameValueCount3 > sameValueCount4) {
+                        removeFrom4kLists(flushSlotCard1);
+                        addCardToHand(flushSlotCard1, playerCards);
+                        flushSlotCard1 = tempCard;
+                        removeCardFromArray(flushSlotCard1, playerCards);
+                        addTo4kLists(flushSlotCard1);
+
+                        if (doLogPlacedCards === true) {
+                            addLog("Player " + (playerTurn + 1) + ": Plays 4 card flush " + printCard(flushSlotCard1) + printCard(flushSlotCard2) + printCard(flushSlotCard3) + printCard(flushSlotCard4) + printCard(flushSlotCard5));
+                        }
+                        cardPlacedAction();
+
+                        return;
                     }
-                    if (sameValueCount1 < sameValueCount2 && sameValueCount2 > sameValueCount3 &&  sameValueCount3 > sameValueCount4) {
-                        tempCard = flushSlotCard2;
+                    if (sameValueCount1 < sameValueCount2 && sameValueCount2 > sameValueCount3 && sameValueCount3 > sameValueCount4) {
+                        removeFrom4kLists(flushSlotCard2);
+                        addCardToHand(flushSlotCard2, playerCards);
+                        flushSlotCard2 = tempCard;
+                        removeCardFromArray(flushSlotCard2, playerCards);
+                        addTo4kLists(flushSlotCard2);
+
+                        if (doLogPlacedCards === true) {
+                            addLog("Player " + (playerTurn + 1) + ": Plays 4 card flush " + printCard(flushSlotCard1) + printCard(flushSlotCard2) + printCard(flushSlotCard3) + printCard(flushSlotCard4) + printCard(flushSlotCard5));
+                        }
+                        cardPlacedAction();
+
+                        return;
                     }
-                    if (sameValueCount1 < sameValueCount2 && sameValueCount2 < sameValueCount3 &&  sameValueCount3 > sameValueCount4) {
-                        tempCard = flushSlotCard3;
+                    if (sameValueCount1 < sameValueCount2 && sameValueCount2 < sameValueCount3 && sameValueCount3 > sameValueCount4) {
+                        removeFrom4kLists(flushSlotCard3);
+                        addCardToHand(flushSlotCard3, playerCards);
+                        flushSlotCard3 = tempCard;
+                        removeCardFromArray(flushSlotCard3, playerCards);
+                        addTo4kLists(flushSlotCard3);
+
+                        if (doLogPlacedCards === true) {
+                            addLog("Player " + (playerTurn + 1) + ": Plays 4 card flush " + printCard(flushSlotCard1) + printCard(flushSlotCard2) + printCard(flushSlotCard3) + printCard(flushSlotCard4) + printCard(flushSlotCard5));
+                        }
+                        cardPlacedAction();
+
+                        return;
                     }
                 }
             }
