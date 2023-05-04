@@ -1,170 +1,170 @@
-<html>
+<html lang="en">
 
 <head>
 
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-	<meta name="viewport" content="user-scalable=no" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta name="viewport" content="user-scalable=no"/>
 
-	<title>Mobile Team Poker</title>
+    <title>Mobile Team Poker</title>
 
-	<!-- Game scripts -->
-	<!-- Game scripts -->
-	<link rel="stylesheet" href="libs/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+    <!-- Game scripts -->
+    <!-- Game scripts -->
+    <link rel="stylesheet" href="libs/jquery-ui-1.12.1.custom/jquery-ui.min.css">
 
-	<script src="libs/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
-	<script src="libs/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="libs/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+    <script src="libs/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 
-	<script src="scripts/card/card.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/common/variables.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/debug/debug.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/debug/debugvariables.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/deck/decks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/deck/flushdecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/deck/strflushdecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/deck/strdecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/deck/threeKDecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/draw/draw.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/find/find2k.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/find/find3k.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/find/find4k.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/find/findflush.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/find/findhc.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/find/findstr.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/find/findstrflush.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/interaction/check.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/interaction/onkeypress.js"></script>
-	<script src="scripts/interaction/keypressmove.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/interaction/mouse.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/interaction/numberpress.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/interaction/placeholderclick.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/logging/log.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/logging/print.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/turn/endgame.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/turn/endturn.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/turn/pcturn.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/turn/playerturn.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/turn/newgame.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-	<script src="scripts/gamelogic.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/card/card.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/common/variables.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/debug/debug.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/debug/debugvariables.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/deck/decks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/deck/flushdecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/deck/strflushdecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/deck/strdecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/deck/threeKDecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/draw/draw.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/find/find2k.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/find/find3k.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/find/find4k.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/find/findflush.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/find/findhc.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/find/findstr.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/find/findstrflush.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/interaction/check.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/interaction/onkeypress.js"></script>
+    <script src="scripts/interaction/keypressmove.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/interaction/mouse.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/interaction/numberpress.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/interaction/placeholderclick.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/logging/log.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/logging/print.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/turn/endgame.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/turn/endturn.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/turn/pcturn.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/turn/playerturn.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/turn/newgame.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/gamelogic.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
 
-	<!-- CSS -->
-	<link href="assets/styles/cardTheme.css?ver=<%=DateTime.Now.Ticks.ToString()%>" rel="stylesheet" type="text/css" />
+    <!-- CSS -->
+    <link href="assets/styles/cardTheme.css?ver=<%=DateTime.Now.Ticks.ToString()%>" rel="stylesheet" type="text/css"/>
 
-	<link href="assets/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
-	<link href="assets/images/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png" />
-	<link href="assets/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+    <link href="assets/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+    <link href="assets/images/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+    <link href="assets/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
 
-	<script>
-		$(document).ready(function() {
+    <script>
+        $(document).ready(function () {
 
-			init(document);
+            init(document);
 
-			if (isLocalStorageSupported()) {
-				let scoreSaved = JSON.parse(localStorage.getItem("scoreSave"));
-				if (scoreSaved != null && scoreSaved.highScore != null) {
-					highScore = scoreSaved.highScore;
-				}
-			}
+            if (isLocalStorageSupported()) {
+                let scoreSaved = JSON.parse(localStorage.getItem("scoreSave"));
+                if (scoreSaved != null && scoreSaved.highScore != null) {
+                    highScore = scoreSaved.highScore;
+                }
+            }
 
-		});
+        });
 
-		window.addEventListener("resize", myFunction);
+        window.addEventListener("resize", myFunction);
 
-		function myFunction() {
-			adjustOffset();
-		}
+        function myFunction() {
+            adjustOffset();
+        }
 
-		/*
-		 * Tests if local storage is supported in the browser.
-		 *
-		 * Returns:
-		 * 	True if local storage is supported, false if not.
-		 */
-		function isLocalStorageSupported() {
-			try {
-				return 'localStorage' in window && window['localStorage'] !== null;
-			} catch (e) {
-				return false;
-			}
-		}
-	</script>
+        /*
+         * Tests if local storage is supported in the browser.
+         *
+         * Returns:
+         * 	True if local storage is supported, false if not.
+         */
+        function isLocalStorageSupported() {
+            try {
+                return 'localStorage' in window && window['localStorage'] !== null;
+            } catch (e) {
+                return false;
+            }
+        }
+    </script>
 </head>
 
 <body>
 
-	<div id="pageDiv" class="pageDivClass">
+<div id="pageDiv" class="pageDivClass">
 
-		<div id="titleDiv">
-			<h1 id="fb-welcome">Mobile Team Poker</h1>
-		</div>
+    <div id="titleDiv">
+        <h1 id="fb-welcome">Mobile Team Poker</h1>
+    </div>
 
-		<div id="tutorialDiv" style="width: 700px; height: 750px;">
-			<img id="tutorialImage" alt="Tutorial">
-		</div>
+    <div id="tutorialDiv" style="width: 700px; height: 750px;">
+        <img id="tutorialImage" alt="Tutorial">
+    </div>
 
-		<div class="draggableControlsTextArea">
-		<div id="draggableControlsTextArea" class="ui-widget-content">
-			<div id="controlText" tabindex="0"></div>
-		</div>
-		</div>
+    <div class="draggableControlsTextArea">
+        <div id="draggableControlsTextArea" class="ui-widget-content">
+            <div id="controlText" tabindex="0"></div>
+        </div>
+    </div>
 
-		<div id="draggableScoreDiv" class="ui-widget-content">
-			<div id="scoreText"></div>
-		</div>
+    <div id="draggableScoreDiv" class="ui-widget-content">
+        <div id="scoreText"></div>
+    </div>
 
-		<div id="loadingDiv" style="width: 930px; height: 845px;">
-			<h2 id="loading" style="font-family: CustomFont,serif;">Loading...</h2>
-		</div>
+    <div id="loadingDiv" style="width: 930px; height: 845px;">
+        <h2 id="loading" style="font-family: CustomFont,serif;">Loading...</h2>
+    </div>
 
-		<div id="puzzleCanvasDiv">
-			<canvas height="580" id="puzzleCanvas" width="950"></canvas>
-		</div>
+    <div id="canvasDiv">
+        <canvas height="580" id="canvasId" width="950"></canvas>
+    </div>
 
-		<div id="cardSelectTitlediv">
-			<h1>Select Player Card 1 - 7</h1>
-		</div>
+    <div id="cardSelectTitleDiv">
+        <h1>Select Player Card 1 - 7</h1>
+    </div>
 
-		<div id="cardSelectDiv">
-			<button class="mobilebutton" id="playerCardOneButton">Card 1</button>
-			<button class="mobilebutton" id="playerCardTwoButton">Card 2</button>
-			<button class="mobilebutton" id="playerCardThreeButton">Card 3</button>
-			<button class="mobilebutton" id="playerCardFourButton">Card 4</button>
-			<button class="mobilebutton" id="playerCardFiveButton">Card 5</button>
-			<button class="mobilebutton" id="playerCardSixButton">Card 6</button>
-			<button class="mobilebutton" id="playerCardSevenButton">Card 7</button>
-		</div>
+    <div id="cardSelectDiv">
+        <button class="mobilebutton" id="playerCardOneButton">Card 1</button>
+        <button class="mobilebutton" id="playerCardTwoButton">Card 2</button>
+        <button class="mobilebutton" id="playerCardThreeButton">Card 3</button>
+        <button class="mobilebutton" id="playerCardFourButton">Card 4</button>
+        <button class="mobilebutton" id="playerCardFiveButton">Card 5</button>
+        <button class="mobilebutton" id="playerCardSixButton">Card 6</button>
+        <button class="mobilebutton" id="playerCardSevenButton">Card 7</button>
+    </div>
 
-		<div id="slotSelectTitlediv">
-			<h1>Select Slot 1 - 5</h1>
-		</div>
+    <div id="slotSelectTitleDiv">
+        <h1>Select Slot 1 - 5</h1>
+    </div>
 
-		<div id="slotSelectDiv">
-			<button class="mobilebutton" id="slotOneButton">Slot 1</button>
-			<button class="mobilebutton" id="slotTwoButton">Slot 2</button>
-			<button class="mobilebutton" id="slotThreeButton">Slot 3</button>
-			<button class="mobilebutton" id="slotFourButton">Slot 4</button>
-			<button class="mobilebutton" id="slotFiveButton">Slot 5</button>
-		</div>
+    <div id="slotSelectDiv">
+        <button class="mobilebutton" id="slotOneButton">Slot 1</button>
+        <button class="mobilebutton" id="slotTwoButton">Slot 2</button>
+        <button class="mobilebutton" id="slotThreeButton">Slot 3</button>
+        <button class="mobilebutton" id="slotFourButton">Slot 4</button>
+        <button class="mobilebutton" id="slotFiveButton">Slot 5</button>
+    </div>
 
-		<div id="activityDiv" style="background-image: radial-gradient(#009933, #330099);">
-			<textarea readonly rows="10" id="activity" style="font-size: 10px;"></textarea>
-		</div>
+    <div id="activityDiv" style="background-image: radial-gradient(#009933, #330099);">
+        <textarea readonly rows="10" id="activity" style="font-size: 10px;"></textarea>
+    </div>
 
-		<div id="buttonDiv">
-			<button id="endTurnButton">End Turn</button>
-			<button id="scoreButton">Score</button>
-			<button id="controlsButton">Controls</button>
-			<button id="newGameButton">New Game</button>
-		</div>
+    <div id="buttonDiv">
+        <button id="endTurnButton">End Turn</button>
+        <button id="scoreButton">Score</button>
+        <button id="controlsButton">Controls</button>
+        <button id="newGameButton">New Game</button>
+    </div>
 
-		<div id="musicDiv" style="margin-top: 10px;">
-			<button id="musicButton">more music</button>
-			<audio id="audio" controls loop>
-			  <source src="music/track.mp3" type="audio/mpeg">
-			  Your browser does not support the audio element.
-			</audio>
-			<button id="blogButton">games...</button>
-		</div>
-	</div>
+    <div id="musicDiv" style="margin-top: 10px;">
+        <button id="musicButton">more music</button>
+        <audio id="audio" controls loop>
+            <source src="./assets/music/track.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <button id="blogButton">games...</button>
+    </div>
+</div>
 
 </body>
 

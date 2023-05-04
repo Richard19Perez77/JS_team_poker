@@ -1,7 +1,7 @@
 // starting point for scripts, init, and then interaction scripts
 // for debug check flags in debug,
 function setupCanvas(document) {
-    canvas = document.getElementById('puzzleCanvas');
+    canvas = document.getElementById('canvasId');
     context = canvas.getContext('2d');
     context.font = "20px CustomFont";
 
@@ -418,7 +418,7 @@ function hideTutorial() {
 }
 
 function adjustOffset() {
-    let canvasOffset = $("#puzzleCanvas").offset();
+    let canvasOffset = $("#canvasId").offset();
     offsetX = Math.round(canvasOffset.left);
     offsetY = Math.round(canvasOffset.top);
 }
