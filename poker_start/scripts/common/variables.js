@@ -1,7 +1,7 @@
 let draggableControlsTextArea = null;
 let controlText = null;
 let draggableScoreDiv = null
-let JtutorialDiv = null;
+let jTutorialDiv = null;
 
 let player1isPC = false;
 let player2isPC = true;
@@ -109,7 +109,6 @@ let myBlack = "#000000";
 let cardOffsetX = 0;
 let cardOffsetY = 0;
 
-let logCount = 0;
 let playerTurn = 0;
 
 let deckCards = [];

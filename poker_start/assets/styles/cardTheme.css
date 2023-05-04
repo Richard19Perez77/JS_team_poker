@@ -47,7 +47,7 @@ button:focus {
 }
 
 button:active {
-  background: #330099;
+  background: #003413;
   color: white;
 }
 
@@ -55,7 +55,7 @@ textarea {
   font-family: 'CustomFont', serif;
   color: white;
   font-size: 100px;
-  background-color: #330099;
+  background-color: #003413;
   resize: none;
   padding-top: 25px;
 }
@@ -83,7 +83,7 @@ textarea {
 
 #tutorialDiv {
   border: 10px double black;
-  background-color: #330099;
+  background-color: #003413;
   position: absolute;
   margin: auto;
   left: 0;
@@ -119,7 +119,7 @@ textarea {
   -ms-user-select: none;
   user-select: none;
   padding: 20px;
-  background-color: #330099;
+  background-color: #003413;
   height: 500px;
   width: 450px;
 }
@@ -151,7 +151,7 @@ textarea {
   overflow-y: scroll;
   color: white;
   border: double white;
-  background-color: #330099;
+  background-color: #003413;
   padding: 20px;
 }
 
@@ -233,7 +233,6 @@ textarea {
 .rightAlign{
   text-align: right;
 }
-
 
 @font-face {
   font-family: CustomFont;

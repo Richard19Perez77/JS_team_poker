@@ -21,7 +21,6 @@ function newGameClicked() {
 
   sortBySuit = false;
 
-  logCount = 0;
   playerTurn = 0;
 
   deckCards = [];

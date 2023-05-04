@@ -1,11 +1,20 @@
 // starting point for scripts, init, and then interaction scripts
 // for debug check flags in debug,
-// for decks uncomment customDeck() types needed
-function init(document) {
+function setupCanvas(document) {
     canvas = document.getElementById('puzzleCanvas');
+    context = canvas.getContext('2d');
+    context.font = "20px CustomFont";
 
+    // define canvas listeners for mouse interaction on the canvas
+    canvas.addEventListener("mousedown", doMouseDown, false);
+    canvas.addEventListener("mouseup", doMouseUp, false);
+    canvas.addEventListener("mousemove", doMouseMove, false);
+    canvas.addEventListener("mouseout", doMouseOut, false);
+}
+
+function setupDivs() {
     loadingDiv = $("#loadingDiv");
-    JtutorialDiv = $("#tutorialDiv");
+    jTutorialDiv = $("#tutorialDiv");
 
     let tutorialImage = $("#tutorialImage")[0];
     tutorialImage.src = "assets/images/tutorial.png"
@@ -18,10 +27,14 @@ function init(document) {
     pageDivLocal.fadeIn(500, function () {
         $(this).css("display", "normal");
     });
+}
 
+function setupWindow() {
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("keyup", onKeyUp);
+}
 
+function setupMobileButtons() {
     let playerCardOneButton = $("#playerCardOneButton")[0];
     if (playerCardOneButton != null) {
         playerCardOneButton.addEventListener("click", function () {
@@ -70,7 +83,9 @@ function init(document) {
             playerCardPress(6);
         });
     }
+}
 
+function setupSlotButtons() {
     let slotOneButton = $("#slotOneButton")[0];
     if (slotOneButton != null) {
         slotOneButton.addEventListener("click", function () {
@@ -119,8 +134,10 @@ function init(document) {
             placeHolderPress(6);
         });
     }
+}
 
-    tutorialDiv = JtutorialDiv[0];
+function setupControls() {
+    tutorialDiv = jTutorialDiv[0];
     tutorialDiv.addEventListener('click', function (e) {
         hideTutorial();
     });
@@ -183,20 +200,22 @@ function init(document) {
         }
     });
 
-    // define canvas listeners for mouse interaction on the canvas
-    canvas.addEventListener("mousedown", doMouseDown, false);
-    canvas.addEventListener("mouseup", doMouseUp, false);
-    canvas.addEventListener("mousemove", doMouseMove, false);
-    canvas.addEventListener("mouseout", doMouseOut, false);
-
-    context = canvas.getContext('2d');
-    context.font = "20px CustomFont";
-
     backImage.onload = function () {
         imagesLoaded++;
         checkImagesLoadedCount();
     }
     backImage.src = "assets/images/back1.png";
+}
+
+// for decks uncomment customDeck() types needed
+function init(document) {
+    setupCanvas(document);
+    setupDivs();
+    setupWindow();
+    setupMobileButtons();
+
+    setupSlotButtons();
+    setupControls();
 
     // screen resize offset adjustment
     adjustOffset();
@@ -386,8 +405,8 @@ function checkImagesLoadedCount() {
 function hideTutorial() {
     if (loadingDiv.is(":hidden")) {
         if (tutorialDiv.hidden === false) {
-            if (JtutorialDiv.is(":visible") && JtutorialDiv.is(':animated') === false) {
-                JtutorialDiv.fadeOut(300, function () {
+            if (jTutorialDiv.is(":visible") && jTutorialDiv.is(':animated') === false) {
+                jTutorialDiv.fadeOut(300, function () {
                     tutorialDiv.hidden = true;
                     gameReady = true;
                     adjustOffset();
