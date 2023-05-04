@@ -1005,8 +1005,14 @@ function sortCardsSuitAscendingOrder() {
 function organizePlayerCards() {
     switch (targetHand) {
         case 0:
+            sortCardsAscendingOrder();
+            break;
         case 1:
+            sortCardsAscendingOrder();
+            break;
         case 2:
+            sortCardsAscendingOrder();
+            break;
         case 3:
             sortCardsAscendingOrder();
             break;
@@ -1040,6 +1046,7 @@ function sortCardsToggle() {
         sortCardsAscendingOrder();
         sortCardsSuitAscendingOrder();
     } else {
+        sortCardsSuitAscendingOrder();
         sortCardsAscendingOrder();
     }
 
