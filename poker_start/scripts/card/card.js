@@ -1030,11 +1030,6 @@ function organizePlayerCards() {
     }
 }
 
-function addSetAndRemoveCard(placeholderCard, playerCard, cardArr) {
-    addCardToHand(placeholderCard, cardArr);
-    removeCardFromArray(playerCard, cardArr);
-}
-
 function addCardToHand(card, cardArr) {
     if (card != null && cardArr != null) {
         cardArr.push(card);
