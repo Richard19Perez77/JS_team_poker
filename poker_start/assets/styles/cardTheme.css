@@ -33,7 +33,7 @@ button {
   height: 55px;
   width: 125px;
   margin: 5px 10px 5px 10px;
-  background: #009933;
+  background: #004f1b;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -90,14 +90,10 @@ textarea {
   right: 0;
 }
 
-#puzzleCanvasDiv {
-
-}
-
 #draggableScoreDiv {
   border: double;
   background-image: none;
-  background-color: #009933;
+  background-color: #0d2b57;
   padding: 35px;
   height: 540px;
   width: 500px;
@@ -127,7 +123,7 @@ textarea {
 #draggableControlsTextArea {
   border: double;
   color: black;
-  background-color: #009933;
+  background-color: #0d2b57;
   font-family: 'CustomFont', serif;
   height: 530px;
   width: 550px;
@@ -161,7 +157,7 @@ textarea {
   font-size: 25px;
   font-family: 'CustomFont', serif;
   color: black;
-  background-color: #009933;
+  background-color: #004f1b;
   margin: 10px 10px 10px 10px;
   width: 900px;
   padding: 5px;

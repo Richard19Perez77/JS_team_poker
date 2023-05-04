@@ -34,7 +34,7 @@ let placeHolderMouseOverCardIndex = -1;
 let allHumanPlayers = false;
 let topCardSelected = false;
 
-let player1Name = 1;
+let player1Name = "1";
 let player2Name = "PC";
 let player3Name = "PC";
 let player4Name = "PC";
@@ -102,8 +102,8 @@ let offsetY = 0;
 let turnPassed = 0;
 let handPasses = 0;
 
-let myGreen = "#009933";
-let myBlue = "#330099";
+let myGreen = "#006530";
+let myBlue = "#0062cc";
 let myBlack = "#000000";
 
 let cardOffsetX = 0;

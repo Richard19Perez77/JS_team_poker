@@ -71,7 +71,7 @@ function draw2K() {
   let colorb = 'black';
   let colorc = myGreen;
 
-  if (targetHand == 1) {
+  if (targetHand === 1) {
     colora = 'white';
     colorb = 'white';
     colorc = 'black';
@@ -106,7 +106,7 @@ function draw3K() {
   let colorb = 'black';
   let colorc = myGreen;
 
-  if (targetHand == 2) {
+  if (targetHand === 2) {
     colora = 'white';
     colorb = 'white';
     colorc = 'black';
@@ -149,7 +149,7 @@ function drawST() {
   let colorb = 'black';
   let colorc = myGreen;
 
-  if (targetHand == 3) {
+  if (targetHand === 3) {
     colora = 'white';
     colorb = 'white';
     colorc = 'black';
@@ -208,7 +208,7 @@ function drawFL() {
   let colorb = 'black';
   let colorc = myGreen;
 
-  if (targetHand == 4) {
+  if (targetHand === 4) {
     colora = 'white';
     colorb = 'white';
     colorc = 'black';
@@ -267,7 +267,7 @@ function draw4K() {
   let colorb = 'black';
   let colorc = myGreen;
 
-  if (targetHand == 5) {
+  if (targetHand === 5) {
     colora = 'white';
     colorb = 'white';
     colorc = 'black';
@@ -318,7 +318,7 @@ function drawSF() {
   let colorb = 'black';
   let colorc = myGreen;
 
-  if (targetHand == 6) {
+  if (targetHand === 6) {
     colora = 'white';
     colorb = 'white';
     colorc = 'black';
