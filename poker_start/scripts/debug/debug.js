@@ -22,10 +22,6 @@ function setDebugFlags(boolVar) {
     // default     false
     allPCPlayers = false;
 
-    // never use auto move if on:
-    // default        false
-    allHumanPlayers = false;
-
     // log the cards placed in activity box:
     // default         true
     doLogPlacedCards = true;
@@ -54,16 +50,6 @@ function setDebugFlags(boolVar) {
     setPcPlayers();
     hideDebugTutorial();
     setTestElements();
-    setHumanPlayers();
-}
-
-function setHumanPlayers() {
-    if (allHumanPlayers) {
-        player1isPC = false;
-        player2isPC = false;
-        player3isPC = false;
-        player4isPC = false;
-    }
 }
 
 function setTestElements() {
@@ -80,9 +66,6 @@ function setPcPlayers() {
         player2isPC = true;
         player3isPC = true;
         player4isPC = true;
-        doAutoHideTutorial = true;
-        hideDebugTutorial();
-        PC_TURN_DELAY = 0;
     }
 }
 

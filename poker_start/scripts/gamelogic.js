@@ -1,5 +1,13 @@
 // starting point for scripts, init, and then interaction scripts
 // for debug check flags in debug,
+function setHumanPlayers(allHuman) {
+    if (allHuman) {
+        player1isPC = false;
+        player2isPC = false;
+        player3isPC = false;
+        player4isPC = false;
+    }
+}
 function setupCanvas(document) {
     canvas = document.getElementById('canvasId');
     context = canvas.getContext('2d');
@@ -216,6 +224,8 @@ function init(document) {
 
     setupSlotButtons();
     setupControls();
+
+    setHumanPlayers(false);
 
     // screen resize offset adjustment
     adjustOffset();
