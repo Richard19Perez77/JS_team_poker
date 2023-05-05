@@ -17,8 +17,7 @@ function setDebugFlags(boolVar) {
     doShowUIDuringTest = true;
 
     //auto move all card placements:
-    // default     false
-    allPCPlayers = false;
+    allPCPlayers = true;
 
     // log the cards placed in activity box:
     // default         true
