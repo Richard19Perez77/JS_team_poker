@@ -12,7 +12,7 @@ function onKeyDown(e) {
                 }
                 break;
             case 27: // esc
-                if (!isTesting()) {
+                if (!doRunControlTest) {
                     setDebugFlags(true);
                     newGameClicked();
                 }
