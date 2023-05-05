@@ -50,7 +50,6 @@ function setDebugFlags(boolVar) {
 function setTestElements() {
     PC_TURN_DELAY = 0;
     allPCPlayers = true;
-    setPcPlayers();
     tutorialDiv.hidden = true;
 }
 
