@@ -34,10 +34,6 @@ function setDebugFlags(boolVar) {
     // default         false
     doLogCardDetails = false;
 
-    // auto hide the opening tutorial wallpaper
-    // default           false
-    doAutoHideTutorial = false;
-
     // defaults true
     runAutoHc = true;
     runAuto2k = true;
@@ -48,7 +44,6 @@ function setDebugFlags(boolVar) {
     runAutoSF = true;
 
     setPcPlayers();
-    hideDebugTutorial();
     setTestElements();
 }
 
@@ -56,8 +51,7 @@ function setTestElements() {
     PC_TURN_DELAY = 0;
     allPCPlayers = true;
     setPcPlayers();
-    doAutoHideTutorial = true;
-    hideDebugTutorial();
+    tutorialDiv.hidden = true;
 }
 
 function setPcPlayers() {
@@ -66,11 +60,5 @@ function setPcPlayers() {
         player2isPC = true;
         player3isPC = true;
         player4isPC = true;
-    }
-}
-
-function hideDebugTutorial() {
-    if (doAutoHideTutorial) {
-        tutorialDiv.hidden = true;
     }
 }

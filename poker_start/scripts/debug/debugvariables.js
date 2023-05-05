@@ -29,7 +29,6 @@ let runAutoSF = true;
 
 let doLogPlacedCards = true;
 let doLogPlayerTurn = true;
-let doAutoHideTutorial = false;
 let doLogCardDetails = false;
 let doRunControlTest = false;
 let doShowUIDuringTest = false;
