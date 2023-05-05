@@ -39,11 +39,6 @@ function find3Kcard() {
         sameFlushCount = 0;
         strFlushCount = 0;
 
-        valuePlayedAcc = checkValuePlayedCount(tempCard.value);
-        if (valuePlayedAcc >= 2) {
-            continue
-        }
-
         canReplaceCurrent3K = checkCardCanReplaceCurrent3kPlayed(tempCard);
         if (canReplaceCurrent3K === false) {
             continue;
@@ -56,6 +51,11 @@ function find3Kcard() {
             if (isValidStrFlushPlay) {
                 continue;
             }
+        }
+
+        valuePlayedAcc = check3KValuePlayedCount(tempCard.value);
+        if (valuePlayedAcc >= 2) {
+            continue
         }
 
         // canStraight = checkHandFor3cardStraight(tempCard, playerCards);

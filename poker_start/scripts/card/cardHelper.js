@@ -538,6 +538,23 @@ function findStraightFlushCards(card, cardArr) {
     return partialArr;
 }
 
+function check3KValuePlayedCount(value) {
+    let acc = 0;
+    if (hcSlotCard != null && hcSlotCard.value === value) {
+        acc++;
+    }
+
+    if (twoPSlotCard1 != null && twoPSlotCard1.value === value) {
+        acc++;
+    }
+    if (twoPSlotCard2 != null && twoPSlotCard2.value === value) {
+        acc++;
+    }
+
+    return acc;
+}
+
+
 function checkValuePlayedCount(value) {
     let acc = 0;
     if (hcSlotCard != null && hcSlotCard.value === value) {
