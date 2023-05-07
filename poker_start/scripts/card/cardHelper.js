@@ -867,20 +867,14 @@ function removeCardFromArray(card, cardArr) {
 
 function checkForFullHand(cardArr) {
     let acc = cardArr.length;
-    let dealtCards = [];
     while (acc < MAX_PLAYER_CARDS) {
         if (deckCards.length > 0) {
             cardArr[acc] = deckCards.shift();
-            dealtCards.push(cardArr[acc]);
             acc = cardArr.length;
         } else {
             //addLog("Out of Deck Cards");
-            //addLog(printCardArr(dealtCards));
             return;
         }
-    }
-    if (dealtCards.length > 0) {
-        //addLog(printCardArr(dealtCards));
     }
 }
 
