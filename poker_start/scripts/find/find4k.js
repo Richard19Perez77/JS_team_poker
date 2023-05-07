@@ -39,7 +39,7 @@ function find4KCard() {
     cardsLeftToPlay = count4kCardsLeftToPlay();
 
     // finish 4k first if possible when 3 are played
-    if (cardsLeftToPlay === 1) {
+    if (cardsLeftToPlay === 1 || (fourkSlotCard4 !== null && fourkSlotCard1.value === fourkSlotCard2.value && fourkSlotCard2.value === fourkSlotCard3.value && fourkSlotCard3.value !== fourkSlotCard4.value)) {
 
         // check for final card
         for (let i = 0; i < playerCards.length; i++) {
@@ -67,8 +67,6 @@ function find4KCard() {
     }
 
     // 3 cards with one off
-
-    // 4 cards with one off
 
     // 4 cards with two off
 

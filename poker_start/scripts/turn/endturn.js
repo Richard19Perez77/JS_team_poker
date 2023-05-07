@@ -168,12 +168,23 @@ function organizeStraight() {
 
 function organizePlayedCards() {
     //addLog("organizePlayedCards()");
-
-    organize3k();
-    organizeStraight();
-    organizeFlush();
-    organize4k();
-    organizeStraightFlush();
+    switch (targetHand) {
+        case 2:
+            organize3k();
+            break;
+        case 3:
+            organizeStraight();
+            break;
+        case 4:
+            organizeFlush();
+            break;
+        case 5 :
+            organize4k();
+            break;
+        case 6:
+            organizeStraightFlush();
+            break;
+    }
 }
 
 function organizeStraightFlush() {
