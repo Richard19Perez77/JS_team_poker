@@ -232,5 +232,5 @@ textarea {
 
 @font-face {
   font-family: CustomFont;
-  src: url('../font/Audiowide-Regular.ttf');
+  src: url('Audiowide-Regular.ttf');
 }

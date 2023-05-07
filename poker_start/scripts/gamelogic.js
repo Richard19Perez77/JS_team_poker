@@ -1,5 +1,11 @@
 // starting point for scripts, init, and then interaction scripts
 // for debug check flags in debug,
+
+let imageLoaded = function () {
+    imagesLoaded++;
+    checkImagesLoadedCount();
+}
+
 function setHumanPlayers(allHuman) {
     if (allHuman) {
         player1isPC = false;
@@ -8,10 +14,12 @@ function setHumanPlayers(allHuman) {
         player4isPC = false;
     }
 }
+
 function setupCanvas(document) {
     canvas = document.getElementById('canvasId');
     context = canvas.getContext('2d');
     context.font = "20px CustomFont";
+    canvas.font = "20px CustomFont";
 
     // define canvas listeners for mouse interaction on the canvas
     canvas.addEventListener("mousedown", doMouseDown, false);
@@ -26,10 +34,7 @@ function setupDivs() {
 
     let tutorialImage = $("#tutorialImage")[0];
     tutorialImage.src = "assets/images/tutorial.png"
-    tutorialImage.onload = function () {
-        imagesLoaded++;
-        checkImagesLoadedCount();
-    }
+    tutorialImage.onload = imageLoaded;
 
     let pageDivLocal = $(".pageDivClass");
     pageDivLocal.fadeIn(500, function () {
@@ -208,10 +213,7 @@ function setupControls() {
         }
     });
 
-    backImage.onload = function () {
-        imagesLoaded++;
-        checkImagesLoadedCount();
-    }
+    backImage.onload = imageLoaded;
     backImage.src = "assets/images/back1.png";
 }
 
@@ -236,7 +238,6 @@ function init(document) {
 }
 
 function clearCanvas() {
-    context = canvas.getContext('2d');
     context.save();
 
     // Use the identity matrix while clearing the canvas
@@ -371,13 +372,14 @@ function controlsButtonClicked() {
         }
 
         $("#draggableControlsTextArea").stop(true);
-        $("#draggableControlsTextArea").slideToggle(100, function() {
+        $("#draggableControlsTextArea").slideToggle(100, function () {
             if ($("#controlText").is(":visible")) {
                 $("#controlText").focus();
             }
         });
     }
 }
+
 function scoreButtonClicked() {
     if ($("#draggableScoreDiv").is(':animated') === false) {
         totalScoreOfHands();
@@ -392,6 +394,7 @@ function scoreButtonClicked() {
 
     $("#scoreButton").focus();
 }
+
 function blogButtonClicked() {
     if (confirm("Do you want to site 'https://www.myabandonware.com/' ?")) {
         window.open("https://www.myabandonware.com/");
@@ -406,6 +409,7 @@ function musicButtonClicked() {
 
 function checkImagesLoadedCount() {
     if (imagesLoaded === IMAGES_TO_LOAD) {
+        drawBoard();
         if (loadingDiv.is(":visible")) {
             $("#loadingDiv").slideToggle(500);
         }

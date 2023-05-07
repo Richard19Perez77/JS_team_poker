@@ -887,44 +887,24 @@ function checkForFullHand(cardArr) {
 function dealToPlayer1() {
     for (let i = 0; i < MAX_PLAYER_CARDS; i++) {
         player1Cards[i] = deckCards.shift();
-        player1Cards[i].bitmap.onload = function () {
-            imagesLoaded++;
-            checkImagesLoadedCount();
-            drawBoard();
-        }
     }
 }
 
 function dealToPlayer2() {
     for (let i = 0; i < MAX_PLAYER_CARDS; i++) {
         player2Cards[i] = deckCards.shift();
-        player2Cards[i].bitmap.onload = function () {
-            imagesLoaded++;
-            checkImagesLoadedCount();
-            drawBoard();
-        }
     }
 }
 
 function dealToPlayer3() {
     for (let i = 0; i < MAX_PLAYER_CARDS; i++) {
         player3Cards[i] = deckCards.shift();
-        player3Cards[i].bitmap.onload = function () {
-            imagesLoaded++;
-            checkImagesLoadedCount();
-            drawBoard();
-        }
     }
 }
 
 function dealToPlayer4() {
     for (let i = 0; i < MAX_PLAYER_CARDS; i++) {
         player4Cards[i] = deckCards.shift();
-        player4Cards[i].bitmap.onload = function () {
-            imagesLoaded++;
-            checkImagesLoadedCount();
-            drawBoard();
-        }
     }
 }
 
