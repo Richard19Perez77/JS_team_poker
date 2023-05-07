@@ -21,27 +21,9 @@ function checkHCisGreater(card) {
     return false;
 }
 
-
-function removeFrom4kLists(card) {
-    if (card == null) {
-        return;
-    }
-
-    valueArr4k.remove(card.value);
-    suitArr4k.remove(card.suit);
-}
-
-function addTo4kLists(card) {
-    if (card == null) {
-        return;
-    }
-    valueArr4k.add(card.value);
-    suitArr4k.add(card.suit);
-}
-
 function findHCcard() {
     handPasses++;
-    if (handPasses > 16) {
+    if (handPasses > 15) {
         return;
     }
     let playerCards = getPlayerCards();
@@ -96,45 +78,34 @@ function findHCcard() {
         }
     }
 
-
-    let canReplaceCurrentHC = false;
     let sameValueCount = 0;
     let canStraight = false;
-    let sameSuitCount = 0;
     let isTwoCardStrFlush = false;
 
     let possibleCards = [];
-
     let tempCard = null;
+
     for (let i = 0; i < playerCards.length; i++) {
 
-        canReplaceCurrentHC = false;
         sameValueCount = 0;
         canStraight = false;
         isTwoCardStrFlush = false;
-
         tempCard = playerCards[i];
 
-        // check for card to be >= to current placeholder
-        canReplaceCurrentHC = checkHCisGreater(tempCard);
+        // check if card has duplicate face values
+        sameValueCount = checkHandForMatchingValues(tempCard, playerCards);
 
-        if (canReplaceCurrentHC) {
+        // will be one with it in hand, check next for straight
+        if (sameValueCount === 1) {
 
-            // check if card has duplicate face values
-            sameValueCount = checkHandForMatchingValues(tempCard, playerCards);
+            canStraight = checkHandFor3cardStraight(tempCard, playerCards);
 
-            // will be one with it in hand, check next for straight
-            if (sameValueCount === 1) {
+            if (!canStraight) {
 
-                canStraight = checkHandFor3cardStraight(tempCard, playerCards);
+                isTwoCardStrFlush = checkHandForNextStrFlushCard(tempCard, playerCards);
 
-                if (!canStraight) {
-
-                    isTwoCardStrFlush = checkHandForNextStrFlushCard(tempCard, playerCards);
-
-                    if (!isTwoCardStrFlush) {
-                        possibleCards.push(tempCard);
-                    }
+                if (!isTwoCardStrFlush) {
+                    possibleCards.push(tempCard);
                 }
             }
         }
@@ -157,18 +128,4 @@ function findHCcard() {
         }
         cardPlacedAction();
     }
-}
-
-function checkHandForNextStrFlushCard(card, cardArr) {
-    for (let i = 0; i < cardArr.length; i++) {
-        let possibleStrFlushCard = cardArr[i];
-        if (card.suit === possibleStrFlushCard.suit) {
-            if (card.value === possibleStrFlushCard.value + 1 || card.value === possibleStrFlushCard.value - 1 ||
-                card.value === possibleStrFlushCard.value + 2 || card.value === possibleStrFlushCard.value - 2) {
-                return true;
-            }
-        }
-    }
-
-    return false;
 }
