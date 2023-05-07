@@ -840,19 +840,6 @@ function checkCardHasBeenPlayed(card) {
     return strFlushSlotCard5 != null && strFlushSlotCard5.value === value && strFlushSlotCard5.suit === suit;
 }
 
-function cardPlacedAction() {
-    cardSelected = -1;
-
-    removeCardHighlights();
-
-    cardPlayed = true;
-    turnPassed = 0;
-
-    totalScoreOfHands();
-
-    drawBoard();
-}
-
 function removeCardHighlights() {
     playercardPressed = -1;
     placeholderPressed = -1;
