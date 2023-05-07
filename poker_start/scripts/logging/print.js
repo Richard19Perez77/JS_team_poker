@@ -5,7 +5,7 @@ function printCard(card) {
   let value = getFaceValue(card.value);
   let suit = getSuitCharacter(card.suit);
 
-  return "(" + value + "," + suit + ")"
+  return `[${value}${suit}]`;
 }
 
 function printCardArr(cardArr) {
@@ -22,7 +22,7 @@ function printCardArr(cardArr) {
         cardString = cardString + "(bitmap error)";
     }
 
-    cardString = cardString + "(" + value + "," + suit + ")";
+    cardString = `${cardString}[${value}${suit}]`;
   }
 
   return cardString;

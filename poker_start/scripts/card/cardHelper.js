@@ -190,6 +190,7 @@ function getSuitCharacter(suit) {
         case 3:
             return "&#9828;";
     }
+    return "";
 }
 
 function getFaceValue(value) {
@@ -221,6 +222,8 @@ function getFaceValue(value) {
         case 12:
             return "A";
     }
+
+    return "";
 }
 
 function checkHandForMatchingValues(card, hand) {
