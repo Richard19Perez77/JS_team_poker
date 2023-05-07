@@ -14,38 +14,42 @@
     <script src="libs/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
     <script src="libs/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 
+    <script type="application/javascript" src="scripts/common/list.js"></script>
+    <script type="application/javascript" src="scripts/common/variables.js"></script>
+    <script src="scripts/debug/debugvariables.js" type="application/javascript"></script>
+    <script type="application/javascript" src="scripts/card/card.js"></script>
     <script type="application/javascript" src="scripts/card/cardHelper.js"></script>
-    <script src="scripts/card/card.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/common/variables.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/debug/debug.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/debug/debugvariables.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/deck/decks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/deck/flushdecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/deck/strflushdecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/deck/strdecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/deck/threeKDecks.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/draw/draw.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/find/find2k.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/find/find3k.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/find/find4k.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/find/findflush.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/find/findhc.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/find/findstr.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/find/findstrflush.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/interaction/check.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/interaction/onkeypress.js"></script>
-    <script src="scripts/interaction/keypressmove.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/interaction/mouse.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/interaction/numberpress.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/interaction/placeholderclick.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/logging/log.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/logging/print.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/turn/endgame.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/turn/endturn.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/turn/pcturn.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/turn/playerturn.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/turn/newgame.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
-    <script src="scripts/gamelogic.js?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="scripts/debug/debug.js" type="application/javascript"></script>
+    <script src="scripts/deck/decks.js" type="application/javascript"></script>
+    <script src="scripts/deck/flushdecks.js" type="application/javascript"></script>
+    <script src="scripts/deck/strflushdecks.js" type="application/javascript"></script>
+    <script src="scripts/deck/fourkinddeck.js" type="application/javascript"></script>
+    <script src="scripts/deck/strdecks.js" type="application/javascript"></script>
+    <script src="scripts/deck/threekinddecks.js" type="application/javascript"></script>
+    <script src="scripts/deck/twokinddeck.js" type="application/javascript"></script>
+    <script src="scripts/draw/draw.js" type="application/javascript"></script>
+    <script src="scripts/find/find2k.js" type="application/javascript"></script>
+    <script src="scripts/find/find3k.js" type="application/javascript"></script>
+    <script src="scripts/find/find4k.js" type="application/javascript"></script>
+    <script src="scripts/find/findflush.js" type="application/javascript"></script>
+    <script src="scripts/find/findhc.js" type="application/javascript"></script>
+    <script src="scripts/find/findstr.js" type="application/javascript"></script>
+    <script src="scripts/find/findstrflush.js" type="application/javascript"></script>
+    <script src="scripts/interaction/check.js" type="application/javascript"></script>
+    <script src="scripts/interaction/cardPlaced.js" type="application/javascript"></script>
+    <script src="scripts/interaction/keypressmove.js" type="application/javascript"></script>
+    <script src="scripts/interaction/mouse.js" type="application/javascript"></script>
+    <script src="scripts/interaction/numberpress.js" type="application/javascript"></script>
+    <script src="scripts/interaction/placeholderclick.js" type="application/javascript"></script>
+    <script src="scripts/logging/log.js" type="application/javascript"></script>
+    <script src="scripts/logging/print.js" type="application/javascript"></script>
+    <script src="scripts/turn/endgame.js" type="application/javascript"></script>
+    <script src="scripts/turn/endturn.js" type="application/javascript"></script>
+    <script src="scripts/turn/pcturn.js" type="application/javascript"></script>
+    <script src="scripts/turn/playerturn.js" type="application/javascript"></script>
+    <script src="scripts/turn/newgame.js" type="application/javascript"></script>
+    <script src="scripts/gamelogic.js" type="application/javascript"></script>
+    <script src="scripts/interaction/onkeypress.js" type="application/javascript"></script>
 
     <!-- CSS -->
     <link href="assets/styles/cardTheme.css?ver=<%=DateTime.Now.Ticks.ToString()%>" rel="stylesheet" type="text/css"/>
