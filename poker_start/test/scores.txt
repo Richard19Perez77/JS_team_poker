@@ -26,3 +26,32 @@ max high score 1499
 perfect game average 0.02
 Sun Apr 30 2023 22:51:17 GMT-0500 (Central Daylight Time)
 test duration (seconds)= 8122.723
+
+Game Count = 7477
+
+hc card played average 1.00
+hc card score average 34.73
+
+2k card played average 0.99
+2k card score average 73.15
+
+3k card played average 0.45
+3k card score average 104.16
+
+St card played average 0.82
+St card score average 166.50
+
+fl card played average 0.92
+fl card score average 211.48
+
+4k card played average 0.44
+4k card score average 328.46
+
+sf card played average 0.33
+sf card score average 537.08
+
+total score average 808.26
+max high score 1499
+perfect game average 0.04
+Fri May 05 2023 21:19:16 GMT-0500 (Central Daylight Time)
+test duration (seconds)= 6806.987
