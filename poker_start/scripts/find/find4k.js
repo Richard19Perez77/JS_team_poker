@@ -66,6 +66,13 @@ function find4KCard() {
         }
     }
 
+    // 3 cards with one off
+
+    // 4 cards with one off
+
+    // 4 cards with two off
+
+    // 4 cards with 2 pair
 
     // start a new play on 4k
     let possible4kCards = [];

@@ -320,6 +320,61 @@ function organize4k() {
             fourkSlotCard4 = temp;
         }
     }
+
+    // organize by value
+    if (fourkSlotCard1 !== null && fourkSlotCard2 !== null && fourkSlotCard1.value > fourkSlotCard2.value) {
+        temp = fourkSlotCard1;
+        fourkSlotCard1 = fourkSlotCard2;
+        fourkSlotCard2 = temp;
+    }
+
+    if (fourkSlotCard2 !== null && fourkSlotCard3 !== null && fourkSlotCard2.value > fourkSlotCard3.value) {
+        temp = fourkSlotCard2;
+        fourkSlotCard2 = fourkSlotCard3;
+        fourkSlotCard3 = temp;
+    }
+
+    if (fourkSlotCard3 !== null && fourkSlotCard4 !== null && fourkSlotCard3.value > fourkSlotCard4.value) {
+        temp = fourkSlotCard3;
+        fourkSlotCard3 = fourkSlotCard4;
+        fourkSlotCard4 = temp;
+    }
+
+    // 3 cards played low is 1k
+    if (fourkSlotCard1 !== null && fourkSlotCard2 !== null && fourkSlotCard3 !== null && fourkSlotCard1.value !== fourkSlotCard2.value && fourkSlotCard2.value === fourkSlotCard3.value) {
+        temp = fourkSlotCard1;
+        fourkSlotCard1 = fourkSlotCard3;
+        fourkSlotCard3 = temp;
+    }
+
+    // 3 cards played low is 1k
+    if (fourkSlotCard1 !== null && fourkSlotCard2 !== null && fourkSlotCard3 !== null && fourkSlotCard1.value !== fourkSlotCard2.value && fourkSlotCard1.value === fourkSlotCard3.value) {
+        temp = fourkSlotCard2;
+        fourkSlotCard2 = fourkSlotCard3;
+        fourkSlotCard3 = temp;
+    }
+
+
+    // four cards played out of order
+    if (fourkSlotCard1 !== null && fourkSlotCard2 !== null && fourkSlotCard3 !== null && fourkSlotCard4 !== null) {
+
+        if (fourkSlotCard1.value !== fourkSlotCard2.value && fourkSlotCard3.value === fourkSlotCard4.value) {
+
+            temp = fourkSlotCard1;
+            fourkSlotCard1 = fourkSlotCard3;
+            fourkSlotCard3 = temp;
+
+            temp = fourkSlotCard2;
+            fourkSlotCard2 = fourkSlotCard4;
+            fourkSlotCard4 = temp;
+
+        }
+        if (fourkSlotCard2.value === fourkSlotCard4.value) {
+            temp = fourkSlotCard3;
+            fourkSlotCard3 = fourkSlotCard4;
+            fourkSlotCard4 = temp;
+        }
+    }
 }
 
 function organize3k() {
