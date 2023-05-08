@@ -32,7 +32,7 @@ function newGameClicked() {
 
   targetHand = 0;
   cardSelected = -1;
-
+  handPasses = 0;
   turnPassed = 0;
 
   hcSlotCard = null;

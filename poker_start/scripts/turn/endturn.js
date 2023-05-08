@@ -18,8 +18,8 @@ function endTurnClicked() {
 
     //addLog("turn over || cardPlayed");
     if (playerTurnOver === true || cardPlayed === false) {
-        // cards have been played or the player didn't play a cards
 
+        // stop round after too many turns by pc
         if (cardPlayed === false) {
             turnPassed++;
         }
@@ -29,7 +29,6 @@ function endTurnClicked() {
 
             turnPassed = 0;
             targetHand++;
-            handPasses = 0;
             //addLog("targetHand=" + targetHand);
 
             checkForFullHand(player1Cards);

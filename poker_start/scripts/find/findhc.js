@@ -22,10 +22,12 @@ function checkHCisGreater(card) {
 }
 
 function findHCcard() {
+    // stop loop for optimizing cards
     handPasses++;
     if (handPasses > 15) {
         return;
     }
+
     let playerCards = getPlayerCards();
 
     // replace card if possible
