@@ -289,8 +289,16 @@ function organizeFlush() {
 }
 
 function organize4k() {
-    //addLog("organize4k()");
-    let temp;
+    if (fourkSlotCard1 !== null
+        && fourkSlotCard2 !== null
+        && fourkSlotCard3 !== null
+        && fourkSlotCard4 !== null
+        && fourkSlotCard1.value === fourkSlotCard2.value && fourkSlotCard2.value === fourkSlotCard3.value && fourkSlotCard3.value === fourkSlotCard4.value){
+        return;
+    }
+
+        //addLog("organize4k()");
+        let temp;
     if (fourkSlotCard1 == null) {
 
         //find a non null card
