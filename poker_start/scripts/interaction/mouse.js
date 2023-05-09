@@ -1,6 +1,6 @@
 function doMouseDown(event) {
   //addDebugLog("mouse down x=" + mouseX + " , y=" + mouseY);
-  if (isPlayerTurn() && tutorialDiv.hidden === true) {
+  if (isPlayerTurn() && gameReady) {
     mouseX = event.clientX - offsetX;
     mouseY = event.clientY - offsetY;
     //addLog("mouse down x=" + mouseX + " , y=" + mouseY);
@@ -15,7 +15,7 @@ function doMouseDown(event) {
 
 function doMouseMove(event) {
   //addDebugLog("mouse move x=" + mouseX + " , y=" + mouseY);
-  if (isPlayerTurn() && tutorialDiv.hidden === true && cardSelected !== -1) {
+  if (isPlayerTurn() && gameReady && cardSelected !== -1) {
     //addLog("mouse move cardSelected=" + cardSelected);
     mouseX = event.clientX - offsetX;
     mouseY = event.clientY - offsetY;
@@ -26,7 +26,7 @@ function doMouseMove(event) {
 }
 
 function doMouseUp(event) {
-  if (isPlayerTurn() && tutorialDiv.hidden === true) {
+  if (isPlayerTurn() && gameReady) {
     //addLog("mouse up in cardSelected=" + cardSelected);
     mouseX = event.clientX - offsetX;
     mouseY = event.clientY - offsetY;
@@ -39,7 +39,7 @@ function doMouseUp(event) {
 }
 
 function doMouseOut(event) {
-  if (isPlayerTurn() && tutorialDiv.hidden === true) {
+  if (isPlayerTurn() && gameReady) {
     cardSelected = -1;
     drawBoard();
   }
