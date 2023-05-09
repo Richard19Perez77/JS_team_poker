@@ -2,18 +2,16 @@ function totalScoreOfHands() {
 
     let totalScore = 0;
     let scoreLog1 = "SCORE" + br + br;
-    addToScoreLog(scoreLog1);
 
     let hcScore = getHighCardScore();
     if (hcScore > 0) {
         totalScore += hcScore;
-        scoreLog1 = scoreLog1 + spanL1 + "High Card:" + endSpan + spanR1 + hcScore + " + " + HC_BONUS + endSpan + br;
+        scoreLog1 += spanL1 + "High Card:" + endSpan + spanR1 + hcScore + " + " + HC_BONUS + endSpan + br;
         totalScore += HC_BONUS;
     } else {
         totalScore += hcScore;
-        scoreLog1 = scoreLog1 + spanL1 + "High Card:" + endSpan + spanR1 + hcScore + endSpan + br;
+        scoreLog1 += spanL1 + "High Card:" + endSpan + spanR1 + hcScore + endSpan + br;
     }
-    addToScoreLog(scoreLog1);
 
     let twoKScore = get2kCardScore();
     if (twoKScore > 0) {
@@ -24,7 +22,6 @@ function totalScoreOfHands() {
         totalScore += twoKScore;
         scoreLog1 = scoreLog1 + spanL1 + "2 of a Kind:" + endSpan + spanR1 + twoKScore + endSpan + br;
     }
-    addToScoreLog(scoreLog1);
 
     let threeKScore = get3kCardScore();
     if (threeKScore > 0) {
@@ -35,7 +32,6 @@ function totalScoreOfHands() {
         totalScore += threeKScore;
         scoreLog1 = scoreLog1 + spanL1 + "3 of a Kind:" + endSpan + spanR1 + threeKScore + endSpan + br;
     }
-    addToScoreLog(scoreLog1);
 
     let straightScore = getStraightScore();
     if (straightScore > 0) {
@@ -46,7 +42,6 @@ function totalScoreOfHands() {
         totalScore += straightScore;
         scoreLog1 = scoreLog1 + spanL1 + "Straight:" + endSpan + spanR1 + straightScore + endSpan + br;
     }
-    addToScoreLog(scoreLog1);
 
     let flushScore = getFlushScore();
     if (flushScore > 0) {
@@ -55,36 +50,33 @@ function totalScoreOfHands() {
         totalScore += FLUSH_BONUS;
     } else {
         totalScore += flushScore;
-        scoreLog1 = scoreLog1 + spanL1 + "Flush:" + endSpan + spanR1 + flushScore + endSpan + br;
+        scoreLog1 += spanL1 + "Flush:" + endSpan + spanR1 + flushScore + endSpan + br;
     }
-    addToScoreLog(scoreLog1);
 
     let fourKScore = get4kCardScore();
     if (fourKScore > 0) {
         totalScore += fourKScore;
-        scoreLog1 = scoreLog1 + spanL1 + "4 of a Kind:" + endSpan + spanR1 + fourKScore + " + " + FOUR_K_BONUS + endSpan + br;
+        scoreLog1 +=  spanL1 + "4 of a Kind:" + endSpan + spanR1 + fourKScore + " + " + FOUR_K_BONUS + endSpan + br;
         totalScore += FOUR_K_BONUS;
     } else {
         totalScore += fourKScore;
-        scoreLog1 = scoreLog1 + spanL1 + "4 of a Kind:" + endSpan + spanR1 + fourKScore + endSpan + br;
+        scoreLog1 += spanL1 + "4 of a Kind:" + endSpan + spanR1 + fourKScore + endSpan + br;
     }
-    addToScoreLog(scoreLog1);
 
     let straightFlushScore = getStraightFlushScore();
     if (straightFlushScore > 0) {
         totalScore += straightFlushScore;
-        scoreLog1 = scoreLog1 + spanL1 + "Straight Flush:" + endSpan + spanR1 + straightFlushScore + " + " + STRAIGHT_FLUSH_BONUS + endSpan + br + br;
+        scoreLog1 += spanL1 + "Straight Flush:" + endSpan + spanR1 + straightFlushScore + " + " + STRAIGHT_FLUSH_BONUS + endSpan + br + br;
         totalScore += STRAIGHT_FLUSH_BONUS;
     } else {
         totalScore += straightFlushScore;
-        scoreLog1 = scoreLog1 + spanL1 + "Straight Flush:" + endSpan + spanR1 + straightFlushScore + endSpan + br + br;
+        scoreLog1 += spanL1 + "Straight Flush:" + endSpan + spanR1 + straightFlushScore + endSpan + br + br;
     }
-    addToScoreLog(scoreLog1);
 
-    scoreLog1 = scoreLog1 + spanL1 + "Total Score:" + endSpan + spanR1 + totalScore + endSpan + br + br;
-    addToScoreLog(scoreLog1);
+    scoreLog1 += spanL1 + "Total Score:" + endSpan + spanR1 + totalScore + endSpan + br + br;
 
-    scoreLog1 = scoreLog1 + spanL1 + "High Score:" + endSpan + spanR1 + highScore + endSpan + br + br;
+    scoreLog1 += spanL1 + "High Score:" + endSpan + spanR1 + highScore + endSpan + br + br;
+
     addToScoreLog(scoreLog1);
 
     if (totalScore > highScore) {
@@ -180,7 +172,7 @@ function getStraightScore() {
 }
 
 function get4kCardScore() {
-    //addLog("get4kCardScore()");
+    // addLog("get4kCardScore()");
     if (fourkSlotCard1 == null ||
         fourkSlotCard2 == null ||
         fourkSlotCard3 == null ||
