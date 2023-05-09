@@ -16,37 +16,37 @@ function totalScoreOfHands() {
     let twoKScore = get2kCardScore();
     if (twoKScore > 0) {
         totalScore += twoKScore;
-        scoreLog1 = scoreLog1 + spanL1 + "2 of a Kind:" + endSpan + spanR1 + twoKScore + " + " + TWO_K_BONUS + endSpan + br;
+        scoreLog1 += spanL1 + "2 of a Kind:" + endSpan + spanR1 + twoKScore + " + " + TWO_K_BONUS + endSpan + br;
         totalScore += TWO_K_BONUS;
     } else {
         totalScore += twoKScore;
-        scoreLog1 = scoreLog1 + spanL1 + "2 of a Kind:" + endSpan + spanR1 + twoKScore + endSpan + br;
+        scoreLog1 += spanL1 + "2 of a Kind:" + endSpan + spanR1 + twoKScore + endSpan + br;
     }
 
     let threeKScore = get3kCardScore();
     if (threeKScore > 0) {
         totalScore += threeKScore;
-        scoreLog1 = scoreLog1 + spanL1 + "3 of a Kind:" + endSpan + spanR1 + threeKScore + " + " + THREE_K_BONUS + endSpan + br;
+        scoreLog1 += spanL1 + "3 of a Kind:" + endSpan + spanR1 + threeKScore + " + " + THREE_K_BONUS + endSpan + br;
         totalScore += THREE_K_BONUS;
     } else {
         totalScore += threeKScore;
-        scoreLog1 = scoreLog1 + spanL1 + "3 of a Kind:" + endSpan + spanR1 + threeKScore + endSpan + br;
+        scoreLog1 += spanL1 + "3 of a Kind:" + endSpan + spanR1 + threeKScore + endSpan + br;
     }
 
     let straightScore = getStraightScore();
     if (straightScore > 0) {
         totalScore += straightScore;
-        scoreLog1 = scoreLog1 + spanL1 + "Straight:" + endSpan + spanR1 + straightScore + " + " + STRAIGHT_BONUS + endSpan + br;
+        scoreLog1 += spanL1 + "Straight:" + endSpan + spanR1 + straightScore + " + " + STRAIGHT_BONUS + endSpan + br;
         totalScore += STRAIGHT_BONUS;
     } else {
         totalScore += straightScore;
-        scoreLog1 = scoreLog1 + spanL1 + "Straight:" + endSpan + spanR1 + straightScore + endSpan + br;
+        scoreLog1 += spanL1 + "Straight:" + endSpan + spanR1 + straightScore + endSpan + br;
     }
 
     let flushScore = getFlushScore();
     if (flushScore > 0) {
         totalScore += flushScore;
-        scoreLog1 = scoreLog1 + spanL1 + "Flush:" + endSpan + spanR1 + flushScore + " + " + FLUSH_BONUS + endSpan + br;
+        scoreLog1 += spanL1 + "Flush:" + endSpan + spanR1 + flushScore + " + " + FLUSH_BONUS + endSpan + br;
         totalScore += FLUSH_BONUS;
     } else {
         totalScore += flushScore;
