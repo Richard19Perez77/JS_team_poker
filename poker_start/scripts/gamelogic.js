@@ -382,7 +382,6 @@ function controlsButtonClicked() {
 
 function scoreButtonClicked() {
     if ($("#draggableScoreDiv").is(':animated') === false) {
-        totalScoreOfHands();
 
         if ($("#draggableControlsTextArea").is(":visible")) {
             $("#draggableControlsTextArea").slideToggle(100);

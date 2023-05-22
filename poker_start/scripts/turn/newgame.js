@@ -69,11 +69,11 @@ function newGameClicked() {
 
   cardPlayed = false;
 
-  removeCardHighlights();
+  totalScoreOfHands();
 
+  removeCardHighlights();
   createCardDeck();
   randomizeDeck();
-
   customDeck();
 
   dealToPlayer1();
