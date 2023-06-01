@@ -33,8 +33,8 @@ function setupDivs() {
     jTutorialDiv = $("#tutorialDiv");
 
     let tutorialImage = $("#tutorialImage")[0];
-    tutorialImage.src = "assets/images/tutorial.png"
     tutorialImage.onload = imageLoaded;
+    tutorialImage.src = "assets/images/tutorial.png"
 
     let pageDivLocal = $(".pageDivClass");
     pageDivLocal.fadeIn(500, function () {
