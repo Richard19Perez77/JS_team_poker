@@ -1,6 +1,5 @@
 // starting point for scripts, init, and then interaction scripts
 // for debug check flags in debug,
-
 let imageLoaded = function () {
     imagesLoaded++;
     checkImagesLoadedCount();

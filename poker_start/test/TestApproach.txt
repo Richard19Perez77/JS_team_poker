@@ -1,0 +1,16 @@
+Consider keeping div or html elements out of methods with JS
+    1. can allow js code to be tested headless
+    2. allow for div elements and html elements to be tested without worrying about js global variables being altered
+
+Remove the code from libarary...
+Without generics or libraries can you pass a <div> and add image then check the image was loaded?
+    Can this be done without the UI?
+    Will making it hidden have the same effect as a unit test?
+
+Why not rely on libraries?
+    Keep code from breaking on import of whole project
+    New updates can break code in working project
+
+Challenge to not use libraries is not obvious to people.
+Removing JQuery can force the code to be written in different order of page loading and finished loading
+

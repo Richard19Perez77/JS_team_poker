@@ -624,6 +624,7 @@ function drawPlayerCards() {
 }
 
 function drawBoard() {
+  
   // can stop this on debug
   if(!doRunControlTest || doShowUIDuringTest){
     clearCanvas();
