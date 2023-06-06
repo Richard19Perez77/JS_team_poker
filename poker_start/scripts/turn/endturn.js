@@ -130,33 +130,27 @@ function organizeStraight() {
         straightArray.push(straightSlotCard5);
     }
 
-    if (straightArray.length > 0) {
+    let index = straightArray.length;
+    if (index > 0) {
         straightArray = straightArray.sort(function (a, b) {
             return a.value - b.value;
         });
 
-        let index = straightArray.length;
-        straightSlotCard1 = null;
-        straightSlotCard2 = null;
-        straightSlotCard3 = null;
-        straightSlotCard4 = null;
-        straightSlotCard5 = null;
-
-        while (index >= 0) {
+        while (index > 0) {
             switch (index) {
-                case 0:
+                case 1:
                     straightSlotCard1 = straightArray[0];
                     break;
-                case 1:
+                case 2:
                     straightSlotCard2 = straightArray[1];
                     break;
-                case 2:
+                case 3:
                     straightSlotCard3 = straightArray[2];
                     break;
-                case 3:
+                case 4:
                     straightSlotCard4 = straightArray[3];
                     break;
-                case 4:
+                case 5:
                     straightSlotCard5 = straightArray[4];
                     break;
             }
