@@ -23,3 +23,4 @@ function addDebugLog(newLog) {
   activityLog.innerHTML = log;
   activityLog.scrollTop = activityLog.scrollHeight;
 }
+
