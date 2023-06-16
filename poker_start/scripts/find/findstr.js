@@ -30,33 +30,42 @@ function findStraightCard() {
 
     // try to play a 5 card straight in hand
     let found = false;
-    if (found === false && possibleCards.length >= 5) {
+    if (possibleCards.length >= 5) {
         found = fiveCardCheck(cardsPlayed, possibleCards);
-    }
-
-    // with 3 cards played try to find the 4th and 5th cards
-    if (found === false && cardsPlayed === 3 && possibleCards.length >= 1) {
-        found = findFourthCard(possibleCards);
         if (found) {
-            organizeStraight();
-            findFifthCard(possibleCards);
+            return;
         }
     }
 
+    // with 3 cards played try to find the 4th and 5th cards
+    if (cardsPlayed === 3 && possibleCards.length >= 1) {
+        found = findFourthCard(possibleCards);
+        if (found) {
+            found = findFifthCard(possibleCards);
+            if (found) {
+                return;
+            }
+        }
+    } 
+
     // with four cards played try to find the missing card
-    if (found === false && cardsPlayed === 4 && possibleCards.length >= 1) {
+    if (cardsPlayed === 4 && possibleCards.length >= 1) {
         found = findFifthCard(possibleCards);
+        if (found) {
+            return;
+        }
     }
 
     // try to play a 4 card straight
-    if (found === false && cardsPlayed <= 4 && possibleCards.length >= 4) {
+    if (cardsPlayed <= 4 && possibleCards.length >= 4) {
         found = fourCardCheck(cardsPlayed, possibleCards);
     }
 
     // try to play a 3 card straight
     if (found === false && cardsPlayed <= 3 && possibleCards.length >= 3) {
         threeCardCheck(cardsPlayed, possibleCards);
-    }
+    }    
+    
 
     performLowCardSwitch();
 }
