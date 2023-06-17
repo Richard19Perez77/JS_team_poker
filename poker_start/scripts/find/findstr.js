@@ -46,7 +46,7 @@ function findStraightCard() {
                 return;
             }
         }
-    } 
+    }
 
     // with four cards played try to find the missing card
     if (cardsPlayed === 4 && possibleCards.length >= 1) {
@@ -64,8 +64,7 @@ function findStraightCard() {
     // try to play a 3 card straight
     if (found === false && cardsPlayed <= 3 && possibleCards.length >= 3) {
         threeCardCheck(cardsPlayed, possibleCards);
-    }    
-    
+    }
 
     performLowCardSwitch();
 }
@@ -466,6 +465,11 @@ function performLowCardSwitch() {
     //check player hand has the next high card
     let nextValue = straightSlotCard5.value;
     nextValue++;
+
+    // no higher than ace
+    if (nextValue === 14) {
+        return;
+    }
 
     let playerCards = getPlayerCards();
 
