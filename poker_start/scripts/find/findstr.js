@@ -67,6 +67,7 @@ function findStraightCard() {
     }
 
     performLowCardSwitch();
+    organizePlayedCards();
 }
 
 function findFourthCard(cardArr) {
