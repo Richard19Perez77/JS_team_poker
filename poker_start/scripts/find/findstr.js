@@ -48,6 +48,8 @@ function findStraightCard() {
         }
     }
 
+    cardsPlayed = getStraightCardsPlayed();
+
     // with four cards played try to find the missing card
     if (cardsPlayed === 4 && possibleCards.length >= 1) {
         found = findFifthCard(possibleCards);
@@ -56,13 +58,17 @@ function findStraightCard() {
         }
     }
 
+    cardsPlayed = getStraightCardsPlayed();
+
     // try to play a 4 card straight
     if (cardsPlayed <= 4 && possibleCards.length >= 4) {
         found = fourCardCheck(cardsPlayed, possibleCards);
     }
 
+    cardsPlayed = getStraightCardsPlayed();
+
     // try to play a 3 card straight
-    if (found === false && cardsPlayed <= 3 && possibleCards.length >= 3) {
+    if (cardsPlayed <= 3 && possibleCards.length >= 3) {
         threeCardCheck(cardsPlayed, possibleCards);
     }
 
