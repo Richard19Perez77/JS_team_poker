@@ -62,7 +62,7 @@ function findStraightCard() {
         }
     }
 
-    // with 3 cards played try to find the 4th and 5th cards
+    // with 3 cards played try to find the 4th and 5th cards, return if finding 4th or 5th card
     if (cardsPlayed === 3 && possibleCards.length >= 1) {
         found = findFourthCard(possibleCards);
         if (found) {
@@ -70,6 +70,7 @@ function findStraightCard() {
             if (found) {
                 return;
             }
+            return;
         }
     }
 
@@ -87,7 +88,7 @@ function findStraightCard() {
 
     // try to play a 4 card straight
     if (cardsPlayed <= 4 && possibleCards.length >= 4) {
-        found = fourCardCheck(cardsPlayed, possibleCards);
+        fourCardCheck(cardsPlayed, possibleCards);
     }
 
     cardsPlayed = getStraightCardsPlayed();
