@@ -33,7 +33,7 @@ function customDeck() {
 }
 
 function randomizeDeck() {
-    //addLog("randomizeDeck()");
+    if (doDebugLog) addLog("randomizeDeck()");
     for (let i = 0; i < 52; i++) {
         let newIndex = Math.floor(Math.random() * 52);
         let oldIndex = i;

@@ -10,13 +10,13 @@ function playerCardPress(index) {
   drawBoard();
 }
 
-function placeHolderPress(index){
+function placeHolderPress(index) {
   arrowPlayerCardSelected = -1;
   arrowPlaceholderCardSelected = -1;
 
   if (playercardPressed !== -1) {
     placeholderPressed = index;
-    //addLog("placeholderPressed" + placeholderPressed);
+    if (doDebugLog) addLog("placeholderPressed" + placeholderPressed);
     moveCardFromKeyPress();
   }
 

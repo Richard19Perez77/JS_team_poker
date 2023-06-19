@@ -1,8 +1,8 @@
 function checkHC() {
-  //addLog("checkHC click on card");
+  if (doDebugLog) addLog("checkHC click on card");
   if (mouseX > hcX1 && mouseX < hcX2) {
     if (mouseY > hcY1 && mouseY < hcY2) {
-      //addLog("hc 1 selected place card " + cardSelected);
+      if (doDebugLog) addLog("hc 1 selected place card " + cardSelected);
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -20,7 +20,7 @@ function checkHC() {
 function check2K() {
   if (mouseX > twokX1a && mouseX < twokX2a) {
     if (mouseY > twokY1a && mouseY < twokY2a) {
-      //addLog("2k 1 selected ");
+      if (doDebugLog) addLog("2k 1 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -38,7 +38,7 @@ function check2K() {
 
   if (mouseX > twokX1b && mouseX < twokX2b) {
     if (mouseY > twokY1b && mouseY < twokY2b) {
-      //addLog("2k 2 selected ");
+      if (doDebugLog) addLog("2k 2 selected ");
       if (cardSelected > -1) {
         //switch on player turn
         let playerCards = getPlayerCards();
@@ -56,7 +56,7 @@ function check2K() {
 function check3K() {
   if (mouseX > threekX1a && mouseX < threekX2a) {
     if (mouseY > threekY1a && mouseY < threekY2a) {
-      //addLog("3k 1 selected ");
+      if (doDebugLog) addLog("3k 1 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -74,7 +74,7 @@ function check3K() {
 
   if (mouseX > threekX1b && mouseX < threekX2b) {
     if (mouseY > threekY1b && mouseY < threekY2b) {
-      //addLog("3k 2 selected ");
+      if (doDebugLog) addLog("3k 2 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -92,7 +92,7 @@ function check3K() {
 
   if (mouseX > threekX1c && mouseX < threekX2c) {
     if (mouseY > threekY1c && mouseY < threekY2c) {
-      //addLog("3k 3 selected ");
+      if (doDebugLog) addLog("3k 3 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -110,7 +110,7 @@ function check3K() {
 function check4K() {
   if (mouseX > fourkX1a && mouseX < fourkX2a) {
     if (mouseY > fourkY1a && mouseY < fourkY2a) {
-      //addLog("4k 1 selected ");
+      if (doDebugLog) addLog("4k 1 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -128,7 +128,7 @@ function check4K() {
 
   if (mouseX > fourkX1b && mouseX < fourkX2b) {
     if (mouseY > fourkY1b && mouseY < fourkY2b) {
-      //addLog("4k 2 selected ");
+      if (doDebugLog) addLog("4k 2 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -146,7 +146,7 @@ function check4K() {
 
   if (mouseX > fourkX1c && mouseX < fourkX2c) {
     if (mouseY > fourkY1c && mouseY < fourkY2c) {
-      //addLog("4k 3 selected ");
+      if (doDebugLog) addLog("4k 3 selected ");
       if (cardSelected > -1) {
         let playerCards = getPlayerCards();
 
@@ -163,7 +163,7 @@ function check4K() {
 
   if (mouseX > fourkX1d && mouseX < fourkX2d) {
     if (mouseY > fourkY1d && mouseY < fourkY2d) {
-      //addLog("4k 4 selected ");
+      if (doDebugLog) addLog("4k 4 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -181,7 +181,7 @@ function check4K() {
 function checkStraight() {
   if (mouseX > straightX1a && mouseX < straightX2a) {
     if (mouseY > straightY1a && mouseY < straightY2a) {
-      //addLog("ST 1 selected ");
+      if (doDebugLog) addLog("ST 1 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -199,7 +199,7 @@ function checkStraight() {
 
   if (mouseX > straightX1b && mouseX < straightX2b) {
     if (mouseY > straightY1b && mouseY < straightY2b) {
-      //addLog("ST 2 selected ");
+      if (doDebugLog) addLog("ST 2 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -217,7 +217,7 @@ function checkStraight() {
 
   if (mouseX > straightX1c && mouseX < straightX2c) {
     if (mouseY > straightY1c && mouseY < straightY2c) {
-      //addLog("ST 3 selected ");
+      if (doDebugLog) addLog("ST 3 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -235,7 +235,7 @@ function checkStraight() {
 
   if (mouseX > straightX1d && mouseX < straightX2d) {
     if (mouseY > straightY1d && mouseY < straightY2d) {
-      //addLog("ST 4 selected ");
+      if (doDebugLog) addLog("ST 4 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -253,7 +253,7 @@ function checkStraight() {
 
   if (mouseX > straightX1e && mouseX < straightX2e) {
     if (mouseY > straightY1e && mouseY < straightY2e) {
-      //addLog("ST 5 selected ");
+      if (doDebugLog) addLog("ST 5 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -269,10 +269,10 @@ function checkStraight() {
 }
 
 function checkSF() {
-  //addLog("checkStraightFlush()");
+  if (doDebugLog) addLog("checkStraightFlush()");
   if (mouseX > strFlushX1a && mouseX < strFlushX2a) {
     if (mouseY > strFlushY1a && mouseY < strFlushY2a) {
-      //addLog("strFlush 1 selected ");
+      if (doDebugLog) addLog("strFlush 1 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -290,7 +290,7 @@ function checkSF() {
 
   if (mouseX > strFlushX1b && mouseX < strFlushX2b) {
     if (mouseY > strFlushY1b && mouseY < strFlushY2b) {
-      //addLog("strFlush 2 selected ");
+      if (doDebugLog) addLog("strFlush 2 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -308,7 +308,7 @@ function checkSF() {
 
   if (mouseX > strFlushX1c && mouseX < strFlushX2c) {
     if (mouseY > strFlushY1c && mouseY < strFlushY2c) {
-      //addLog("strFlush 3 selected ");
+      if (doDebugLog) addLog("strFlush 3 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -326,7 +326,7 @@ function checkSF() {
 
   if (mouseX > strFlushX1d && mouseX < strFlushX2d) {
     if (mouseY > strFlushY1d && mouseY < strFlushY2d) {
-      //addLog("strFlush 4 selected ");
+      if (doDebugLog) addLog("strFlush 4 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -344,7 +344,7 @@ function checkSF() {
 
   if (mouseX > strFlushX1e && mouseX < strFlushX2e) {
     if (mouseY > strFlushY1e && mouseY < strFlushY2e) {
-      //addLog("strFlush 5 selected ");
+      if (doDebugLog) addLog("strFlush 5 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -362,7 +362,7 @@ function checkSF() {
 function checkFlush() {
   if (mouseX > flushX1a && mouseX < flushX2a) {
     if (mouseY > flushY1a && mouseY < flushY2a) {
-      //addLog("flush 1 selected ");
+      if (doDebugLog) addLog("flush 1 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -380,7 +380,7 @@ function checkFlush() {
 
   if (mouseX > flushX1b && mouseX < flushX2b) {
     if (mouseY > flushY1b && mouseY < flushY2b) {
-      //addLog("ST 2 selected ");
+      if (doDebugLog) addLog("ST 2 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -398,7 +398,7 @@ function checkFlush() {
 
   if (mouseX > flushX1c && mouseX < flushX2c) {
     if (mouseY > flushY1c && mouseY < flushY2c) {
-      //addLog("ST 3 selected ");
+      if (doDebugLog) addLog("ST 3 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -416,7 +416,7 @@ function checkFlush() {
 
   if (mouseX > flushX1d && mouseX < flushX2d) {
     if (mouseY > flushY1d && mouseY < flushY2d) {
-      //addLog("ST 4 selected ");
+      if (doDebugLog) addLog("ST 4 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -434,7 +434,7 @@ function checkFlush() {
 
   if (mouseX > flushX1e && mouseX < flushX2e) {
     if (mouseY > flushY1e && mouseY < flushY2e) {
-      //addLog("ST 5 selected ");
+      if (doDebugLog) addLog("ST 5 selected ");
       if (cardSelected > -1) {
 
         let playerCards = getPlayerCards();
@@ -455,7 +455,7 @@ function cardClickedOn() {
       cardSelected = 0;
       cardOffsetX = mouseX - card1x1;
       cardOffsetY = mouseY - card1y1;
-      //addLog("cardSelected = " + cardSelected);
+      if (doDebugLog) addLog("cardSelected = " + cardSelected);
       return;
     }
   }
@@ -465,7 +465,7 @@ function cardClickedOn() {
       cardSelected = 1;
       cardOffsetX = mouseX - card2x1;
       cardOffsetY = mouseY - card2y1;
-      //addLog("cardSelected = " + cardSelected);
+      if (doDebugLog) addLog("cardSelected = " + cardSelected);
       return;
     }
   }
@@ -475,7 +475,7 @@ function cardClickedOn() {
       cardSelected = 2;
       cardOffsetX = mouseX - card3x1;
       cardOffsetY = mouseY - card3y1;
-      //addLog("cardSelected = " + cardSelected);
+      if (doDebugLog) addLog("cardSelected = " + cardSelected);
       return;
     }
   }
@@ -485,7 +485,7 @@ function cardClickedOn() {
       cardSelected = 3;
       cardOffsetX = mouseX - card4x1;
       cardOffsetY = mouseY - card4y1;
-      //addLog("cardSelected = " + cardSelected);
+      if (doDebugLog) addLog("cardSelected = " + cardSelected);
       return;
     }
   }
@@ -495,7 +495,7 @@ function cardClickedOn() {
       cardSelected = 4;
       cardOffsetX = mouseX - card5x1;
       cardOffsetY = mouseY - card5y1;
-      //addLog("cardSelected = " + cardSelected);
+      if (doDebugLog) addLog("cardSelected = " + cardSelected);
       return;
     }
   }
@@ -505,7 +505,7 @@ function cardClickedOn() {
       cardSelected = 5;
       cardOffsetX = mouseX - card6x1;
       cardOffsetY = mouseY - card6y1;
-      //addLog("cardSelected = " + cardSelected);
+      if (doDebugLog) addLog("cardSelected = " + cardSelected);
       return;
     }
   }
@@ -515,7 +515,7 @@ function cardClickedOn() {
       cardSelected = 6;
       cardOffsetX = mouseX - card7x1;
       cardOffsetY = mouseY - card7y1;
-      //addLog("cardSelected = " + cardSelected);
+      if (doDebugLog) addLog("cardSelected = " + cardSelected);
       return;
     }
   }
@@ -581,7 +581,7 @@ function checkStraightPlaceholderIndex() {
 
   if (mouseX > straightX1b && mouseX < straightX2b) {
     if (mouseY > straightY1b && mouseY < straightY2b) {
-      //addLog("ST 2 selected ");
+      if (doDebugLog) addLog("ST 2 selected ");
       // addDebugLog("mouse over placeholder str card 0");
       return 1;
     }
@@ -672,7 +672,7 @@ function check4KPlaceholderIndex() {
 }
 
 function checkSFPlaceholderIndex() {
-  //addLog("checkStraightFlush()");
+  if (doDebugLog) addLog("checkStraightFlush()");
   if (mouseX > strFlushX1a && mouseX < strFlushX2a) {
     if (mouseY > strFlushY1a && mouseY < strFlushY2a) {
       return 0;

@@ -16,7 +16,7 @@ function endTurnClicked() {
             break;
     }
 
-    //addLog("turn over || cardPlayed");
+    if (doDebugLog) addLog("turn over || cardPlayed");
     if (playerTurnOver === true || cardPlayed === false) {
 
         // stop round after too many turns by pc
@@ -29,7 +29,7 @@ function endTurnClicked() {
 
             turnPassed = 0;
             targetHand++;
-            //addLog("targetHand=" + targetHand);
+            if (doDebugLog) addLog("targetHand=" + targetHand);
 
             checkForFullHand(player1Cards);
             checkForFullHand(player2Cards);

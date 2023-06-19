@@ -56,7 +56,7 @@ function totalScoreOfHands() {
     let fourKScore = get4kCardScore();
     if (fourKScore > 0) {
         totalScore += fourKScore;
-        scoreLog1 +=  spanL1 + "4 of a Kind:" + endSpan + spanR1 + fourKScore + " + " + FOUR_K_BONUS + endSpan + br;
+        scoreLog1 += spanL1 + "4 of a Kind:" + endSpan + spanR1 + fourKScore + " + " + FOUR_K_BONUS + endSpan + br;
         totalScore += FOUR_K_BONUS;
     } else {
         totalScore += fourKScore;
@@ -172,7 +172,8 @@ function getStraightScore() {
 }
 
 function get4kCardScore() {
-    // addLog("get4kCardScore()");
+    if (doDebugLog) addLog("get4kCardScore()");
+
     if (fourkSlotCard1 == null ||
         fourkSlotCard2 == null ||
         fourkSlotCard3 == null ||
@@ -186,7 +187,7 @@ function get4kCardScore() {
         return 0;
     }
 
-    //addLog("4k values the same");
+    if (doDebugLog) addLog("4k values the same");
 
     return fourkSlotCard1.value +
         fourkSlotCard2.value +

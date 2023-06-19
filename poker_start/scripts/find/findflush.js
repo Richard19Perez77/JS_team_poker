@@ -342,7 +342,7 @@ function place3CardFlush(flushArr) {
 function placeFlush(cardArr) {
     let playerCards = getPlayerCards();
 
-    //addLog("Flush Played " + printCardArr(cardArr));
+    if (doDebugLog) addLog("Flush Played " + printCardArr(cardArr));
     removeFrom4kLists(flushSlotCard1);
     addCardToHand(flushSlotCard1, playerCards);
     flushSlotCard1 = cardArr[0];
@@ -406,7 +406,7 @@ function countFlushCardsPlayed() {
 }
 
 function find4thFlushCard(cardArr) {
-    //addLog("find4thFlushCard() ");
+    if (doDebugLog) addLog("find4thFlushCard() ");
     let suit = -1;
     if (flushSlotCard1.suit === flushSlotCard2.suit &&
         flushSlotCard2.suit === flushSlotCard3.suit) {
@@ -446,7 +446,7 @@ function find4thFlushCard(cardArr) {
 }
 
 function find5thFlushCard(cardArr) {
-    //addLog("find5thFlushCard() ");
+    if (doDebugLog) addLog("find5thFlushCard() ");
     let suit = -1;
     if (flushSlotCard1.suit === flushSlotCard2.suit &&
         flushSlotCard2.suit === flushSlotCard3.suit &&

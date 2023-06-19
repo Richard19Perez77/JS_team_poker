@@ -1,6 +1,6 @@
 function moveCardFromKeyPress() {
   let playerCards;
-  //addLog("moveCardFromKeyPress() " + playercardPressed + " to " + placeholderPressed);
+  if (doDebugLog) addLog("moveCardFromKeyPress() " + playercardPressed + " to " + placeholderPressed);
   if (playercardPressed !== -1 && placeholderPressed !== -1) {
 
     switch (targetHand) {
