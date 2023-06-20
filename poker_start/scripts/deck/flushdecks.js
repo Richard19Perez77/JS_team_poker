@@ -455,7 +455,7 @@ function flushDeck() {
       }
     }
   }
-  //addLog("indexes = " + indexes);
+  if (doDebugLog) addLog("indexes = " + indexes);
 
   //use indexes to switch into second hand
   let hand = 5;

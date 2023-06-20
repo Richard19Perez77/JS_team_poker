@@ -9,17 +9,17 @@ function printCard(card) {
 }
 
 function printCardArr(cardArr) {
-  //addLog("printCardArr(cardArr)");
+  if (doDebugLog) addLog("printCardArr(cardArr)");
   let cardString = "";
   for (let i = 0; i < cardArr.length; i++) {
-    if(cardArr[i] == null){
-        cardString = cardString + "(card null)";
-        return cardString;
+    if (cardArr[i] == null) {
+      cardString = cardString + "(card null)";
+      return cardString;
     }
     let value = getFaceValue(cardArr[i].value);
     let suit = getSuitCharacter(cardArr[i].suit);
-    if(cardArr[i].bitmap == null){
-        cardString = cardString + "(bitmap error)";
+    if (cardArr[i].bitmap == null) {
+      cardString = cardString + "(bitmap error)";
     }
 
     cardString = `${cardString}[${value}${suit}]`;

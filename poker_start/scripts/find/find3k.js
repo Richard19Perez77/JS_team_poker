@@ -170,7 +170,7 @@ function find3Kcard() {
             threePSlotCard2 != null &&
             threePSlotCard3 == null) {
 
-            //addLog("set in slot 1 and 2");
+            if (doDebugLog) addLog("set in slot 1 and 2");
             removeFrom4kLists(threePSlotCard1);
             addCardToHand(threePSlotCard1, playerCards);
             threePSlotCard1 = possible2kCards[0];

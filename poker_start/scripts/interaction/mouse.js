@@ -3,9 +3,9 @@ function doMouseDown(event) {
   if (isPlayerTurn() && gameReady) {
     mouseX = event.clientX - offsetX;
     mouseY = event.clientY - offsetY;
-    //addLog("mouse down x=" + mouseX + " , y=" + mouseY);
+    if (doDebugLog) addLog("mouse down x=" + mouseX + " , y=" + mouseY);
     cardClickedOn();
-    //addLog("mouse down cardSelected=" + cardSelected);
+    if (doDebugLog) addLog("mouse down cardSelected=" + cardSelected);
 
     removeCardHighlights();
 
@@ -16,7 +16,7 @@ function doMouseDown(event) {
 function doMouseMove(event) {
   //addDebugLog("mouse move x=" + mouseX + " , y=" + mouseY);
   if (isPlayerTurn() && gameReady && cardSelected !== -1) {
-    //addLog("mouse move cardSelected=" + cardSelected);
+    if (doDebugLog) addLog("mouse move cardSelected=" + cardSelected);
     mouseX = event.clientX - offsetX;
     mouseY = event.clientY - offsetY;
     placeHolderMouseOverCardIndex = placeholderMoveOn();
@@ -27,14 +27,14 @@ function doMouseMove(event) {
 
 function doMouseUp(event) {
   if (isPlayerTurn() && gameReady) {
-    //addLog("mouse up in cardSelected=" + cardSelected);
+    if (doDebugLog) addLog("mouse up in cardSelected=" + cardSelected);
     mouseX = event.clientX - offsetX;
     mouseY = event.clientY - offsetY;
     placeholderClickedOn();
 
     drawBoard();
     cardSelected = -1;
-    //addLog("mouse up out cardSelected=" + cardSelected);
+    if (doDebugLog) addLog("mouse up out cardSelected=" + cardSelected);
   }
 }
 

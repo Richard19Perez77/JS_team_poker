@@ -28,6 +28,7 @@ let runAuto4k = true;
 let runAutoSF = true;
 
 let doLogPlacedCards = true;
+let doDebugLog = false;
 let doLogPlayerTurn = true;
 let doLogCardDetails = false;
 let doRunControlTest = false;
@@ -52,32 +53,32 @@ function printTestScores() {
     addLog("");
 
     addLog("hc card played average " + Number(gamesHCcardPlayed / gamesPlayed).toFixed(2));
-    //addLog("hc card scores " + printScoreArray(hcScores));
+    if (doDebugLog) addLog("hc card scores " + printScoreArray(hcScores));
     addLog("hc card score average " + Number(totalHCcardPoints / gamesHCcardPlayed).toFixed(2));
     addLog("");
 
     addLog("2k card played average " + Number(games2kcardPlayed / gamesPlayed).toFixed(2));
-    //addLog("2k card scores " + printScoreArray(twokScores));
+    if (doDebugLog) addLog("2k card scores " + printScoreArray(twokScores));
     addLog("2k card score average " + Number(total2kcardPoints / games2kcardPlayed).toFixed(2));
     addLog("");
 
     addLog("3k card played average " + Number(games3kcardPlayed / gamesPlayed).toFixed(2));
-    //addLog("3k card scores " + printScoreArray(threekScores));
+    if (doDebugLog) addLog("3k card scores " + printScoreArray(threekScores));
     addLog("3k card score average " + Number(total3kcardPoints / games3kcardPlayed).toFixed(2));
     addLog("");
 
     addLog("St card played average " + Number(gamesStcardPlayed / gamesPlayed).toFixed(2));
-    //addLog("st card scores " + printScoreArray(stScores));
+    if (doDebugLog) addLog("st card scores " + printScoreArray(stScores));
     addLog("St card score average " + Number(totalStcardPoints / gamesStcardPlayed).toFixed(2));
     addLog("");
 
     addLog("fl card played average " + Number(gamesFlcardPlayed / gamesPlayed).toFixed(2));
-    //addLog("fl card scores " + printScoreArray(flScores));
+    if (doDebugLog) addLog("fl card scores " + printScoreArray(flScores));
     addLog("fl card score average " + Number(totalFlcardPoints / gamesFlcardPlayed).toFixed(2));
     addLog("");
 
     addLog("4k card played average " + Number(games4kcardPlayed / gamesPlayed).toFixed(2));
-    //addLog("4k card scores " + printScoreArray(fourkScores));
+    if (doDebugLog) addLog("4k card scores " + printScoreArray(fourkScores));
     addLog("4k card score average " + Number(total4kcardPoints / games4kcardPlayed).toFixed(2));
     addLog("");
 

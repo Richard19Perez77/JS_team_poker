@@ -1,43 +1,68 @@
+// method to find a good straight card, by good i mean it won't break potential or scored hands to be played still
 function findStraightCard() {
+
+    // get the current players cards into a local set to manipulate
     let playerCards = getPlayerCards();
 
+    // check for cards played already in a straight 3, 4 or 5
     let cardsPlayed = getStraightCardsPlayed();
 
+    // use to see which player cards can be used that aren't better used later
     let possibleCards = [];
+
+    // used to show if it's a partial array for better hands
     let partialArr = [];
+
+    // used to show if it's a match for of a kind hands
     let sameValueCount;
 
+    // iterate through cards to see if a single card is a good card to keep for playing
     for (let i = 0; i < playerCards.length; i++) {
+
+        // get a current player hand card
         let card = playerCards[i];
 
+        // get potential straight flush card set from card and validate through hand
         partialArr = findStraightFlushCards(card, playerCards);
+
+        // check for the partial array to be at least 3 cards otherwise it won't play it anyway
         if (partialArr != null && partialArr.length >= 3) {
 
             //validate play is valid for str flush
-            let isValidStrFlushPlay = isPartialArrayValidAttemptAtStraightFlush(partialArr[0].value, partialArr[1].value, partialArr[2].value, partialArr[0].suit)
+            let isValidStrFlushPlay = isPartialArrayValidAttemptAtStraightFlush(partialArr[0].value, partialArr[1].value, partialArr[2].value, partialArr[0].suit);
+
+            // if it's valid for straight flush don't continue to next card
             if (isValidStrFlushPlay) {
                 continue;
             }
         }
 
+        // check for match for 4 of a kind play
         sameValueCount = checkHandForMatchingValues(card, playerCards);
+
+        // continue to next card if it's a 3 of a kind in progress for 4 of a kind
         if (sameValueCount >= 3) {
             continue;
         }
 
+        // seems to be a good card so far so keep it as possible straight play
         possibleCards.push(card);
     }
 
     // try to play a 5 card straight in hand
     let found = false;
+
+    // check for 5 cards at least for a 5 card straight play to be possible
     if (possibleCards.length >= 5) {
+
+        // if found then play it in place and end turn
         found = fiveCardCheck(cardsPlayed, possibleCards);
         if (found) {
             return;
         }
     }
 
-    // with 3 cards played try to find the 4th and 5th cards
+    // with 3 cards played try to find the 4th and 5th cards, return if finding 4th or 5th card
     if (cardsPlayed === 3 && possibleCards.length >= 1) {
         found = findFourthCard(possibleCards);
         if (found) {
@@ -45,8 +70,11 @@ function findStraightCard() {
             if (found) {
                 return;
             }
+            return;
         }
     }
+
+    cardsPlayed = getStraightCardsPlayed();
 
     // with four cards played try to find the missing card
     if (cardsPlayed === 4 && possibleCards.length >= 1) {
@@ -56,13 +84,17 @@ function findStraightCard() {
         }
     }
 
+    cardsPlayed = getStraightCardsPlayed();
+
     // try to play a 4 card straight
     if (cardsPlayed <= 4 && possibleCards.length >= 4) {
-        found = fourCardCheck(cardsPlayed, possibleCards);
+        fourCardCheck(cardsPlayed, possibleCards);
     }
 
+    cardsPlayed = getStraightCardsPlayed();
+
     // try to play a 3 card straight
-    if (found === false && cardsPlayed <= 3 && possibleCards.length >= 3) {
+    if (cardsPlayed <= 3 && possibleCards.length >= 3) {
         threeCardCheck(cardsPlayed, possibleCards);
     }
 
@@ -133,7 +165,8 @@ function findFifthCard(validCards) {
 }
 
 function threeCardCheck(cardsPlayed, cardArr) {
-    //addLog("threeCardCheck(cardsPlayed, cardArr)" + printCardArr(cardArr));
+    if (doDebugLog)
+        addLog("threeCardCheck(cardsPlayed, cardArr)" + printCardArr(cardArr));
 
     let straightArr = findThreeCardStraight(cardsPlayed, cardArr);
     if (straightArr.length === 3) {
@@ -168,16 +201,16 @@ function threeCardCheck(cardsPlayed, cardArr) {
 }
 
 function findThreeCardStraight(cardsPlayed, cardArr) {
-    //addLog("findThreeCardStraight(cardsPlayed, cardArr)" + printCardArr(cardArr));
+    if (doDebugLog) addLog("findThreeCardStraight(cardsPlayed, cardArr)" + printCardArr(cardArr));
 
     let strArr;
     for (let i = 0; i < cardArr.length; i++) {
         let card1 = cardArr[i];
-        //addLog(printCard(card1));
+        if (doDebugLog) addLog(printCard(card1));
         for (let j = 0; j < cardArr.length; j++) {
             let card2 = cardArr[j];
             if (card1.value === card2.value - 1) {
-                //addLog(printCard(card1) + printCard(card2));
+                if (doDebugLog) addLog(printCard(card1) + printCard(card2));
                 for (let k = 0; k < cardArr.length; k++) {
                     let card3 = cardArr[k];
                     if (card1.value === card3.value - 2) {
@@ -186,7 +219,7 @@ function findThreeCardStraight(cardsPlayed, cardArr) {
                         strArr.push(card2);
                         strArr.push(card3);
                         if (cardsPlayed < 3 || (cardsPlayed === 3 && checkBetterStraight(strArr))) {
-                            //addLog(printCardArr(strArr));
+                            if (doDebugLog) addLog(printCardArr(strArr));
                             return strArr;
                         }
                     }
@@ -219,7 +252,7 @@ function getStraightCardsPlayed() {
 }
 
 function fourCardCheck(cardsPlayed, cardArr) {
-    //addLog("fourCardCheck(cardsPlayed, cardArr)" + printCardArr(cardArr));
+    if (doDebugLog) addLog("fourCardCheck(cardsPlayed, cardArr)" + printCardArr(cardArr));
 
     cardArr = cardArr.sort(function (a, b) {
         return a.value - b.value;
@@ -269,10 +302,10 @@ function fourCardCheck(cardsPlayed, cardArr) {
 }
 
 function fiveCardCheck(cardsPlayed, cardArr) {
-    //addLog("fiveCardCheck(cardArr)" + printCardArr(cardArr));
+    if (doDebugLog) addLog("fiveCardCheck(cardArr)" + printCardArr(cardArr));
 
     let straightArray = findFiveCardStraight(cardArr);
-    //addLog("straight array found=" + printCardArr(straightArray));
+    if (doDebugLog) addLog("straight array found=" + printCardArr(straightArray));
 
     if (straightArray.length === 5 && (cardsPlayed < 5 || checkBetterStraight(straightArray))) {
 
@@ -329,31 +362,31 @@ function checkBetterStraight(cardArr) {
         switch (i) {
             case 0:
                 if (cardArr[0].value <= straightSlotCard1.value) {
-                    //addLog("Invalid Straight Hand " + printCardArr(cardArr));
+                    if (doDebugLog) addLog("Invalid Straight Hand " + printCardArr(cardArr));
                     return false;
                 }
                 break;
             case 1:
                 if (cardArr[1].value <= straightSlotCard2.value) {
-                    //addLog("Invalid Straight Hand " + printCardArr(cardArr));
+                    if (doDebugLog) addLog("Invalid Straight Hand " + printCardArr(cardArr));
                     return false;
                 }
                 break;
             case 2:
                 if (cardArr[2].value <= straightSlotCard3.value) {
-                    //addLog("Invalid Straight Hand " + printCardArr(cardArr));
+                    if (doDebugLog) addLog("Invalid Straight Hand " + printCardArr(cardArr));
                     return false;
                 }
                 break;
             case 3:
                 if (cardArr[3].value <= straightSlotCard4.value) {
-                    //addLog("Invalid Straight Hand " + printCardArr(cardArr));
+                    if (doDebugLog) addLog("Invalid Straight Hand " + printCardArr(cardArr));
                     return false;
                 }
                 break;
             case 4:
                 if (cardArr[4].value <= straightSlotCard5.value) {
-                    //addLog("Invalid Straight Hand " + printCardArr(cardArr));
+                    if (doDebugLog) addLog("Invalid Straight Hand " + printCardArr(cardArr));
                     return false;
                 }
                 break;
@@ -363,8 +396,9 @@ function checkBetterStraight(cardArr) {
     return true;
 }
 
+// given an array of cards check for straight out of it from value 
 function findFiveCardStraight(cardArr) {
-    //addLog("findFiveCardStraight(cardArr))" + printCardArr(cardArr));
+    if (doDebugLog) addLog("findFiveCardStraight(cardArr))" + printCardArr(cardArr));
     let strArray = [];
     for (let i = 0; i < cardArr.length; i++) {
 
@@ -374,22 +408,22 @@ function findFiveCardStraight(cardArr) {
 
             let card2 = cardArr[j];
             if (card1.value === card2.value - 1) {
-                //addLog(printCard(card1) + printCard(card2));
+                if (doDebugLog) addLog(printCard(card1) + printCard(card2));
                 for (let k = j + 1; k < cardArr.length; k++) {
 
                     let card3 = cardArr[k];
                     if (card1.value === card3.value - 2) {
-                        //addLog(printCard(card1) + printCard(card2) + printCard(card3));
+                        if (doDebugLog) addLog(printCard(card1) + printCard(card2) + printCard(card3));
                         for (let l = k + 1; l < cardArr.length; l++) {
 
                             let card4 = cardArr[l];
                             if (card1.value === card4.value - 3) {
-                                //addLog(printCard(card1) + printCard(card2) + printCard(card3) + printCard(card4));
+                                if (doDebugLog) addLog(printCard(card1) + printCard(card2) + printCard(card3) + printCard(card4));
                                 for (let m = l + 1; m < cardArr.length; m++) {
 
                                     let card5 = cardArr[m];
                                     if (card1.value === card5.value - 4) {
-                                        //addLog(printCard(card1) + printCard(card2) + printCard(card3) + printCard(card4) + printCard(card5));
+                                        if (doDebugLog) addLog(printCard(card1) + printCard(card2) + printCard(card3) + printCard(card4) + printCard(card5));
                                         strArray.push(card1);
                                         strArray.push(card2);
                                         strArray.push(card3);
@@ -409,7 +443,7 @@ function findFiveCardStraight(cardArr) {
 }
 
 function findFourCardStraight(cardsPlayed, cardArr) {
-    //addLog("findFourCardStraight(cardArr))" + printCardArr(cardArr));
+    if (doDebugLog) addLog("findFourCardStraight(cardArr))" + printCardArr(cardArr));
     let strArray = [];
     for (let i = 0; i < cardArr.length; i++) {
 
@@ -419,12 +453,12 @@ function findFourCardStraight(cardsPlayed, cardArr) {
 
             let card2 = cardArr[j];
             if (card1.value === card2.value - 1) {
-                //addLog(printCard(card1) + printCard(card2));
+                if (doDebugLog) addLog(printCard(card1) + printCard(card2));
                 for (let k = j + 1; k < cardArr.length; k++) {
 
                     let card3 = cardArr[k];
                     if (card1.value === card3.value - 2) {
-                        //addLog(printCard(card1) + printCard(card2) + printCard(card3));
+                        if (doDebugLog) addLog(printCard(card1) + printCard(card2) + printCard(card3));
                         for (let l = k + 1; l < cardArr.length; l++) {
 
                             let card4 = cardArr[l];
@@ -435,7 +469,7 @@ function findFourCardStraight(cardsPlayed, cardArr) {
                                 strArray.push(card3);
                                 strArray.push(card4);
                                 if (cardsPlayed < 4 || (cardsPlayed === 4 && checkBetterStraight(strArray))) {
-                                    //addLog(printCardArr(strArray));
+                                    if (doDebugLog) addLog(printCardArr(strArray));
                                     return strArray;
                                 }
                             }
@@ -484,38 +518,38 @@ function performLowCardSwitch() {
 
     // check each card that could finish the straight
     for (let i = 0; i < nextCardArr.length; i++) {
-        //addLog("check for switch card");
+        if (doDebugLog) addLog("check for switch card");
 
         //compare it with the possible switch card
         let highCard = nextCardArr[i];
         let tempArr = [];
         tempArr = copyArrayToNewArray(playerCards);
-        //addLog("tempArr=" + printCardArr(tempArr));
+        if (doDebugLog) addLog("tempArr=" + printCardArr(tempArr));
         removeCardFromArray(highCard, tempArr);
-        //addLog("tempArr=" + printCardArr(tempArr));
+        if (doDebugLog) addLog("tempArr=" + printCardArr(tempArr));
 
         let currFlushCount = checkCardFlushCount(highCard, tempArr);
         let newFlushCount = checkCardFlushCount(straightSlotCard1, tempArr);
-        //addLog("currFlushCount > newFlushCount = " + currFlushCount + ">" + newFlushCount);
+        if (doDebugLog) addLog("currFlushCount > newFlushCount = " + currFlushCount + ">" + newFlushCount);
         if (currFlushCount > newFlushCount) {
             continue;
         }
 
         let currMatchCount = checkHandForMatchingValues(highCard, tempArr);
         let newMatchCount = checkHandForMatchingValues(straightSlotCard1, tempArr);
-        //addLog("currMatchCount > newMatchCount = " + currMatchCount + ">" + newMatchCount);
+        if (doDebugLog) addLog("currMatchCount > newMatchCount = " + currMatchCount + ">" + newMatchCount);
         if (currMatchCount > newMatchCount) {
             continue;
         }
 
         let currStrFlushCards = findStraightFlushCards(highCard, tempArr);
         let newStrFlushCards = findStraightFlushCards(straightSlotCard1, tempArr);
-        //addLog("currStrFlushCards.length > newStrFlushCards.length = " + currStrFlushCards.length + ">" + newStrFlushCards.length);
+        if (doDebugLog) addLog("currStrFlushCards.length > newStrFlushCards.length = " + currStrFlushCards.length + ">" + newStrFlushCards.length);
         if (currStrFlushCards.length > newStrFlushCards.length) {
             continue;
         }
 
-        //addLog("Player " + (playerTurn + 1) + " set switch card" + printCard(highCard));
+        if (doDebugLog) addLog("Player " + (playerTurn + 1) + " set switch card" + printCard(highCard));
         switchCard = highCard;
     }
 

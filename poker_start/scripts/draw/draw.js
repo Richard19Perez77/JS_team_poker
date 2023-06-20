@@ -434,7 +434,7 @@ function drawCardPlaceholders() {
 }
 
 function drawPlayer1Hand() {
-  //addLog("draw Player " + (playerTurn + 1) + " " + printCardArr(player1Cards));
+  if (doDebugLog) addLog("draw Player " + (playerTurn + 1) + " " + printCardArr(player1Cards));
   //debugCardBitmaps(player1Cards);
   for (let i = 0; i < player1Cards.length; i++) {
     switch (i) {
@@ -464,7 +464,7 @@ function drawPlayer1Hand() {
 }
 
 function drawPlayer2Hand() {
-  //addLog("draw Player " + (playerTurn + 1) + " " + printCardArr(player2Cards));
+  if (doDebugLog) addLog("draw Player " + (playerTurn + 1) + " " + printCardArr(player2Cards));
   //debugCardBitmaps(player2Cards);
   for (let i = 0; i < player2Cards.length; i++) {
     switch (i) {
@@ -494,7 +494,7 @@ function drawPlayer2Hand() {
 }
 
 function drawPlayer3Hand() {
-  //addLog("draw Player " + (playerTurn + 1) + " " + printCardArr(player3Cards));
+  if (doDebugLog) addLog("draw Player " + (playerTurn + 1) + " " + printCardArr(player3Cards));
   //debugCardBitmaps(player3Cards);
   for (let i = 0; i < player3Cards.length; i++) {
     switch (i) {
@@ -524,7 +524,7 @@ function drawPlayer3Hand() {
 }
 
 function drawPlayer4Hand() {
-  //addLog("draw Player " + (playerTurn + 1) + " " + printCardArr(player4Cards));
+  if (doDebugLog) addLog("draw Player " + (playerTurn + 1) + " " + printCardArr(player4Cards));
   //debugCardBitmaps(player4Cards);
   for (let i = 0; i < player4Cards.length; i++) {
     switch (i) {
@@ -1130,7 +1130,7 @@ function drawArrowPlayerCardHighlight() {
 }
 
 function drawPlayerCardHightlight() {
-  //addLog("drawPlayerCardHighlight() " + playercardPressed);
+  if (doDebugLog) addLog("drawPlayerCardHighlight() " + playercardPressed);
   switch (playercardPressed) {
     case 0:
       context.beginPath();
@@ -1395,7 +1395,7 @@ function drawPlaceholderCards() {
 }
 
 function drawMovingCard() {
-  //addLog("draw moving card " + cardSelected);
+  if (doDebugLog) addLog("draw moving card " + cardSelected);
   if (cardSelected > -1) {
     switch (playerTurn) {
       case 0:
