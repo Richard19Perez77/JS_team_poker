@@ -20,13 +20,10 @@ function runBDDTests() {
 }
 
 function highCardNull() {
+    
     // given a new game
     // when the game is initialized
     // I should see an emnpty high card slot
-
-    // call findHCcard()
-    // hcSlotCard should have a 14 value card
-
     if (hcSlotCard === null) {
         testTextArea.value += "\n\u2705 highCardNull() Passed"; 
         return;
