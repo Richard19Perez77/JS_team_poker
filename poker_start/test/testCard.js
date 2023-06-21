@@ -15,7 +15,7 @@ function runTests() {
     testCheckHandForMatchingValues3();
     testCheckHandForMatchingValues4();
     testCheckHandForMatchingValues5();
-    testTextArea.value += "\nTests Complete";
+    testTextArea.value += "\nTests Complete\n";
 }
 
 function testCheckHandForMatchingValues5() {
