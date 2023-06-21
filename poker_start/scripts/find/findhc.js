@@ -121,7 +121,7 @@ function findHCcard() {
         // add to main suit and value map
         removeFrom4kLists(hcSlotCard);
         addCardToHand(hcSlotCard, playerCards);
-        hcSlotCard = possibleCards[0];
+        hcSlotCard = possibleCards.shift();
         removeCardFromArray(hcSlotCard, playerCards);
         addTo4kLists(hcSlotCard);
 

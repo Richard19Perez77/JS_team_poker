@@ -1,22 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Tests</title>
 
     <script src="./testCard.js"></script>
-    <script src="../scripts/card/card.js"></script>
-    <script src="../scripts/card/cardHelper.js"></script>
-    <script src="../scripts/logging/print.js" type="application/javascript"></script>
-    <script src="../scripts/logging/log.js" type="application/javascript"></script>
-    <script src="../scripts/debug/debugvariables.js" type="application/javascript"></script>
-    <script src="../scripts/interaction/cardPlaced.js" type="application/javascript"></script>
+    <script src="./bdd1.js" type="application/javascript"></script>
 
-    <link type="text/css" rel="stylesheet" href="test.css"/>
+    <link type="text/css" rel="stylesheet" href="../libs/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+
+    <script type="application/javascript" src="../libs/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+    <script type="application/javascript" src="../libs/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+
+    <script type="application/javascript" src="../scripts/common/list.js"></script>
+    <script type="application/javascript" src="../scripts/common/variables.js"></script>
+    <script type="application/javascript" src="../scripts/card/card.js"></script>
+    <script type="application/javascript" src="../scripts/card/cardHelper.js"></script>
+    <script type="application/javascript" src="../scripts/debug/debugvariables.js"></script>
+    <script type="application/javascript" src="../scripts/debug/debug.js"></script>
+    <script type="application/javascript" src="../scripts/deck/decks.js"></script>
+    <script type="application/javascript" src="../scripts/deck/flushdecks.js"></script>
+    <script type="application/javascript" src="../scripts/deck/strflushdecks.js"></script>
+    <script type="application/javascript" src="../scripts/deck/fourkinddeck.js"></script>
+    <script type="application/javascript" src="../scripts/deck/strdecks.js"></script>
+    <script type="application/javascript" src="../scripts/deck/threekinddecks.js"></script>
+    <script type="application/javascript" src="../scripts/deck/twokinddeck.js"></script>
+    <script type="application/javascript" src="../scripts/draw/draw.js"></script>
+    <script type="application/javascript" src="../scripts/find/findhelper.js"></script>
+    <script type="application/javascript" src="../scripts/find/find2k.js"></script>
+    <script type="application/javascript" src="../scripts/find/find3k.js"></script>
+    <script type="application/javascript" src="../scripts/find/find4k.js"></script>
+    <script type="application/javascript" src="../scripts/find/findflush.js"></script>
+    <script type="application/javascript" src="../scripts/find/findhc.js"></script>
+    <script type="application/javascript" src="../scripts/find/findstr.js"></script>
+    <script type="application/javascript" src="../scripts/find/findstrflush.js"></script>
+    <script type="application/javascript" src="../scripts/interaction/check.js"></script>
+    <script type="application/javascript" src="../scripts/interaction/cardPlaced.js"></script>
+    <script type="application/javascript" src="../scripts/interaction/keypressmove.js"></script>
+    <script type="application/javascript" src="../scripts/interaction/mouse.js"></script>
+    <script type="application/javascript" src="../scripts/interaction/numberpress.js"></script>
+    <script type="application/javascript" src="../scripts/interaction/placeholderclick.js"></script>
+    <script type="application/javascript" src="../scripts/logging/log.js"></script>
+    <script type="application/javascript" src="../scripts/logging/print.js"></script>
+    <script type="application/javascript" src="../scripts/turn/endgame.js"></script>
+    <script type="application/javascript" src="../scripts/turn/endturn.js"></script>
+    <script type="application/javascript" src="../scripts/turn/pcturn.js"></script>
+    <script type="application/javascript" src="../scripts/turn/playerturn.js"></script>
+    <script type="application/javascript" src="../scripts/turn/newgame.js"></script>
+    <script type="application/javascript" src="../scripts/gamelogic.js"></script>
+    <script type="application/javascript" src="../scripts/interaction/onkeypress.js"></script>
+
+    <!-- CSS -->
+    <link type="text/css" rel="stylesheet" href="assets/styles/cardTheme.css" />
+
+    <link href="assets/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+    <link href="assets/images/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png" />
+    <link href="assets/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+
+    <link type="text/css" rel="stylesheet" href="test.css" />
 </head>
-<body onload="runTests()">
-<div class="container">
-    <textarea id="testTextArea"></textarea>
-</div>
+
+<body>
+    <div class="hideMe">
+        <div id="pageDiv" class="pageDivClass">
+
+            <div id="titleDiv" hidden>
+                <h1 id="welcome">Team Poker</h1>
+            </div>
+
+            <div class="draggableControlsTextArea">
+                <div id="draggableControlsTextArea" class="ui-widget-content">
+                    <div id="controlText" tabindex="0"></div>
+                </div>
+            </div>
+
+            <div class="draggableScoreDiv">
+                <div id="draggableScoreDiv" class="ui-widget-content">
+                    <div id="scoreText"></div>
+                </div>
+            </div>
+
+            <div id="tutorialDiv" style="width: 700px; height: 750px;">
+                <img id="tutorialImage" alt="Tutorial" src="">
+            </div>
+
+            <div id="loadingDiv" style="width: 930px; height: 845px;">
+                <h2 id="loading" style="font-family: CustomFont, serif;">Loading...</h2>
+            </div>
+
+            <div id="canvasDiv">
+                <canvas id="canvasId" width="950px" height="580px"></canvas>
+            </div>
+
+            <div id="buttonDiv">
+                <button id="endTurnButton">End Turn</button>
+                <button id="scoreButton">Score</button>
+                <button id="controlsButton">Controls</button>
+                <button id="newGameButton">New Game</button>
+            </div>
+
+            <div id="activityDiv">
+                <label for="activity"></label><textarea readonly rows="4" id="activity"></textarea>
+            </div>
+
+            <div id="musicDiv">
+                <button id="musicButton">Music</button>
+                <audio id="audio" controls loop>
+                    <source src="assets/music/track.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <button id="blogButton">Games</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <textarea id="testTextArea"></textarea>
+    </div>
+    <script type="application/javascript">
+        if (isLocalStorageSupported()) {
+            let scoreSaved = JSON.parse(localStorage.getItem("scoreSave"));
+            if (scoreSaved != null && scoreSaved.highScore != null) {
+                highScore = scoreSaved.highScore;
+            }
+        }
+        
+        window.addEventListener("resize", myFunction);
+
+        function myFunction() {
+            adjustOffset();
+        }
+
+        /*
+         * Tests if local storage is supported in the browser.
+         *
+         * Returns:
+         * 	True if local storage is supported, false if not.
+         */
+        function isLocalStorageSupported() {
+            try {
+                if (typeof (Storage) !== "undefined") {
+                    return 'localStorage' in window && window['localStorage'] !== null;
+                }
+            } catch (e) {
+                return false;
+            }
+        }
+
+        init(document);
+        runTests();
+        runBDDTests()
+    </script>
 </body>
+
 </html>

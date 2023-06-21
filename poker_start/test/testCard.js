@@ -2,6 +2,7 @@ let testTextArea;
 
 function runTests() {
     testTextArea = document.getElementById("testTextArea");
+    testTextArea.value = "";
     testTextArea.value += "Tests Started";
     testUrl();
     testUrlEmpty();
