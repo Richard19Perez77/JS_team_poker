@@ -90,7 +90,7 @@ function highCardPlayed() {
     // card8.bitmap.src = card7.imagePath;
     player1Cards[6] = card7;
 
-    findHCcard()
+    findHCcard();
 
     // hcSlotCard should have a 14 value card
     if (hcSlotCard.value === 14) {
@@ -160,7 +160,7 @@ function highCardReplacedForHC() {
     // card8.bitmap.src = card7.imagePath;
     player1Cards[6] = card7;
 
-    findHCcard()
+    findHCcard();
 
     if (hcSlotCard.value === 13) {
 
@@ -212,7 +212,7 @@ function highCardReplacedForHC() {
         player2Cards[6] = card7;
 
         // should have played the queen, now play the king over it
-        findHCcard()
+        findHCcard();
 
         if (hcSlotCard.value === 14) {
             testTextArea.value += "\n\u2705 highCardReplacedForHC() Passed";
@@ -331,7 +331,7 @@ function highCardReplacedFor2K() {
         player2Cards[6] = card7;
 
         // should have played the queen, now play the king over it
-        findHCcard()
+        findHCcard();
 
         let matches = 0;
         player2Cards.forEach(function (card) {
