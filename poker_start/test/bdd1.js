@@ -107,14 +107,10 @@ function highCardReplacedForHC() {
     // when I have another high card
     // I should play that high card
 
-    // set hcSlotCard with K
-    // replace K with A
-
     // reset game instance
     newGameClicked();
 
-    // may need to update player turn
-    // pc should have cards, call findHCCard()
+    // set player one to play a Q
     player1Cards = [];
     let suit = 0;
     let value = 2;
@@ -166,6 +162,7 @@ function highCardReplacedForHC() {
 
         playerTurn++;
 
+        // set player 2 to trade the Q for a K
         player1Cards = [];
         suit = 0;
         value = 2;
@@ -231,6 +228,8 @@ function highCardReplacedFor2K() {
     // given a card in the hc slot is K
     // when I can replace it for a pair even if lower
     // Then replace the K with the to be paired card, this incstance a K
+
+    // start a new game
     newGameClicked();
 
     player1Cards = [];
