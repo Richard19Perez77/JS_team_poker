@@ -106,8 +106,8 @@ function findFourthCard(cardArr) {
     if (straightSlotCard1.value === straightSlotCard2.value - 1 &&
         straightSlotCard2.value === straightSlotCard3.value - 1) {
 
-        let lowValue = straightSlotCard3.value + 1;
-        let highValue = straightSlotCard1.value - 1;
+        let highValue = straightSlotCard3.value + 1;
+        let lowValue = straightSlotCard1.value - 1;
 
         for (let i = 0; i < cardArr.length; i++) {
             let card = cardArr[i];
