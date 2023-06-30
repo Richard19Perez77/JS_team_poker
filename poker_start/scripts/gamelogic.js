@@ -1,10 +1,11 @@
-// starting point for scripts, init, and then interaction scripts
-// for debug check flags in debug,
+// callback function for image loaded increments count and check the count for ending 
+// loading time
 let imageLoaded = function () {
     imagesLoaded++;
     checkImagesLoadedCount();
 }
 
+// can set the game to not auto play with characters if you want all players to play
 function setHumanPlayers(allHuman) {
     if (allHuman) {
         player1isPC = false;
@@ -14,6 +15,7 @@ function setHumanPlayers(allHuman) {
     }
 }
 
+// can set up the canvas to accept mouse events
 function setupCanvas(document) {
     canvas = document.getElementById('canvasId');
     context = canvas.getContext('2d');
@@ -27,6 +29,7 @@ function setupCanvas(document) {
     canvas.addEventListener("mouseout", doMouseOut, false);
 }
 
+// use of jquery to setup divs and set loading for image sources
 function setupDivs() {
     loadingDiv = $("#loadingDiv");
     jTutorialDiv = $("#tutorialDiv");
@@ -41,11 +44,13 @@ function setupDivs() {
     });
 }
 
+// add event listeners to window for keydown and keyup
 function setupWindow() {
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("keyup", onKeyUp);
 }
 
+// mobile website buttons are different than the regular web buttons
 function setupMobileButtons() {
     let playerCardOneButton = $("#playerCardOneButton")[0];
     if (playerCardOneButton != null) {
@@ -97,6 +102,7 @@ function setupMobileButtons() {
     }
 }
 
+// set up for empty cards to be played
 function setupSlotButtons() {
     let slotOneButton = $("#slotOneButton")[0];
     if (slotOneButton != null) {
@@ -148,6 +154,7 @@ function setupSlotButtons() {
     }
 }
 
+// set up for window control elements
 function setupControls() {
     tutorialDiv = jTutorialDiv[0];
     tutorialDiv.addEventListener('click', function (e) {
@@ -216,7 +223,7 @@ function setupControls() {
     backImage.src = "assets/images/back1.png";
 }
 
-// for decks uncomment customDeck() types needed
+// set up game and call new game clicked when done
 function init(document) {
     setupCanvas(document);
     setupDivs();
@@ -236,6 +243,7 @@ function init(document) {
     newGameClicked();
 }
 
+// clear canvas for fresh redraw on action
 function clearCanvas() {
     context.save();
 
@@ -405,6 +413,7 @@ function musicButtonClicked() {
     }
 }
 
+// when all images are loaded, slide up the loading div
 function checkImagesLoadedCount() {
     if (imagesLoaded === IMAGES_TO_LOAD) {
         drawBoard();
@@ -429,6 +438,7 @@ function hideTutorial() {
     }
 }
 
+// allow for screen manipulation and keep mouse in right place
 function adjustOffset() {
     let canvasOffset = $("#canvasId").offset();
     offsetX = Math.round(canvasOffset.left);
