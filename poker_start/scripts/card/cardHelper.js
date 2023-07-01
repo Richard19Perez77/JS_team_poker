@@ -1,3 +1,4 @@
+// Use in case of card play not valid, player may need to play a certain type or number of cards
 function printMinimumCardPlay() {
     switch (targetHand) {
         case 1:
@@ -21,6 +22,7 @@ function printMinimumCardPlay() {
     }
 }
 
+// put cards in numerical order or push empty slots to the right of the set
 function organizeStraight() {
     let straightArray = [];
     if (straightSlotCard1 != null) {
@@ -74,6 +76,7 @@ function organizeStraight() {
     }
 }
 
+// Call to organize cards on table depending on the targetHand
 function organizePlayedCards() {
     if (doDebugLog) addLog("organizePlayedCards()");
     switch (targetHand) {
@@ -95,6 +98,7 @@ function organizePlayedCards() {
     }
 }
 
+// Organize by sorting and placing in slots one after another, pushing empty slots right.
 function organizeStraightFlush() {
     let straightArray = [];
     if (strFlushSlotCard1 != null) {
@@ -143,6 +147,7 @@ function organizeStraightFlush() {
     }
 }
 
+// Arrange flush cards by setting them in order numerically then pushing empty slots right
 function organizeFlush() {
     let flushArray = [];
     if (flushSlotCard1 != null) {
@@ -196,6 +201,7 @@ function organizeFlush() {
     }
 }
 
+// Move empty slots to the right
 function organize4k() {
     if (fourkSlotCard1 !== null
         && fourkSlotCard2 !== null
@@ -305,6 +311,7 @@ function organize4k() {
     }
 }
 
+// Push empty slots right in 3k row 
 function organize3k() {
     if (doDebugLog) addLog("organize4k()");
     let temp;
@@ -436,7 +443,7 @@ function allCardsPlayed() {
     }
 }
 
-
+// reset variables when card on table is highlighted for moving, resets when mouse and keyboard are used to move a card for next move
 function removeCardHighlights() {
     playercardPressed = -1;
     placeholderPressed = -1;
@@ -445,20 +452,22 @@ function removeCardHighlights() {
     placeHolderMouseOverCardIndex = -1;
 }
 
+// allows for printing of suit charachter
 function getSuitCharacter(suit) {
     switch (suit) {
         case 0:
-            return "&#9671;";
+            return "&#9671;"; // Diamonds
         case 1:
-            return "&#9831;";
+            return "&#9831;"; // Clubs
         case 2:
-            return "&#9825;";
+            return "&#9825;"; // Hearts
         case 3:
-            return "&#9828;";
+            return "&#9828;"; // Spades
     }
     return "";
 }
 
+// Stored card value is converted to face value to get standard card face 2 - Ace
 function getFaceValue(value) {
     switch (value) {
         case 0:
@@ -492,6 +501,7 @@ function getFaceValue(value) {
     return "";
 }
 
+// Matching values are the cards Kind selection, 2 of a kind needs 2 matching values, 3K needs 3, and 4K needs 4
 function checkHandForMatchingValues(card, hand) {
     let kind = 0;
     let printedCards = "";
@@ -508,6 +518,7 @@ function checkHandForMatchingValues(card, hand) {
     return kind;
 }
 
+// Cards can replace a current 2K if the played card both have value higher than the played cards
 function checkCardCanReplaceCurrent2kPlayed(tempCard) {
     // if no cards played it can replace
     if ((twoPSlotCard1 === null ||
@@ -531,6 +542,7 @@ function checkCardCanReplaceCurrent2kPlayed(tempCard) {
     return false;
 }
 
+// A three card straight can be found from one card and a hand of cards.
 function checkHandFor3cardStraight(card, hand) {
     let oneLower = false;
     let twoLower = false;
@@ -587,6 +599,7 @@ function checkHandFor3cardStraight(card, hand) {
     return false;
 }
 
+// A better flush has a higher overall value
 function checkBetterFlush(cardArr) {
     if (doDebugLog) addLog("cardArr=" + printCardArr(cardArr));
     if (cardArr.length < 5) {
@@ -604,6 +617,7 @@ function checkBetterFlush(cardArr) {
     return curr > placed;
 }
 
+// given a card, check how many other cards match suit
 function checkCardFlushCount(card, hand) {
     let flush = 0;
     let printedFlush = "";
@@ -620,6 +634,7 @@ function checkCardFlushCount(card, hand) {
     return flush;
 }
 
+// return true if a card's value has been played in any other hand up to this point
 function checkCardValueHasBeenPlayed(temp) {
     if (doDebugLog) addLog("checkCardValueHasBeenPlayed()" + printCard(temp));
     let value = temp.value;
@@ -740,6 +755,8 @@ function checkCardValueHasBeenPlayed(temp) {
         if (doDebugLog) addLog("str flush played " + printCard(strFlushSlotCard4) + printCard(temp));
         return true;
     }
+
+    // if it's not in the last card slot return false
     return strFlushSlotCard5 != null && strFlushSlotCard5.value === value;
 }
 
