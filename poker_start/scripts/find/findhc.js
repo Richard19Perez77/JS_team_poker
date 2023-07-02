@@ -1,26 +1,23 @@
+// Used to check that a given card is a higher card than one played, returns true if there is nocard played or the card is higher in value
 function checkHCisGreater(card) {
     if (hcSlotCard == null) {
-        if (doLogCardDetails) {
-            addLog("Player " + (playerTurn + 1) + ": No HC card played");
-        }
-
+        if (doLogCardDetails) addLog("Player " + (playerTurn + 1) + ": No HC card played");
+        
         return true;
     }
 
     if (card.value > hcSlotCard.value) {
-        if (doLogCardDetails) {
-            addLog("Player " + (playerTurn + 1) + ": " + printCard(card) + " > " + printCard(hcSlotCard));
-        }
-
+        if (doLogCardDetails) addLog("Player " + (playerTurn + 1) + ": " + printCard(card) + " > " + printCard(hcSlotCard));
+        
         return true;
     }
 
-    if (doLogCardDetails) {
-        addLog("Player " + (playerTurn + 1) + ": " + printCard(card) + " can not replace " + printCard(hcSlotCard));
-    }
+    if (doLogCardDetails) addLog("Player " + (playerTurn + 1) + ": " + printCard(card) + " can not replace " + printCard(hcSlotCard));
+    
     return false;
 }
 
+// Finding a high card means to attempt to use the placed card or place a valid high card that has a good value playing it here
 function findHCcard() {
     // stop loop for optimizing cards
     handPasses++;
@@ -53,9 +50,8 @@ function findHCcard() {
                 removeCardFromArray(hcSlotCard, playerCards);
                 addTo4kLists(hcSlotCard);
 
-                if (doLogPlacedCards === true) {
-                    addLog("Player " + (playerTurn + 1) + ": Plays HC  " + printCard(hcSlotCard));
-                }
+                if (doLogPlacedCards === true) addLog("Player " + (playerTurn + 1) + ": Plays HC  " + printCard(hcSlotCard));
+                
                 cardPlacedAction();
 
                 return;
@@ -70,9 +66,8 @@ function findHCcard() {
                 removeCardFromArray(hcSlotCard, playerCards);
                 addTo4kLists(hcSlotCard);
 
-                if (doLogPlacedCards === true) {
-                    addLog("Player " + (playerTurn + 1) + ": Plays HC  " + printCard(hcSlotCard));
-                }
+                if (doLogPlacedCards === true) addLog("Player " + (playerTurn + 1) + ": Plays HC  " + printCard(hcSlotCard));
+                
                 cardPlacedAction();
 
                 return;
@@ -125,9 +120,8 @@ function findHCcard() {
         removeCardFromArray(hcSlotCard, playerCards);
         addTo4kLists(hcSlotCard);
 
-        if (doLogPlacedCards === true) {
-            addLog("Player " + (playerTurn + 1) + ": Plays HC  " + printCard(hcSlotCard));
-        }
+        if (doLogPlacedCards === true) addLog("Player " + (playerTurn + 1) + ": Plays HC  " + printCard(hcSlotCard));
+        
         cardPlacedAction();
     }
 }
