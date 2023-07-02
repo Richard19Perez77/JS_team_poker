@@ -1123,6 +1123,7 @@ function checkCardHasBeenPlayed(card) {
     return strFlushSlotCard5 != null && strFlushSlotCard5.value === value && strFlushSlotCard5.suit === suit;
 }
 
+// remove card highlights and allow a new card to be selected to be moved
 function removeCardHighlights() {
     playercardPressed = -1;
     placeholderPressed = -1;
@@ -1185,6 +1186,7 @@ function dealToPlayer4() {
     }
 }
 
+// set cards to draw from when playing a hand
 function getPlayerCards() {
     switch (playerTurn) {
         case 0:
@@ -1264,6 +1266,7 @@ function organizePlayerCards() {
     }
 }
 
+// add card to array of cards
 function addCardToHand(card, cardArr) {
     if (card != null && cardArr != null) {
         cardArr.push(card);
@@ -1282,22 +1285,23 @@ function sortCardsToggle() {
     drawBoard();
 }
 
+// Each hand has a max number of playable cards with poker standards
 function getMaxPlaceHolderCards() {
     switch (targetHand) {
         case 0:
-            return 1;
+            return 1; // high card
         case 1:
-            return 2;
+            return 2; // 2k
         case 2:
-            return 3;
+            return 3; // 3k
         case 3:
-            return 5;
+            return 5; // straight
         case 4:
-            return 5;
+            return 5; // flush
         case 5:
-            return 4;
+            return 4; // 4k
         case 6:
-            return 5;
+            return 5; // straight flush
     }
 }
 
