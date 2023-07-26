@@ -1,4 +1,4 @@
-// write bdd test
+// here i've written write bdd test
 
 // as the computer I should play a card that is high
 
