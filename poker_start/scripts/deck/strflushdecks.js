@@ -1,4 +1,4 @@
-function threeCardBlockFromPreviousPlayStrFlushDeck(){
+function threeCardBlockFromPreviousPlayStrFlushDeck() {
 
   //block 3 card straight
   let suit = 0;
@@ -101,7 +101,7 @@ function threeCardBlockFromPreviousPlayStrFlushDeck(){
   deckCards[13] = card13;
 }
 
-function straightFlush4CardOutOfOrder(){
+function straightFlush4CardOutOfOrder() {
   //player one 4 of 5
   let suit = 0;
   let value = 0;

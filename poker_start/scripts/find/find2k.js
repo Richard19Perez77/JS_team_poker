@@ -48,19 +48,19 @@ function checkHandFor4cardStraight(card, cards) {
         }
     }
 
-    if (hasP1 && hasP2 && hasP3){
+    if (hasP1 && hasP2 && hasP3) {
         return true
     }
 
-    if (hasM1 && hasP1 && hasP2){
+    if (hasM1 && hasP1 && hasP2) {
         return true
     }
 
-    if (hasM2 && hasM1 && hasP1){
+    if (hasM2 && hasM1 && hasP1) {
         return true
     }
 
-    if (hasM3 && hasM2 && hasM1){
+    if (hasM3 && hasM2 && hasM1) {
         return true
     }
 
@@ -107,19 +107,19 @@ function checkHandFor5cardStraight(card, cards) {
         }
     }
 
-    if (hasP1 && hasP2 && hasP3 && hasP4){
+    if (hasP1 && hasP2 && hasP3 && hasP4) {
         return true
     }
 
-    if (hasM1 && hasP1 && hasP2 && hasP3){
+    if (hasM1 && hasP1 && hasP2 && hasP3) {
         return true
     }
 
-    if (hasM2 && hasM1 && hasP1 && hasP2){
+    if (hasM2 && hasM1 && hasP1 && hasP2) {
         return true
     }
 
-    if (hasM3 && hasM2 && hasM1 && hasP1){
+    if (hasM3 && hasM2 && hasM1 && hasP1) {
         return true
     }
 

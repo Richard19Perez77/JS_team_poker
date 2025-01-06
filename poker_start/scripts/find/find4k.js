@@ -131,8 +131,8 @@ function find4KCard() {
             }
         });
 
-        if ( doDebugLog ) addLog("remove cards" + printCardArr(removeCards));
-        
+        if (doDebugLog) addLog("remove cards" + printCardArr(removeCards));
+
         for (let i = 0; i < removeCards.length; i++) {
             let removeMe = removeCards[i];
             removeCardFromArray(removeMe, possible3kCards);

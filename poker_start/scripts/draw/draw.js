@@ -624,9 +624,9 @@ function drawPlayerCards() {
 }
 
 function drawBoard() {
-  
+
   // can stop this on debug
-  if(!doRunControlTest || doShowUIDuringTest){
+  if (!doRunControlTest || doShowUIDuringTest) {
     clearCanvas();
     drawPlayerCards();
     drawCardPlaceholders();
@@ -742,128 +742,128 @@ function drawPlaceholderCardMouseOverFilter() {
           context.globalAlpha = 1.0;
           return;
       }
-      case 4:
-        switch (placeHolderMouseOverCardIndex) {
-          case 0:
-            context.beginPath();
-            context.rect(515, 240, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 1:
-            context.beginPath();
-            context.rect(600, 240, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 2:
-            context.beginPath();
-            context.rect(685, 240, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 3:
-            context.beginPath();
-            context.rect(770, 240, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 4:
-            context.beginPath();
-            context.rect(855, 240, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-        }
-        break;
-      case 5:
-        switch (placeHolderMouseOverCardIndex) {
-          case 0:
-            context.beginPath();
-            context.rect(515, 345, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 1:
-            context.beginPath();
-            context.rect(600, 345, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 2:
-            context.beginPath();
-            context.rect(685, 345, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 3:
-            context.beginPath();
-            context.rect(770, 345, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-        }
-      case 6:
-        switch (placeHolderMouseOverCardIndex) {
-          case 0:
-            context.beginPath();
-            context.rect(515, 450, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 1:
-            context.beginPath();
-            context.rect(600, 450, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 2:
-            context.beginPath();
-            context.rect(685, 450, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 3:
-            context.beginPath();
-            context.rect(770, 450, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 4:
-            context.beginPath();
-            context.rect(855, 450, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-        }
+    case 4:
+      switch (placeHolderMouseOverCardIndex) {
+        case 0:
+          context.beginPath();
+          context.rect(515, 240, 80, 100);
+          context.fillStyle = 'red';
+          context.globalAlpha = 0.25;
+          context.fill();
+          context.globalAlpha = 1.0;
+          return;
+        case 1:
+          context.beginPath();
+          context.rect(600, 240, 80, 100);
+          context.fillStyle = 'red';
+          context.globalAlpha = 0.25;
+          context.fill();
+          context.globalAlpha = 1.0;
+          return;
+        case 2:
+          context.beginPath();
+          context.rect(685, 240, 80, 100);
+          context.fillStyle = 'red';
+          context.globalAlpha = 0.25;
+          context.fill();
+          context.globalAlpha = 1.0;
+          return;
+        case 3:
+          context.beginPath();
+          context.rect(770, 240, 80, 100);
+          context.fillStyle = 'red';
+          context.globalAlpha = 0.25;
+          context.fill();
+          context.globalAlpha = 1.0;
+          return;
+        case 4:
+          context.beginPath();
+          context.rect(855, 240, 80, 100);
+          context.fillStyle = 'red';
+          context.globalAlpha = 0.25;
+          context.fill();
+          context.globalAlpha = 1.0;
+          return;
+      }
+      break;
+    case 5:
+      switch (placeHolderMouseOverCardIndex) {
+        case 0:
+          context.beginPath();
+          context.rect(515, 345, 80, 100);
+          context.fillStyle = 'red';
+          context.globalAlpha = 0.25;
+          context.fill();
+          context.globalAlpha = 1.0;
+          return;
+        case 1:
+          context.beginPath();
+          context.rect(600, 345, 80, 100);
+          context.fillStyle = 'red';
+          context.globalAlpha = 0.25;
+          context.fill();
+          context.globalAlpha = 1.0;
+          return;
+        case 2:
+          context.beginPath();
+          context.rect(685, 345, 80, 100);
+          context.fillStyle = 'red';
+          context.globalAlpha = 0.25;
+          context.fill();
+          context.globalAlpha = 1.0;
+          return;
+        case 3:
+          context.beginPath();
+          context.rect(770, 345, 80, 100);
+          context.fillStyle = 'red';
+          context.globalAlpha = 0.25;
+          context.fill();
+          context.globalAlpha = 1.0;
+          return;
+      }
+    case 6:
+      switch (placeHolderMouseOverCardIndex) {
+        case 0:
+          context.beginPath();
+          context.rect(515, 450, 80, 100);
+          context.fillStyle = 'red';
+          context.globalAlpha = 0.25;
+          context.fill();
+          context.globalAlpha = 1.0;
+          return;
+        case 1:
+          context.beginPath();
+          context.rect(600, 450, 80, 100);
+          context.fillStyle = 'red';
+          context.globalAlpha = 0.25;
+          context.fill();
+          context.globalAlpha = 1.0;
+          return;
+        case 2:
+          context.beginPath();
+          context.rect(685, 450, 80, 100);
+          context.fillStyle = 'red';
+          context.globalAlpha = 0.25;
+          context.fill();
+          context.globalAlpha = 1.0;
+          return;
+        case 3:
+          context.beginPath();
+          context.rect(770, 450, 80, 100);
+          context.fillStyle = 'red';
+          context.globalAlpha = 0.25;
+          context.fill();
+          context.globalAlpha = 1.0;
+          return;
+        case 4:
+          context.beginPath();
+          context.rect(855, 450, 80, 100);
+          context.fillStyle = 'red';
+          context.globalAlpha = 0.25;
+          context.fill();
+          context.globalAlpha = 1.0;
+          return;
+      }
   }
 }
 

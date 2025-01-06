@@ -2,18 +2,18 @@
 function checkHCisGreater(card) {
     if (hcSlotCard == null) {
         if (doLogCardDetails) addLog("Player " + (playerTurn + 1) + ": No HC card played");
-        
+
         return true;
     }
 
     if (card.value > hcSlotCard.value) {
         if (doLogCardDetails) addLog("Player " + (playerTurn + 1) + ": " + printCard(card) + " > " + printCard(hcSlotCard));
-        
+
         return true;
     }
 
     if (doLogCardDetails) addLog("Player " + (playerTurn + 1) + ": " + printCard(card) + " can not replace " + printCard(hcSlotCard));
-    
+
     return false;
 }
 
@@ -51,7 +51,7 @@ function findHCcard() {
                 addTo4kLists(hcSlotCard);
 
                 if (doLogPlacedCards === true) addLog("Player " + (playerTurn + 1) + ": Plays HC  " + printCard(hcSlotCard));
-                
+
                 cardPlacedAction();
 
                 return;
@@ -67,7 +67,7 @@ function findHCcard() {
                 addTo4kLists(hcSlotCard);
 
                 if (doLogPlacedCards === true) addLog("Player " + (playerTurn + 1) + ": Plays HC  " + printCard(hcSlotCard));
-                
+
                 cardPlacedAction();
 
                 return;
@@ -121,7 +121,7 @@ function findHCcard() {
         addTo4kLists(hcSlotCard);
 
         if (doLogPlacedCards === true) addLog("Player " + (playerTurn + 1) + ": Plays HC  " + printCard(hcSlotCard));
-        
+
         cardPlacedAction();
     }
 }

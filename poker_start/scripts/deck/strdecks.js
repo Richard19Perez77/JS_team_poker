@@ -1,4 +1,4 @@
-function straightDeckWithSwitchCard(){
+function straightDeckWithSwitchCard() {
   //working straight for player 1
   let suit = 0;
   let value = 0;

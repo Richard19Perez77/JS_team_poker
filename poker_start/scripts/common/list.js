@@ -1,4 +1,4 @@
-function List(){
+function List() {
 
   //Initialize the list
   this.listSize = 0;
@@ -12,8 +12,8 @@ function List(){
 
   //Find item from the list
   this.find = (element) => {
-    for(let i = 0; i < this.listSize; i++){
-      if(this.items[i] === element){
+    for (let i = 0; i < this.listSize; i++) {
+      if (this.items[i] === element) {
         return i;
       }
     }
@@ -25,7 +25,7 @@ function List(){
   this.remove = (element) => {
     let index = this.find(element);
 
-    if(index > -1){
+    if (index > -1) {
       this.items.splice(index, 1);
       --this.listSize;
       return true;
@@ -38,9 +38,9 @@ function List(){
   this.insert = (element, after) => {
     let insertPos = this.find(after);
 
-    if(insertPos > -1){
-       this.items.splice(insertPos+1, 0, element);
-       ++this.listSize;
+    if (insertPos > -1) {
+      this.items.splice(insertPos + 1, 0, element);
+      ++this.listSize;
       return true;
     }
 
@@ -65,14 +65,14 @@ function List(){
 
   //Move to the prev item in the list
   this.prev = () => {
-    if(this.pos > 0){
+    if (this.pos > 0) {
       --this.pos;
     }
   }
 
   //Move to the next item in the list
   this.next = () => {
-    if(this.pos < this.listSize - 1){
+    if (this.pos < this.listSize - 1) {
       ++this.pos;
     }
   }
@@ -84,7 +84,7 @@ function List(){
 
   //Move to the specific position in the list
   this.moveTo = (pos) => {
-    if(pos > 0 && pos <= this.listSize){
+    if (pos > 0 && pos <= this.listSize) {
       this.pos = pos - 1;
     }
   }
