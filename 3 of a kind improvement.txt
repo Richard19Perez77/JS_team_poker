@@ -1,0 +1,36 @@
+// try to improve 3k
+// any high set played will block pc
+// when to block : i have both 3k and 4k just play them
+	// maybe for points let pc play first
+// when not to block: allow pc to play a hand for finishing 
+
+HC
+
+keep 2k
+
+try to allow more 2k
+
+play highest card plausible
+
+can build 3k thats best
+
+after a couple rounds if going, try to play highest card with a 2k built up
+
+2k
+
+if you have a 2k allow other players to play a 2k
+
+if they can play it let is stay if higher
+
+keep 2k for 3k
+
+if 2k completes 3k and you have another 2k pick up and play new 2k for 3k play
+
+3k 
+
+if you have a 3k allow pc to play theirs
+continue or hold for 4k
+
+do you never keep 3k for a 4k play?
+do you risk a 3k for a 4k play?
+let pc play a 3k attempt first if 3k is high in rank
