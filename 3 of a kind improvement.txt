@@ -34,3 +34,5 @@ continue or hold for 4k
 do you never keep 3k for a 4k play?
 do you risk a 3k for a 4k play?
 let pc play a 3k attempt first if 3k is high in rank
+
+Start UML refactor for easier step's - not sure how else other than commented conditionals at this point for priority decisons, also not sure how to decide on things that are chance based, making it think more human with feeling versus pure odds.
