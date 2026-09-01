@@ -99,6 +99,10 @@ function printTestScores() {
     let duration = testTimeEnd - testTimeStart;
     addLog("test duration (seconds)= " + duration / 1000);
 
+    if (gamesPlayed >= gamesToPlay) {
+        console.log("=== ESC DEBUG COMPLETE ===\n" + log);
+    }
+
     const testOutput = document.getElementById("testTextArea");
     if (testOutput) {
         testOutput.value = log;

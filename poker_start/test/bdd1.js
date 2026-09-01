@@ -23,6 +23,7 @@ function runBDDTests() {
     complete3kNotOverwrittenByHigherPair();
     empty3kCanStartWithPair();
     complete2kNotOverwrittenByUnmatchedCards();
+    highCardSkipsFourFlush();
     testTextArea.value += "\nBDD Tests Complete";
     publishTestResults();
 }
@@ -209,6 +210,32 @@ function complete2kNotOverwrittenByUnmatchedCards() {
 
     testTextArea.value += "\n\u274C complete2kNotOverwrittenByUnmatchedCards() failed board=" +
         printCard(twoPSlotCard1) + printCard(twoPSlotCard2);
+}
+
+function highCardSkipsFourFlush() {
+    // given four disconnected diamonds and a low club leftover
+    // when choosing HC
+    // then park the club, not a diamond from the flush draw
+    playerTurn = 0;
+    hcSlotCard = null;
+    player1Cards = [
+        makeTestCard(0, 0),
+        makeTestCard(0, 3),
+        makeTestCard(0, 6),
+        makeTestCard(0, 9),
+        makeTestCard(1, 1),
+        makeTestCard(2, 4),
+        makeTestCard(3, 7)
+    ];
+
+    findHCcard();
+
+    if (hcSlotCard != null && hcSlotCard.suit === 1 && hcSlotCard.value === 1) {
+        testTextArea.value += "\n\u2705 highCardSkipsFourFlush() Passed";
+        return;
+    }
+
+    testTextArea.value += "\n\u274C highCardSkipsFourFlush() failed card=" + printCard(hcSlotCard);
 }
 
 function highCardNull() {

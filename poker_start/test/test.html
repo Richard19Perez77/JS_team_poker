@@ -148,9 +148,11 @@
         runTests();
         runBDDTests();
 
-        if (new URLSearchParams(window.location.search).get("controlTest") === "1") {
+        const controlTest = new URLSearchParams(window.location.search).get("controlTest");
+        if (controlTest) {
             setDebugFlags(true);
-            gamesToPlay = 200;
+            const parsed = parseInt(controlTest, 10);
+            gamesToPlay = parsed > 1 ? parsed : 10000;
             doShowUIDuringTest = false;
             doLogPlacedCards = false;
             doLogPlayerTurn = false;
