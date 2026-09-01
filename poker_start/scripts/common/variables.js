@@ -1,7 +1,6 @@
 let draggableControlsTextArea = null;
 let controlText = null;
-let draggableScoreDiv = null
-let jTutorialDiv = null;
+let draggableScoreDiv = null;
 
 let player1isPC = false;
 let player2isPC = true;

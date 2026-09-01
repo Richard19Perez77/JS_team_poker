@@ -5,16 +5,16 @@ function newGameClicked() {
   valueArr4k.clear();
   suitArr4k.clear();
 
-  $("#endTurnButton").focus();
+  endTurnButton.focus();
 
   endTurnButton.disabled = false;
 
-  if ($("#draggableControlsTextArea").is(":visible")) {
-    $("#draggableControlsTextArea").slideToggle(100);
+  if (isElementVisible(draggableControlsTextArea)) {
+    slideToggle(draggableControlsTextArea, 100);
   }
 
-  if ($("#draggableScoreDiv").is(":visible")) {
-    $("#draggableScoreDiv").slideToggle(100);
+  if (isElementVisible(draggableScoreDiv)) {
+    slideToggle(draggableScoreDiv, 100);
   }
 
   log = "";

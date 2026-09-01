@@ -72,8 +72,8 @@ function endTurnClicked() {
                     newGameClicked();
                 }
             } else {
-                if ($("#draggableScoreDiv").is(":hidden")) {
-                    $("#draggableScoreDiv").slideToggle(100);
+                if (isElementHidden(draggableScoreDiv)) {
+                    slideToggle(draggableScoreDiv, 100);
                 }
             }
 

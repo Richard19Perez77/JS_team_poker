@@ -79,6 +79,7 @@ textarea {
   margin: auto;
   left: 0;
   right: 0;
+  z-index: 20;
 }
 
 #tutorialDiv {
@@ -88,6 +89,7 @@ textarea {
   margin: auto;
   left: 0;
   right: 0;
+  z-index: 20;
 }
 
 #draggableScoreDiv {
@@ -102,6 +104,7 @@ textarea {
   left: 0;
   right: 0;
   cursor: move;
+  z-index: 15;
 }
 
 #scoreText {
@@ -133,6 +136,7 @@ textarea {
   left: 0;
   padding: 40px;
   cursor: move;
+  z-index: 15;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -176,6 +180,10 @@ textarea {
 
 #canvasDiv {
   text-align: center;
+}
+
+.is-hidden {
+  display: none !important;
 }
 
 #pageDiv {

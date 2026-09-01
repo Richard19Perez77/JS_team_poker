@@ -8,13 +8,8 @@
     <title>Mobile Team Poker</title>
 
     <!-- Game scripts -->
-    <!-- Game scripts -->
-    <link rel="stylesheet" href="libs/jquery-ui-1.12.1.custom/jquery-ui.min.css">
-
-    <script src="libs/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
-    <script src="libs/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-
     <script type="application/javascript" src="scripts/common/list.js"></script>
+    <script type="application/javascript" src="scripts/common/dom.js"></script>
     <script type="application/javascript" src="scripts/common/variables.js"></script>
     <script src="scripts/debug/debugvariables.js" type="application/javascript"></script>
     <script type="application/javascript" src="scripts/card/card.js"></script>
@@ -60,7 +55,7 @@
     <link href="assets/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
 
     <script>
-        $(document).ready(function () {
+        document.addEventListener("DOMContentLoaded", function () {
 
             init(document);
 
@@ -108,12 +103,12 @@
     </div>
 
     <div class="draggableControlsTextArea">
-        <div id="draggableControlsTextArea" class="ui-widget-content">
+        <div id="draggableControlsTextArea" class="is-hidden">
             <div id="controlText" tabindex="0"></div>
         </div>
     </div>
 
-    <div id="draggableScoreDiv" class="ui-widget-content">
+    <div id="draggableScoreDiv" class="is-hidden">
         <div id="scoreText"></div>
     </div>
 

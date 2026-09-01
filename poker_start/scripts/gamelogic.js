@@ -29,19 +29,15 @@ function setupCanvas(document) {
     canvas.addEventListener("mouseout", doMouseOut, false);
 }
 
-// use of jquery to setup divs and set loading for image sources
 function setupDivs() {
-    loadingDiv = $("#loadingDiv");
-    jTutorialDiv = $("#tutorialDiv");
+    loadingDiv = byId("loadingDiv");
+    tutorialDiv = byId("tutorialDiv");
 
-    let tutorialImage = $("#tutorialImage")[0];
+    let tutorialImage = byId("tutorialImage");
     tutorialImage.onload = imageLoaded;
-    tutorialImage.src = "assets/images/tutorial.png"
+    tutorialImage.src = "assets/images/tutorial.png";
 
-    let pageDivLocal = $(".pageDivClass");
-    pageDivLocal.fadeIn(500, function () {
-        $(this).css("display", "normal");
-    });
+    fadeIn(document.querySelector(".pageDivClass"), 500);
 }
 
 // add event listeners to window for keydown and keyup
@@ -52,167 +48,84 @@ function setupWindow() {
 
 // mobile website buttons are different than the regular web buttons
 function setupMobileButtons() {
-    let playerCardOneButton = $("#playerCardOneButton")[0];
-    if (playerCardOneButton != null) {
-        playerCardOneButton.addEventListener("click", function () {
-            playerCardPress(0);
-        });
-    }
-
-    let playerCardTwoButton = $("#playerCardTwoButton")[0];
-    if (playerCardTwoButton != null) {
-        playerCardTwoButton.addEventListener("click", function () {
-            playerCardPress(1);
-        });
-    }
-
-    let playerCardThreeButton = $("#playerCardThreeButton")[0];
-    if (playerCardThreeButton != null) {
-        playerCardThreeButton.addEventListener("click", function () {
-            playerCardPress(2);
-        });
-    }
-
-    let playerCardFourButton = $("#playerCardFourButton")[0];
-    if (playerCardFourButton != null) {
-        playerCardFourButton.addEventListener("click", function () {
-            playerCardPress(3);
-        });
-    }
-
-    let playerCardFiveButton = $("#playerCardFiveButton")[0];
-    if (playerCardFiveButton != null) {
-        playerCardFiveButton.addEventListener("click", function () {
-            playerCardPress(4);
-        });
-    }
-
-    let playerCardSixButton = $("#playerCardSixButton")[0];
-    if (playerCardSixButton != null) {
-        playerCardSixButton.addEventListener("click", function () {
-            playerCardPress(5);
-        });
-    }
-
-    let playerCardSevenButton = $("#playerCardSevenButton")[0];
-    if (playerCardSevenButton != null) {
-        playerCardSevenButton.addEventListener("click", function () {
-            playerCardPress(6);
-        });
-    }
+    setupIndexedButtons([
+        "playerCardOneButton",
+        "playerCardTwoButton",
+        "playerCardThreeButton",
+        "playerCardFourButton",
+        "playerCardFiveButton",
+        "playerCardSixButton",
+        "playerCardSevenButton"
+    ], playerCardPress);
 }
 
 // set up for empty cards to be played
 function setupSlotButtons() {
-    let slotOneButton = $("#slotOneButton")[0];
-    if (slotOneButton != null) {
-        slotOneButton.addEventListener("click", function () {
-            placeHolderPress(0);
-        });
-    }
-
-    let slotTwoButton = $("#slotTwoButton")[0];
-    if (slotTwoButton != null) {
-        slotTwoButton.addEventListener("click", function () {
-            placeHolderPress(1);
-        });
-    }
-
-    let slotThreeButton = $("#slotThreeButton")[0];
-    if (slotThreeButton != null) {
-        slotThreeButton.addEventListener("click", function () {
-            placeHolderPress(2);
-        });
-    }
-
-    let slotFourButton = $("#slotFourButton")[0];
-    if (slotFourButton != null) {
-        slotFourButton.addEventListener("click", function () {
-            placeHolderPress(3);
-        });
-    }
-
-    let slotFiveButton = $("#slotFiveButton")[0];
-    if (slotFiveButton != null) {
-        slotFiveButton.addEventListener("click", function () {
-            placeHolderPress(4);
-        });
-    }
-
-    let slotSixButton = $("#slotSixButton")[0];
-    if (slotSixButton != null) {
-        slotSixButton.addEventListener("click", function () {
-            placeHolderPress(5);
-        });
-    }
-
-    let slotSevenButton = $("#slotSevenButton")[0];
-    if (slotSevenButton != null) {
-        slotSevenButton.addEventListener("click", function () {
-            placeHolderPress(6);
-        });
-    }
+    setupIndexedButtons([
+        "slotOneButton",
+        "slotTwoButton",
+        "slotThreeButton",
+        "slotFourButton",
+        "slotFiveButton",
+        "slotSixButton",
+        "slotSevenButton"
+    ], placeHolderPress);
 }
 
 // set up for window control elements
 function setupControls() {
-    tutorialDiv = jTutorialDiv[0];
-    tutorialDiv.addEventListener('click', function (e) {
+    tutorialDiv.addEventListener("click", function () {
         hideTutorial();
     });
 
-    draggableControlsTextArea = $(".draggableControlsTextArea");
-    $(function () {
-        draggableControlsTextArea.draggable();
-    });
+    draggableControlsTextArea = byId("draggableControlsTextArea");
+    makeDraggable(draggableControlsTextArea);
 
-    controlText = $("#controlText");
-    controlText[0].innerHTML = ruleLog;
+    controlText = byId("controlText");
+    controlText.innerHTML = ruleLog;
 
-    draggableScoreDiv = $(".draggableScoreDiv");
-    $(function () {
-        draggableScoreDiv.draggable();
-    });
+    draggableScoreDiv = byId("draggableScoreDiv");
+    makeDraggable(draggableScoreDiv);
 
-    scoreText = $("#scoreText")[0];
-    activityLog = $("#activity")[0];
+    scoreText = byId("scoreText");
+    activityLog = byId("activity");
 
-    newGameButton = $("#newGameButton")[0];
+    newGameButton = byId("newGameButton");
     newGameButton.addEventListener("click", function () {
         if (isPlayerTurn() || gameOver) {
             newGameClicked();
         }
     });
 
-    endTurnButton = $("#endTurnButton")[0];
+    endTurnButton = byId("endTurnButton");
     endTurnButton.addEventListener("click", function () {
         if (gameReady && isPlayerTurn()) {
             endTurnClicked();
         }
     });
 
-    musicButton = $("#musicButton")[0];
+    musicButton = byId("musicButton");
     musicButton.addEventListener("click", function () {
         if (gameReady && isPlayerTurn()) {
             musicButtonClicked();
         }
     });
 
-    blogButton = $("#blogButton")[0];
+    blogButton = byId("blogButton");
     blogButton.addEventListener("click", function () {
         if (gameReady && isPlayerTurn()) {
             blogButtonClicked();
         }
     });
 
-    scoreButton = $("#scoreButton");
-    scoreButton[0].addEventListener("click", function () {
+    scoreButton = byId("scoreButton");
+    scoreButton.addEventListener("click", function () {
         if (gameReady && isPlayerTurn()) {
             scoreButtonClicked();
         }
     });
 
-    controlsButton = $("#controlsButton")[0];
+    controlsButton = byId("controlsButton");
     controlsButton.addEventListener("click", function () {
         if (gameReady && isPlayerTurn()) {
             controlsButtonClicked();
@@ -372,33 +285,31 @@ function controlListener() {
 }
 
 function controlsButtonClicked() {
-    if ($("#draggableControlsTextArea").is(':animated') === false) {
-
-        if ($("#draggableScoreDiv").is(":visible")) {
-            $("#draggableScoreDiv").slideToggle(100);
+    if (!isElementAnimating(draggableControlsTextArea)) {
+        if (isElementVisible(draggableScoreDiv)) {
+            slideToggle(draggableScoreDiv, 100);
         }
 
-        $("#draggableControlsTextArea").stop(true);
-        $("#draggableControlsTextArea").slideToggle(100, function () {
-            if ($("#controlText").is(":visible")) {
-                $("#controlText").focus();
+        stopElementAnimations(draggableControlsTextArea);
+        slideToggle(draggableControlsTextArea, 100, function () {
+            if (isElementVisible(controlText)) {
+                controlText.focus();
             }
         });
     }
 }
 
 function scoreButtonClicked() {
-    if ($("#draggableScoreDiv").is(':animated') === false) {
-
-        if ($("#draggableControlsTextArea").is(":visible")) {
-            $("#draggableControlsTextArea").slideToggle(100);
+    if (!isElementAnimating(draggableScoreDiv)) {
+        if (isElementVisible(draggableControlsTextArea)) {
+            slideToggle(draggableControlsTextArea, 100);
         }
 
-        $("#draggableScoreDiv").stop(true);
-        $("#draggableScoreDiv").slideToggle(100);
+        stopElementAnimations(draggableScoreDiv);
+        slideToggle(draggableScoreDiv, 100);
     }
 
-    $("#scoreButton").focus();
+    scoreButton.focus();
 }
 
 function blogButtonClicked() {
@@ -417,17 +328,17 @@ function musicButtonClicked() {
 function checkImagesLoadedCount() {
     if (imagesLoaded === IMAGES_TO_LOAD) {
         drawBoard();
-        if (loadingDiv.is(":visible")) {
-            $("#loadingDiv").slideToggle(500);
+        if (isElementVisible(loadingDiv)) {
+            slideToggle(loadingDiv, 500);
         }
     }
 }
 
 function hideTutorial() {
-    if (loadingDiv.is(":hidden")) {
+    if (isElementHidden(loadingDiv)) {
         if (tutorialDiv.hidden === false) {
-            if (jTutorialDiv.is(":visible") && jTutorialDiv.is(':animated') === false) {
-                jTutorialDiv.fadeOut(300, function () {
+            if (isElementVisible(tutorialDiv) && !isElementAnimating(tutorialDiv)) {
+                fadeOut(tutorialDiv, 300, function () {
                     tutorialDiv.hidden = true;
                     gameReady = true;
                     adjustOffset();
@@ -440,7 +351,10 @@ function hideTutorial() {
 
 // allow for screen manipulation and keep mouse in right place
 function adjustOffset() {
-    let canvasOffset = $("#canvasId").offset();
+    if (!canvas) {
+        return;
+    }
+    const canvasOffset = getElementOffset(canvas);
     offsetX = Math.round(canvasOffset.left);
     offsetY = Math.round(canvasOffset.top);
 }
