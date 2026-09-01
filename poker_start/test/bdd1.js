@@ -24,6 +24,8 @@ function runBDDTests() {
     empty3kCanStartWithPair();
     complete2kNotOverwrittenByUnmatchedCards();
     highCardSkipsFourFlush();
+    completeFlushNotBlankedByBaitSwap();
+    completeFlushReplacedByHigherFlush();
     testTextArea.value += "\nBDD Tests Complete";
     publishTestResults();
 }
@@ -41,6 +43,23 @@ function boardIsThreeOfAKind(expectedValue) {
         return false;
     }
     if (expectedValue != null && threePSlotCard1.value !== expectedValue) {
+        return false;
+    }
+    return true;
+}
+
+function boardIsFlush(expectedSuit) {
+    if (flushSlotCard1 == null || flushSlotCard2 == null || flushSlotCard3 == null ||
+        flushSlotCard4 == null || flushSlotCard5 == null) {
+        return false;
+    }
+    if (flushSlotCard1.suit !== flushSlotCard2.suit ||
+        flushSlotCard2.suit !== flushSlotCard3.suit ||
+        flushSlotCard3.suit !== flushSlotCard4.suit ||
+        flushSlotCard4.suit !== flushSlotCard5.suit) {
+        return false;
+    }
+    if (expectedSuit != null && flushSlotCard1.suit !== expectedSuit) {
         return false;
     }
     return true;
@@ -236,6 +255,78 @@ function highCardSkipsFourFlush() {
     }
 
     testTextArea.value += "\n\u274C highCardSkipsFourFlush() failed card=" + printCard(hcSlotCard);
+}
+
+function completeFlushNotBlankedByBaitSwap() {
+    // given a made heart flush whose ranks match 0,1,2,3 copies in hand
+    // and a leftover heart that is not a pair
+    // when the PC looks at flush
+    // then the flush must stay five hearts (the old bait-swap wrote null)
+    playerTurn = 0;
+    flushSlotCard1 = makeTestCard(2, 9);
+    flushSlotCard2 = makeTestCard(2, 10);
+    flushSlotCard3 = makeTestCard(2, 11);
+    flushSlotCard4 = makeTestCard(2, 12);
+    flushSlotCard5 = makeTestCard(2, 7);
+
+    player1Cards = [
+        makeTestCard(2, 8),
+        makeTestCard(0, 12),
+        makeTestCard(1, 12),
+        makeTestCard(3, 12),
+        makeTestCard(0, 11),
+        makeTestCard(1, 11),
+        makeTestCard(0, 10)
+    ];
+
+    findFlushCard();
+
+    if (boardIsFlush(2) &&
+        flushSlotCard1.value === 9 &&
+        flushSlotCard2.value === 10 &&
+        flushSlotCard3.value === 11 &&
+        flushSlotCard4.value === 12 &&
+        flushSlotCard5.value === 7) {
+        testTextArea.value += "\n\u2705 completeFlushNotBlankedByBaitSwap() Passed";
+        return;
+    }
+
+    testTextArea.value += "\n\u274C completeFlushNotBlankedByBaitSwap() failed board=" +
+        printCard(flushSlotCard1) + printCard(flushSlotCard2) + printCard(flushSlotCard3) +
+        printCard(flushSlotCard4) + printCard(flushSlotCard5);
+}
+
+function completeFlushReplacedByHigherFlush() {
+    // given a made low diamond flush
+    // when the PC has five higher disconnected hearts
+    // then checkBetterFlush should replace the board
+    playerTurn = 0;
+    flushSlotCard1 = makeTestCard(0, 0);
+    flushSlotCard2 = makeTestCard(0, 1);
+    flushSlotCard3 = makeTestCard(0, 2);
+    flushSlotCard4 = makeTestCard(0, 3);
+    flushSlotCard5 = makeTestCard(0, 4);
+
+    player1Cards = [
+        makeTestCard(2, 2),
+        makeTestCard(2, 6),
+        makeTestCard(2, 8),
+        makeTestCard(2, 10),
+        makeTestCard(2, 12),
+        makeTestCard(1, 1),
+        makeTestCard(3, 3)
+    ];
+
+    findFlushCard();
+
+    if (boardIsFlush(2) && getFlushScore() > 20) {
+        testTextArea.value += "\n\u2705 completeFlushReplacedByHigherFlush() Passed";
+        return;
+    }
+
+    testTextArea.value += "\n\u274C completeFlushReplacedByHigherFlush() failed board=" +
+        printCard(flushSlotCard1) + printCard(flushSlotCard2) + printCard(flushSlotCard3) +
+        printCard(flushSlotCard4) + printCard(flushSlotCard5);
 }
 
 function highCardNull() {
