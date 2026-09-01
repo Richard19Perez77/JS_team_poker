@@ -22,6 +22,7 @@ function runBDDTests() {
     complete3kReplacedByHigher3k();
     complete3kNotOverwrittenByHigherPair();
     empty3kCanStartWithPair();
+    complete2kNotOverwrittenByUnmatchedCards();
     testTextArea.value += "\nBDD Tests Complete";
     publishTestResults();
 }
@@ -39,6 +40,19 @@ function boardIsThreeOfAKind(expectedValue) {
         return false;
     }
     if (expectedValue != null && threePSlotCard1.value !== expectedValue) {
+        return false;
+    }
+    return true;
+}
+
+function boardIsTwoOfAKind(expectedValue) {
+    if (twoPSlotCard1 == null || twoPSlotCard2 == null) {
+        return false;
+    }
+    if (twoPSlotCard1.value !== twoPSlotCard2.value) {
+        return false;
+    }
+    if (expectedValue != null && twoPSlotCard1.value !== expectedValue) {
         return false;
     }
     return true;
@@ -166,6 +180,35 @@ function empty3kCanStartWithPair() {
 
     testTextArea.value += "\n\u274C empty3kCanStartWithPair() failed board=" +
         printCard(threePSlotCard1) + printCard(threePSlotCard2) + printCard(threePSlotCard3);
+}
+
+function complete2kNotOverwrittenByUnmatchedCards() {
+    // given a finished 8-high 2K
+    // when the PC only has two higher cards that do not match each other
+    // then the 2K row must stay eights, not become Ace+King
+    playerTurn = 0;
+    twoPSlotCard1 = makeTestCard(0, 6);
+    twoPSlotCard2 = makeTestCard(1, 6);
+
+    player1Cards = [
+        makeTestCard(2, 12),
+        makeTestCard(3, 11),
+        makeTestCard(0, 0),
+        makeTestCard(1, 1),
+        makeTestCard(2, 2),
+        makeTestCard(3, 3),
+        makeTestCard(2, 5)
+    ];
+
+    find2Kcard();
+
+    if (boardIsTwoOfAKind(6)) {
+        testTextArea.value += "\n\u2705 complete2kNotOverwrittenByUnmatchedCards() Passed";
+        return;
+    }
+
+    testTextArea.value += "\n\u274C complete2kNotOverwrittenByUnmatchedCards() failed board=" +
+        printCard(twoPSlotCard1) + printCard(twoPSlotCard2);
 }
 
 function highCardNull() {
