@@ -18,7 +18,154 @@ function runBDDTests() {
     highCardPlayed();
     highCardReplacedForHC();
     highCardReplacedFor2K();
+    complete3kNotOverwrittenByPairs();
+    complete3kReplacedByHigher3k();
+    complete3kNotOverwrittenByHigherPair();
+    empty3kCanStartWithPair();
     testTextArea.value += "\nBDD Tests Complete";
+    publishTestResults();
+}
+
+function makeTestCard(suit, value) {
+    return new Card(suit, value, getCardImagePath(suit, value));
+}
+
+function boardIsThreeOfAKind(expectedValue) {
+    if (threePSlotCard1 == null || threePSlotCard2 == null || threePSlotCard3 == null) {
+        return false;
+    }
+    if (threePSlotCard1.value !== threePSlotCard2.value ||
+        threePSlotCard2.value !== threePSlotCard3.value) {
+        return false;
+    }
+    if (expectedValue != null && threePSlotCard1.value !== expectedValue) {
+        return false;
+    }
+    return true;
+}
+
+function complete3kNotOverwrittenByPairs() {
+    // given a finished 5-high 3K
+    // when the PC has two triplets that the old filter could mix into 6,6,10
+    // then the board must remain a real 3K, never a pair plus an odd card
+    playerTurn = 0;
+    threePSlotCard1 = makeTestCard(0, 3);
+    threePSlotCard2 = makeTestCard(1, 3);
+    threePSlotCard3 = makeTestCard(2, 3);
+
+    player1Cards = [
+        makeTestCard(2, 4),
+        makeTestCard(0, 4),
+        makeTestCard(1, 4),
+        makeTestCard(2, 8),
+        makeTestCard(0, 8),
+        makeTestCard(3, 8),
+        makeTestCard(2, 6)
+    ];
+
+    find3Kcard();
+
+    if (boardIsThreeOfAKind()) {
+        testTextArea.value += "\n\u2705 complete3kNotOverwrittenByPairs() Passed";
+        return;
+    }
+
+    testTextArea.value += "\n\u274C complete3kNotOverwrittenByPairs() failed board=" +
+        printCard(threePSlotCard1) + printCard(threePSlotCard2) + printCard(threePSlotCard3);
+}
+
+function complete3kReplacedByHigher3k() {
+    // given a finished 8-high 3K
+    // when the PC has three aces
+    // then the 3K should be replaced by aces
+    playerTurn = 0;
+    threePSlotCard1 = makeTestCard(0, 6);
+    threePSlotCard2 = makeTestCard(1, 6);
+    threePSlotCard3 = makeTestCard(2, 6);
+
+    player1Cards = [
+        makeTestCard(0, 12),
+        makeTestCard(1, 12),
+        makeTestCard(2, 12),
+        makeTestCard(0, 0),
+        makeTestCard(1, 1),
+        makeTestCard(2, 2),
+        makeTestCard(3, 3)
+    ];
+
+    find3Kcard();
+
+    if (boardIsThreeOfAKind(12)) {
+        testTextArea.value += "\n\u2705 complete3kReplacedByHigher3k() Passed";
+        return;
+    }
+
+    testTextArea.value += "\n\u274C complete3kReplacedByHigher3k() failed board=" +
+        printCard(threePSlotCard1) + printCard(threePSlotCard2) + printCard(threePSlotCard3);
+}
+
+function complete3kNotOverwrittenByHigherPair() {
+    // given a finished queen 3K
+    // when the PC only has a higher pair
+    // then the 3K must not be broken into a 2K
+    playerTurn = 0;
+    threePSlotCard1 = makeTestCard(0, 10);
+    threePSlotCard2 = makeTestCard(1, 10);
+    threePSlotCard3 = makeTestCard(2, 10);
+
+    player1Cards = [
+        makeTestCard(0, 12),
+        makeTestCard(1, 12),
+        makeTestCard(0, 0),
+        makeTestCard(1, 1),
+        makeTestCard(2, 2),
+        makeTestCard(3, 3),
+        makeTestCard(0, 5)
+    ];
+
+    find3Kcard();
+
+    if (boardIsThreeOfAKind(10)) {
+        testTextArea.value += "\n\u2705 complete3kNotOverwrittenByHigherPair() Passed";
+        return;
+    }
+
+    testTextArea.value += "\n\u274C complete3kNotOverwrittenByHigherPair() failed board=" +
+        printCard(threePSlotCard1) + printCard(threePSlotCard2) + printCard(threePSlotCard3);
+}
+
+function empty3kCanStartWithPair() {
+    // given empty 3K slots
+    // when the PC has a pair and no 3K
+    // then it may start the 3K row with that pair
+    playerTurn = 0;
+    threePSlotCard1 = null;
+    threePSlotCard2 = null;
+    threePSlotCard3 = null;
+
+    player1Cards = [
+        makeTestCard(0, 7),
+        makeTestCard(1, 7),
+        makeTestCard(0, 0),
+        makeTestCard(1, 1),
+        makeTestCard(2, 3),
+        makeTestCard(3, 5),
+        makeTestCard(0, 12)
+    ];
+
+    find3Kcard();
+
+    if (threePSlotCard1 != null &&
+        threePSlotCard2 != null &&
+        threePSlotCard3 == null &&
+        threePSlotCard1.value === 7 &&
+        threePSlotCard2.value === 7) {
+        testTextArea.value += "\n\u2705 empty3kCanStartWithPair() Passed";
+        return;
+    }
+
+    testTextArea.value += "\n\u274C empty3kCanStartWithPair() failed board=" +
+        printCard(threePSlotCard1) + printCard(threePSlotCard2) + printCard(threePSlotCard3);
 }
 
 function highCardNull() {

@@ -112,6 +112,7 @@
     </div>
     <div class="container">
         <textarea id="testTextArea"></textarea>
+        <pre id="testResultsDump"></pre>
     </div>
     <script type="application/javascript">
         if (isLocalStorageSupported()) {
@@ -145,7 +146,16 @@
 
         init(document);
         runTests();
-        runBDDTests()
+        runBDDTests();
+
+        if (new URLSearchParams(window.location.search).get("controlTest") === "1") {
+            setDebugFlags(true);
+            gamesToPlay = 200;
+            doShowUIDuringTest = false;
+            doLogPlacedCards = false;
+            doLogPlayerTurn = false;
+            newGameClicked();
+        }
     </script>
 </body>
 

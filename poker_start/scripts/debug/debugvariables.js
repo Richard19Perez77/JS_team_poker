@@ -98,6 +98,17 @@ function printTestScores() {
     testTimeEnd = new Date().getTime();
     let duration = testTimeEnd - testTimeStart;
     addLog("test duration (seconds)= " + duration / 1000);
+
+    const testOutput = document.getElementById("testTextArea");
+    if (testOutput) {
+        testOutput.value = log;
+        if (gamesPlayed >= gamesToPlay) {
+            testOutput.setAttribute("data-control-test-complete", "1");
+        }
+        if (typeof publishTestResults === "function") {
+            publishTestResults();
+        }
+    }
 }
 
 function totalTestScores() {

@@ -2,18 +2,7 @@ function find3Kcard() {
     let playerCards = getPlayerCards();
     let removeCards = [];
 
-    //play missing third card if possible
-    let thirdCardIsMissing = checkIfMissingThirdCard();
-    if (thirdCardIsMissing === true) {
-
-        //find a simple answer by filling in a two of a kind starter
-        let thirdCardFound = checkFor3rdKindMissing(playerCards);
-        if (thirdCardFound === true) {
-            return;
-        }
-    }
-
-    // 2 of 3 cards played are 3k
+    // 2 of 3 cards played are 3k — fix the odd card first
     let thirdCardIsOffReplaced = checkIfOffThirdCard(playerCards);
     if (thirdCardIsOffReplaced === true) {
         return;
@@ -58,16 +47,6 @@ function find3Kcard() {
             continue
         }
 
-        // canStraight = checkHandFor3cardStraight(tempCard, playerCards);
-        // if (canStraight === true) {
-        //     continue;
-        // }
-        //
-        // sameFlushCount = checkCardFlushCount(tempCard, playerCards);
-        // if (sameFlushCount >= 4 && sameFlushCount <= 5) {
-        //     continue;
-        // }
-
         sameValueCount = checkHandForMatchingValues(tempCard, playerCards);
         if (sameValueCount === 3) {
 
@@ -78,7 +57,7 @@ function find3Kcard() {
         }
     }
 
-    //remove cards in 3k possible list without 3 of a kind
+    // keep only ranks that still have three cards in the candidate list
     possible3kCards = possible3kCards.sort(function (a, b) {
         return a.value - b.value;
     });
@@ -87,7 +66,7 @@ function find3Kcard() {
     for (let i = 0; i < possible3kCards.length; i++) {
         let temp = possible3kCards[i];
         sameValueCount = checkHandForMatchingValues(temp, possible3kCards);
-        if (sameValueCount < 2) {
+        if (sameValueCount < 3) {
             removeCards.push(temp);
         }
     }
@@ -97,7 +76,9 @@ function find3Kcard() {
         removeCardFromArray(removeMe, possible3kCards);
     }
 
-    if (possible3kCards.length >= 3) {
+    if (possible3kCards.length >= 3 &&
+        possible3kCards[0].value === possible3kCards[1].value &&
+        possible3kCards[1].value === possible3kCards[2].value) {
 
         removeFrom4kLists(threePSlotCard1);
         addCardToHand(threePSlotCard1, playerCards);
@@ -117,7 +98,6 @@ function find3Kcard() {
         removeCardFromArray(possible3kCards[2], playerCards);
         addTo4kLists(threePSlotCard3);
 
-
         if (doLogPlacedCards === true) {
             addLog("Player " + (playerTurn + 1) + ": Plays 3K " + printCard(threePSlotCard1) + printCard(threePSlotCard2) + printCard(threePSlotCard3));
         }
@@ -126,11 +106,21 @@ function find3Kcard() {
         return;
     }
 
+    // complete a pair already on the board before starting a new 2K
+    if (checkFor3rdKindMissing(playerCards) === true) {
+        return;
+    }
+
+    if (isCompleteThreeOfAKind()) {
+        return;
+    }
+
     // sort and remove cards with no valid 2k
     possible2kCards = possible2kCards.sort(function (a, b) {
         return a.value - b.value;
     });
 
+    removeCards = [];
     for (let i = 0; i < possible2kCards.length; i++) {
         let temp = possible2kCards[i];
         sameValueCount = checkHandForMatchingValues(temp, possible2kCards);
@@ -144,7 +134,8 @@ function find3Kcard() {
         removeCardFromArray(removeMe, possible2kCards);
     }
 
-    if (possible2kCards.length >= 2) {
+    if (possible2kCards.length >= 2 &&
+        possible2kCards[0].value === possible2kCards[1].value) {
 
         // no 3k cards played yet
         if (threePSlotCard1 == null &&
@@ -165,7 +156,7 @@ function find3Kcard() {
             return;
         }
 
-        // 2k of 3k has been played
+        // 2k of 3k has been played — never overwrite a finished 3K
         if (threePSlotCard1 != null &&
             threePSlotCard2 != null &&
             threePSlotCard3 == null) {
@@ -184,11 +175,19 @@ function find3Kcard() {
             addTo4kLists(threePSlotCard2);
 
             if (doLogPlacedCards === true) {
-                addLog("Player " + (playerTurn + 1) + " Plays 3k " + printCard(threePSlotCard1) + printCard(threePSlotCard2) + printCard(threePSlotCard3));
+                addLog("Player " + (playerTurn + 1) + ": Plays 2K of 3K " + printCard(threePSlotCard1) + printCard(threePSlotCard2) + printCard(threePSlotCard3));
             }
             cardPlacedAction();
         }
     }
+}
+
+function isCompleteThreeOfAKind() {
+    return threePSlotCard1 != null &&
+        threePSlotCard2 != null &&
+        threePSlotCard3 != null &&
+        threePSlotCard1.value === threePSlotCard2.value &&
+        threePSlotCard2.value === threePSlotCard3.value;
 }
 
 function checkIfMissingThirdCard() {
@@ -289,7 +288,7 @@ function checkIfOffThirdCard(cards) {
 }
 
 function checkFor3rdKindMissing(cards) {
-    if (null != threePSlotCard1 && threePSlotCard2 != null) {
+    if (threePSlotCard1 != null && threePSlotCard2 != null && threePSlotCard3 == null) {
         if (threePSlotCard1.value === threePSlotCard2.value) {
             let value = threePSlotCard1.value;
             for (let i = 0; i < cards.length; i++) {
@@ -316,7 +315,7 @@ function checkFor3rdKindMissing(cards) {
 function checkCardCanReplaceCurrent3kPlayed(card) {
     let highValue = -1;
 
-    // check for misplaced card in a slot if so return true to use current hand
+    // a broken 3K (pair + odd card) can be rebuilt from the current hand
     if (threePSlotCard1 !== null && threePSlotCard2 !== null && threePSlotCard3 != null) {
         if (threePSlotCard1.value === threePSlotCard2.value &&
             threePSlotCard1.value !== threePSlotCard3.value) {

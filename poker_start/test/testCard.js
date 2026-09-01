@@ -1,5 +1,12 @@
 let testTextArea;
 
+function publishTestResults() {
+    const dump = document.getElementById("testResultsDump");
+    if (dump && testTextArea) {
+        dump.textContent = testTextArea.value;
+    }
+}
+
 function runTests() {
     testTextArea = document.getElementById("testTextArea");
     testTextArea.value = "";
@@ -16,6 +23,7 @@ function runTests() {
     testCheckHandForMatchingValues4();
     testCheckHandForMatchingValues5();
     testTextArea.value += "\nTests Complete\n";
+    publishTestResults();
 }
 
 function testCheckHandForMatchingValues5() {
