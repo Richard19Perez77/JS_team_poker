@@ -133,7 +133,7 @@ function setupControls() {
 
     scoreButton = byId("scoreButton");
     scoreButton.addEventListener("click", function () {
-        if (gameReady && isPlayerTurn()) {
+        if (gameReady && (isPlayerTurn() || doRunControlTest)) {
             scoreButtonClicked();
         }
     });
@@ -337,7 +337,7 @@ function hideFlyout(el) {
     if (!el || isElementHidden(el) || isElementAnimating(el)) {
         return;
     }
-    if (el === draggableScoreDiv && gameOver) {
+    if (el === draggableScoreDiv && gameOver && !doRunControlTest) {
         newGameClicked();
         return;
     }

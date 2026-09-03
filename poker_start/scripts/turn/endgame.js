@@ -238,5 +238,8 @@ function get2kCardScore() {
 }
 
 function addToScoreLog(newLog1) {
+    if (doRunControlTest) {
+        return;
+    }
     scoreText.innerHTML = newLog1;
 }

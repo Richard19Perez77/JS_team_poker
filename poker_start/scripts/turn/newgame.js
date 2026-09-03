@@ -13,7 +13,7 @@ function newGameClicked() {
     slideToggle(draggableControlsTextArea, 100);
   }
 
-  if (isElementVisible(draggableScoreDiv)) {
+  if (isElementVisible(draggableScoreDiv) && !doRunControlTest) {
     slideToggle(draggableScoreDiv, 100);
   }
 

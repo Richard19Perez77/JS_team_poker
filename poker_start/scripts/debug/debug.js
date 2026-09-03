@@ -3,7 +3,30 @@ function startControlTest() {
         return;
     }
     setDebugFlags(true);
+    if (scoreText) {
+        scoreText.innerHTML = "Running tests...";
+    }
+    showScorePanel();
     newGameClicked();
+}
+
+function showScorePanel() {
+    if (!draggableScoreDiv || isElementAnimating(draggableScoreDiv)) {
+        return;
+    }
+    if (isElementVisible(draggableControlsTextArea)) {
+        slideToggle(draggableControlsTextArea, 100);
+    }
+    if (isElementHidden(draggableScoreDiv)) {
+        slideToggle(draggableScoreDiv, 100);
+    }
+}
+
+function updateTestScorePanel() {
+    if (scoreText) {
+        scoreText.innerHTML = log.split("\n").join(br);
+    }
+    writeActivityLog();
 }
 
 // if you need a specific custom deck, make to win or lose a particular hand

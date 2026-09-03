@@ -52,38 +52,38 @@ function printTestScores() {
     addLog("Game Count = " + gamesPlayed);
     addLog("");
 
-    addLog("hc card played average " + Number(gamesHCcardPlayed / gamesPlayed).toFixed(2));
+    addLog("hc card played avg. " + Number(gamesHCcardPlayed / gamesPlayed).toFixed(2));
     if (doDebugLog) addLog("hc card scores " + printScoreArray(hcScores));
-    addLog("hc card score average " + Number(totalHCcardPoints / gamesHCcardPlayed).toFixed(2));
+    addLog("hc card score avg. " + Number(totalHCcardPoints / gamesHCcardPlayed).toFixed(2));
     addLog("");
 
-    addLog("2k card played average " + Number(games2kcardPlayed / gamesPlayed).toFixed(2));
+    addLog("2k card played avg. " + Number(games2kcardPlayed / gamesPlayed).toFixed(2));
     if (doDebugLog) addLog("2k card scores " + printScoreArray(twokScores));
-    addLog("2k card score average " + Number(total2kcardPoints / games2kcardPlayed).toFixed(2));
+    addLog("2k card score avg. " + Number(total2kcardPoints / games2kcardPlayed).toFixed(2));
     addLog("");
 
-    addLog("3k card played average " + Number(games3kcardPlayed / gamesPlayed).toFixed(2));
+    addLog("3k card played avg. " + Number(games3kcardPlayed / gamesPlayed).toFixed(2));
     if (doDebugLog) addLog("3k card scores " + printScoreArray(threekScores));
-    addLog("3k card score average " + Number(total3kcardPoints / games3kcardPlayed).toFixed(2));
+    addLog("3k card score avg. " + Number(total3kcardPoints / games3kcardPlayed).toFixed(2));
     addLog("");
 
-    addLog("St card played average " + Number(gamesStcardPlayed / gamesPlayed).toFixed(2));
+    addLog("St card played avg. " + Number(gamesStcardPlayed / gamesPlayed).toFixed(2));
     if (doDebugLog) addLog("st card scores " + printScoreArray(stScores));
-    addLog("St card score average " + Number(totalStcardPoints / gamesStcardPlayed).toFixed(2));
+    addLog("St card score avg. " + Number(totalStcardPoints / gamesStcardPlayed).toFixed(2));
     addLog("");
 
-    addLog("fl card played average " + Number(gamesFlcardPlayed / gamesPlayed).toFixed(2));
+    addLog("fl card played avg. " + Number(gamesFlcardPlayed / gamesPlayed).toFixed(2));
     if (doDebugLog) addLog("fl card scores " + printScoreArray(flScores));
-    addLog("fl card score average " + Number(totalFlcardPoints / gamesFlcardPlayed).toFixed(2));
+    addLog("fl card score avg. " + Number(totalFlcardPoints / gamesFlcardPlayed).toFixed(2));
     addLog("");
 
-    addLog("4k card played average " + Number(games4kcardPlayed / gamesPlayed).toFixed(2));
+    addLog("4k card played avg. " + Number(games4kcardPlayed / gamesPlayed).toFixed(2));
     if (doDebugLog) addLog("4k card scores " + printScoreArray(fourkScores));
-    addLog("4k card score average " + Number(total4kcardPoints / games4kcardPlayed).toFixed(2));
+    addLog("4k card score avg. " + Number(total4kcardPoints / games4kcardPlayed).toFixed(2));
     addLog("");
 
-    addLog("sf card played average " + Number(gamesSFcardPlayed / gamesPlayed).toFixed(2));
-    addLog("sf card score average " + Number(totalSFcardPoints / gamesSFcardPlayed).toFixed(2));
+    addLog("sf card played avg. " + Number(gamesSFcardPlayed / gamesPlayed).toFixed(2));
+    addLog("sf card score avg. " + Number(totalSFcardPoints / gamesSFcardPlayed).toFixed(2));
     addLog("");
 
     if (totalHighScore > maxHighScore) {
@@ -91,13 +91,16 @@ function printTestScores() {
     }
 
     accumulatedHighScore += totalHighScore;
-    addLog("total score average " + Number(accumulatedHighScore / gamesPlayed).toFixed(2));
+    addLog("total score avg. " + Number(accumulatedHighScore / gamesPlayed).toFixed(2));
     addLog("max high score " + maxHighScore);
-    addLog("perfect game average " + Number(perfectGames / gamesPlayed).toFixed(2));
-    addLog("" + new Date());
+    addLog("perfect game avg. " + Number(perfectGames / gamesPlayed).toFixed(3));
+    const now = new Date();
+    addLog(now.toDateString() + " " + now.toTimeString().split(" ")[0]);
     testTimeEnd = new Date().getTime();
     let duration = testTimeEnd - testTimeStart;
-    addLog("test duration (seconds)= " + duration / 1000);
+    addLog("test duration secs. = " + duration / 1000);
+
+    updateTestScorePanel();
 
     if (gamesPlayed >= gamesToPlay) {
         console.log("=== ESC DEBUG COMPLETE ===\n" + log);

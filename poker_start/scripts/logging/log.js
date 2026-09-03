@@ -6,10 +6,23 @@ function addLog(newLog) {
   }
 }
 
+function decodeHtmlEntities(text) {
+  const el = document.createElement("div");
+  el.innerHTML = text;
+  return el.textContent;
+}
+
+function writeActivityLog() {
+  if (!activityLog) {
+    return;
+  }
+  activityLog.value = decodeHtmlEntities(log);
+  activityLog.scrollTop = activityLog.scrollHeight;
+}
+
 function printLog() {
   if (!doRunControlTest) {
-    activityLog.innerHTML = log;
-    activityLog.scrollTop = activityLog.scrollHeight;
+    writeActivityLog();
   }
 }
 
@@ -20,7 +33,6 @@ function addDebugLog(newLog) {
     log = log + "\n" + newLog;
   }
 
-  activityLog.innerHTML = log;
-  activityLog.scrollTop = activityLog.scrollHeight;
+  writeActivityLog();
 }
 

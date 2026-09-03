@@ -111,6 +111,7 @@ textarea {
   border: double;
   font-size: 27px;
   color: white;
+  overflow-y: auto;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
