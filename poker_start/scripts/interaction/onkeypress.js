@@ -12,10 +12,7 @@ function onKeyDown(e) {
                 }
                 break;
             case 27: // esc
-                if (!doRunControlTest) {
-                    setDebugFlags(true);
-                    newGameClicked();
-                }
+                startControlTest();
                 break;
             case 37: // <-
                 if (isPlayerTurn()) {

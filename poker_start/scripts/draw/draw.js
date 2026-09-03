@@ -1,425 +1,146 @@
-function drawTurnCoin() {
+function getTurnCoinOffset() {
   switch (playerTurn) {
     case 0:
-      context.beginPath();
-      context.arc(741, 180, 10, 0, 2 * Math.PI, false);
-      context.fillStyle = myBlue;
-      context.fill();
-      context.lineWidth = 5;
-      context.strokeStyle = 'black';
-      context.stroke();
-      break;
+      return [131, 177];
     case 1:
-      context.beginPath();
-      context.arc(830, 125, 10, 0, 2 * Math.PI, false);
-      context.fillStyle = myBlue;
-      context.fill();
-      context.lineWidth = 5;
-      context.strokeStyle = 'black';
-      context.stroke();
-      break;
+      return [220, 122];
     case 2:
-      context.beginPath();
-      context.arc(741, 70, 10, 0, 2 * Math.PI, false);
-      context.fillStyle = myBlue;
-      context.fill();
-      context.lineWidth = 5;
-      context.strokeStyle = 'black';
-      context.stroke();
-      break;
+      return [131, 67];
     case 3:
-      context.beginPath();
-      context.arc(650, 125, 10, 0, 2 * Math.PI, false);
-      context.fillStyle = myBlue;
-      context.fill();
-      context.lineWidth = 5;
-      context.strokeStyle = 'black';
-      context.stroke();
-      break;
+      return [40, 122];
+    default:
+      return null;
   }
+}
+
+function drawTurnCoin() {
+  const offset = getTurnCoinOffset();
+  if (!offset) {
+    return;
+  }
+
+  context.beginPath();
+  context.arc(turnModuleX + offset[0], turnModuleY + offset[1], 10, 0, 2 * Math.PI, false);
+  context.fillStyle = myBlue;
+  context.fill();
+  context.lineWidth = 5;
+  context.strokeStyle = "black";
+  context.stroke();
+}
+
+function drawHandLabel(text, x1, y1, color) {
+  context.fillStyle = color;
+  context.fillText(text, Math.max(0, x1 - 40), y1 + 53);
+}
+
+function drawSlotBox(x1, y1, fill, stroke) {
+  context.beginPath();
+  context.rect(x1, y1, 80, 100);
+  context.fillStyle = fill;
+  context.fill();
+  context.lineWidth = 2;
+  context.strokeStyle = stroke;
+  context.stroke();
+}
+
+function getPlaceholderOrigin(hand, index) {
+  const slots = [
+    [[hcX1, hcY1]],
+    [[twokX1a, twokY1a], [twokX1b, twokY1b]],
+    [[threekX1a, threekY1a], [threekX1b, threekY1b], [threekX1c, threekY1c]],
+    [[straightX1a, straightY1a], [straightX1b, straightY1b], [straightX1c, straightY1c], [straightX1d, straightY1d], [straightX1e, straightY1e]],
+    [[flushX1a, flushY1a], [flushX1b, flushY1b], [flushX1c, flushY1c], [flushX1d, flushY1d], [flushX1e, flushY1e]],
+    [[fourkX1a, fourkY1a], [fourkX1b, fourkY1b], [fourkX1c, fourkY1c], [fourkX1d, fourkY1d]],
+    [[strFlushX1a, strFlushY1a], [strFlushX1b, strFlushY1b], [strFlushX1c, strFlushY1c], [strFlushX1d, strFlushY1d], [strFlushX1e, strFlushY1e]]
+  ];
+  const row = slots[hand];
+  if (!row || index < 0 || index >= row.length) {
+    return null;
+  }
+  return row[index];
+}
+
+function handSlotColors(isActive) {
+  if (isActive) {
+    return { label: "white", fill: "white", stroke: "black" };
+  }
+  return { label: "black", fill: myGreen, stroke: "black" };
 }
 
 function drawHC() {
-  let colora = 'white';
-  let colorb = 'black';
-  let colorc = myGreen;
-
-  if (targetHand === 0) {
-    colora = 'white';
-    colorb = 'white';
-    colorc = 'black';
-  } else {
-    colora = 'black';
-    colorb = myGreen;
-    colorc = 'black';
-  }
-
-  context.fillStyle = colora;
-  context.fillText("HC", 0, 188);
-
-  context.beginPath();
-  context.rect(40, 135, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
+  const colors = handSlotColors(targetHand === 0);
+  drawHandLabel("HC", hcX1, hcY1, colors.label);
+  drawSlotBox(hcX1, hcY1, colors.fill, colors.stroke);
 }
 
 function draw2K() {
-  let colora = 'white';
-  let colorb = 'black';
-  let colorc = myGreen;
-
-  if (targetHand === 1) {
-    colora = 'white';
-    colorb = 'white';
-    colorc = 'black';
-  } else {
-    colora = 'black';
-    colorb = myGreen;
-    colorc = 'black';
-  }
-
-  context.fillStyle = colora;
-  context.fillText("2K", 0, 295);
-
-  context.beginPath();
-  context.rect(40, 240, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(125, 240, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
+  const colors = handSlotColors(targetHand === 1);
+  drawHandLabel("2K", twokX1a, twokY1a, colors.label);
+  drawSlotBox(twokX1a, twokY1a, colors.fill, colors.stroke);
+  drawSlotBox(twokX1b, twokY1b, colors.fill, colors.stroke);
 }
 
 function draw3K() {
-  let colora = 'white';
-  let colorb = 'black';
-  let colorc = myGreen;
-
-  if (targetHand === 2) {
-    colora = 'white';
-    colorb = 'white';
-    colorc = 'black';
-  } else {
-    colora = 'black';
-    colorb = myGreen;
-    colorc = 'black';
-  }
-
-  context.fillStyle = colora;
-  context.fillText("3K", 0, 415);
-
-  context.beginPath();
-  context.rect(40, 345, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(125, 345, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(210, 345, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
+  const colors = handSlotColors(targetHand === 2);
+  drawHandLabel("3K", threekX1a, threekY1a, colors.label);
+  drawSlotBox(threekX1a, threekY1a, colors.fill, colors.stroke);
+  drawSlotBox(threekX1b, threekY1b, colors.fill, colors.stroke);
+  drawSlotBox(threekX1c, threekY1c, colors.fill, colors.stroke);
 }
 
 function drawST() {
-  let colora = 'white';
-  let colorb = 'black';
-  let colorc = myGreen;
-
-  if (targetHand === 3) {
-    colora = 'white';
-    colorb = 'white';
-    colorc = 'black';
-  } else {
-    colora = 'black';
-    colorb = myGreen;
-    colorc = 'black';
-  }
-
-  context.fillStyle = colora;
-  context.fillText("ST", 0, 510);
-
-  context.beginPath();
-  context.rect(40, 450, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(125, 450, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(210, 450, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(295, 450, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(380, 450, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
+  const colors = handSlotColors(targetHand === 3);
+  drawHandLabel("ST", straightX1a, straightY1a, colors.label);
+  drawSlotBox(straightX1a, straightY1a, colors.fill, colors.stroke);
+  drawSlotBox(straightX1b, straightY1b, colors.fill, colors.stroke);
+  drawSlotBox(straightX1c, straightY1c, colors.fill, colors.stroke);
+  drawSlotBox(straightX1d, straightY1d, colors.fill, colors.stroke);
+  drawSlotBox(straightX1e, straightY1e, colors.fill, colors.stroke);
 }
 
 function drawFL() {
-  let colora = 'white';
-  let colorb = 'black';
-  let colorc = myGreen;
-
-  if (targetHand === 4) {
-    colora = 'white';
-    colorb = 'white';
-    colorc = 'black';
-  } else {
-    colora = 'black';
-    colorb = myGreen;
-    colorc = 'black';
-  }
-
-  context.fillStyle = colora;
-  context.fillText("FL", 475, 295);
-
-  context.beginPath();
-  context.rect(515, 240, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(600, 240, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(685, 240, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(770, 240, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(855, 240, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
+  const colors = handSlotColors(targetHand === 4);
+  drawHandLabel("FL", flushX1a, flushY1a, colors.label);
+  drawSlotBox(flushX1a, flushY1a, colors.fill, colors.stroke);
+  drawSlotBox(flushX1b, flushY1b, colors.fill, colors.stroke);
+  drawSlotBox(flushX1c, flushY1c, colors.fill, colors.stroke);
+  drawSlotBox(flushX1d, flushY1d, colors.fill, colors.stroke);
+  drawSlotBox(flushX1e, flushY1e, colors.fill, colors.stroke);
 }
 
 function draw4K() {
-  let colora = 'white';
-  let colorb = 'black';
-  let colorc = myGreen;
-
-  if (targetHand === 5) {
-    colora = 'white';
-    colorb = 'white';
-    colorc = 'black';
-  } else {
-    colora = 'black';
-    colorb = myGreen;
-    colorc = 'black';
-  }
-
-  context.fillStyle = colora;
-  context.fillText("FK", 475, 410);
-
-  context.beginPath();
-  context.rect(515, 345, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(600, 345, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(685, 345, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(770, 345, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
+  const colors = handSlotColors(targetHand === 5);
+  drawHandLabel("FK", fourkX1a, fourkY1a, colors.label);
+  drawSlotBox(fourkX1a, fourkY1a, colors.fill, colors.stroke);
+  drawSlotBox(fourkX1b, fourkY1b, colors.fill, colors.stroke);
+  drawSlotBox(fourkX1c, fourkY1c, colors.fill, colors.stroke);
+  drawSlotBox(fourkX1d, fourkY1d, colors.fill, colors.stroke);
 }
 
 function drawSF() {
-  let colora = 'white';
-  let colorb = 'black';
-  let colorc = myGreen;
-
-  if (targetHand === 6) {
-    colora = 'white';
-    colorb = 'white';
-    colorc = 'black';
-  } else {
-    colora = 'black';
-    colorb = myGreen;
-    colorc = 'black';
-  }
-
-  context.fillStyle = colora;
-  context.fillText("SF", 475, 510);
-
-  context.beginPath();
-  context.rect(515, 450, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(600, 450, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(685, 450, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(770, 450, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
-
-  context.beginPath();
-  context.rect(855, 450, 80, 100);
-  context.fillStyle = colorb;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = colorc;
-  context.stroke();
+  const colors = handSlotColors(targetHand === 6);
+  drawHandLabel("SF", strFlushX1a, strFlushY1a, colors.label);
+  drawSlotBox(strFlushX1a, strFlushY1a, colors.fill, colors.stroke);
+  drawSlotBox(strFlushX1b, strFlushY1b, colors.fill, colors.stroke);
+  drawSlotBox(strFlushX1c, strFlushY1c, colors.fill, colors.stroke);
+  drawSlotBox(strFlushX1d, strFlushY1d, colors.fill, colors.stroke);
+  drawSlotBox(strFlushX1e, strFlushY1e, colors.fill, colors.stroke);
 }
 
 function drawTableCards() {
-  context.beginPath();
-  context.rect(700, 3, 80, 100);
-  context.fillStyle = myGreen;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = 'black';
-  context.stroke();
+  const ox = turnModuleX;
+  const oy = turnModuleY;
 
-  context.beginPath();
-  context.rect(700, 113, 80, 100);
-  context.fillStyle = myGreen;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = 'black';
-  context.stroke();
+  drawSlotBox(ox + 90, oy, myGreen, "black");
+  drawSlotBox(ox + 90, oy + 110, myGreen, "black");
+  drawSlotBox(ox, oy + 52, myGreen, "black");
+  drawSlotBox(ox + 180, oy + 52, myGreen, "black");
 
-  context.beginPath();
-  context.rect(610, 55, 80, 100);
-  context.fillStyle = myGreen;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = 'black';
-  context.stroke();
-
-  context.beginPath();
-  context.rect(790, 55, 80, 100);
-  context.fillStyle = myGreen;
-  context.fill();
-  context.lineWidth = 2;
-  context.strokeStyle = 'black';
-  context.stroke();
-
-  context.fillStyle = 'black';
-  context.fillText(player1Name, 735, 150);
-  context.stroke();
-
-  context.fillStyle = 'black';
-  context.fillText(player2Name, 815, 100);
-  context.stroke();
-
-  context.fillStyle = 'black';
-  context.fillText(player3Name, 725, 40);
-  context.stroke();
-
-  context.fillStyle = 'black';
-  context.fillText(player4Name, 630, 100);
-  context.stroke();
+  context.fillStyle = "black";
+  context.fillText(player1Name, ox + 125, oy + 147);
+  context.fillText(player2Name, ox + 205, oy + 97);
+  context.fillText(player3Name, ox + 115, oy + 37);
+  context.fillText(player4Name, ox + 20, oy + 97);
 }
 
 function drawCardPlaceholders() {
@@ -639,440 +360,37 @@ function drawBoard() {
   }
 }
 
+function fillSlotOverlay(x, y) {
+  context.beginPath();
+  context.rect(x, y, 80, 100);
+  context.fillStyle = "red";
+  context.globalAlpha = 0.25;
+  context.fill();
+  context.globalAlpha = 1.0;
+}
+
+function strokeSlotHighlight(x, y) {
+  context.beginPath();
+  context.rect(x, y, 80, 100);
+  context.lineWidth = 5;
+  context.strokeStyle = "red";
+  context.stroke();
+}
+
 function drawPlaceholderCardMouseOverFilter() {
-  // addDebugLog("hand=" + targetHand + " placeHolderMouseOverCardIndex=" + placeHolderMouseOverCardIndex);
-  switch (targetHand) {
-    case 0:
-      switch (placeHolderMouseOverCardIndex) {
-        case 0:
-          context.beginPath();
-          context.rect(40, 135, 80, 100);
-          context.fillStyle = 'red';
-          context.globalAlpha = 0.25;
-          context.fill();
-          context.globalAlpha = 1.0;
-          return;
-      }
-    case 1:
-      switch (placeHolderMouseOverCardIndex) {
-        case 0:
-          context.beginPath();
-          context.rect(40, 240, 80, 100);
-          context.fillStyle = 'red';
-          context.globalAlpha = 0.25;
-          context.fill();
-          context.globalAlpha = 1.0;
-          return;
-        case 1:
-          context.beginPath();
-          context.rect(125, 240, 80, 100);
-          context.fillStyle = 'red';
-          context.globalAlpha = 0.25;
-          context.fill();
-          context.globalAlpha = 1.0;
-          return;
-      }
-    case 2:
-      switch (placeHolderMouseOverCardIndex) {
-        case 0:
-          context.beginPath();
-          context.rect(40, 345, 80, 100);
-          context.fillStyle = 'red';
-          context.globalAlpha = 0.25;
-          context.fill();
-          context.globalAlpha = 1.0;
-          return;
-        case 1:
-          context.beginPath();
-          context.rect(125, 345, 80, 100);
-          context.fillStyle = 'red';
-          context.globalAlpha = 0.25;
-          context.fill();
-          context.globalAlpha = 1.0;
-          return;
-        case 2:
-          context.beginPath();
-          context.rect(210, 345, 80, 100);
-          context.fillStyle = 'red';
-          context.globalAlpha = 0.25;
-          context.fill();
-          context.globalAlpha = 1.0;
-          return;
-      }
-    case 3:
-      switch (placeHolderMouseOverCardIndex) {
-        case 0:
-          context.beginPath();
-          context.rect(40, 450, 80, 100);
-          context.fillStyle = 'red';
-          context.globalAlpha = 0.25;
-          context.fill();
-          context.globalAlpha = 1.0;
-          return;
-        case 1:
-          context.beginPath();
-          context.rect(125, 450, 80, 100);
-          context.fillStyle = 'red';
-          context.globalAlpha = 0.25;
-          context.fill();
-          context.globalAlpha = 1.0;
-          return;
-        case 2:
-          context.beginPath();
-          context.rect(210, 450, 80, 100);
-          context.fillStyle = 'red';
-          context.globalAlpha = 0.25;
-          context.fill();
-          context.globalAlpha = 1.0;
-          return;
-        case 3:
-          context.beginPath();
-          context.rect(295, 450, 80, 100);
-          context.fillStyle = 'red';
-          context.globalAlpha = 0.25;
-          context.fill();
-          context.globalAlpha = 1.0;
-          return;
-        case 4:
-          context.beginPath();
-          context.rect(380, 450, 80, 100);
-          context.fillStyle = 'red';
-          context.globalAlpha = 0.25;
-          context.fill();
-          context.globalAlpha = 1.0;
-          return;
-      }
-      case 4:
-        switch (placeHolderMouseOverCardIndex) {
-          case 0:
-            context.beginPath();
-            context.rect(515, 240, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 1:
-            context.beginPath();
-            context.rect(600, 240, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 2:
-            context.beginPath();
-            context.rect(685, 240, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 3:
-            context.beginPath();
-            context.rect(770, 240, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 4:
-            context.beginPath();
-            context.rect(855, 240, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-        }
-        break;
-      case 5:
-        switch (placeHolderMouseOverCardIndex) {
-          case 0:
-            context.beginPath();
-            context.rect(515, 345, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 1:
-            context.beginPath();
-            context.rect(600, 345, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 2:
-            context.beginPath();
-            context.rect(685, 345, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 3:
-            context.beginPath();
-            context.rect(770, 345, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-        }
-      case 6:
-        switch (placeHolderMouseOverCardIndex) {
-          case 0:
-            context.beginPath();
-            context.rect(515, 450, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 1:
-            context.beginPath();
-            context.rect(600, 450, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 2:
-            context.beginPath();
-            context.rect(685, 450, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 3:
-            context.beginPath();
-            context.rect(770, 450, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-          case 4:
-            context.beginPath();
-            context.rect(855, 450, 80, 100);
-            context.fillStyle = 'red';
-            context.globalAlpha = 0.25;
-            context.fill();
-            context.globalAlpha = 1.0;
-            return;
-        }
+  const origin = getPlaceholderOrigin(targetHand, placeHolderMouseOverCardIndex);
+  if (!origin) {
+    return;
   }
+  fillSlotOverlay(origin[0], origin[1]);
 }
 
 function drawArrowPlaceholderCardHighlight() {
-  switch (targetHand) {
-    case 0:
-      switch (arrowPlaceholderCardSelected) {
-        case 0:
-          context.beginPath();
-          context.rect(40, 135, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-      }
-      break;
-    case 1:
-      switch (arrowPlaceholderCardSelected) {
-        case 0:
-          context.beginPath();
-          context.rect(40, 240, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 1:
-          context.beginPath();
-          context.rect(125, 240, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-      }
-      break;
-    case 2:
-      switch (arrowPlaceholderCardSelected) {
-        case 0:
-          context.beginPath();
-          context.rect(40, 345, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 1:
-          context.beginPath();
-          context.rect(125, 345, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 2:
-          context.beginPath();
-          context.rect(210, 345, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-      }
-      break;
-    case 3:
-      switch (arrowPlaceholderCardSelected) {
-        case 0:
-          context.beginPath();
-          context.rect(40, 450, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 1:
-          context.beginPath();
-          context.rect(125, 450, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 2:
-          context.beginPath();
-          context.rect(210, 450, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 3:
-          context.beginPath();
-          context.rect(295, 450, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 4:
-          context.beginPath();
-          context.rect(380, 450, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-      }
-      break;
-    case 4:
-      switch (arrowPlaceholderCardSelected) {
-        case 0:
-          context.beginPath();
-          context.rect(515, 240, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 1:
-          context.beginPath();
-          context.rect(600, 240, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 2:
-          context.beginPath();
-          context.rect(685, 240, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 3:
-          context.beginPath();
-          context.rect(770, 240, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 4:
-          context.beginPath();
-          context.rect(855, 240, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-      }
-      break;
-    case 5:
-      switch (arrowPlaceholderCardSelected) {
-        case 0:
-          context.beginPath();
-          context.rect(515, 345, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 1:
-          context.beginPath();
-          context.rect(600, 345, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 2:
-          context.beginPath();
-          context.rect(685, 345, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 3:
-          context.beginPath();
-          context.rect(770, 345, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-      }
-      break;
-    case 6:
-      switch (arrowPlaceholderCardSelected) {
-        case 0:
-          context.beginPath();
-          context.rect(515, 450, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 1:
-          context.beginPath();
-          context.rect(600, 450, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 2:
-          context.beginPath();
-          context.rect(685, 450, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 3:
-          context.beginPath();
-          context.rect(770, 450, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-        case 4:
-          context.beginPath();
-          context.rect(855, 450, 80, 100);
-          context.lineWidth = 5;
-          context.strokeStyle = 'red';
-          context.stroke();
-          break;
-      }
-      break;
+  const origin = getPlaceholderOrigin(targetHand, arrowPlaceholderCardSelected);
+  if (!origin) {
+    return;
   }
+  strokeSlotHighlight(origin[0], origin[1]);
 }
 
 function drawArrowPlayerCardHighlight() {
@@ -1189,52 +507,52 @@ function drawPlaceholderCards() {
   // draw high card
   if (hcSlotCard == null) {
     if (targetHand > 0) {
-      context.drawImage(backImage, 40, 135, 80, 100);
+      context.drawImage(backImage, hcX1, hcY1, 80, 100);
     }
   } else {
-    context.drawImage(hcSlotCard.bitmap, 40, 135, 80, 100);
+    context.drawImage(hcSlotCard.bitmap, hcX1, hcY1, 80, 100);
   }
 
   // draw two of a kind
   if (twoPSlotCard1 == null) {
     if (targetHand > 1) {
-      context.drawImage(backImage, 40, 240, 80, 100);
+      context.drawImage(backImage, twokX1a, twokY1a, 80, 100);
     }
   } else {
-    context.drawImage(twoPSlotCard1.bitmap, 40, 240, 80, 100);
+    context.drawImage(twoPSlotCard1.bitmap, twokX1a, twokY1a, 80, 100);
   }
 
   if (twoPSlotCard2 == null) {
     if (targetHand > 1) {
-      context.drawImage(backImage, 125, 240, 80, 100);
+      context.drawImage(backImage, twokX1b, twokY1b, 80, 100);
     }
   } else {
-    context.drawImage(twoPSlotCard2.bitmap, 125, 240, 80, 100);
+    context.drawImage(twoPSlotCard2.bitmap, twokX1b, twokY1b, 80, 100);
   }
 
   // draw three of a kind
   if (threePSlotCard1 == null) {
     if (targetHand > 2) {
-      context.drawImage(backImage, 40, 345, 80, 100);
+      context.drawImage(backImage, threekX1a, threekY1a, 80, 100);
     }
   } else {
-    context.drawImage(threePSlotCard1.bitmap, 40, 345, 80, 100);
+    context.drawImage(threePSlotCard1.bitmap, threekX1a, threekY1a, 80, 100);
   }
 
   if (threePSlotCard2 == null) {
     if (targetHand > 2) {
-      context.drawImage(backImage, 125, 345, 80, 100);
+      context.drawImage(backImage, threekX1b, threekY1b, 80, 100);
     }
   } else {
-    context.drawImage(threePSlotCard2.bitmap, 125, 345, 80, 100);
+    context.drawImage(threePSlotCard2.bitmap, threekX1b, threekY1b, 80, 100);
   }
 
   if (threePSlotCard3 == null) {
     if (targetHand > 2) {
-      context.drawImage(backImage, 210, 345, 80, 100);
+      context.drawImage(backImage, threekX1c, threekY1c, 80, 100);
     }
   } else {
-    context.drawImage(threePSlotCard3.bitmap, 210, 345, 80, 100);
+    context.drawImage(threePSlotCard3.bitmap, threekX1c, threekY1c, 80, 100);
   }
 
   //draw straight cards

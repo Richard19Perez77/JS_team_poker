@@ -1,3 +1,11 @@
+function startControlTest() {
+    if (doRunControlTest) {
+        return;
+    }
+    setDebugFlags(true);
+    newGameClicked();
+}
+
 // if you need a specific custom deck, make to win or lose a particular hand
 // uncomment createDeck() options in deck.js
 function setDebugFlags(boolVar) {

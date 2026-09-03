@@ -53,7 +53,8 @@ let endSpan = "</span>";
 let br = "<br>";
 
 let ruleLog = "MOUSE CONTROLS" + br + br;
-ruleLog = ruleLog + spanL1 + "Drag and Drop Cards." + endSpan + br + br;
+ruleLog = ruleLog + spanL1 + "<span class=\"control-mouse\">\u{1F5AF}</span>" + endSpan
+    + spanR1 + "Drag and Drop Cards." + endSpan + br + br;
 
 ruleLog = ruleLog + "KEYBOARD CONTROLS" + br + br;
 
@@ -82,6 +83,13 @@ let scoreText;
 let sortedByValue = true;
 
 let canvas;
+let isMobileLayout = false;
+let GAME_CANVAS_WIDTH = 950;
+let GAME_CANVAS_HEIGHT = 580;
+let TURN_MODULE_WIDTH = 260;
+let TURN_MODULE_HEIGHT = 210;
+let turnModuleX = 610;
+let turnModuleY = 3;
 let newGameButton;
 let controlsButton;
 let endTurnButton;

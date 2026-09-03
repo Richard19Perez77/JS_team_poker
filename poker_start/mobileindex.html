@@ -1,10 +1,9 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-    <meta name="viewport" content="user-scalable=no"/>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Mobile Team Poker</title>
     <script type="application/javascript" src="scripts/common/redirect.js"></script>
 
@@ -48,8 +47,8 @@
     <script src="scripts/gamelogic.js" type="application/javascript"></script>
     <script src="scripts/interaction/onkeypress.js" type="application/javascript"></script>
 
-    <!-- CSS -->
-    <link href="assets/styles/cardTheme.css?ver=<%=DateTime.Now.Ticks.ToString()%>" rel="stylesheet" type="text/css"/>
+    <link href="assets/styles/cardTheme.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/styles/mobileTheme.css" rel="stylesheet" type="text/css"/>
 
     <link href="assets/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
     <link href="assets/images/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -57,7 +56,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-
+            isMobileLayout = true;
             init(document);
 
             if (isLocalStorageSupported()) {
@@ -66,21 +65,8 @@
                     highScore = scoreSaved.highScore;
                 }
             }
-
         });
 
-        window.addEventListener("resize", myFunction);
-
-        function myFunction() {
-            adjustOffset();
-        }
-
-        /*
-         * Tests if local storage is supported in the browser.
-         *
-         * Returns:
-         * 	True if local storage is supported, false if not.
-         */
         function isLocalStorageSupported() {
             try {
                 return 'localStorage' in window && window['localStorage'] !== null;
@@ -91,7 +77,7 @@
     </script>
 </head>
 
-<body>
+<body class="mobile-layout">
 
 <div id="pageDiv" class="pageDivClass">
 
@@ -99,7 +85,7 @@
         <h1 id="fb-welcome">Mobile Team Poker</h1>
     </div>
 
-    <div id="tutorialDiv" style="width: 700px; height: 750px;">
+    <div id="tutorialDiv">
         <img id="tutorialImage" alt="Tutorial">
     </div>
 
@@ -113,58 +99,34 @@
         <div id="scoreText"></div>
     </div>
 
-    <div id="loadingDiv" style="width: 930px; height: 845px;">
-        <h2 id="loading" style="font-family: CustomFont,serif;">Loading...</h2>
+    <div id="loadingDiv">
+        <h2 id="loading">Loading...</h2>
     </div>
 
     <div id="canvasDiv">
         <canvas height="580" id="canvasId" width="950"></canvas>
     </div>
 
-    <div id="cardSelectTitleDiv">
-        <h1>Select Player Card 1 - 7</h1>
-    </div>
-
-    <div id="cardSelectDiv">
-        <button class="mobilebutton" id="playerCardOneButton">Card 1</button>
-        <button class="mobilebutton" id="playerCardTwoButton">Card 2</button>
-        <button class="mobilebutton" id="playerCardThreeButton">Card 3</button>
-        <button class="mobilebutton" id="playerCardFourButton">Card 4</button>
-        <button class="mobilebutton" id="playerCardFiveButton">Card 5</button>
-        <button class="mobilebutton" id="playerCardSixButton">Card 6</button>
-        <button class="mobilebutton" id="playerCardSevenButton">Card 7</button>
-    </div>
-
-    <div id="slotSelectTitleDiv">
-        <h1>Select Slot 1 - 5</h1>
-    </div>
-
-    <div id="slotSelectDiv">
-        <button class="mobilebutton" id="slotOneButton">Slot 1</button>
-        <button class="mobilebutton" id="slotTwoButton">Slot 2</button>
-        <button class="mobilebutton" id="slotThreeButton">Slot 3</button>
-        <button class="mobilebutton" id="slotFourButton">Slot 4</button>
-        <button class="mobilebutton" id="slotFiveButton">Slot 5</button>
-    </div>
-
-    <div id="activityDiv" style="background-image: radial-gradient(#009933, #330099);">
-        <textarea readonly rows="10" id="activity" style="font-size: 10px;"></textarea>
-    </div>
-
     <div id="buttonDiv">
-        <button id="endTurnButton">End Turn</button>
-        <button id="scoreButton">Score</button>
-        <button id="controlsButton">Controls</button>
-        <button id="newGameButton">New Game</button>
+        <button type="button" id="endTurnButton">End Turn</button>
+        <div class="action-button-row">
+            <button type="button" id="scoreButton">Score</button>
+            <button type="button" id="controlsButton">Controls</button>
+            <button type="button" id="newGameButton">New Game</button>
+        </div>
     </div>
 
-    <div id="musicDiv" style="margin-top: 10px;">
-        <button id="musicButton">more music</button>
+    <div id="activityDiv">
+        <textarea readonly rows="3" id="activity"></textarea>
+    </div>
+
+    <div id="musicDiv">
+        <button type="button" id="musicButton">Music</button>
         <audio id="audio" controls loop>
             <source src="./assets/music/track.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
-        <button id="blogButton">games...</button>
+        <button type="button" id="blogButton">Games</button>
     </div>
 </div>
 
