@@ -35,9 +35,7 @@ function onKeyDown(e) {
                 }
                 break;
             case 45: // numpad 0
-                if (isPlayerTurn() || gameOver) {
-                    newGameClicked();
-                }
+                userRequestedNewGame();
                 break;
             case 65: // a
                 if (isPlayerTurn()) {
@@ -129,9 +127,7 @@ function onKeyDown(e) {
                 musicButtonClicked();
                 break;
             case 78: // n
-                if (isPlayerTurn() || gameOver) {
-                    newGameClicked();
-                }
+                userRequestedNewGame();
                 break;
             case 16: // left shift
                 break;

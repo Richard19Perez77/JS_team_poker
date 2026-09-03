@@ -1,8 +1,30 @@
+let pcTurnTimeoutId = null;
+
+function cancelPendingPcTurn() {
+  if (pcTurnTimeoutId !== null) {
+    clearTimeout(pcTurnTimeoutId);
+    pcTurnTimeoutId = null;
+  }
+}
+
 function playerMoveSwitch() {
-  newGameButton.disabled = true;
+  if (!doRunControlTest) {
+    newGameButton.disabled = true;
+  }
   endTurnButton.disabled = true;
 
-  setTimeout(function () {
+  cancelPendingPcTurn();
+  pcTurnTimeoutId = setTimeout(function () {
+    pcTurnTimeoutId = null;
+
+    if (isPlayerTurn() || gameOver) {
+      newGameButton.disabled = false;
+      if (isPlayerTurn() && !gameOver) {
+        endTurnButton.disabled = false;
+      }
+      return;
+    }
+
     movePlayerCard();
     newGameButton.disabled = false;
     endTurnButton.disabled = false;

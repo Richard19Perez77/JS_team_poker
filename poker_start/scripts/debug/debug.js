@@ -10,6 +10,14 @@ function startControlTest() {
     newGameClicked();
 }
 
+function stopControlTest() {
+    if (!doRunControlTest) {
+        return;
+    }
+    cancelPendingPcTurn();
+    setDebugFlags(false);
+}
+
 function showScorePanel() {
     if (!draggableScoreDiv || isElementAnimating(draggableScoreDiv)) {
         return;
@@ -31,12 +39,14 @@ function updateTestScorePanel() {
 // if you need a specific custom deck, make to win or lose a particular hand
 // uncomment createDeck() options in deck.js
 function setDebugFlags(boolVar) {
-    if (!boolVar)
-        return;
-
     doRunControlTest = boolVar;
 
-    maxHighScore = 0;
+    if (!boolVar) {
+        restoreNormalPlayFlags();
+        return;
+    }
+
+    resetControlTestStats();
 
     // test count of games to average scores and hands
     // default    100;
@@ -74,10 +84,57 @@ function setDebugFlags(boolVar) {
     setTestElements();
 }
 
+function resetControlTestStats() {
+    gamesPlayed = 0;
+    gamesHCcardPlayed = 0;
+    games2kcardPlayed = 0;
+    games3kcardPlayed = 0;
+    gamesStcardPlayed = 0;
+    gamesFlcardPlayed = 0;
+    games4kcardPlayed = 0;
+    gamesSFcardPlayed = 0;
+
+    totalHCcardPoints = 0;
+    total2kcardPoints = 0;
+    total3kcardPoints = 0;
+    totalStcardPoints = 0;
+    totalFlcardPoints = 0;
+    total4kcardPoints = 0;
+    totalSFcardPoints = 0;
+
+    hcScores = [];
+    twokScores = [];
+    threekScores = [];
+    stScores = [];
+    flScores = [];
+    fourkScores = [];
+    sfScores = [];
+
+    accumulatedHighScore = 0;
+    maxHighScore = 0;
+    totalHighScore = 0;
+    perfectGames = 0;
+    testTimeStart = new Date().getTime();
+}
+
+function restoreNormalPlayFlags() {
+    allPCPlayers = false;
+    gamesToPlay = 1;
+    doShowUIDuringTest = false;
+    PC_TURN_DELAY = 50;
+
+    player1isPC = false;
+    player2isPC = true;
+    player3isPC = true;
+    player4isPC = true;
+}
+
 function setTestElements() {
     PC_TURN_DELAY = 0;
     allPCPlayers = true;
-    tutorialDiv.hidden = true;
+    if (tutorialDiv) {
+        tutorialDiv.hidden = true;
+    }
 }
 
 function setPcPlayers() {

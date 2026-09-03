@@ -105,9 +105,7 @@ function setupControls() {
 
     newGameButton = byId("newGameButton");
     newGameButton.addEventListener("click", function () {
-        if (isPlayerTurn() || gameOver) {
-            newGameClicked();
-        }
+        userRequestedNewGame();
     });
 
     endTurnButton = byId("endTurnButton");

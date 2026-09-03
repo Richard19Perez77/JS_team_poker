@@ -1,4 +1,21 @@
+function userRequestedNewGame() {
+  if (doRunControlTest) {
+    stopControlTest();
+    newGameClicked();
+    return;
+  }
+
+  if (isPlayerTurn() || gameOver) {
+    newGameClicked();
+  }
+}
+
 function newGameClicked() {
+  cancelPendingPcTurn();
+
+  if (newGameButton) {
+    newGameButton.disabled = false;
+  }
 
   totalHighScore = 0;
 
