@@ -26,7 +26,6 @@ function updateTestScorePanel() {
     if (scoreText) {
         scoreText.innerHTML = log.split("\n").join(br);
     }
-    writeActivityLog();
 }
 
 // if you need a specific custom deck, make to win or lose a particular hand

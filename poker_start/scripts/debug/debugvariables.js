@@ -94,11 +94,12 @@ function printTestScores() {
     addLog("total score avg. " + Number(accumulatedHighScore / gamesPlayed).toFixed(2));
     addLog("max high score " + maxHighScore);
     addLog("perfect game avg. " + Number(perfectGames / gamesPlayed).toFixed(3));
+    addLog("");
     const now = new Date();
     addLog(now.toDateString() + " " + now.toTimeString().split(" ")[0]);
     testTimeEnd = new Date().getTime();
     let duration = testTimeEnd - testTimeStart;
-    addLog("test duration secs. = " + duration / 1000);
+    addLog("test duration = " + duration / 1000);
 
     updateTestScorePanel();
 
