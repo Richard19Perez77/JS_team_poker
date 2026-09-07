@@ -1,10 +1,10 @@
-# JS_team_poker
+# Team Poker (JS_team_poker)
 
-Open `index.html` in your browser to play.
+Open `index.html` in a browser to play.
 
-You can run the index files in browser's, but I only have used Firefox mostly for rendering testing. Opera's GX browser runs testing really fast, press ESC to start it and check console with shift-control-c. 
+Firefox is the main browser used for rendering tests. Opera GX also runs it well. Press Esc to start, and open the console with Ctrl+Shift+C.
 
-I have a Word doc "Team Poker" Please read for further details on gameplay.
+Gameplay is in the in-game UI. A local Word document named "Team Poker" was used during development and is not in this repository.
 
 ![image](https://github.com/Richard19Perez77/JS_team_poker/assets/58344001/8b14f8b4-0f2c-4ae8-95df-9af3ca405f16)
 
